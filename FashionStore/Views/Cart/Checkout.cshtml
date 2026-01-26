@@ -1,0 +1,54 @@
+﻿@model IEnumerable<FashionStore.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Thanh toán";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Thông tin thanh toán</h2>
+
+    <div class="row">
+        <div class="col-md-7">
+            <div class="card shadow-sm p-4">
+                <h4 class="mb-3">Thông tin giao hàng</h4>
+                <form asp-action="Checkout" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Họ và tên người nhận</label>
+                        <input type="text" name="ReceiverName" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Số điện thoại</label>
+                        <input type="text" name="ReceiverPhone" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Địa chỉ giao hàng</label>
+                        <textarea name="ShippingAddress" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 fs-5">XÁC NHẬN ĐẶT HÀNG</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="card shadow-sm p-4 bg-light">
+                <h4 class="mb-3">Tóm tắt đơn hàng</h4>
+                <ul class="list-group mb-3">
+                    @foreach (var item in Model)
+                    {
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">@item.ProductName</h6>
+                                <small class="text-muted">SL: @item.Quantity</small>
+                            </div>
+                            <span class="text-muted">@item.Total.ToString("N0") đ</span>
+                        </li>
+                    }
+                </ul>
+                <div class="d-flex justify-content-between fs-4 fw-bold">
+                    <span>Tổng cộng</span>
+                    <span class="text-danger">@ViewBag.Total.ToString("N0") đ</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

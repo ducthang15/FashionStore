@@ -1,0 +1,42 @@
+﻿@model FashionStore.Repository.Models.Product
+
+@{
+    ViewData["Title"] = "Sửa sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2><i class="fa-solid fa-pen text-warning"></i> Sửa Thông Tin: @Model.ProductName</h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Edit" method="post" class="shadow-sm p-4 bg-light rounded">
+                <input type="hidden" asp-for="ProductId" />
+
+                <div class="mb-3">
+                    <label asp-for="ProductName" class="form-label fw-bold">Tên sản phẩm</label>
+                    <input asp-for="ProductName" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="CategoryId" class="form-label fw-bold">Danh mục</label>
+                    <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.CategoryId"></select>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Price" class="form-label fw-bold">Giá bán</label>
+                    <input asp-for="Price" type="number" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="StockQuantity" class="form-label fw-bold">Tồn kho</label>
+                    <input asp-for="StockQuantity" type="number" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ImageUrl" class="form-label fw-bold">Link hình ảnh</label>
+                    <input asp-for="ImageUrl" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-warning"><i class="fa-solid fa-save"></i> CẬP NHẬT</button>
+                <a asp-action="Index" class="btn btn-secondary ms-2">Hủy bỏ</a>
+            </form>
+        </div>
+    </div>
+</div>

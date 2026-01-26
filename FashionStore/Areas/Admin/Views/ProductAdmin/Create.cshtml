@@ -1,0 +1,44 @@
+﻿@model FashionStore.Repository.Models.Product
+
+@{
+    ViewData["Title"] = "Thêm sản phẩm mới";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2><i class="fa-solid fa-plus-circle text-primary"></i> Thêm Sản Phẩm Mới</h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Create" method="post" class="shadow-sm p-4 bg-light rounded">
+                <div class="mb-3">
+                    <label asp-for="ProductName" class="form-label fw-bold">Tên sản phẩm</label>
+                    <input asp-for="ProductName" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="CategoryId" class="form-label fw-bold">Danh mục</label>
+                    <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.CategoryId"></select>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Price" class="form-label fw-bold">Giá bán (VNĐ)</label>
+                    <input asp-for="Price" type="number" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="StockQuantity" class="form-label fw-bold">Số lượng tồn kho</label>
+                    <input asp-for="StockQuantity" type="number" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="ImageUrl" class="form-label fw-bold">Link hình ảnh</label>
+                    <input asp-for="ImageUrl" class="form-control" placeholder="https://..." />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label fw-bold">Mô tả</label>
+                    <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-save"></i> LƯU SẢN PHẨM</button>
+                <a asp-action="Index" class="btn btn-secondary ms-2">Hủy bỏ</a>
+            </form>
+        </div>
+    </div>
+</div>
