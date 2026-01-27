@@ -1,0 +1,74 @@
+﻿@model FashionStore.Repository.Models.Appointment
+
+@{
+    ViewData["Title"] = "Đặt Lịch Hẹn";
+}
+<!-- Flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<link href="~/css/site.css" rel="stylesheet" />
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 mt-5">
+            <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                <div class="row g-0">
+                    <div class="col-md-5 d-none d-md-block"
+                         style="background-image: url('https://file.hstatic.net/200000610143/file/screenshot_2024-07-24_171018_491622813ea04e80bdc06990a6fb0b84_grande.png'); background-size: cover; background-position: center;">
+                    </div>
+                    <div class="col-md-7 mt-2">
+                        <h4 class="fw-bold mb-3 text-center">
+                            Book An Appointment With Us
+                        </h4>
+                        <form asp-action="Book" method="post" class="container">
+                            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                            <!-- Họ tên -->
+                            <div class="mb-4">
+                                <label class="form-label">Họ và tên của bạn</label>
+                                <input asp-for="FullName" class="form-control rounded-0" />
+                                <span asp-validation-for="FullName" class="text-danger small"></span>
+                            </div>
+                            <!-- SĐT -->
+                            <div class="mb-4">
+                                <label class="form-label">Số điện thoại</label>
+                                <input asp-for="PhoneNumber" class="form-control rounded-0" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger small"></span>
+                            </div>
+                            <!-- Địa chỉ -->
+                            <div class="mb-4">
+                                <label class="form-label">Địa chỉ (Tùy chọn)</label>
+                                <input asp-for="Address" class="form-control rounded-0" />
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label">Ngày giờ hẹn</label>
+                                <input asp-for="AppointmentDate" id="appointmentDate" type="text" class="form-control rounded-0" placeholder="Ngày giờ"/>
+                                <span asp-validation-for="AppointmentDate" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Nội dung -->
+                            <div class="mb-5">
+                                <label class="form-label">Nội dung cần hỗ trợ</label>
+                                <textarea asp-for="Content" class="form-control rounded-0" style="height:100px" placeholder="Vui lòng nêu rõ chi tiết (kiểu dáng, chất liệu, dịp sử dụng,v.v...)"></textarea>
+                            </div>
+
+                            <!-- Button -->
+                            <button type="submit" class="send-btn text-white px-5 border py-2 ">
+                                GỬI YÊU CẦU
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    flatpickr("#appointmentDate", {
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+        time_24hr: true,
+        minDate: "today"
+    });
+</script>

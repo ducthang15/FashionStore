@@ -102,3 +102,6 @@ body {
     line-height: 1.7;
     color: #555;
 }
+.send-btn {
+    background-color: #3a1d0f;
+}

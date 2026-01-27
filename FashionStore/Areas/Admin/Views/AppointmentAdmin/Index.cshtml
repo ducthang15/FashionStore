@@ -1,0 +1,98 @@
+﻿@model IEnumerable<FashionStore.Repository.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Quản lý Lịch hẹn";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-primary"><i class="fa-solid fa-calendar-days"></i> Quản Lý Lịch Hẹn</h2>
+
+    <div class="table-responsive shadow-sm rounded">
+        <table class="table table-hover align-middle mb-0 bg-white">
+            <thead class="table-dark">
+                <tr>
+                    <th>Ngày tạo</th>
+                    <th>Khách hàng</th>
+                    <th>Thông tin hẹn</th>
+                    <th>Nội dung</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-muted small">
+                            @item.CreatedAt?.ToString("dd/MM/yyyy HH:mm")
+                        </td>
+                        <td>
+                            <div class="fw-bold">@item.FullName</div>
+                            <div class="small text-primary">@item.PhoneNumber</div>
+                        </td>
+
+                        <td>
+                            <div class="fw-bold text-danger">
+                                @item.AppointmentDate.ToString("dd/MM/yyyy")
+                            </div>
+                            <div class="small fw-bold">
+                                @item.AppointmentDate.ToString("HH:mm")
+                            </div>
+                            <div class="text-muted small">@item.Address</div>
+                        </td>
+                        <td>
+                            <span class="text-muted fst-italic">" @item.Content "</span>
+                        </td>
+                        <td>
+                            @if (item.Status == "Mới")
+                            {
+                                <span class="badge bg-warning text-dark">Mới</span>
+                            }
+                            else if (item.Status == "Đã xác nhận")
+                            {
+                                <span class="badge bg-primary">Đã xác nhận</span>
+                            }
+                            else if (item.Status == "Hoàn thành")
+                            {
+                                <span class="badge bg-success">Hoàn thành</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">@item.Status</span>
+                            }
+                        </td>
+
+                        <td>
+                            @if (item.Status == "Mới")
+                            {
+                                <form asp-action="UpdateStatus" method="post" class="d-inline">
+                                    <input type="hidden" name="id" value="@item.AppointmentId" />
+                                    <input type="hidden" name="status" value="Đã xác nhận" />
+                                    <button class="btn btn-sm btn-outline-primary" title="Xác nhận lịch">
+                                        <i class="fa-solid fa-check"></i>
+                                    </button>
+                                </form>
+                            }
+                            @if (item.Status == "Đã xác nhận")
+                            {
+                                <form asp-action="UpdateStatus" method="post" class="d-inline">
+                                    <input type="hidden" name="id" value="@item.AppointmentId" />
+                                    <input type="hidden" name="status" value="Hoàn thành" />
+                                    <button class="btn btn-sm btn-outline-success" title="Hoàn thành">
+                                        <i class="fa-solid fa-flag-checkered"></i>
+                                    </button>
+                                </form>
+                            }
+                            <form asp-action="Delete" method="post" class="d-inline" onsubmit="return confirm('Xóa lịch hẹn này?');">
+                                <input type="hidden" name="id" value="@item.AppointmentId" />
+                                <button class="btn btn-sm btn-light text-danger" title="Xóa">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
