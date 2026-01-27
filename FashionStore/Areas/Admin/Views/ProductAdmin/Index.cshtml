@@ -5,10 +5,12 @@
     // Tạm thời dùng Layout mặc định, sau này ta sẽ tạo Layout riêng cho Admin
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<a asp-area="Admin" asp-controller="OrderAdmin" asp-action="Index" class="btn btn-success mb-3"> Quản lý đơn hàng
+</a>
 
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>📦 Quản lý Sản Phẩm</h2>
+        <h2>Quản lý Sản Phẩm</h2>
         <a asp-action="Create" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Thêm sản phẩm mới</a>
     </div>
 

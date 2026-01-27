@@ -1,22 +1,123 @@
 ﻿@model IEnumerable<FashionStore.Repository.Models.Product>
 
-<h2 class="text-center mb-4 text-uppercase fw-bold">Sản phẩm nổi bật</h2>
+@{
+    ViewData["Title"] = "Trang chủ";
+}
+<link href="/css/site.css" rel="stylesheet" />
+<div id="heroCarousel" class="carousel slide mb-5 shadow  overflow-hidden" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="3000">
+            <img src="https://png.pngtree.com/thumb_back/fw800/background/20251211/pngtree-vintage-suit-showcase-aesthetic-image_20804358.webp" class="d-block w-100 mt-5" style="height: 500px; object-fit: cover; filter: brightness(0.7);" alt="...">
+            <div class="carousel-caption d-none d-md-block text-start">
+                <h1 class="display-3 fw-bold">Bộ Sưu Tập Mùa Hè</h1>
+                <p class="fs-4">Giảm giá lên đến 50% cho các phụ kiện mới nhất.</p>
+                <a href="#products" class="btn btn-light btn-lg rounded-pill px-5 fw-bold text-dark">MUA NGAY</a>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop" class="d-block w-100 mt-5" style="height: 500px; object-fit: cover; filter: brightness(0.7);" alt="...">
+            <div class="carousel-caption d-none d-md-block text-start">
+                <h1 class="display-3 fw-bold">Phong Cách Thời Thượng</h1>
+                <p class="fs-4">Nâng tầm phong cách của bạn với phụ kiện cao cấp.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
 
-<div class="row row-cols-1 row-cols-md-4 g-4">
-    @foreach (var item in Model)
-    {
-        <div class="col">
-            <div class="card h-100 shadow-sm border-0">
-                <img src="@item.ImageUrl" class="card-img-top p-3" alt="@item.ProductName" style="height: 250px; object-fit: contain;">
-                <div class="card-body d-flex flex-column text-center">
-                    <h5 class="card-title text-truncate">@item.ProductName</h5>
-                    <p class="card-text text-danger fw-bold fs-5">@item.Price.ToString("N0") đ</p>
+<div class="container" id="products">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-uppercase">Sản Phẩm Nổi Bật</h2>
+        <div style="width: 60px; height: 4px; background-color: #e74c3c; margin: 10px auto;"></div>
+    </div>
 
-                    <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.ProductId" class="btn btn-dark mt-auto w-100">
-                        <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ
-                    </a>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card h-100 product-card shadow-sm">
+                    <div class="position-relative overflow-hidden">
+                        <a asp-action="Details" asp-route-id="@item.ProductId">
+                            <img src="@item.ImageUrl" class="card-img-top p-3" alt="@item.ProductName" style="height: 250px; object-fit: contain;">
+                        </a>
+                        <span class="position-absolute top-0 start-0 bg-danger text-white p-2 rounded small">New</span>
+                    </div>
+
+                    <div class="card-body d-flex flex-column text-center">
+                        <h5 class="card-title text-truncate">
+                            <a asp-action="Details" asp-route-id="@item.ProductId" class="text-decoration-none text-dark">@item.ProductName</a>
+                        </h5>
+                        <p class="text-muted small">@item.Category?.CategoryName</p>
+                        <p class="price-tag">@item.Price.ToString("N0") đ</p>
+
+                        <div class="mt-auto">
+                            <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.ProductId" class="btn btn-custom w-100 bg-dark text-white">
+                                <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<section class="services-section">
+    <div class="container">
+        <h2 class="services-title text-center mb-4 mt-5">Our Services & Offers</h2>
+        <div class="devider"></div>
+        <div class="row text-center g-5">
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card">
+                    <img src="~/image/12.png" alt="Bespoke Tailoring">
+                    <h5 class="service-title">BESPOKE<br>TAILORING</h5>
+                    <p class="service-text">
+                        By taking 30 measurements, multiple fitting sessions, and offering customizable details from pocket to lining,
+                        we provide suits tailored perfectly to your body and personality.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card">
+                    <img src="~/image/Untitled.png" alt="Alteration and Care">
+                    <h5 class="service-title">ALTERATION<br>AND CARE</h5>
+                    <p class="service-text">
+                        High-quality bespoke alterations with precision and care. Returning customers may also enjoy our premium
+                        dry-cleaning services at a preferred price.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card">
+                    <img src="~/image/12.png" alt="Hand-made Accessories">
+                    <h5 class="service-title">HAND-MADE<br>ACCESSORIES</h5>
+                    <p class="service-text">
+                        Handcrafted accessories from artisans worldwide including neckties, pocket squares, leather gloves and shoes,
+                        made with the finest materials.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="service-card">
+                    <img src="~/image/234.png" alt="Flexible Schedule">
+                    <h5 class="service-title">FLEXIBLE<br>SCHEDULE</h5>
+                    <p class="service-text">
+                        We adapt to your schedule with flexible timelines. Simply tell us your availability and we’ll arrange meetings
+                        accordingly for your convenience.
+                    </p>
                 </div>
             </div>
         </div>
-    }
-</div>
+    </div>
+</section>

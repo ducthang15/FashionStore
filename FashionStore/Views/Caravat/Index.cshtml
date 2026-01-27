@@ -1,0 +1,31 @@
+﻿@model IEnumerable<FashionStore.Repository.Models.Product>
+
+@{
+    ViewData["Title"] = "Thế Giới caravat";
+}
+
+<div class="alert alert-dark text-center text-white p-5 rounded-4 mb-4">
+    <h1 class="display-4 fw-bold">THẾ GIỚI ĐỒNG HỒ</h1>
+    <p>Sang trọng - Đẳng cấp - Thời thượng</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card h-100 product-card shadow-sm">
+                <a asp-controller="Home" asp-action="Details" asp-route-id="@item.ProductId">
+                    <img src="@item.ImageUrl" class="card-img-top p-3" style="height: 250px; object-fit: contain;">
+                </a>
+                <div class="card-body text-center">
+                    <h5 class="card-title">@item.ProductName</h5>
+                    <p class="text-danger fw-bold">@item.Price.ToString("N0") đ</p>
+
+                    <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.ProductId" class="btn btn-outline-dark w-100">
+                        Mua ngay
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

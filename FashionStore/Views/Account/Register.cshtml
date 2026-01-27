@@ -1,0 +1,44 @@
+﻿@model FashionStore.Repository.Models.User
+
+@{
+    ViewData["Title"] = "Đăng ký";
+}
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>ĐĂNG KÝ TÀI KHOẢN</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Register" method="post">
+                        <div class="mb-3">
+                            <label class="form-label">Họ và tên</label>
+                            <input asp-for="FullName" class="form-control" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input asp-for="Email" type="email" class="form-control" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tên đăng nhập</label>
+                            <input asp-for="Username" class="form-control" required />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mật khẩu</label>
+                            <input asp-for="PasswordHash" type="password" class="form-control" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nhập lại mật khẩu</label>
+                            <input name="ConfirmPassword" type="password" class="form-control" required />
+                            <span class="text-danger">@Html.ValidationMessage("ConfirmPassword")</span>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Đăng ký</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<FashionStore.Repository.Models.Product>
+
+@{
+    ViewData["Title"] = "Bộ Sưu Tập Mẫu Vải Danh Tiếng";
+}
+
+<div class="p-5 text-center bg-image rounded-4 mb-4 text-white"
+     style="background-image: url('https://vestonduynguyen.com/sites/default/files/styles/style_1452x250/public/51415786_23843203035760429_4752484722951585792_n.jpg?itok=h21-c-l1'); background-size: cover; background-position: center;">
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6); padding: 50px; border-radius: 15px;">
+        <h1 class="display-4 fw-bold">Mẫu Vải </h1>
+    </div>
+</div>
+
+<div class="container">
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info text-center">Hiện chưa có sản phẩm túi xách nào. Vui lòng quay lại sau!</div>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <div class="card h-100 product-card shadow-sm border-0">
+                        <a asp-controller="Home" asp-action="Details" asp-route-id="@item.ProductId">
+                            <img src="@item.ImageUrl" class="card-img-top p-3" style="height: 250px; object-fit: contain;">
+                        </a>
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-truncate">@item.ProductName</h5>
+                            <p class="text-danger fw-bold fs-5">@item.Price.ToString("N0") đ</p>
+
+                            <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.ProductId" class="btn btn-dark w-100 rounded-pill">
+                                <i class="fa-solid fa-bag-shopping"></i> Chọn mẫu
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

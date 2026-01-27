@@ -1,0 +1,55 @@
+﻿@model FashionStore.Repository.Models.Product
+
+@{
+    ViewData["Title"] = Model.ProductName;
+}
+
+<div class="container mt-5 mb-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" class="text-decoration-none text-dark">Trang chủ</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.ProductName</li>
+        </ol>
+    </nav>
+
+    <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
+        <div class="row g-0">
+            <div class="col-md-6 bg-white d-flex align-items-center justify-content-center p-5">
+                <img src="@Model.ImageUrl" class="img-fluid rounded" alt="@Model.ProductName" style="max-height: 500px; object-fit: contain;">
+            </div>
+
+            <div class="col-md-6 bg-light p-5">
+                <h4 class="text-muted text-uppercase small">@Model.Category?.CategoryName</h4>
+                <h1 class="fw-bold display-6 mb-3">@Model.ProductName</h1>
+
+                <div class="mb-4">
+                    <span class="display-5 text-danger fw-bold">@Model.Price.ToString("N0") đ</span>
+                    <span class="text-muted text-decoration-line-through ms-3 fs-5">@( (Model.Price * 1.2m).ToString("N0") ) đ</span>
+                </div>
+
+                <p class="lead text-secondary mb-4">
+                    @(string.IsNullOrEmpty(Model.Description) ? "Sản phẩm đang được cập nhật mô tả..." : Model.Description)
+                </p>
+
+                <div class="row mb-4 g-2">
+                    <div class="col-6"><i class="fa-solid fa-truck text-primary"></i> Free Ship toàn quốc</div>
+                    <div class="col-6"><i class="fa-solid fa-shield text-primary"></i> Bảo hành 12 tháng</div>
+                    <div class="col-6"><i class="fa-solid fa-rotate-left text-primary"></i> Đổi trả trong 7 ngày</div>
+                    <div class="col-6"><i class="fa-solid fa-check text-primary"></i> Hàng chính hãng 100%</div>
+                </div>
+
+                <hr class="my-4">
+
+                <div class="d-grid gap-2">
+                    <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" class="btn btn-dark btn-lg rounded-pill py-3">
+                        <i class="fa-solid fa-cart-shopping me-2"></i> THÊM VÀO GIỎ HÀNG
+                    </a>
+                </div>
+
+                <p class="text-center mt-3 text-muted small">
+                    Còn lại: <strong>@Model.StockQuantity</strong> sản phẩm trong kho
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

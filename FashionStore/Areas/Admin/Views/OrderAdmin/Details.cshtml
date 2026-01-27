@@ -1,0 +1,69 @@
+﻿@model FashionStore.Repository.Models.Order
+
+@{
+    ViewData["Title"] = "Chi tiết đơn hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4 mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Chi tiết đơn hàng #@Model.OrderId</h2>
+        <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    Thông tin người nhận
+                </div>
+                <div class="card-body">
+                    <p><strong>Họ tên:</strong> @Model.ReceiverName</p>
+                    <p><strong>SĐT:</strong> @Model.ReceiverPhone</p>
+                    <p><strong>Địa chỉ:</strong> @Model.ShippingAddress</p>
+                    <p><strong>Ngày đặt:</strong> @Model.OrderDate?.ToString("dd/MM/yyyy HH:mm")</p>
+                    <p><strong>Trạng thái:</strong> <span class="badge bg-warning text-dark">@Model.OrderStatus</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    Sản phẩm đã mua
+                </div>
+                <table class="table table-bordered mb-0">
+                    <thead>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Giá lúc mua</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var detail in Model.OrderDetails)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="fw-bold">@detail.Product?.ProductName</div>
+                                </td>
+                                <td>@detail.UnitPrice.ToString("N0") đ</td>
+                                <td class="text-center">@detail.Quantity</td>
+                                <td class="text-danger">
+                                    @((detail.Quantity * detail.UnitPrice).ToString("N0")) đ
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr class="bg-light">
+                            <td colspan="3" class="text-end fw-bold">TỔNG CỘNG:</td>
+                            <td class="text-danger fw-bold fs-5">@Model.TotalAmount.ToString("N0") đ</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

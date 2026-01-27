@@ -1,13 +1,14 @@
 ﻿using FashionStore.Repository;
 using FashionStore.Repository.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace FashionStore.Areas.Admin.Controllers
 {
-    // Đánh dấu Controller này thuộc khu vực Admin
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class ProductAdminController : Controller
     {
         private readonly fashionDbContext _context;
@@ -16,38 +17,36 @@ namespace FashionStore.Areas.Admin.Controllers
         {
             _context = context;
         }
-
-        // Trang hiển thị danh sách tất cả sản phẩm cho Admin xem
         public async Task<IActionResult> Index()
         {
             var products = await _context.Products.Include(p => p.Category).ToListAsync();
             return View(products);
         }
-        // 1. GET: Hiển thị Form Thêm mới
         public IActionResult Create()
         {
             // Lấy danh sách danh mục để đưa vào Dropdown List
             ViewBag.CategoryId = new SelectList(_context.Categories, "CategoryId", "CategoryName");
             return View();
         }
-
-        // 2. POST: Lưu sản phẩm mới vào Database
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Product product)
         {
+            // Bỏ qua kiểm tra 2 thằng này vì Form không gửi lên, chỉ gửi ID
+            ModelState.Remove("Category");
+            ModelState.Remove("OrderDetails"); // Cái này cũng cần bỏ qua
+
             if (ModelState.IsValid)
             {
                 _context.Add(product);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index)); // Xong thì quay về danh sách
+                return RedirectToAction(nameof(Index));
             }
+
+            // Nếu vẫn lỗi, hiển thị lại Dropdown
             ViewBag.CategoryId = new SelectList(_context.Categories, "CategoryId", "CategoryName", product.CategoryId);
             return View(product);
         }
 
-        // ================= SỬA SẢN PHẨM =================
-        // 3. GET: Hiển thị Form Sửa với dữ liệu cũ
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -58,26 +57,33 @@ namespace FashionStore.Areas.Admin.Controllers
             ViewBag.CategoryId = new SelectList(_context.Categories, "CategoryId", "CategoryName", product.CategoryId);
             return View(product);
         }
-
-        // 4. POST: Cập nhật vào Database
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Product product)
         {
             if (id != product.ProductId) return NotFound();
 
+            // Bỏ qua kiểm tra
+            ModelState.Remove("Category");
+            ModelState.Remove("OrderDetails");
+
             if (ModelState.IsValid)
             {
-                _context.Update(product);
-                await _context.SaveChangesAsync();
+                try
+                {
+                    _context.Update(product);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ProductExists(product.ProductId)) return NotFound();
+                    else throw;
+                }
                 return RedirectToAction(nameof(Index));
             }
+
             ViewBag.CategoryId = new SelectList(_context.Categories, "CategoryId", "CategoryName", product.CategoryId);
             return View(product);
         }
-
-        // ================= XÓA SẢN PHẨM =================
-        // 5. POST: Xóa thẳng khỏi Database
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
@@ -89,5 +95,10 @@ namespace FashionStore.Areas.Admin.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
+        private bool ProductExists(int id)
+        {
+            return _context.Products.Any(e => e.ProductId == id);
+        }
+
     }
 }

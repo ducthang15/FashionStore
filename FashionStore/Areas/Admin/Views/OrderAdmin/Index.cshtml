@@ -1,0 +1,55 @@
+﻿@model IEnumerable<FashionStore.Repository.Models.Order>
+
+@{
+    ViewData["Title"] = "Quản lý đơn hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Hoặc layout admin nếu bạn đã tách
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">📦 Quản Lý Đơn Hàng</h2>
+
+    <table class="table table-hover border">
+        <thead class="table-dark">
+            <tr>
+                <th>Mã ĐH</th>
+                <th>Người nhận</th>
+                <th>Ngày đặt</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>#@item.OrderId</td>
+                    <td>
+                        <div class="fw-bold">@item.ReceiverName</div>
+                        <small class="text-muted">@item.ReceiverPhone</small>
+                    </td>
+                    <td>@item.OrderDate?.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td class="text-danger fw-bold">@item.TotalAmount.ToString("N0") đ</td>
+                    <td>
+                        @if (item.OrderStatus == "Chờ xác nhận")
+                        {
+                            <span class="badge bg-warning text-dark">@item.OrderStatus</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-success">@item.OrderStatus</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.OrderId" class="btn btn-sm btn-info text-white">
+                            <i class="fa-solid fa-eye"></i> Xem
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.OrderId" class="btn btn-sm btn-danger" onclick="return confirm('Xóa đơn này?')">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
