@@ -5,7 +5,7 @@
 }
 
 <div class="container mt-4">
-    <h2 class="mb-4 text-primary"><i class="fa-solid fa-calendar-days"></i> Quản Lý Lịch Hẹn</h2>
+    <h2 class="mb-4">Lịch Hẹn </h2>
 
     <div class="table-responsive shadow-sm rounded">
         <table class="table table-hover align-middle mb-0 bg-white">
@@ -65,24 +65,30 @@
                         <td>
                             @if (item.Status == "Mới")
                             {
-                                <form asp-action="UpdateStatus" method="post" class="d-inline">
+                                <form asp-action="UpdateStatus" method="post" class="d-inline" id="confirm-form-@item.AppointmentId">
                                     <input type="hidden" name="id" value="@item.AppointmentId" />
                                     <input type="hidden" name="status" value="Đã xác nhận" />
-                                    <button class="btn btn-sm btn-outline-primary" title="Xác nhận lịch">
-                                        <i class="fa-solid fa-check"></i>
+
+                                    <button type="button" class="btn btn-sm btn-outline-primary"
+                                            onclick="checkPasswordAndSubmit('confirm-form-@item.AppointmentId')">
+                                        <i class="fa-solid fa-check"></i> Xác nhận
                                     </button>
                                 </form>
                             }
+
                             @if (item.Status == "Đã xác nhận")
                             {
-                                <form asp-action="UpdateStatus" method="post" class="d-inline">
+                                <form asp-action="UpdateStatus" method="post" class="d-inline" id="complete-form-@item.AppointmentId">
                                     <input type="hidden" name="id" value="@item.AppointmentId" />
                                     <input type="hidden" name="status" value="Hoàn thành" />
-                                    <button class="btn btn-sm btn-outline-success" title="Hoàn thành">
-                                        <i class="fa-solid fa-flag-checkered"></i>
+
+                                    <button type="button" class="btn btn-sm btn-outline-success"
+                                            onclick="checkPasswordAndSubmit('complete-form-@item.AppointmentId')">
+                                        <i class="fa-solid fa-flag-checkered"></i> Hoàn thành
                                     </button>
                                 </form>
                             }
+
                             <form asp-action="Delete" method="post" class="d-inline" onsubmit="return confirm('Xóa lịch hẹn này?');">
                                 <input type="hidden" name="id" value="@item.AppointmentId" />
                                 <button class="btn btn-sm btn-light text-danger" title="Xóa">
@@ -96,3 +102,6 @@
         </table>
     </div>
 </div>
+@section Scripts {
+    <script src="~/js/appointment.js"></script>
+}

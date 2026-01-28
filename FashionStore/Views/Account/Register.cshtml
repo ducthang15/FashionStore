@@ -2,43 +2,67 @@
 
 @{
     ViewData["Title"] = "Đăng ký";
+    Layout = "_AuthLayout";
 }
+<link href="~/css/site.css" rel="stylesheet" />
+<div class="auth-wrapper">
+    <div class="auth-box">
+        <div class="text-center mb-4">
+            <h3 class="logo">UNLIM</h3>
+            <p class="text-white">Create Account</p>
+        </div>
 
-<div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white text-center">
-                    <h4>ĐĂNG KÝ TÀI KHOẢN</h4>
-                </div>
-                <div class="card-body p-4">
-                    <form asp-action="Register" method="post">
-                        <div class="mb-3">
-                            <label class="form-label">Họ và tên</label>
-                            <input asp-for="FullName" class="form-control" required />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Email</label>
-                            <input asp-for="Email" type="email" class="form-control" required />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Tên đăng nhập</label>
-                            <input asp-for="Username" class="form-control" required />
-                            <span asp-validation-for="Username" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Mật khẩu</label>
-                            <input asp-for="PasswordHash" type="password" class="form-control" required />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Nhập lại mật khẩu</label>
-                            <input name="ConfirmPassword" type="password" class="form-control" required />
-                            <span class="text-danger">@Html.ValidationMessage("ConfirmPassword")</span>
-                        </div>
-                        <button type="submit" class="btn btn-success w-100">Đăng ký</button>
-                    </form>
-                </div>
+        <form asp-action="Register" method="post">
+
+            <div class="mb-3">
+                <input asp-for="FullName"
+                       class="form-control auth-input"
+                       placeholder="Full name"
+                       required />
             </div>
+
+            <div class="mb-3">
+                <input asp-for="Email"
+                       type="email"
+                       class="form-control auth-input"
+                       placeholder="Email"
+                       required />
+            </div>
+
+            <div class="mb-3">
+                <input asp-for="Username"
+                       class="form-control auth-input"
+                       placeholder="Username"
+                       required />
+                <span asp-validation-for="Username" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <input asp-for="PasswordHash"
+                       type="password"
+                       class="form-control auth-input"
+                       placeholder="Password"
+                       required />
+            </div>
+
+            <div class="mb-3">
+                <input name="ConfirmPassword"
+                       type="password"
+                       class="form-control auth-input"
+                       placeholder="Confirm password"
+                       required />
+                <span class="text-danger small">
+                    @Html.ValidationMessage("ConfirmPassword")
+                </span>
+            </div>
+
+            <button type="submit" class="btn btn-login w-100">
+                Register
+            </button>
+        </form>
+
+        <div class="auth-footer mt-4">
+            <a asp-action="Login">Already have an account?</a>
         </div>
     </div>
 </div>

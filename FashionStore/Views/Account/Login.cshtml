@@ -1,37 +1,41 @@
 ﻿@{
     ViewData["Title"] = "Đăng nhập";
+    Layout = "_AuthLayout";
 }
+<link href="~/css/site.css" rel="stylesheet" />
+<div class="auth-wrapper">
+    <div class="auth-box">
+        <div class="text-center mb-4">
+            <h3 class="logo">UNLIM</h3>
+            <p class="text-white">Sign In</p>
+        </div>
 
-<div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-        <div class="col-md-5">
-            <div class="card shadow">
-                <div class="card-header bg-dark text-white text-center">
-                    <h4>ĐĂNG NHẬP</h4>
-                </div>
-                <div class="card-body p-4">
-                    @if (ViewBag.Error != null)
-                    {
-                        <div class="alert alert-danger">@ViewBag.Error</div>
-                    }
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger text-center">
+                @ViewBag.Error
+            </div>
+        }
+        <form asp-action="Login" method="post">
+            <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
 
-                    <form asp-action="Login" method="post">
-                        <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
-                        <div class="mb-3">
-                            <label class="form-label">Tên đăng nhập</label>
-                            <input type="text" name="Username" class="form-control" required />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Mật khẩu</label>
-                            <input type="password" name="Password" class="form-control" required />
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
-                    </form>
-                </div>
-                <div class="card-footer text-center">
-                    Chưa có tài khoản? <a asp-action="Register">Đăng ký ngay</a>
+            <div class="mb-3">
+                <input type="text" name="Username" class="form-control auth-input" placeholder="Username" required /></div>
+            <div class="mb-3">
+                <input type="password" name="Password" class="form-control auth-input" placeholder="Password" required />
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3 text-light small">
+                <div>
+                    <input type="checkbox" checked /> Remember me
                 </div>
             </div>
+            <button type="submit" class="btn btn-login w-100 text-white">
+                Log In
+            </button>
+        </form>
+        <div class="auth-footer mt-4">
+            <a href="#">Forgot your password?</a>
+            <a asp-action="Register">Create an account</a>
         </div>
     </div>
 </div>

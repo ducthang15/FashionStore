@@ -105,3 +105,69 @@ body {
 .send-btn {
     background-color: #3a1d0f;
 }
+
+
+.auth-wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-box {
+    width: 380px;
+    background: #34404a;
+    padding: 35px;
+    border-radius: 8px;
+    box-shadow: 0 15px 40px rgba(0,0,0,.4);
+}
+
+.logo {
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.auth-input {
+    background: #2b3640;
+    border: 1px solid #3e4b56;
+    color: #fff;
+    height: 45px;
+}
+
+    .auth-input::placeholder {
+        color: #aab4be;
+    }
+
+    .auth-input:focus {
+        background: #2b3640;
+        color: #fff;
+        border-color: #00bcd4;
+        box-shadow: none;
+    }
+
+.btn-login {
+    background: #00bcd4;
+    border: none;
+    height: 45px;
+    font-weight: 500;
+}
+
+    .btn-login:hover {
+        background: #00a5bb;
+    }
+
+.auth-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+    .auth-footer a {
+        color: #bfc8d0;
+        text-decoration: none;
+    }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
