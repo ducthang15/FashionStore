@@ -6,8 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FashionStore.Repository.Models;
 
-[Index("Username", Name = "UQ__Users__536C85E4F61CF925", IsUnique = true)]
-[Index("Email", Name = "UQ__Users__A9D10534CAADE155", IsUnique = true)]
+[Index("Username", Name = "UQ__Users__536C85E4C8F1B865", IsUnique = true)]
+[Index("Email", Name = "UQ__Users__A9D10534A8612E28", IsUnique = true)]
 public partial class User
 {
     [Key]

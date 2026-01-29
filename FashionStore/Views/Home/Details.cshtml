@@ -6,57 +6,43 @@
 <div class="container-fluid product-dark py-5">
 
     <div class="container">
-
-        <!-- breadcrumb -->
         <nav class="mb-4 small">
             <a asp-action="Index" class="text-decoration-none text-light">Trang chủ</a>
             <span class="mx-2">/</span>
             <span class="text-secondary">@Model.ProductName</span>
         </nav>
-
         <div class="row g-4">
-
-            <!-- LEFT IMAGE -->
             <div class="col-lg-7 d-flex">
-
-                <!-- THUMB -->
-                <div class="thumb-vertical me-3">
+                <div class="thumb-vertical me-3 d-grid">
                     @foreach (var img in Model.ProductImages)
                     {
-                        <img src="@img.ImageUrl"
-                             onclick="changeMainImage(this)"
-                             class="thumb-item" />
+                        <img src="@img.ImageUrl" onclick="changeMainImage(this)" class="thumb-item" />
                     }
                 </div>
-
-                <!-- MAIN IMAGE -->
                 <div class="flex-grow-1 text-center">
-                    <img id="mainImage"
-                         src="@Model.ImageUrl"
-                         class="img-fluid"
-                         style="max-height: 700px; object-fit: contain;">
+                    <img id="mainImage" src="@Model.ImageUrl" class="img-fluid" style="max-height: 700px; object-fit: contain;">
                 </div>
             </div>
-
-            <!-- RIGHT INFO -->
             <div class="col-lg-5 product-info">
-
                 <h4 class="fw-bold mb-2">@Model.ProductName</h4>
-
                 <small>Thương hiệu: @Model.Category?.CategoryName</small><br />
                 <small>Mã SP: @Model.ProductId</small>
-
                 <div class="fs-3 fw-bold my-4">
                     @Model.Price.ToString("N0") đ
                 </div>
-
+                <p class="small text-secondary">
+                    @(string.IsNullOrEmpty(Model.Description)
+                                        ? "Sản phẩm đang được cập nhật mô tả chi tiết."
+                                        : Model.Description)
+                </p>
+                <p class="small text-secondary">
+                    Còn lại: <strong>@Model.StockQuantity</strong> sản phẩm
+                </p> 
                 <div class="mb-3">
                     <a href="#" class="text-info text-decoration-none">
                         Nhắn để được tư vấn và nhận ưu đãi
                     </a>
                 </div>
-
-                <!-- SIZE -->
                 <div class="mb-3">
                     <strong>Kích thước</strong>
                     <div class="size-box mt-2">
@@ -66,52 +52,25 @@
                         <span>Size XL</span>
                     </div>
                 </div>
-
-                <!-- COLOR -->
                 <div class="mb-4">
                     <strong>Màu sắc</strong><br />
-                    <span class="d-inline-block rounded-circle bg-dark border"
-                          style="width:22px;height:22px;"></span>
+                    <span class="d-inline-block rounded-circle bg-dark border" style="width:22px;height:22px;"></span>
                 </div>
-
-                <!-- BUTTON -->
                 <div class="d-grid gap-3 mb-4">
-                    <a asp-controller="Cart"
-                       asp-action="AddToCart"
-                       asp-route-id="@Model.ProductId"
-                       class="btn btn-light py-3 fw-bold">
+                    <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" class="btn btn-light py-3 fw-bold">
                         THÊM VÀO GIỎ
                     </a>
-
-                    <button class="btn btn-outline-light py-3 fw-bold">
-                        MUA NGAY
-                    </button>
                 </div>
-
                 <hr class="border-secondary">
-
-                <p class="small text-secondary">
-                    @(string.IsNullOrEmpty(Model.Description)
-                        ? "Sản phẩm đang được cập nhật mô tả chi tiết."
-                        : Model.Description)
-                </p>
-
-                <p class="small text-secondary">
-                    Còn lại: <strong>@Model.StockQuantity</strong> sản phẩm
-                </p>
-
             </div>
         </div>
     </div>
 </div>
-
 <script>
     function changeMainImage(el) {
         document.getElementById("mainImage").src = el.src;
-
         document.querySelectorAll(".thumb-item")
             .forEach(x => x.classList.remove("active"));
-
         el.classList.add("active");
     }
 </script>

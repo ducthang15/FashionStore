@@ -11,7 +11,7 @@
 body {
     font-family: 'Gill Sans Light', 'Segoe UI', Arial, sans-serif;
     font-weight: 300;
-    color: #333;
+    color: #fffbf7;
 }
 .navbar {
     background-color: #3A1D0F;
@@ -361,7 +361,7 @@ body {
 
 .thumb-vertical img {
     width: 100%;
-    height: 110px;
+    height: 160px;
     object-fit: cover;
     cursor: pointer;
     border-radius: 6px;

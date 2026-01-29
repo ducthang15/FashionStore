@@ -1,0 +1,29 @@
+﻿@model IEnumerable<FashionStore.Repository.Models.News>
+@{
+    ViewData["Title"] = "Tin Tức & Sự Kiện";
+}
+
+<div class="container mt-5 mb-5">
+    <h2 class="text-center fw-bold mb-5">TIN TỨC MỚI NHẤT</h2>
+
+    <div class="row g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <img src="@item.ImageUrl" class="card-img-top" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <small class="text-muted">@item.CreatedAt?.ToString("dd/MM/yyyy")</small>
+                        <h5 class="card-title mt-2">
+                            <a asp-action="Details" asp-route-id="@item.NewsId" class="text-decoration-none text-dark">
+                                @item.Title
+                            </a>
+                        </h5>
+                        <p class="card-text text-secondary small">@item.Summary</p>
+                        <a asp-action="Details" asp-route-id="@item.NewsId" class="btn btn-outline-primary btn-sm">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
