@@ -23,19 +23,14 @@ namespace FashionStore.Controllers
 
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var product = await _context.Products
-                .Include(p => p.Category) 
+                .Include(p => p.Category)
+                .Include(p => p.ProductImages) // <--- Lấy thêm bảng ProductImages
                 .FirstOrDefaultAsync(m => m.ProductId == id);
 
-            if (product == null)
-            {
-                return NotFound();
-            }
+            if (product == null) return NotFound();
 
             return View(product);
         }

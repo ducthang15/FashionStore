@@ -26,13 +26,15 @@ public partial class fashionDbContext : DbContext
 
     public virtual DbSet<Product> Products { get; set; }
 
+    public virtual DbSet<ProductImage> ProductImages { get; set; }
+
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Appointment>(entity =>
         {
-            entity.HasKey(e => e.AppointmentId).HasName("PK__Appointm__8ECDFCC29A5B18A8");
+            entity.HasKey(e => e.AppointmentId).HasName("PK__Appointm__8ECDFCC225D44873");
 
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.Status).HasDefaultValue("Mới");
@@ -40,45 +42,52 @@ public partial class fashionDbContext : DbContext
 
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.CategoryId).HasName("PK__Categori__19093A0B4EDDAC00");
+            entity.HasKey(e => e.CategoryId).HasName("PK__Categori__19093A0B51CD6A8A");
         });
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BCF11ADFDAA");
+            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BCFD46E7E9B");
 
             entity.Property(e => e.OrderDate).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.OrderStatus).HasDefaultValue("Chờ xác nhận");
             entity.Property(e => e.PaymentMethod).HasDefaultValue("COD");
 
-            entity.HasOne(d => d.User).WithMany(p => p.Orders).HasConstraintName("FK__Orders__UserId__44FF419A");
+            entity.HasOne(d => d.User).WithMany(p => p.Orders).HasConstraintName("FK__Orders__UserId__4BAC3F29");
         });
 
         modelBuilder.Entity<OrderDetail>(entity =>
         {
-            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D36C377427E6");
+            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D36CAC4EDB1C");
 
             entity.HasOne(d => d.Order).WithMany(p => p.OrderDetails)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__OrderDeta__Order__47DBAE45");
+                .HasConstraintName("FK__OrderDeta__Order__49C3F6B7");
 
             entity.HasOne(d => d.Product).WithMany(p => p.OrderDetails)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__OrderDeta__Produ__48CFD27E");
+                .HasConstraintName("FK__OrderDeta__Produ__4AB81AF0");
         });
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.ProductId).HasName("PK__Products__B40CC6CD47BC85FC");
+            entity.HasKey(e => e.ProductId).HasName("PK__Products__B40CC6CDE136592E");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Products)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Products__Catego__3A81B327");
+                .HasConstraintName("FK__Products__Catego__4CA06362");
+        });
+
+        modelBuilder.Entity<ProductImage>(entity =>
+        {
+            entity.HasKey(e => e.ImageId).HasName("PK__ProductI__7516F70CAE0FA287");
+
+            entity.HasOne(d => d.Product).WithMany(p => p.ProductImages).HasConstraintName("FK__ProductIm__Produ__5CD6CB2B");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CC4C15FF5F6B");
+            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CC4CED6992EA");
 
             entity.Property(e => e.Role).HasDefaultValue("Customer");
         });

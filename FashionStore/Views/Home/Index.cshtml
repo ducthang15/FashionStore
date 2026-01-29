@@ -4,25 +4,25 @@
     ViewData["Title"] = "Trang chủ";
 }
 <link href="/css/site.css" rel="stylesheet" />
-<div id="heroCarousel" class="carousel slide mb-5 shadow  overflow-hidden" data-bs-ride="carousel">
+<div id="heroCarousel" class="carousel slide shadow  overflow-hidden" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
         <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="3000">
-            <img src="https://png.pngtree.com/thumb_back/fw800/background/20251211/pngtree-vintage-suit-showcase-aesthetic-image_20804358.webp" class="d-block w-100 mt-5" style="height: 500px; object-fit: cover; filter: brightness(0.7);" alt="...">
+            <img src="~/image/banner-main.png" class="d-block w-100" style="height: 700px; object-fit: cover; filter: brightness(0.7);" alt="...">
             <div class="carousel-caption d-none d-md-block text-start">
-                <h1 class="display-3 fw-bold">Bộ Sưu Tập Mùa Hè</h1>
+@*                 <h1 class="display-3 fw-bold">Bộ Sưu Tập Mùa Hè</h1>
                 <p class="fs-4">Giảm giá lên đến 50% cho các phụ kiện mới nhất.</p>
-                <a href="#products" class="btn btn-light btn-lg rounded-pill px-5 fw-bold text-dark">MUA NGAY</a>
+                <a href="#products" class="btn btn-light btn-lg rounded-pill px-5 fw-bold text-dark">MUA NGAY</a> *@
             </div>
         </div>
         <div class="carousel-item" data-bs-interval="3000">
-            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop" class="d-block w-100 mt-5" style="height: 500px; object-fit: cover; filter: brightness(0.7);" alt="...">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop" class="d-block w-100" style="height: 700px; object-fit: cover; filter: brightness(0.7);" alt="...">
             <div class="carousel-caption d-none d-md-block text-start">
-                <h1 class="display-3 fw-bold">Phong Cách Thời Thượng</h1>
-                <p class="fs-4">Nâng tầm phong cách của bạn với phụ kiện cao cấp.</p>
+                @* <h1 class="display-3 fw-bold">Phong Cách Thời Thượng</h1>
+                <p class="fs-4">Nâng tầm phong cách của bạn với phụ kiện cao cấp.</p> *@
             </div>
         </div>
     </div>
@@ -32,6 +32,41 @@
     <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
         <span class="carousel-control-next-icon"></span>
     </button>
+</div>
+
+
+<div class="split-section">
+    <div class="split-item left">
+        <img src="/image/b1.png" alt="About Us">
+
+        <div class="content">
+            <h2>ABOUT US</h2>
+            <p>Who we are</p>
+            <span class="link">DISCOVER MORE</span>
+        </div>
+    </div>
+
+    <div class="split-item right">
+        <img src="/image/b2.png" alt="Bespoke">
+
+        <div class="content">
+            <h2>BESPOKE</h2>
+            <p>Our service</p>
+            <span class="link">DISCOVER MORE</span>
+        </div>
+    </div>
+</div>
+
+
+<div class="luxury-banner mb-5">
+    <img src="/image/b3.png" alt="">
+    <div class="banner-content">
+        <p class="quote">
+            We don’t wish to have too many customers,
+            but we try our best to have customers for life
+        </p>
+        <a href="#" class="btn-line">MAKE AN APPOINTMENT</a>
+    </div>
 </div>
 
 <div class="container" id="products">

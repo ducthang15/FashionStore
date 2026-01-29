@@ -1,55 +1,117 @@
 ﻿@model FashionStore.Repository.Models.Product
-
 @{
     ViewData["Title"] = Model.ProductName;
 }
 
-<div class="container mt-5 mb-5">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a asp-action="Index" class="text-decoration-none text-dark">Trang chủ</a></li>
-            <li class="breadcrumb-item active" aria-current="page">@Model.ProductName</li>
-        </ol>
-    </nav>
+<div class="container-fluid product-dark py-5">
 
-    <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
-        <div class="row g-0">
-            <div class="col-md-6 bg-white d-flex align-items-center justify-content-center p-5">
-                <img src="@Model.ImageUrl" class="img-fluid rounded" alt="@Model.ProductName" style="max-height: 500px; object-fit: contain;">
+    <div class="container">
+
+        <!-- breadcrumb -->
+        <nav class="mb-4 small">
+            <a asp-action="Index" class="text-decoration-none text-light">Trang chủ</a>
+            <span class="mx-2">/</span>
+            <span class="text-secondary">@Model.ProductName</span>
+        </nav>
+
+        <div class="row g-4">
+
+            <!-- LEFT IMAGE -->
+            <div class="col-lg-7 d-flex">
+
+                <!-- THUMB -->
+                <div class="thumb-vertical me-3">
+                    @foreach (var img in Model.ProductImages)
+                    {
+                        <img src="@img.ImageUrl"
+                             onclick="changeMainImage(this)"
+                             class="thumb-item" />
+                    }
+                </div>
+
+                <!-- MAIN IMAGE -->
+                <div class="flex-grow-1 text-center">
+                    <img id="mainImage"
+                         src="@Model.ImageUrl"
+                         class="img-fluid"
+                         style="max-height: 700px; object-fit: contain;">
+                </div>
             </div>
 
-            <div class="col-md-6 bg-light p-5">
-                <h4 class="text-muted text-uppercase small">@Model.Category?.CategoryName</h4>
-                <h1 class="fw-bold display-6 mb-3">@Model.ProductName</h1>
+            <!-- RIGHT INFO -->
+            <div class="col-lg-5 product-info">
 
-                <div class="mb-4">
-                    <span class="display-5 text-danger fw-bold">@Model.Price.ToString("N0") đ</span>
-                    <span class="text-muted text-decoration-line-through ms-3 fs-5">@( (Model.Price * 1.2m).ToString("N0") ) đ</span>
+                <h4 class="fw-bold mb-2">@Model.ProductName</h4>
+
+                <small>Thương hiệu: @Model.Category?.CategoryName</small><br />
+                <small>Mã SP: @Model.ProductId</small>
+
+                <div class="fs-3 fw-bold my-4">
+                    @Model.Price.ToString("N0") đ
                 </div>
 
-                <p class="lead text-secondary mb-4">
-                    @(string.IsNullOrEmpty(Model.Description) ? "Sản phẩm đang được cập nhật mô tả..." : Model.Description)
-                </p>
-
-                <div class="row mb-4 g-2">
-                    <div class="col-6"><i class="fa-solid fa-truck text-primary"></i> Free Ship toàn quốc</div>
-                    <div class="col-6"><i class="fa-solid fa-shield text-primary"></i> Bảo hành 12 tháng</div>
-                    <div class="col-6"><i class="fa-solid fa-rotate-left text-primary"></i> Đổi trả trong 7 ngày</div>
-                    <div class="col-6"><i class="fa-solid fa-check text-primary"></i> Hàng chính hãng 100%</div>
-                </div>
-
-                <hr class="my-4">
-
-                <div class="d-grid gap-2">
-                    <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" class="btn btn-dark btn-lg rounded-pill py-3">
-                        <i class="fa-solid fa-cart-shopping me-2"></i> THÊM VÀO GIỎ HÀNG
+                <div class="mb-3">
+                    <a href="#" class="text-info text-decoration-none">
+                        Nhắn để được tư vấn và nhận ưu đãi
                     </a>
                 </div>
 
-                <p class="text-center mt-3 text-muted small">
-                    Còn lại: <strong>@Model.StockQuantity</strong> sản phẩm trong kho
+                <!-- SIZE -->
+                <div class="mb-3">
+                    <strong>Kích thước</strong>
+                    <div class="size-box mt-2">
+                        <span>Size S</span>
+                        <span>Size M</span>
+                        <span>Size L</span>
+                        <span>Size XL</span>
+                    </div>
+                </div>
+
+                <!-- COLOR -->
+                <div class="mb-4">
+                    <strong>Màu sắc</strong><br />
+                    <span class="d-inline-block rounded-circle bg-dark border"
+                          style="width:22px;height:22px;"></span>
+                </div>
+
+                <!-- BUTTON -->
+                <div class="d-grid gap-3 mb-4">
+                    <a asp-controller="Cart"
+                       asp-action="AddToCart"
+                       asp-route-id="@Model.ProductId"
+                       class="btn btn-light py-3 fw-bold">
+                        THÊM VÀO GIỎ
+                    </a>
+
+                    <button class="btn btn-outline-light py-3 fw-bold">
+                        MUA NGAY
+                    </button>
+                </div>
+
+                <hr class="border-secondary">
+
+                <p class="small text-secondary">
+                    @(string.IsNullOrEmpty(Model.Description)
+                        ? "Sản phẩm đang được cập nhật mô tả chi tiết."
+                        : Model.Description)
                 </p>
+
+                <p class="small text-secondary">
+                    Còn lại: <strong>@Model.StockQuantity</strong> sản phẩm
+                </p>
+
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function changeMainImage(el) {
+        document.getElementById("mainImage").src = el.src;
+
+        document.querySelectorAll(".thumb-item")
+            .forEach(x => x.classList.remove("active"));
+
+        el.classList.add("active");
+    }
+</script>

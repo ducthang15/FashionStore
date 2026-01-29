@@ -12,11 +12,16 @@ namespace FashionStore.Areas.Admin.Controllers
     public class ProductAdminController : Controller
     {
         private readonly fashionDbContext _context;
+        // 1. Khai báo biến môi trường
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProductAdminController(fashionDbContext context)
+        // 2. QUAN TRỌNG: Phải thêm tham số vào Constructor và gán giá trị
+        public ProductAdminController(fashionDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment; // <--- THIẾU DÒNG NÀY LÀ BỊ LỖI NULL NGAY
         }
+
         public async Task<IActionResult> Index()
         {
             var products = await _context.Products.Include(p => p.Category).ToListAsync();
@@ -24,27 +29,85 @@ namespace FashionStore.Areas.Admin.Controllers
         }
         public IActionResult Create()
         {
-            // Lấy danh sách danh mục để đưa vào Dropdown List
             ViewBag.CategoryId = new SelectList(_context.Categories, "CategoryId", "CategoryName");
             return View();
         }
-        [HttpPost]
-        public async Task<IActionResult> Create(Product product)
-        {
-            // Bỏ qua kiểm tra 2 thằng này vì Form không gửi lên, chỉ gửi ID
-            ModelState.Remove("Category");
-            ModelState.Remove("OrderDetails"); // Cái này cũng cần bỏ qua
 
-            if (ModelState.IsValid)
+        [HttpPost]
+        public async Task<IActionResult> Create(Product product, List<IFormFile> files)
+        {
+            ModelState.Remove("Category");
+            ModelState.Remove("OrderDetails");
+            ModelState.Remove("ProductImages");
+            ModelState.Remove("ImageUrl");
+
+            if (!ModelState.IsValid)
             {
-                _context.Add(product);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ViewBag.CategoryId = new SelectList(
+                    _context.Categories,
+                    "CategoryId",
+                    "CategoryName"
+                );
+
+                return View(product ?? new Product());
             }
 
-            // Nếu vẫn lỗi, hiển thị lại Dropdown
-            ViewBag.CategoryId = new SelectList(_context.Categories, "CategoryId", "CategoryName", product.CategoryId);
-            return View(product);
+
+            // 1️⃣ Ảnh đại diện
+            if (files != null && files.Count > 0)
+            {
+                product.ImageUrl = await UploadFile(files[0]);
+            }
+            else
+            {
+                product.ImageUrl = "/images/no-image.png";
+            }
+
+            // 2️⃣ LƯU PRODUCT TRƯỚC
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync(); // 🔥 BẮT BUỘC
+
+            // 3️⃣ LƯU NHIỀU ẢNH
+            if (files != null && files.Count > 0)
+            {
+                foreach (var file in files)
+                {
+                    var fileName = await UploadFile(file);
+
+                    var productImage = new ProductImage
+                    {
+                        ImageUrl = fileName,
+                        ProductId = product.ProductId
+                    };
+
+                    _context.ProductImages.Add(productImage);
+                }
+
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        private async Task<string?> UploadFile(IFormFile file)
+        {
+            string fileName = null;
+            if (file != null)
+            {
+                // Tạo tên file ngẫu nhiên để không trùng (VD: kjh123-anh.jpg)
+                string uploadDir = Path.Combine(_webHostEnvironment.WebRootPath, "images", "products");
+                fileName = Guid.NewGuid().ToString() + "-" + file.FileName;
+                string filePath = Path.Combine(uploadDir, fileName);
+
+                if (!Directory.Exists(uploadDir)) Directory.CreateDirectory(uploadDir);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(fileStream);
+                }
+                return "/images/products/" + fileName;
+            }
+            return null;
         }
 
         public async Task<IActionResult> Edit(int? id)
