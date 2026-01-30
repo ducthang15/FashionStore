@@ -1,0 +1,112 @@
+﻿@model FashionStore.Repository.Models.Contact
+@{
+	ViewData["Title"] = "Liên Hệ - Fashion Store";
+	ViewData["MetaDescription"] = "Liên hệ với Fashion Store để được tư vấn thời trang, hỗ trợ đổi trả và khiếu nại";
+	ViewData["MetaKeywords"] = "liên hệ fashion store, shop thời trang hà nội, địa chỉ shop quần áo";
+}
+
+<script type="application/ld+json">
+	{
+	  "@@context": "https://schema.org",
+	  "@@type": "ClothingStore",
+	  "name": "Fashion Store",
+	  "image": "https://yourwebsite.com/images/logo.png",
+	  "telephone": "0987654321",
+	  "email": "hotro@fashionstore.com",
+	  "address": {
+		"@@type": "PostalAddress",
+		"streetAddress": "123 Đường Cầu Giấy",
+		"addressLocality": "Hà Nội",
+		"addressCountry": "VN"
+	  },
+	  "geo": {
+		"@@type": "GeoCoordinates",
+		"latitude": 21.033,
+		"longitude": 105.85
+	  },
+	  "openingHoursSpecification": {
+		"@@type": "OpeningHoursSpecification",
+		"dayOfWeek": [
+		  "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+		],
+		"opens": "08:00",
+		"closes": "22:00"
+	  }
+	}
+</script>
+<picture>
+	<source media="(min-width: 992px)"
+			srcset="/image/b8.png">
+	<source media="(min-width: 576px)"
+			srcset="/image/b8.png">
+	<img src="/image/b8.png"
+		 class="img-fluid w-100"
+		 alt="Bespoke Tailoring">
+</picture>
+
+<div class="container mb-5">
+	@if (TempData["SuccessMessage"] != null)
+	{
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
+			<i class="fa-solid fa-check-circle me-2"></i> @TempData["SuccessMessage"]
+			<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+		</div>
+	}
+	<div class="row g-5 mt-3">
+		<div class="col-lg-6">
+			<h3 class="fw-bold mb-3 text-dark">Thông tin cửa hàng</h3>
+			<ul class="list-unstyled mb-4 fs-5">
+				<li class="mb-3 text-dark"><i class="fa-solid fa-location-dot text-danger me-3"></i> <strong>Địa chỉ:</strong> 107 Phố Kim Mã,Ba Đình, Hà Nội</li>
+				<li class="mb-3 text-dark"><i class="fa-solid fa-phone text-success me-3"></i> <strong>Hotline:</strong> <a href="tel:0987654321" class="text-decoration-none text-dark">0987.654.321</a></li>
+				<li class="mb-3 text-dark"><i class="fa-solid fa-envelope text-warning me-3"></i> <strong>Email:</strong> hotro@fashionstore.com</li>
+			</ul>
+			<div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.0257817183474!2d105.82275571146384!3d21.031654387597015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab74dd21e98f%3A0x42d82f8cb7451bb6!2zMTA3IFAuIEtpbSBNw6MsIEtpbSBNw6MsIEJhIMSQw6xuaCwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1769751420963!5m2!1svi!2s"
+						style="border:0;"
+						allowfullscreen
+						loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade">
+				</iframe>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="card shadow-lg border-0 rounded-4 p-4">
+				<h3 class="fw-bold mb-4 text-center">Gửi tin nhắn</h3>
+				<form asp-action="Send" method="post">
+					<div class="form-floating mb-3">
+						<input asp-for="FullName" class="form-control rounded-pill" placeholder="Tên" />
+						<label asp-for="FullName">Họ và tên của bạn</label>
+						<span asp-validation-for="FullName" class="text-danger small ms-2"></span>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<div class="form-floating">
+								<input asp-for="Email" class="form-control rounded-pill" placeholder="Email" />
+								<label asp-for="Email">Email</label>
+								<span asp-validation-for="Email" class="text-danger small ms-2"></span>
+							</div>
+						</div>
+						<div class="col-md-6 mb-3">
+							<div class="form-floating">
+								<input asp-for="Phone" class="form-control rounded-pill" placeholder="SĐT" />
+								<label asp-for="Phone">Số điện thoại</label>
+								<span asp-validation-for="Phone" class="text-danger small ms-2"></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-floating mb-4">
+						<textarea asp-for="Message" class="form-control" placeholder="Nội dung" style="height: 150px; border-radius: 20px;"></textarea>
+						<label asp-for="Message">Nội dung cần tư vấn</label>
+						<span asp-validation-for="Message" class="text-danger small ms-2"></span>
+					</div>
+
+					<button type="submit" class="btn btn-dark w-100 py-3 rounded-pill fw-bold">
+						<i class="fa-solid fa-paper-plane me-2"></i> GỬI LIÊN HỆ
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

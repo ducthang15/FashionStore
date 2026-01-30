@@ -20,6 +20,8 @@ public partial class fashionDbContext : DbContext
 
     public virtual DbSet<Category> Categories { get; set; }
 
+    public virtual DbSet<Contact> Contacts { get; set; }
+
     public virtual DbSet<News> News { get; set; }
 
     public virtual DbSet<Order> Orders { get; set; }
@@ -36,7 +38,7 @@ public partial class fashionDbContext : DbContext
     {
         modelBuilder.Entity<Appointment>(entity =>
         {
-            entity.HasKey(e => e.AppointmentId).HasName("PK__Appointm__8ECDFCC2F981B090");
+            entity.HasKey(e => e.AppointmentId).HasName("PK__Appointm__8ECDFCC258481823");
 
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.Status).HasDefaultValue("Mới");
@@ -44,7 +46,14 @@ public partial class fashionDbContext : DbContext
 
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.CategoryId).HasName("PK__Categori__19093A0B5CAFC3A8");
+            entity.HasKey(e => e.CategoryId).HasName("PK__Categori__19093A0B833EB1C1");
+        });
+
+        modelBuilder.Entity<Contact>(entity =>
+        {
+            entity.HasKey(e => e.ContactId).HasName("PK__Contacts__5C66259BE980E722");
+
+            entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
         });
 
         modelBuilder.Entity<News>(entity =>
@@ -57,47 +66,47 @@ public partial class fashionDbContext : DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BCFB4EA4C59");
+            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BCFEA8660C4");
 
             entity.Property(e => e.OrderDate).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.OrderStatus).HasDefaultValue("Chờ xác nhận");
             entity.Property(e => e.PaymentMethod).HasDefaultValue("COD");
 
-            entity.HasOne(d => d.User).WithMany(p => p.Orders).HasConstraintName("FK__Orders__UserId__5FB337D6");
+            entity.HasOne(d => d.User).WithMany(p => p.Orders).HasConstraintName("FK__Orders__UserId__5165187F");
         });
 
         modelBuilder.Entity<OrderDetail>(entity =>
         {
-            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D36C1AFED96F");
+            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D36CD1E0FCF0");
 
             entity.HasOne(d => d.Order).WithMany(p => p.OrderDetails)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__OrderDeta__Order__5DCAEF64");
+                .HasConstraintName("FK__OrderDeta__Order__4F7CD00D");
 
             entity.HasOne(d => d.Product).WithMany(p => p.OrderDetails)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__OrderDeta__Produ__5EBF139D");
+                .HasConstraintName("FK__OrderDeta__Produ__5070F446");
         });
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.ProductId).HasName("PK__Products__B40CC6CD0D165548");
+            entity.HasKey(e => e.ProductId).HasName("PK__Products__B40CC6CDA9A2FCC0");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Products)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Products__Catego__619B8048");
+                .HasConstraintName("FK__Products__Catego__534D60F1");
         });
 
         modelBuilder.Entity<ProductImage>(entity =>
         {
-            entity.HasKey(e => e.ImageId).HasName("PK__ProductI__7516F70C67DC8D82");
+            entity.HasKey(e => e.ImageId).HasName("PK__ProductI__7516F70CAFC8CB41");
 
-            entity.HasOne(d => d.Product).WithMany(p => p.ProductImages).HasConstraintName("FK__ProductIm__Produ__60A75C0F");
+            entity.HasOne(d => d.Product).WithMany(p => p.ProductImages).HasConstraintName("FK__ProductIm__Produ__52593CB8");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CC4C46740026");
+            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CC4C2F0D6867");
 
             entity.Property(e => e.Role).HasDefaultValue("Customer");
         });
