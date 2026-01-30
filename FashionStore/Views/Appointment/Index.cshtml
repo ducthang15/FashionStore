@@ -3,11 +3,17 @@
 @{
     ViewData["Title"] = "Đặt Lịch Hẹn";
 }
-<!-- Flatpickr CSS -->
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<!-- Flatpickr JS -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <link href="~/css/site.css" rel="stylesheet" />
+<picture>
+    <source media="(min-width: 992px)"
+            srcset="/image/b7.jpg">
+    <source media="(min-width: 576px)"
+            srcset="/image/b7.jpg">
+    <img src="/image/b7.jpg" class="img-fluid w-100" alt="Bespoke Tailoring">
+</picture>
 <div class="container mt-5 mb-5">
     <div class="row justify-content-center">
         <div class="col-md-8 mt-5">
@@ -22,41 +28,32 @@
                         </h4>
                         <form asp-action="Book" method="post" class="container">
                             <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
-                            <!-- Họ tên -->
                             <div class="mb-4">
                                 <label class="form-label">Họ và tên của bạn</label>
                                 <input asp-for="FullName" class="form-control rounded-0" />
                                 <span asp-validation-for="FullName" class="text-danger small"></span>
                             </div>
-                            <!-- SĐT -->
                             <div class="mb-4">
                                 <label class="form-label">Số điện thoại</label>
                                 <input asp-for="PhoneNumber" class="form-control rounded-0" />
                                 <span asp-validation-for="PhoneNumber" class="text-danger small"></span>
                             </div>
-                            <!-- Địa chỉ -->
                             <div class="mb-4">
                                 <label class="form-label">Địa chỉ (Tùy chọn)</label>
                                 <input asp-for="Address" class="form-control rounded-0" />
                             </div>
-
                             <div class="mb-4">
                                 <label class="form-label">Ngày giờ hẹn</label>
                                 <input asp-for="AppointmentDate" id="appointmentDate" type="text" class="form-control rounded-0" placeholder="Ngày giờ"/>
                                 <span asp-validation-for="AppointmentDate" class="text-danger small"></span>
                             </div>
-
-                            <!-- Nội dung -->
                             <div class="mb-5">
                                 <label class="form-label">Nội dung cần hỗ trợ</label>
                                 <textarea asp-for="Content" class="form-control rounded-0" style="height:100px" placeholder="Vui lòng nêu rõ chi tiết (kiểu dáng, chất liệu, dịp sử dụng,v.v...)"></textarea>
                             </div>
-
-                            <!-- Button -->
-                            <button type="submit" class="send-btn text-white px-5 border py-2 ">
-                                GỬI YÊU CẦU
+                            <button type="submit" class="send-btn text-white px-5 border py-2 mb-3 ">
+                                Submit
                             </button>
-
                         </form>
                     </div>
                 </div>

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace FashionStore.Repository.Models;
 
@@ -25,5 +22,5 @@ public partial class News
     [Column(TypeName = "datetime")]
     public DateTime? CreatedAt { get; set; }
 
-    public bool? IsPublished { get; set; }
+    public bool IsPublished { get; set; }
 }

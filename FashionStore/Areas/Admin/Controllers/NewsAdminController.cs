@@ -73,5 +73,30 @@ namespace FashionStore.Areas.Admin.Controllers
             }
             return "/images/news/" + fileName;
         }
+        [HttpPost]
+        public async Task<IActionResult> UploadImage(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return Json(new { error = "No file uploaded" });
+
+            var uploads = Path.Combine(_webHostEnvironment.WebRootPath, "images", "news");
+
+            if (!Directory.Exists(uploads))
+                Directory.CreateDirectory(uploads);
+
+            var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+            var filePath = Path.Combine(uploads, fileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            return Json(new
+            {
+                location = "/images/news/" + fileName
+            });
+        }
+
     }
 }

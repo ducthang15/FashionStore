@@ -1,11 +1,48 @@
 ﻿@model IEnumerable<FashionStore.Repository.Models.News>
 @{
-    ViewData["Title"] = "Tin Tức & Sự Kiện";
+    ViewData["Title"] = "Blog";
 }
+<picture>
+    <source media="(min-width: 992px)"
+            srcset="/image/whss1checimg.png">
+    <source media="(min-width: 576px)"
+            srcset="/image/whss1checimg.png">
+    <img src="/image/whss1checimg.png"
+         class="img-fluid w-100"
+         alt="Bespoke Tailoring">
+</picture>
 
-<div class="container mt-5 mb-5">
-    <h2 class="text-center fw-bold mb-5">TIN TỨC MỚI NHẤT</h2>
-
+<div class="position-relative text-white">
+    <img src="/image/b5.png" class="w-100 vh-100 object-fit-cover">
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
+    <div class="position-absolute top-50 start-50 translate-middle text-center px-4">
+        <h1 class="display-5 fw-semibold mb-3">
+            A Craftsmanship Story
+        </h1>
+        <p class="text-uppercase small mb-4">
+            The Art of Bespoke Tailoring
+        </p>
+        <p class="mx-auto mb-4" style="max-width: 850px;">
+            Bespoke tailoring is our most premium offering, allowing you to create your own unique custom pieces —
+            from precise measurements to cloth choice to styling features.
+            <br><br>
+            The creation of bespoke tailored garments speaks volumes about our commitment to luxurious craftsmanship.
+            With a combination of the world’s finest fabrics, leading technology, and premium customer service,
+            we bring you the highest quality garments at exceptional value.
+        </p>
+        <h5 class="mt-4 mb-2">
+            How a Garment is Born
+        </h5>
+        <p class="fst-italic">
+            Time, skill, and creativity: these are the essential elements that transform fabric into a finished garment.
+        </p>
+    </div>
+</div>
+<div class="devide">
+    <div class="border border-2 border-danger"></div>
+</div>
+<div class="container mt-3 mb-5">
+    <h2 class="text-center fw-bold mb-5 text-dark">Blog unlim</h2>
     <div class="row g-4">
         @foreach (var item in Model)
         {
