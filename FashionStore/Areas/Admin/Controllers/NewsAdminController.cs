@@ -1,8 +1,9 @@
 ﻿using FashionStore.Repository;
-using FashionStore.Repository.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using FashionStore.Repository.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FashionStore.Areas.Admin.Controllers
 {
@@ -24,15 +25,17 @@ namespace FashionStore.Areas.Admin.Controllers
         }
         public IActionResult Create()
         {
+            ViewBag.NewsCategoryId = new SelectList(_context.NewsCategories, "NewsCategoryId", "CategoryName");
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(News news, IFormFile? file)
         {
+            ModelState.Remove("NewsCategory");
+
             if (ModelState.IsValid)
             {
-                // Upload ảnh bìa
                 if (file != null)
                 {
                     news.ImageUrl = await UploadFile(file);
@@ -43,10 +46,11 @@ namespace FashionStore.Areas.Admin.Controllers
                 }
 
                 news.CreatedAt = DateTime.Now;
-                _context.Add(news);
+                _context.Add(news); // Tự động nhận NewsCategoryId từ form
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.NewsCategoryId = new SelectList(_context.NewsCategories, "NewsCategoryId", "CategoryName", news.NewsCategoryId);
             return View(news);
         }
         public async Task<IActionResult> Delete(int id)

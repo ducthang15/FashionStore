@@ -11,7 +11,10 @@
             <label class="fw-bold">Tiêu đề bài viết</label>
             <input asp-for="Title" class="form-control" placeholder="Nhập tiêu đề..." required />
         </div>
-
+        <div class="mb-3">
+            <label class="fw-bold">Chọn Danh Mục</label>
+            <select asp-for="NewsCategoryId" class="form-select" asp-items="ViewBag.NewsCategoryId"></select>
+        </div>
         <div class="mb-3">
             <label class="fw-bold">Hình đại diện</label>
             <input type="file" name="file" class="form-control" accept="image/*" />

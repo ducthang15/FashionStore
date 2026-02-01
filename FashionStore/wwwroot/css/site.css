@@ -9,6 +9,7 @@
 }
 
 body {
+    background-color: #C7B8A0;
     font-family: 'Gill Sans Light', 'Segoe UI', Arial, sans-serif;
     font-weight: 300;
     color: #fffbf7;
@@ -28,6 +29,10 @@ body {
     .navbar.scrolled {
         background: rgba(0, 0, 0, 0.85);
         backdrop-filter: blur(6px);
+    }
+    .navbar .dropdown:hover .dropdown-menu {
+        display: block;
+        margin-top: 0;
     }
 
 .luxury-nav {
@@ -389,6 +394,49 @@ body {
     .size-box span:hover {
         border-color: #fff;
     }
+
+.process-title {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.process-text {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #222;
+}
+
+    .process-text p {
+        margin-bottom: 20px;
+    }
+
+.process-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.video-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+    .video-bg video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* lớp phủ để chữ dễ đọc */
+    .video-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+    }
+
 
 @media (max-width: 991px) {
     .thumb-vertical {

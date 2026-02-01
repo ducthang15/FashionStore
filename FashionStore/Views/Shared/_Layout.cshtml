@@ -16,39 +16,94 @@
 			<!-- MENU TRÁI -->
 			<ul class="navbar-nav d-none d-lg-flex gap-4">
 				<li class="nav-item">
-					<a class="nav-link text-white" asp-controller="Home" asp-action="Index">Trang chủ</a>
+					<a class="nav-link text-white" asp-controller="AboutUs" asp-action="Index">About us</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link text-white" asp-controller="Caravat" asp-action="Index">Caravat</a>
+				<li>
+					<a class="nav-link text-white" asp-controller="Blog" asp-action="Index">Blog</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link text-white" asp-controller="Cufflink" asp-action="Index">Cufflinks</a>
-				</li>
-				<li><a class="nav-link text-white" asp-controller="Blog" asp-action="Index">Blog</a></li>
 				<li class="nav-item">
 					<a class="nav-link text-white" asp-controller="Contact" asp-action="Index">Contact</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white" asp-controller="Customer" asp-action="Index">Customer</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle text-white" href="#" id="accessoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Our Process
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="dropdown-item" asp-controller="Blog" asp-action="TailoringProcess">
+								Tailoring process
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" asp-controller="Blog" asp-action="TailoringAtHome">
+								Tailoring at home
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" asp-controller="Blog" asp-action="OnlineTailoring">
+								Online tailoring
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" asp-controller="Blog" asp-action="TailoringUniforms">
+								Tailoring uniforms
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" asp-controller="Blog" asp-action="ShuttleService">
+								Shuttle service
+							</a>
+						</li>
+					</ul>
+				</li>
 			</ul>
-
-			<!-- LOGO GIỮA -->
 			<a class="navbar-brand position-absolute top-50 start-50 translate-middle fw-bold fs-3"
 			   asp-controller="Home" asp-action="Index">
 				TAILORING
 			</a>
-
-			<!-- MENU PHẢI -->
 			<ul class="navbar-nav d-none d-lg-flex gap-4 ms-auto align-items-center">
-				<li class="nav-item">
-					<a class="nav-link text-white" asp-controller="Shoe" asp-action="Index">Shoe</a>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle text-white" href="#" id="accessoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Accessories
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="dropdown-item" asp-controller="Caravat" asp-action="Index">
+								Caravat
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" asp-controller="Cufflink" asp-action="Index">
+								Cufflinks
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" asp-controller="Shoe" asp-action="Index">
+								Shoe
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle text-white" href="#" id="accessoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Product
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="dropdown-item" asp-controller="Suit" asp-action="Index">Suit</a>
+						</li>
+						<li>
+							<a class="dropdown-item" asp-controller="Fabric" asp-action="Index">
+								Fabric
+							</a>
+						</li>
+					</ul>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link text-white" asp-controller="Fabric" asp-action="Index">Fabric</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link text-white" asp-controller="Suit" asp-action="Index">Product</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link text-white" asp-controller="Appointment" asp-action="Index">Booking</a>
+					<a class="nav-link text-white" asp-controller="Appointment" asp-action="Index">Make an appointment</a>
 				</li>
 				<!-- USER -->
 				<li class="nav-item dropdown">

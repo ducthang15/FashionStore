@@ -24,6 +24,8 @@ public partial class fashionDbContext : DbContext
 
     public virtual DbSet<News> News { get; set; }
 
+    public virtual DbSet<NewsCategory> NewsCategories { get; set; }
+
     public virtual DbSet<Order> Orders { get; set; }
 
     public virtual DbSet<OrderDetail> OrderDetails { get; set; }
@@ -62,6 +64,14 @@ public partial class fashionDbContext : DbContext
 
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.IsPublished).HasDefaultValue(true);
+            entity.Property(e => e.NewsCategoryId).HasDefaultValue(1);
+
+            entity.HasOne(d => d.NewsCategory).WithMany(p => p.News).HasConstraintName("FK_News_NewsCategory");
+        });
+
+        modelBuilder.Entity<NewsCategory>(entity =>
+        {
+            entity.HasKey(e => e.NewsCategoryId).HasName("PK__NewsCate__9885BDE7E9E35B42");
         });
 
         modelBuilder.Entity<Order>(entity =>

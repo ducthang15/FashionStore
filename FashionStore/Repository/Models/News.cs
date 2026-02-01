@@ -26,4 +26,10 @@ public partial class News
     public DateTime? CreatedAt { get; set; }
 
     public bool IsPublished { get; set; }
+
+    public int? NewsCategoryId { get; set; }
+
+    [ForeignKey("NewsCategoryId")]
+    [InverseProperty("News")]
+    public virtual NewsCategory? NewsCategory { get; set; }
 }
