@@ -22,6 +22,10 @@ public partial class fashionDbContext : DbContext
 
     public virtual DbSet<Contact> Contacts { get; set; }
 
+    public virtual DbSet<CustomerFeedback> CustomerFeedbacks { get; set; }
+
+    public virtual DbSet<FeedbackImage> FeedbackImages { get; set; }
+
     public virtual DbSet<News> News { get; set; }
 
     public virtual DbSet<NewsCategory> NewsCategories { get; set; }
@@ -56,6 +60,21 @@ public partial class fashionDbContext : DbContext
             entity.HasKey(e => e.ContactId).HasName("PK__Contacts__5C66259BE980E722");
 
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
+        });
+
+        modelBuilder.Entity<CustomerFeedback>(entity =>
+        {
+            entity.HasKey(e => e.FeedbackId).HasName("PK__Customer__6A4BEDD6F06DFDB4");
+
+            entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
+            entity.Property(e => e.IsPublished).HasDefaultValue(true);
+        });
+
+        modelBuilder.Entity<FeedbackImage>(entity =>
+        {
+            entity.HasKey(e => e.ImageId).HasName("PK__Feedback__7516F70CFBDBF370");
+
+            entity.HasOne(d => d.Feedback).WithMany(p => p.FeedbackImages).HasConstraintName("FK_FeedbackImages_CustomerFeedbacks");
         });
 
         modelBuilder.Entity<News>(entity =>

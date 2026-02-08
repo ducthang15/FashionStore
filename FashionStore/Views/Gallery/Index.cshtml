@@ -1,0 +1,56 @@
+﻿@model IEnumerable<FashionStore.Repository.Models.CustomerFeedback>
+@{
+	ViewData["Title"] = "Góc Khách Hàng";
+}
+<picture>
+	<source media="(min-width: 992px)"
+			srcset="/image/whss1checimg.png">
+	<source media="(min-width: 576px)"
+			srcset="/image/whss1checimg.png">
+	<img src="/image/whss1checimg.png"
+		 class="img-fluid w-100"
+		 alt="Bespoke Tailoring">
+</picture>
+<div class="container py-5 editorial-grid">
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+        var item = Model.ElementAt(i);
+        var isReverse = i % 2 == 1;
+
+        <article class="editorial-item @(isReverse ? "reverse" : "")">
+
+            <!-- IMAGE -->
+            @if (item.FeedbackImages != null && item.FeedbackImages.Any())
+            {
+                <div class="editorial-media">
+                    <img src="@item.FeedbackImages.First().ImageUrl"
+                         alt="Feedback image"
+                         loading="lazy" />
+                </div>
+            }
+
+            <!-- CONTENT -->
+            <div class="editorial-content">
+                @if (!string.IsNullOrWhiteSpace(item.CustomerName))
+                {
+                    <h2 class="editorial-title">
+                        @item.CustomerName
+                    </h2>
+                }
+
+                @if (!string.IsNullOrWhiteSpace(item.Content))
+                {
+                    <p class="editorial-text">
+                        @item.Content
+                    </p>
+                }
+
+                <a href="#" class="editorial-link">
+                    See more
+                </a>
+            </div>
+
+        </article>
+    }
+</div>
+

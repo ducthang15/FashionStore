@@ -1,0 +1,31 @@
+﻿@model FashionStore.Repository.Models.CustomerFeedback
+@{
+    ViewData["Title"] = "Thêm Ảnh Khách Hàng";
+}
+
+<div class="card p-4 shadow-sm">
+    <h4 class="mb-3">Đăng Ảnh Feedback</h4>
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label class="fw-bold">Chọn Ảnh</label>
+            <input type="file" name="files" class="form-control" accept="image/*" multiple required />
+        </div>
+        <div class="mb-3">
+            <label class="fw-bold">Nội dung</label>
+            <textarea asp-for="Content" class="form-control" rows="2" placeholder="Ví dụ: Khách mặc set đồ đi biển quá xinh..."></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="fw-bold">Tags (Gắn thẻ)</label>
+            <input asp-for="Tags" class="form-control" placeholder="Ví dụ: Váy maxi, Đi biển, Mùa hè" />
+            <small class="text-muted">Nhập các từ khóa cách nhau bởi dấu phẩy</small>
+        </div>
+
+        <div class="mb-3">
+            <label class="fw-bold">Tên khách</label>
+            <input asp-for="CustomerName" class="form-control" placeholder="..." />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Đăng Ngay</button>
+    </form>
+</div>
