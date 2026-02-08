@@ -1,9 +1,10 @@
-﻿using FashionStore.Repository;
-using FashionStore.Repository.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿using FashionStore.Utilities;
+using FashionStore.Repository;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using FashionStore.Repository.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FashionStore.Areas.Admin.Controllers
 {
@@ -12,16 +13,12 @@ namespace FashionStore.Areas.Admin.Controllers
     public class ProductAdminController : Controller
     {
         private readonly fashionDbContext _context;
-        // 1. Khai báo biến môi trường
         private readonly IWebHostEnvironment _webHostEnvironment;
-
-        // 2. QUAN TRỌNG: Phải thêm tham số vào Constructor và gán giá trị
         public ProductAdminController(fashionDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
-            _webHostEnvironment = webHostEnvironment; // <--- THIẾU DÒNG NÀY LÀ BỊ LỖI NULL NGAY
+            _webHostEnvironment = webHostEnvironment;
         }
-
         public async Task<IActionResult> Index()
         {
             var products = await _context.Products.Include(p => p.Category).ToListAsync();
@@ -32,7 +29,6 @@ namespace FashionStore.Areas.Admin.Controllers
             ViewBag.CategoryId = new SelectList(_context.Categories, "CategoryId", "CategoryName");
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> Create(Product product, List<IFormFile> files)
         {
@@ -51,9 +47,6 @@ namespace FashionStore.Areas.Admin.Controllers
 
                 return View(product ?? new Product());
             }
-
-
-            // 1️⃣ Ảnh đại diện
             if (files != null && files.Count > 0)
             {
                 product.ImageUrl = await UploadFile(files[0]);
@@ -62,12 +55,10 @@ namespace FashionStore.Areas.Admin.Controllers
             {
                 product.ImageUrl = "/images/no-image.png";
             }
-
-            // 2️⃣ LƯU PRODUCT TRƯỚC
             _context.Products.Add(product);
-            await _context.SaveChangesAsync(); // 🔥 BẮT BUỘC
+            await _context.SaveChangesAsync();
 
-            // 3️⃣ LƯU NHIỀU ẢNH
+            //LƯU NHIỀU ẢNH
             if (files != null && files.Count > 0)
             {
                 foreach (var file in files)
@@ -88,7 +79,6 @@ namespace FashionStore.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
         private async Task<string?> UploadFile(IFormFile file)
         {
             string fileName = null;
@@ -109,7 +99,6 @@ namespace FashionStore.Areas.Admin.Controllers
             }
             return null;
         }
-
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -121,16 +110,19 @@ namespace FashionStore.Areas.Admin.Controllers
             return View(product);
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, Product product)
+        public async Task<IActionResult> Edit(int id, Product product, IFormFile? file)
         {
             if (id != product.ProductId) return NotFound();
-
-            // Bỏ qua kiểm tra
             ModelState.Remove("Category");
             ModelState.Remove("OrderDetails");
 
             if (ModelState.IsValid)
             {
+                product.Slug = SlugHelper.GenerateSlug(product.ProductName);
+                if (_context.Products.Any(p => p.Slug == product.Slug && p.ProductId != id))
+                {
+                    product.Slug += "-" + DateTime.Now.Ticks;
+                }
                 try
                 {
                     _context.Update(product);

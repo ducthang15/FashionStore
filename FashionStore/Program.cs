@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
-// Nhớ thêm using FashionStore.Models; ở đầu trang
 builder.Services.AddDbContext<fashionDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -13,14 +12,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.AccessDeniedPath = "/Account/AccessDenied"; // Nếu không đủ quyền (ví dụ khách vào trang Admin)
     });
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// 1. Thêm dòng này để đăng ký Session
 builder.Services.AddSession();
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -35,7 +31,11 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapStaticAssets();
 
-// 1. Thêm định tuyến (Route) cho trang Admin
+app.MapControllerRoute(
+    name: "blog_details",
+    pattern: "Blog/Details/{slug}",
+    defaults: new { controller = "Blog", action = "Details" });
+
 app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");

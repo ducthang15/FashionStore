@@ -29,6 +29,10 @@ public partial class News
 
     public int? NewsCategoryId { get; set; }
 
+    [StringLength(200)]
+    [Unicode(false)]
+    public string? Slug { get; set; }
+
     [ForeignKey("NewsCategoryId")]
     [InverseProperty("News")]
     public virtual NewsCategory? NewsCategory { get; set; }

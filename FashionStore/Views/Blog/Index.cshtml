@@ -65,10 +65,10 @@
                                 <span class="badge bg-warning text-dark mb-2">@item.NewsCategory?.CategoryName</span>
 
                                 <h5 class="card-title fw-bold">
-                                    <a asp-action="Details" asp-route-id="@item.NewsId" class="text-decoration-none text-dark">@item.Title</a>
+                                    <a asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none text-dark">@item.Title</a>
                                 </h5>
                                 <p class="card-text text-muted small text-truncate">@item.Summary</p>
-                                <a asp-action="Details" asp-route-id="@item.NewsId" class="btn btn-outline-dark btn-sm">Đọc tiếp →</a>
+                                <a asp-action="Details" asp-route-slug="@item.Slug" class="btn btn-outline-dark btn-sm">Đọc tiếp</a>
                             </div>
                         </div>
                     </div>
@@ -85,8 +85,7 @@
             <div class="card border-0 shadow-sm rounded-4 p-3 mb-4">
                 <h5 class="fw-bold mb-3 ms-2">DANH MỤC BLOG</h5>
                 <div class="list-group list-group-flush">
-                    <a asp-action="Index" asp-route-id=""
-                       class="list-group-item list-group-item-action @(ViewBag.CurrentCategoryId == null ? "active bg-dark border-dark" : "")">
+                    <a asp-action="Index" asp-route-id="" class="list-group-item list-group-item-action @(ViewBag.CurrentCategoryId == null ? "active bg-dark border-dark" : "")">
                         Tất cả bài viết
                     </a>
 

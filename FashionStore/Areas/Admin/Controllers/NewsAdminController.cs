@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using FashionStore.Repository.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using FashionStore.Utilities;
 
 namespace FashionStore.Areas.Admin.Controllers
 {
@@ -13,7 +14,6 @@ namespace FashionStore.Areas.Admin.Controllers
     {
         private readonly fashionDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
-
         public NewsAdminController(fashionDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
@@ -28,12 +28,18 @@ namespace FashionStore.Areas.Admin.Controllers
             ViewBag.NewsCategoryId = new SelectList(_context.NewsCategories, "NewsCategoryId", "CategoryName");
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> Create(News news, IFormFile? file)
         {
             ModelState.Remove("NewsCategory");
-
+            if (string.IsNullOrEmpty(news.Slug))
+            {
+                news.Slug = SlugHelper.GenerateSlug(news.Title);
+            }
+            if (_context.News.Any(n => n.Slug == news.Slug))
+            {
+                news.Slug += "-" + DateTime.Now.Ticks;
+            }
             if (ModelState.IsValid)
             {
                 if (file != null)
@@ -46,7 +52,7 @@ namespace FashionStore.Areas.Admin.Controllers
                 }
 
                 news.CreatedAt = DateTime.Now;
-                _context.Add(news); // Tự động nhận NewsCategoryId từ form
+                _context.Add(news);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

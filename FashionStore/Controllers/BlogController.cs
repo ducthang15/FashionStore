@@ -1,4 +1,5 @@
 ﻿using FashionStore.Repository;
+using FashionStore.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,17 +35,16 @@ namespace FashionStore.Controllers
             return View(newsList);
         }
 
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(string slug)
         {
             var news = await _context.News
                 .Include(n => n.NewsCategory)
-                .FirstOrDefaultAsync(n => n.NewsId == id);
+                .FirstOrDefaultAsync(n => n.Slug == slug);
 
             if (news == null) return NotFound();
 
             return View(news);
         }
-        // Hàm riêng cho trang Shuttle Service
         public async Task<IActionResult> ShuttleService()
         {
             // Giả sử ID của Shuttle Service trong SQL là 5
@@ -54,12 +54,8 @@ namespace FashionStore.Controllers
                 .Where(n => n.NewsCategoryId == serviceCategoryId && n.IsPublished)
                 .OrderByDescending(n => n.CreatedAt)
                 .ToListAsync();
-
-            // Lấy tên danh mục để hiển thị tiêu đề (Optional)
             var category = await _context.NewsCategories.FindAsync(serviceCategoryId);
             ViewBag.CategoryName = category?.CategoryName;
-
-            // Trả về View riêng (nếu muốn giao diện khác) hoặc dùng lại View Index
             return View("ShuttleService", posts);
         }
         public async Task<IActionResult> OnlineTailoring()

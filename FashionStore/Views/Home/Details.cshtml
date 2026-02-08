@@ -5,9 +5,11 @@
 
 <div class="container-fluid product-dark py-5">
 
-    <div class="container">
+    <div class="container py-5">
         <nav class="mb-4 small">
             <a asp-action="Index" class="text-decoration-none text-light">Trang chủ</a>
+            <span class="mx-2">/</span>
+            <span class="text-secondary">@Model.Category.CategoryName</span>
             <span class="mx-2">/</span>
             <span class="text-secondary">@Model.ProductName</span>
         </nav>
