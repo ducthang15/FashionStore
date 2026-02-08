@@ -20,7 +20,7 @@
                     <div class="d-flex align-items-center border rounded p-3 shadow-sm">
                         <img src="@item.ImageUrl" style="width: 150px; height: 100px; object-fit: cover;" class="rounded me-3">
                         <div>
-                            <h4 class="fw-bold"><a asp-action="Details" asp-route-id="@item.NewsId" class="text-decoration-none text-dark">@item.Title</a></h4>
+                            <h4 class="fw-bold"><a asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none text-dark">@item.Title</a></h4>
                             <p class="small text-muted mb-0">@item.Summary</p>
                         </div>
                     </div>

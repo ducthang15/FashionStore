@@ -23,8 +23,8 @@
             {
                 <div class="col">
                     <div class="card h-100 product-card shadow-sm border-0">
-                        <a asp-controller="Home" asp-action="Details" asp-route-id="@item.ProductId">
-                            <img src="@item.ImageUrl" class="card-img-top p-3" style="height: 250px; object-fit: contain;">
+                        <a asp-controller="Home" asp-action="Details" asp-route-slug="@item.Slug">
+                            <img src="@item.ImageUrl" class="card-img-top p-3" ...>
                         </a>
                         <div class="card-body text-center">
                             <h5 class="card-title text-truncate">@item.ProductName</h5>

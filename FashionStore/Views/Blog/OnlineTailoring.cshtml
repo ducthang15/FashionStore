@@ -30,10 +30,7 @@
 					<p class="text-muted">
 						@item.Summary
 					</p>
-
-					<a asp-action="Details"
-					   asp-route-id="@item.NewsId"
-					   class="see-more-link text-decoration-none text-dark fw-semibold">
+					<a asp-action="Details" asp-route-slug="@item.Slug" class="see-more-link text-decoration-none text-dark fw-semibold">
 						See more <i class="ri-arrow-right-wide-line"></i>
 					</a>
 

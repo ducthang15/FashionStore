@@ -1,8 +1,9 @@
-﻿using FashionStore.Models; // G?i ??n th? m?c Models
+﻿using FashionStore.Models; 
 using FashionStore.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using FashionStore.Utilities;
 
 namespace FashionStore.Controllers
 {
@@ -20,16 +21,21 @@ namespace FashionStore.Controllers
             var products = await _context.Products.Include(p => p.Category).ToListAsync();
             return View(products);
         }
-        public async Task<IActionResult> Details(int? id)
+        [Route("san-pham/{slug}")]
+        public async Task<IActionResult> Details(string slug)
         {
-            if (id == null) return NotFound();
-
+            if (string.IsNullOrEmpty(slug))
+            {
+                return NotFound();
+            }
             var product = await _context.Products
                 .Include(p => p.Category)
                 .Include(p => p.ProductImages)
-                .FirstOrDefaultAsync(m => m.ProductId == id);
-
-            if (product == null) return NotFound();
+                .FirstOrDefaultAsync(m => m.Slug == slug);
+            if (product == null)
+            {
+                return NotFound();
+            }
 
             return View(product);
         }
