@@ -3,15 +3,20 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
-var port = Environment.GetEnvironmentVariable("PORT") ?? "10000";
-builder.WebHost.UseUrls($"http://*:{port}");
-//builder.Services.AddDbContext<fashionDbContext>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
+builder.Services.AddDbContext<fashionDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddAuthentication("CustomerScheme")
+    .AddCookie("CustomerScheme", options =>
     {
-        options.LoginPath = "/Account/Login"; // Nếu chưa đăng nhập thì chuyển đến trang này
-        options.AccessDeniedPath = "/Account/AccessDenied"; // Nếu không đủ quyền (ví dụ khách vào trang Admin)
+        options.LoginPath = "/Account/Login";
+        options.AccessDeniedPath = "/Account/Login";
+        options.Cookie.Name = "CustomerCookie";
+    })
+    .AddCookie("AdminScheme", options =>
+    {
+        options.LoginPath = "/Admin/Account/Login";
+        options.AccessDeniedPath = "/Admin/Account/Login";
+        options.Cookie.Name = "AdminCookie";
     });
 
 builder.Services.AddControllersWithViews();
@@ -32,6 +37,11 @@ app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapStaticAssets();
+
+app.MapControllerRoute(
+    name: "blog_category",
+    pattern: "Blog/Category/{slug}",
+    defaults: new { controller = "Blog", action = "Category" });
 
 app.MapControllerRoute(
     name: "blog_details",

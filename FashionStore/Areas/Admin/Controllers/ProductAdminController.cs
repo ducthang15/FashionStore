@@ -8,9 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace FashionStore.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    [Authorize(Roles = "Admin")]
-    public class ProductAdminController : Controller
+    public class ProductAdminController : BaseAdminController
     {
         private readonly fashionDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;

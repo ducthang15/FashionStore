@@ -8,9 +8,7 @@ using FashionStore.Utilities;
 
 namespace FashionStore.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    [Authorize(Roles = "Admin")]
-    public class NewsAdminController : Controller
+    public class NewsAdminController : BaseAdminController
     {
         private readonly fashionDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;

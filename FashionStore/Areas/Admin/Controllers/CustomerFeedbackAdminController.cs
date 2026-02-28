@@ -6,9 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FashionStore.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    [Authorize(Roles = "Admin")]
-    public class CustomerFeedbackAdminController : Controller
+    public class CustomerFeedbackAdminController : BaseAdminController
     {
         private readonly fashionDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;

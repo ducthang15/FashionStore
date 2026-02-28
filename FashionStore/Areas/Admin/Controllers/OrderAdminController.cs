@@ -4,8 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FashionStore.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    public class OrderAdminController : Controller
+    public class OrderAdminController : BaseAdminController
     {
         private readonly fashionDbContext _context;
 

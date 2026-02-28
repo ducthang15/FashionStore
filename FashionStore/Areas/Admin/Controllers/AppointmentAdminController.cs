@@ -5,9 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace FashionStore.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    [Authorize(Roles = "Admin")] // Bảo vệ: Chỉ Admin mới được vào
-    public class AppointmentAdminController : Controller
+    public class AppointmentAdminController : BaseAdminController
     {
         private readonly fashionDbContext _context;
 

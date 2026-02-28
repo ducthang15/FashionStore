@@ -6,9 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FashionStore.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    [Authorize(Roles = "Admin")]
-    public class ContactAdminController : Controller
+    public class ContactAdminController : BaseAdminController
     {
         private readonly fashionDbContext _context;
 

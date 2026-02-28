@@ -1,12 +1,12 @@
-﻿using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
-using FashionStore.Repository;
-using FashionStore.Repository.Models;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Mvc;
+using FashionStore.Repository.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using FashionStore.Repository;
+using System.Text;
 
 namespace FashionStore.Controllers
 {
@@ -34,13 +34,11 @@ namespace FashionStore.Controllers
                 return View(user);
             }
 
-            if (user.PasswordHash != ConfirmPassword) // Tạm dùng biến PasswordHash để hứng mật khẩu người dùng nhập
+            if (user.PasswordHash != ConfirmPassword)
             {
                 ModelState.AddModelError("ConfirmPassword", "Mật khẩu xác nhận không khớp.");
                 return View(user);
             }
-
-            // Mã hóa mật khẩu trước khi lưu (MD5)
             user.PasswordHash = GetMD5(user.PasswordHash);
             user.Role = "Customer"; // Mặc định là khách hàng
 
@@ -53,18 +51,17 @@ namespace FashionStore.Controllers
         // --- ĐĂNG NHẬP ---
         public IActionResult Login(string returnUrl = "/")
         {
-            ViewBag.ReturnUrl = returnUrl; // Lưu lại link người dùng muốn vào trước đó
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Login(string Username, string Password, string returnUrl = "/")
         {
-            // Mã hóa mật khẩu nhập vào để so sánh với Database
             string passwordHash = GetMD5(Password);
 
             var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.Username == Username && u.PasswordHash == passwordHash);
+                .FirstOrDefaultAsync(u => u.Username == Username && u.PasswordHash == passwordHash && u.Role == "Customer");
 
             if (user == null)
             {
@@ -75,18 +72,15 @@ namespace FashionStore.Controllers
             // Tạo danh sách quyền hạn (Claims)
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.FullName), // Lưu tên để hiển thị
-                new Claim(ClaimTypes.Role, user.Role),     // Lưu quyền (Admin hay Customer)
-                new Claim("UserId", user.UserId.ToString()) // Lưu ID để dùng cho giỏ hàng sau này
+                new Claim(ClaimTypes.Name, user.FullName), 
+                new Claim(ClaimTypes.Role, user.Role),     
+                new Claim("UserId", user.UserId.ToString()) 
             };
 
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var claimsIdentity = new ClaimsIdentity(claims, "CustomerScheme");
             var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+            await HttpContext.SignInAsync("CustomerScheme", new ClaimsPrincipal(claimsIdentity));
 
-            // Ghi nhận đăng nhập (Tạo Cookie)
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
-
-            // Kiểm tra role để chuyển hướng
             if (user.Role == "Admin")
             {
                 return RedirectToAction("Index", "ProductAdmin", new { area = "Admin" });
@@ -98,7 +92,7 @@ namespace FashionStore.Controllers
         // --- ĐĂNG XUẤT ---
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignOutAsync("CustomerScheme");
             return RedirectToAction("Index", "Home");
         }
 
