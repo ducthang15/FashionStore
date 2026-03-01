@@ -1,72 +1,72 @@
 ﻿@model IEnumerable<FashionStore.Repository.Models.Product>
 
 @{
-    ViewData["Title"] = "Trang chủ";
+	ViewData["Title"] = "Trang chủ";
 }
 <link href="/css/site.css" rel="stylesheet" />
 <div id="heroCarousel" class="carousel slide shadow  overflow-hidden" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
-    </div>
-    <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="3000">
-            <img src="~/image/banner-main.png" class="d-block w-100" style="height: 700px; object-fit: cover; filter: brightness(0.7);" alt="...">
-            <div class="carousel-caption d-none d-md-block text-start">
-                <a href="#products" class="btn btn-light btn-lg rounded-pill px-5 fw-bold text-dark">
-                    KHÁM PHÁ NGAY
-                </a>
-            </div>
-        </div>
-        <div class="carousel-item" data-bs-interval="3000">
-            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop" class="d-block w-100" style="height: 700px; object-fit: cover; filter: brightness(0.7);" alt="...">
-            <div class="carousel-caption d-none d-md-block text-start">
-                <a href="#products" class="btn btn-light btn-lg rounded-pill px-5 fw-bold text-dark">
-                    KHÁM PHÁ NGAY
-                </a>
-            </div>
-        </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-    </button>
+	<div class="carousel-indicators">
+		<button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+		<button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+	</div>
+	<div class="carousel-inner">
+		<div class="carousel-item active" data-bs-interval="3000">
+			<img src="~/image/banner-main.png" class="d-block w-100" style="height: 700px; object-fit: cover; filter: brightness(0.7);" alt="...">
+			<div class="carousel-caption d-none d-md-block text-start">
+				<a href="#products" class="btn btn-light btn-lg rounded-pill px-5 fw-bold text-dark">
+					KHÁM PHÁ NGAY
+				</a>
+			</div>
+		</div>
+		<div class="carousel-item" data-bs-interval="3000">
+			<img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop" class="d-block w-100" style="height: 700px; object-fit: cover; filter: brightness(0.7);" alt="...">
+			<div class="carousel-caption d-none d-md-block text-start">
+				<a href="#products" class="btn btn-light btn-lg rounded-pill px-5 fw-bold text-dark">
+					KHÁM PHÁ NGAY
+				</a>
+			</div>
+		</div>
+	</div>
+	<button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon"></span>
+	</button>
+	<button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+		<span class="carousel-control-next-icon"></span>
+	</button>
 </div>
 
 
 <div class="split-section">
-    <div class="split-item left">
-        <img src="/image/lookbook_1_image.jpg" alt="About Us">
+	<div class="split-item left">
+		<img src="/image/lookbook_1_image.jpg" alt="About Us">
 
-        <div class="content">
-            <h2>ABOUT US</h2>
-            <p>Who we are</p>
-            <span class="link">DISCOVER MORE</span>
-        </div>
-    </div>
+		<div class="content">
+			<h2>ABOUT US</h2>
+			<p>Who we are</p>
+			<span class="link">DISCOVER MORE</span>
+		</div>
+	</div>
 
-    <div class="split-item right">
-        <img src="/image/lookbook_3_image.jpg" alt="Bespoke">
+	<div class="split-item right">
+		<img src="/image/lookbook_3_image.jpg" alt="Bespoke">
 
-        <div class="content">
-            <h2>BESPOKE</h2>
-            <p>Our service</p>
-            <span class="link">DISCOVER MORE</span>
-        </div>
-    </div>
+		<div class="content">
+			<h2>BESPOKE</h2>
+			<p>Our service</p>
+			<span class="link">DISCOVER MORE</span>
+		</div>
+	</div>
 </div>
 
 <div class="luxury-banner mb-5">
-    <img src="/image/lookbook_3_image.jpg" alt="">
-    <div class="banner-content">
-        <p class="quote">
-            We don’t wish to have too many customers,
-            but we try our best to have customers for life
-        </p>
-        <a href="#" class="btn-line">MAKE AN APPOINTMENT</a>
-    </div>
+	<img src="/image/lookbook_3_image.jpg" alt="">
+	<div class="banner-content">
+		<p class="quote">
+			We don’t wish to have too many customers,
+			but we try our best to have customers for life
+		</p>
+		<a href="#" class="btn-line">MAKE AN APPOINTMENT</a>
+	</div>
 </div>
 
 @* <div class="container" id="products">
@@ -106,58 +106,79 @@
     </div>
 </div> *@
 <div class="video-bg">
-    <video autoplay muted loop playsinline>
-        <source src="/image/clipindex.mp4" type="video/mp4">
-    </video>
+	<video autoplay muted loop playsinline>
+		<source src="/image/clipindex.mp4" type="video/mp4">
+	</video>
 </div>
 <section class="services-section">
-    <div class="container">
-        <h2 class="services-title text-center mb-4 mt-5 text-dark">Our Services & Offers</h2>
-        <div class="devider"></div>
-        <div class="row text-center g-5">
-            <div class="col-lg-3 col-md-6">
-                <div class="service-card">
-                    <img src="~/image/12.png" alt="Bespoke Tailoring">
-                    <h5 class="service-title">BESPOKE<br>TAILORING</h5>
-                    <p class="service-text">
-                        By taking 30 measurements, multiple fitting sessions, and offering customizable details from pocket to lining,
-                        we provide suits tailored perfectly to your body and personality.
-                    </p>
-                </div>
-            </div>
+	<div class="container">
+		<h2 class="services-title text-center mb-4 mt-5 text-dark">Our Services & Offers</h2>
+		<div class="devider"></div>
+		<div class="row text-center g-5">
+			<div class="col-lg-3 col-md-6">
+				<div class="service-card">
+					<img src="~/image/12.png" alt="Bespoke Tailoring">
+					<h5 class="service-title">BESPOKE<br>TAILORING</h5>
+					<p class="service-text">
+						By taking 30 measurements, multiple fitting sessions, and offering customizable details from pocket to lining,
+						we provide suits tailored perfectly to your body and personality.
+					</p>
+				</div>
+			</div>
 
-            <div class="col-lg-3 col-md-6">
-                <div class="service-card">
-                    <img src="~/image/Untitled.png" alt="Alteration and Care">
-                    <h5 class="service-title">ALTERATION<br>AND CARE</h5>
-                    <p class="service-text">
-                        High-quality bespoke alterations with precision and care. Returning customers may also enjoy our premium
-                        dry-cleaning services at a preferred price.
-                    </p>
-                </div>
-            </div>
+			<div class="col-lg-3 col-md-6">
+				<div class="service-card">
+					<img src="~/image/Untitled.png" alt="Alteration and Care">
+					<h5 class="service-title">ALTERATION<br>AND CARE</h5>
+					<p class="service-text">
+						High-quality bespoke alterations with precision and care. Returning customers may also enjoy our premium
+						dry-cleaning services at a preferred price.
+					</p>
+				</div>
+			</div>
 
-            <div class="col-lg-3 col-md-6">
-                <div class="service-card">
-                    <img src="~/image/12.png" alt="Hand-made Accessories">
-                    <h5 class="service-title">HAND-MADE<br>ACCESSORIES</h5>
-                    <p class="service-text">
-                        Handcrafted accessories from artisans worldwide including neckties, pocket squares, leather gloves and shoes,
-                        made with the finest materials.
-                    </p>
-                </div>
-            </div>
+			<div class="col-lg-3 col-md-6">
+				<div class="service-card">
+					<img src="~/image/12.png" alt="Hand-made Accessories">
+					<h5 class="service-title">HAND-MADE<br>ACCESSORIES</h5>
+					<p class="service-text">
+						Handcrafted accessories from artisans worldwide including neckties, pocket squares, leather gloves and shoes,
+						made with the finest materials.
+					</p>
+				</div>
+			</div>
 
-            <div class="col-lg-3 col-md-6">
-                <div class="service-card">
-                    <img src="~/image/234.png" alt="Flexible Schedule">
-                    <h5 class="service-title">FLEXIBLE<br>SCHEDULE</h5>
-                    <p class="service-text">
-                        We adapt to your schedule with flexible timelines. Simply tell us your availability and we’ll arrange meetings
-                        accordingly for your convenience.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+			<div class="col-lg-3 col-md-6">
+				<div class="service-card">
+					<img src="~/image/234.png" alt="Flexible Schedule">
+					<h5 class="service-title">FLEXIBLE<br>SCHEDULE</h5>
+					<p class="service-text">
+						We adapt to your schedule with flexible timelines. Simply tell us your availability and we’ll arrange meetings
+						accordingly for your convenience.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="container local-home">
+	<div class="local-home-inf">
+		<div class="row">
+			<div class="col-md-5">
+				<h3 class="fw-bold mb-3 text-white">Thông tin cửa hàng</h3>
+				<ul class="list-unstyled mb-4 fs-5">
+					<li class="mb-3 text-white"><i class="fa-solid fa-location-dot text-danger me-3"></i> <strong>Địa chỉ:</strong> 107 Phố Kim Mã,Ba Đình, Hà Nội</li>
+					<li class="mb-3 text-white"><i class="fa-solid fa-phone text-success me-3"></i> <strong>Hotline:</strong> <a href="tel:0246 6868 107" class="text-decoration-none text-white">0246 6868 107</a></li>
+					<li class="mb-3 text-white"><i class="fa-solid fa-envelope text-warning me-3"></i> <strong>Email:</strong> unlimkimma@gmail.com</li>
+				</ul>
+			</div>
+			<div class="col-md-7">
+				<div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.0257817183474!2d105.82275571146384!3d21.031654387597015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab74dd21e98f%3A0x42d82f8cb7451bb6!2zMTA3IFAuIEtpbSBNw6MsIEtpbSBNw6MsIEJhIMSQw6xuaCwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1769751420963!5m2!1svi!2s"
+							style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+					</iframe>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
