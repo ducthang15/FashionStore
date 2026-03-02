@@ -1,5 +1,4 @@
-﻿/* --- CÁC PHẦN KHÁC GIỮ NGUYÊN TỪ PHIÊN BẢN TRƯỚC --- */
-
+﻿
 :root {
     --bg-dark: #0a0a0a;
     --bg-grey: #1a1a1a;
@@ -16,52 +15,27 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--bg-dark);
+    /*    background-color: var(--bg-dark);*/
     color: var(--text-white);
     line-height: 1.6;
 }
 
-/* Navbar (Giữ nguyên) */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 5%;
-    background: transparent;
-    position: absolute;
-    width: 100%;
-    z-index: 10;
+.our-story {
+    background-color: #f8f9fa;
 }
 
-.logo {
-    font-weight: 700;
-    font-size: 1.5rem;
+.story-image img {
+    transition: transform 0.6s ease;
+}
+
+.story-image:hover img {
+    transform: scale(1.05);
+}
+
+.letter-spacing {
     letter-spacing: 2px;
 }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-}
-
-    .nav-links li {
-        margin-left: 2rem;
-    }
-
-    .nav-links a {
-        text-decoration: none;
-        color: var(--text-grey);
-        font-size: 0.8rem;
-        letter-spacing: 1px;
-        transition: 0.3s;
-    }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--text-white);
-            border-bottom: 1px solid var(--text-white);
-        }
-
-/* Hero Section (Giữ nguyên) */
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1600');
@@ -85,61 +59,24 @@ body {
     color: var(--text-grey);
 }
 
-/* Our Story (Giữ nguyên) */
-.our-story {
-    padding: 100px 5%;
-    background-color: var(--bg-dark);
-}
-
-.story-container {
-    display: flex;
-    align-items: center;
-    gap: 10%;
-}
-
-.story-image img {
-    width: 400px;
-    height: 500px;
-    object-fit: cover;
-}
-
-.story-text h2 {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-}
-
-.story-text h3 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    color: var(--text-white);
-}
-
-.story-text p {
-    color: var(--text-grey);
-    max-width: 500px;
-}
-
-
-/* Pillars Section - ĐÃ CẬP NHẬT CSS CHO ICON SVG */
 .pillars {
     padding: 80px 5%;
-    background-color: var(--bg-grey);
     text-align: center;
 }
 
 .section-title {
-    font-size: 1.5rem;
+    font-size: 3rem;
     margin-bottom: 3rem;
     letter-spacing: 3px;
-    color: var(--text-white);
+    color: var(--bg-dark);
 }
 
 .pillars-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 3rem; /* Tăng gap cho đẹp */
-    max-width: 1200px; /* Giới hạn độ rộng lưới */
-    margin: 0 auto; /* Căn giữa */
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .pillar-item {
@@ -148,7 +85,6 @@ body {
     align-items: center;
 }
 
-    /* Container chứa SVG để dễ căn chỉnh */
     .pillar-item .icon-container {
         width: 64px;
         height: 64px;
@@ -158,7 +94,7 @@ body {
         align-items: center;
     }
 
-    /* Đảm bảo SVG lấp đầy container và dùng màu text làm màu stroke */
+
     .pillar-item svg {
         width: 100%;
         height: 100%;
@@ -166,30 +102,27 @@ body {
 
         .pillar-item svg path {
             stroke: var(--text-white);
-            stroke-width: 1,25; 
+            stroke-width: 1,25;
         }
 
     .pillar-item h4 {
-        margin-bottom: 1rem;
-        font-size: 0.95rem;
-        font-weight: 700;
-        letter-spacing: 1px;
+        color: black;
+        font-size: 20px;
     }
 
     .pillar-item p {
         font-size: 0.85rem;
         color: var(--text-grey);
-        max-width: 250px; /* Giới hạn độ rộng dòng text */
+        max-width: 250px;
     }
 
-/* CTA Section (Giữ nguyên) */
 .cta {
-    padding: 100px 5%;
     text-align: center;
-    border-top: 1px solid #333;
+    background-color: #DDDBCD;
 }
 
     .cta h2 {
+        font-family: Montserrat;
         font-size: 2rem;
         margin-bottom: 2rem;
     }
@@ -201,25 +134,155 @@ body {
     font-size: 0.8rem;
     letter-spacing: 1px;
     transition: 0.3s;
-}
-
-.btn-primary {
-    background: white;
-    color: black;
-    border: none;
-}
-
-.btn-secondary {
-    background: transparent;
+    background-color: #3A1D0F;
     color: white;
     border: 1px solid white;
 }
 
-.btn-primary:hover {
-    background: #ccc;
+img {
+    width: 10rem;
 }
 
-/* Responsive (Giữ nguyên) */
+.craftsmanship-section {
+    background-color: #20211B;
+    padding: 1px 0;
+    color: #fff;
+}
+
+.section-header h2 {
+    font-size: 28px;
+    letter-spacing: 3px;
+    margin-bottom: 60px;
+    font-weight: 600;
+    font-family: Montserrat;
+}
+
+.craft-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    gap: 60px;
+}
+
+    .craft-row.reverse {
+        flex-direction: row-reverse;
+    }
+
+.craft-image {
+    flex: 1;
+}
+
+    .craft-image img {
+        width: 100%;
+        border-radius: 6px;
+        display: block;
+    }
+
+.craft-content {
+    flex: 1;
+}
+
+    .craft-content h4 {
+        font-weight: 600;
+        letter-spacing: 2px;
+        color: #fff;
+        font-family: Montserrat;
+        margin-bottom: 10px;
+    }
+
+    .craft-content h3 {
+        margin-bottom: 15px;
+        font-family: Montserrat;
+        font-size: 19px;
+    }
+
+    .craft-content p {
+        color: #ccc;
+        font-family: Montserrat;
+        line-height: 1.7;
+    }
+
+.journey-section {
+    background: linear-gradient(135deg, #712123, #3A1D0F);
+    padding: 100px 0;
+    color: #fff;
+    text-align: center;
+}
+
+.journey-title {
+    font-size: 28px;
+    letter-spacing: 3px;
+    margin-bottom: 80px;
+    font-weight: 600;
+}
+
+.timeline {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+    .timeline::before {
+        content: "";
+        position: absolute;
+        top: 38px; /* đúng tâm dot */
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: rgba(255,255,255,0.3);
+        z-index: 1;
+    }
+
+.timeline-item {
+    position: relative;
+    width: 16%;
+    z-index: 2;
+    text-align: center;
+}
+.icon-logo img{
+    width: 37px;
+}
+/* Icon */
+.timeline-item .icon {
+    font-size: 22px;
+    margin-bottom: -1px;
+}
+
+    /* Dot vàng nằm đè lên line */
+    .timeline-item .dot {
+        width: 12px;
+        height: 12px;
+        background-color: #d4af37;
+        border-radius: 50%;
+        margin: 0 auto;
+        position: relative;
+        z-index: 3;
+    }
+
+    .timeline-item p {
+        margin-top: 20px;
+        font-size: 12px;
+        letter-spacing: 1px;
+        line-height: 1.6;
+        color: #e0e0e0;
+    }
+
+
+
+
+@media (max-width: 992px) {
+    .craft-row,
+    .craft-row.reverse {
+        flex-direction: column;
+    }
+
+    .craft-row {
+        gap: 30px;
+    }
+}
+
 @media (max-width: 768px) {
     .story-container {
         flex-direction: column;
