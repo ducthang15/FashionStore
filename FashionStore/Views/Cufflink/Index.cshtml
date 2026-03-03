@@ -3,13 +3,13 @@
 @{
     ViewData["Title"] = "Bộ Sưu Tập Tkhuy cufflinks";
 }
-
-<div class="p-5 text-center bg-image mb-4 text-white"
-     style="background-image: url('https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1200&auto=format&fit=crop'); background-size: cover; background-position: center;">
-    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6); padding: 50px;">
-        <h1 class="display-4 fw-bold"> GIÀY DA</h1>
-        <p class="fs-4">Phụ kiện không thể thiếu cho phong cách lịch lãm</p>
-    </div>
+<div class="video-bg">
+    <video autoplay muted loop playsinline>
+        <source src="~/image/clip-product.mp4" type="video/mp4">
+    </video>
+</div>
+<div class="banner-wrapper bg-image mb-5">
+    <img src="~/image/accesory.png" alt="accessories" />
 </div>
 
 <div class="container">
@@ -33,7 +33,7 @@
                         </a>
 
                         <div class="card-body text-center product-info">
-                            <h5 class="card-title text-truncate">@item.ProductName</h5>
+                            <h5 class="card-title text-white">@item.ProductName</h5>
                         </div>
                     </div>
                 </div>

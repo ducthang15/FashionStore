@@ -3,29 +3,30 @@
 @{
     ViewData["Title"] = "Thế Giới caravat";
 }
-
-<div class="alert alert-dark text-center text-white p-5 mb-4">
-    <h1 class="display-4 fw-bold">Caravat</h1>
-    <p>Sang trọng - Đẳng cấp - Thời thượng</p>
+<div class="video-bg">
+    <video autoplay muted loop playsinline>
+        <source src="~/image/clip-product.mp4" type="video/mp4">
+    </video>
 </div>
-
-<div class="row row-cols-1 row-cols-md-4 g-2">
-    @foreach (var item in Model)
-    {
-        <div class="col">
-            <div class="card h-100 product-card">
-                <a asp-controller="Home" asp-action="Details" asp-route-slug="@item.Slug">
-
-                    <div class="product-img">
-                        <img src="@item.ImageUrl" alt="@item.ProductName">
-                    </div>
-
-                </a>
-
-                <div class="card-body text-center product-info">
-                    <h5 class="card-title text-truncate">@item.ProductName</h5>
+<div class="banner-wrapper bg-image mb-5">
+    <img src="~/image/accesory.png" alt="accessories" />
+</div>
+<div class="container">
+    <div class="row g-2">
+        @foreach (var item in Model)
+        {
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="product-box">
+                    <a asp-controller="Home" asp-action="Details" asp-route-slug="@item.Slug">
+                        <div class="product-img">
+                            <img src="@item.ImageUrl" alt="@item.ProductName" class="object-fit-cover">
+                        </div>
+                        <div class="product-info">
+                            <p>@item.ProductName</p>
+                        </div>
+                    </a>
                 </div>
             </div>
-        </div>
-    }
+        }
+    </div>
 </div>

@@ -3,38 +3,37 @@
 @{
     ViewData["Title"] = "Bộ Sưu Tập Giày Da";
 }
-
-<div class="p-5 text-center bg-image mb-4 text-white"
-     style="background-image: url('https://file.hstatic.net/200000410665/collection/banner-giay-da-nam-mulgati_31b07b62d3e445468ce248d21b2e95dd.jpg'); background-size: cover; background-position: center;">
-    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6); padding: 50px; ">
-        <h1 class="display-4 fw-bold"> GIÀY DA</h1>
-        <p class="fs-4">Phụ kiện không thể thiếu cho phong cách lịch lãm</p>
-    </div>
+<div class="video-bg">
+    <video autoplay muted loop playsinline>
+        <source src="~/image/clip-product.mp4" type="video/mp4">
+    </video>
+</div>
+<div class="banner-wrapper bg-image mb-5">
+    <img src="~/image/accesory.png" alt="accessories" />
 </div>
 
-<div class="container">
+<div class="container py-5">
     @if (!Model.Any())
     {
-        <div class="alert alert-info text-center">Hiện chưa có sản phẩm túi xách nào. Vui lòng quay lại sau!</div>
+        <div class="alert alert-info text-center">
+            Hiện chưa có sản phẩm túi xách nào. Vui lòng quay lại sau!
+        </div>
     }
     else
     {
-        <div class="row row-cols-1 row-cols-md-4 g-2">
+        <div class="row g-2">
             @foreach (var item in Model)
             {
-                <div class="col">
-                    <div class="card h-100 product-card shadow-sm border-0">
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="product-box">
                         <a asp-controller="Home" asp-action="Details" asp-route-slug="@item.Slug">
-
                             <div class="product-img">
-                                <img src="@item.ImageUrl" alt="@item.ProductName">
+                                <img src="@item.ImageUrl" alt="@item.ProductName" class="object-fit-cover">
                             </div>
-
+                            <div class="product-info">
+                                <p>@item.ProductName</p>
+                            </div>
                         </a>
-
-                        <div class="card-body text-center product-info">
-                            <h5 class="card-title text-truncate">@item.ProductName</h5>
-                        </div>
                     </div>
                 </div>
             }
