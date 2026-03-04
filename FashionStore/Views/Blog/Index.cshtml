@@ -2,106 +2,107 @@
 @{
     ViewData["Title"] = "Blog";
 }
-<picture>
-    <source media="(min-width: 992px)"
-            srcset="/image/whss1checimg.png">
-    <source media="(min-width: 576px)"
-            srcset="/image/whss1checimg.png">
-    <img src="/image/whss1checimg.png"
-         class="img-fluid w-100"
-         alt="Bespoke Tailoring">
-</picture>
-
-<div class="position-relative text-white">
+<div class="blog-page">
     <picture>
         <source media="(min-width: 992px)"
-                srcset="/image/b5.png">
+                srcset="/image/whss1checimg.png">
         <source media="(min-width: 576px)"
-                srcset="/image/b5.png">
-        <img src="/image/b5.png"
+                srcset="/image/whss1checimg.png">
+        <img src="/image/whss1checimg.png"
              class="img-fluid w-100"
              alt="Bespoke Tailoring">
     </picture>
-    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
-    <div class="position-absolute top-50 start-50 translate-middle text-center px-4">
-        <h1 class="display-5 fw-semibold mb-3">
-            A Craftsmanship Story
-        </h1>
-        <p class="text-uppercase small mb-4">
-            The Art of Bespoke Tailoring
-        </p>
-        <p class="mx-auto mb-4" style="max-width: 850px;">
-            Bespoke tailoring is our most premium offering, allowing you to create your own unique custom pieces —
-            from precise measurements to cloth choice to styling features.
-    
-        </p>
-        <h5 class="mt-4 mb-2">
-            How a Garment is Born
-        </h5>
-        <p class="fst-italic">
-            Time, skill, and creativity: these are the essential elements that transform fabric into a finished garment.
-        </p>
+
+    <div class="position-relative text-white">
+        <picture>
+            <source media="(min-width: 992px)"
+                    srcset="/image/b5.png">
+            <source media="(min-width: 576px)"
+                    srcset="/image/b5.png">
+            <img src="/image/b5.png"
+                 class="img-fluid w-100"
+                 alt="Bespoke Tailoring">
+        </picture>
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
+        <div class="position-absolute top-50 start-50 translate-middle text-center px-4 d-none d-md-block">
+            <h1 class="display-5 fw-semibold mb-3">
+                A Craftsmanship Story
+            </h1>
+            <p class="text-uppercase small mb-4">
+                The Art of Bespoke Tailoring
+            </p>
+            <p class="mx-auto mb-4" style="max-width: 850px;">
+                Bespoke tailoring is our most premium offering, allowing you to create your own unique custom pieces —
+                from precise measurements to cloth choice to styling features.
+
+            </p>
+            <h5 class="mt-4 mb-2">
+                How a Garment is Born
+            </h5>
+            <p class="fst-italic">
+                Time, skill, and creativity: these are the essential elements that transform fabric into a finished garment.
+            </p>
+        </div>
     </div>
-</div>
 
-<div class="container mt-5 mb-5">
-    <div class="row">
-        <div class="col-md-9">
-            <h2 class="fw-bold mb-4 text-dark">
-                @if (ViewBag.CurrentCategoryId == null)
-                {
-                    <span>TẤT CẢ BÀI VIẾT</span>
-                }
-                else
-                {
-                    <span>KẾT QUẢ LỌC</span>
-                }
-            </h2>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card border-0 shadow-sm rounded-4 p-3 mb-4">
+                    <h5 class="fw-bold mb-3 ms-2">DANH MỤC BLOG</h5>
+                    <div class="list-group list-group-flush">
+                        <a asp-action="Index" asp-route-id="" class="list-group-item list-group-item-action @(ViewBag.CurrentCategoryId == null ? "active bg-dark border-dark" : "")">
+                            Tất cả bài viết
+                        </a>
 
-            <div class="row g-4">
-                @foreach (var item in Model)
-                {
-                    <div class="col-md-6">
-                        <div class="card h-100 shadow-sm border-0">
-                            <img src="@item.ImageUrl" class="card-img-top" style="height: 200px; object-fit: cover;">
-                            <div class="card-body">
-@*                                 <span class="badge bg-warning text-dark mb-2">@item.NewsCategory?.CategoryName</span> *@
-                                <h5 class="card-title fw-bold">
-                                    <a asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none text-dark">@item.Title</a>
-                                </h5>
-                                <p class="card-text text-muted small text-truncate">@item.Summary</p>
-                                <a asp-action="Details" asp-route-slug="@item.Slug" class="btn btn-outline-dark btn-sm">Đọc tiếp</a>
+                        @if (ViewBag.Categories != null)
+                        {
+                            foreach (var cat in ViewBag.Categories as List<FashionStore.Repository.Models.NewsCategory>)
+                            {
+                                <a asp-action="Index" asp-route-id="@cat.NewsCategoryId"
+                                   class="list-group-item list-group-item-action @(ViewBag.CurrentCategoryId == cat.NewsCategoryId ? "active bg-dark border-dark" : "")">
+                                    @cat.CategoryName
+                                </a>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 mb-3">
+                <h2 class="fw-bold mb-4 text-white">
+                    @if (ViewBag.CurrentCategoryId == null)
+                    {
+                        <span>TẤT CẢ BÀI VIẾT</span>
+                    }
+                    else
+                    {
+                        <span>KẾT QUẢ LỌC</span>
+                    }
+                </h2>
+
+                <div class="row g-4">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-6">
+                            <div class="card h-100 shadow-sm border-0">
+                                <img src="@item.ImageUrl" class="card-img-top" style="height: 200px; object-fit: cover;">
+                                <div class="card-body">
+                                    @*                                 <span class="badge bg-warning text-dark mb-2">@item.NewsCategory?.CategoryName</span> *@
+                                    <h5 class="card-title fw-bold">
+                                        <a asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none text-dark">@item.Title</a>
+                                    </h5>
+                                    <p class="card-text text-muted small text-truncate">@item.Summary</p>
+                                    <a asp-action="Details" asp-route-slug="@item.Slug" class="btn btn-outline-dark btn-sm">Read more</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                }
-            </div>
-
-            @if (!Model.Any())
-            {
-                <div class="alert alert-info">Không có bài viết nào trong danh mục này.</div>
-            }
-        </div>
-
-        <div class="col-md-3">
-            <div class="card border-0 shadow-sm rounded-4 p-3 mb-4">
-                <h5 class="fw-bold mb-3 ms-2">DANH MỤC BLOG</h5>
-                <div class="list-group list-group-flush">
-                    <a asp-action="Index" asp-route-id="" class="list-group-item list-group-item-action @(ViewBag.CurrentCategoryId == null ? "active bg-dark border-dark" : "")">
-                        Tất cả bài viết
-                    </a>
-
-                    @if (ViewBag.Categories != null)
-                    {
-                        foreach (var cat in ViewBag.Categories as List<FashionStore.Repository.Models.NewsCategory>)
-                        {
-                            <a asp-action="Index" asp-route-id="@cat.NewsCategoryId"
-                               class="list-group-item list-group-item-action @(ViewBag.CurrentCategoryId == cat.NewsCategoryId ? "active bg-dark border-dark" : "")">
-                                @cat.CategoryName
-                            </a>
-                        }
                     }
                 </div>
+
+                @if (!Model.Any())
+                {
+                    <div class="alert alert-info">Không có bài viết nào trong danh mục này.</div>
+                }
             </div>
         </div>
     </div>

@@ -61,9 +61,11 @@ body {
     .luxury-nav .navbar-brand {
         letter-spacing: 1px;
     }
+
 .local-home {
     font-family: Montserrat, serif;
 }
+
 .local-home-inf {
     background-color: #3a1d0f69;
     padding: 2rem;
@@ -75,7 +77,6 @@ body {
     overflow: hidden;
 }
 
-/* khung */
 .split-item {
     position: relative;
     flex: 1;
@@ -83,7 +84,6 @@ body {
     background: #000;
 }
 
-    /* ẢNH NỀN */
     .split-item img {
         position: absolute;
         inset: -5%;
@@ -94,7 +94,6 @@ body {
         transition: transform 1.3s cubic-bezier(.4,0,.2,1);
     }
 
-    /* OVERLAY */
     .split-item::after {
         content: "";
         position: absolute;
@@ -104,7 +103,6 @@ body {
         transition: .6s;
     }
 
-    /* TEXT */
     .split-item .content {
         position: absolute;
         inset: 0;
@@ -123,13 +121,11 @@ body {
         transform: scale(1.08);
     }
 
-/* ảnh bên kia nhỏ */
 .split-section:hover .split-item:not(:hover) img {
     transform: scale(0.95);
     opacity: .85;
 }
 
-/* overlay hover */
 .split-section:hover .split-item:not(:hover)::after {
     background: rgba(0,0,0,.55);
 }
@@ -140,19 +136,17 @@ body {
     background: #000;
 }
 
-    /* ảnh nền */
     .luxury-banner img {
         inset: -5%;
         object-fit: cover;
         transition: transform 2s cubic-bezier(.25,.1,.25,1);
     }
 
-    /* hover nhẹ */
+
     .luxury-banner:hover img {
         transform: scale(1.05);
     }
 
-/* text */
 .banner-content {
     position: absolute;
     inset: 0;
@@ -174,7 +168,27 @@ body {
     opacity: 0.9;
     margin-bottom: 40px;
 }
+/* Kích thước icon đồng đều */
+.social-btn {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+/* Ảnh bên trong */
+.tripadvisor {
+    width: 20px;
+    filter: brightness(0) invert(1);
+    height: 20px;
+    object-fit: contain;
+}
+img.zalo {
+    width: 20px;
+    filter: brightness(0) invert(1);
+}
 /* nút gạch */
 .btn-line {
     color: #fff;
@@ -242,7 +256,7 @@ body {
 
 
 .services-section {
-    padding-bottom: 70px;
+    padding-bottom: 30px;
 }
 
 .services-title {
@@ -303,8 +317,11 @@ body {
 }
 
 .partner-title {
-    font-weight: 700;
+    font-weight: 500;
     margin-bottom: 40px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 48px;
 }
 
 .partner-slider {
@@ -470,7 +487,12 @@ body {
         opacity: 1;
         transform: translateY(-2px);
     }
-
+.blog-page {
+    background: url('/image/amv2g.png') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
 .product-dark {
     background: #111;
     color: #fff;

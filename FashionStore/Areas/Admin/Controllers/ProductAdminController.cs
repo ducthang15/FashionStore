@@ -45,6 +45,11 @@ namespace FashionStore.Areas.Admin.Controllers
 
                 return View(product ?? new Product());
             }
+            product.Slug = SlugHelper.GenerateSlug(product.ProductName);
+            if (_context.Products.Any(p => p.Slug == product.Slug))
+            {
+                product.Slug += "-" + DateTime.Now.Ticks;
+            }
             if (files != null && files.Count > 0)
             {
                 product.ImageUrl = await UploadFile(files[0]);

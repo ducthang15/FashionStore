@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<FashionStore.Models.CartItem>
 
 @{
-    ViewData["Title"] = "Giỏ hàng của bạn";
+    ViewData["Title"] = "Cart ";
     // Tính tổng tiền toàn bộ giỏ hàng
     decimal grandTotal = Model.Sum(x => x.Total);
 }
 
 <div class="container mt-4">
-    <h2 class="mb-4 fw-bold">🛒 Giỏ hàng của bạn</h2>
+    <h2 class="mb-4 fw-bold">Giỏ hàng</h2>
 
     @if (!Model.Any())
     {
