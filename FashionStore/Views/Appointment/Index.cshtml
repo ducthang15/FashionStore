@@ -14,58 +14,60 @@
             srcset="/image/appoinment.png">
     <img src="/image/appoinment.png" class="img-fluid w-100" alt="Bespoke Tailoring">
 </picture>
-<div class="container text-center fs-5 col-md-8 mt-5">
-    <p class="lh-lg text-dark">
-        Nếu bạn muốn đặt lịch hẹn riêng, vui lòng điền thông tin bên dưới và chuyên viên tư vấn của chúng tôi sẽ sớm phản hồi.
-        Vui lòng chọn địa chỉ để đặt lịch hẹn. Hãy cho chúng tôi biết bên dưới.
-    </p>
-</div>
-<div class="container mb-5">
-    <div class="row justify-content-center">
-        <div class="mt-5">
-            <div class="text-dark">
-                <div class="row">
-                    <div class="appoiment text-center">
-                        <h4 class="fw-bold mb-3 text-center text-dark">
-                            Book An Appointment With Us
-                        </h4>
-                        <form asp-action="Book" method="post" class="container">
-                            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-4">
-                                        <input asp-for="FullName" class="form-control rounded-1 bg-light" placeholder="Họ và tên">
-                                        <label asp-for="FullName">Họ và tên của bạn *</label>
+<div class="make-appoinment">
+    <div class="container text-center fs-5 col-md-8 mt-5">
+        <p class="lh-lg text-dark">
+            Nếu bạn muốn đặt lịch hẹn riêng, vui lòng điền thông tin bên dưới và chuyên viên tư vấn của chúng tôi sẽ sớm phản hồi.
+            Vui lòng chọn địa chỉ để đặt lịch hẹn. Hãy cho chúng tôi biết bên dưới.
+        </p>
+    </div>
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="mt-5">
+                <div class="text-dark">
+                    <div class="row">
+                        <div class="appoiment text-center">
+                            <h4 class="fw-bold mb-3 text-center text-dark">
+                                Book An Appointment With Us
+                            </h4>
+                            <form asp-action="Book" method="post" class="container">
+                                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-4">
+                                            <input asp-for="FullName" class="form-control rounded-1 bg-light" placeholder="Họ và tên">
+                                            <label asp-for="FullName">Họ và tên của bạn *</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-4">
+                                            <input asp-for="PhoneNumber" class="form-control rounded-1 bg-light" placeholder="Số điện thoại">
+                                            <label asp-for="PhoneNumber">Số điện thoại *</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-4">
+                                            <input asp-for="Address" class="form-control rounded-1 bg-light" placeholder="Địa chỉ (Tùy chọn)">
+                                            <label asp-for="Address">Địa chỉ của bạn *</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-4">
+                                            <input asp-for="AppointmentDate" id="appointmentDate" type="text" class="form-control rounded-1 bg-light" placeholder="Ngày giờ" />
+                                            <label asp-for="PhoneNumber">Chọn ngày giờ đặt lịch *</label>
+                                            <span asp-validation-for="AppointmentDate" class="text-danger small"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <textarea asp-for="Content" class="form-control rounded-0" style="height:120px" placeholder="Vui lòng nêu rõ chi tiết (kiểu dáng, chất liệu, dịp sử dụng,v.v...)"></textarea>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-4">
-                                        <input asp-for="PhoneNumber" class="form-control rounded-1 bg-light" placeholder="Số điện thoại">
-                                        <label asp-for="PhoneNumber">Số điện thoại *</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-4">
-                                        <input asp-for="Address" class="form-control rounded-1 bg-light" placeholder="Địa chỉ (Tùy chọn)">
-                                        <label asp-for="Address">Địa chỉ của bạn *</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-4">
-                                        <input asp-for="AppointmentDate" id="appointmentDate" type="text" class="form-control rounded-1 bg-light" placeholder="Ngày giờ" />
-                                        <label asp-for="PhoneNumber">Chọn ngày giờ đặt lịch *</label>
-                                        <span asp-validation-for="AppointmentDate" class="text-danger small"></span>
-                                    </div>
-                                </div>
-                                <div class="col-12 mb-3">
-                                    <textarea asp-for="Content" class="form-control rounded-0" style="height:120px" placeholder="Vui lòng nêu rõ chi tiết (kiểu dáng, chất liệu, dịp sử dụng,v.v...)"></textarea>
-                                </div>
-                            </div>
-                            <button type="submit" class="send-btn text-white px-4 border py-3">
-                                Submit
-                            </button>
-                        </form>
+                                <button type="submit" class="send-btn text-white px-4 border py-3">
+                                    Submit
+                                </button>
+                            </form>
 
+                        </div>
                     </div>
                 </div>
             </div>

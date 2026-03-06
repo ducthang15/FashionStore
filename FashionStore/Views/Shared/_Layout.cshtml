@@ -97,14 +97,27 @@
 							<a class="dropdown-item" asp-controller="Suit" asp-action="Index">Suit</a>
 						</li>
 						<li>
-							<a class="dropdown-item" asp-controller="Fabric" asp-action="Index">
-								Fabric
-							</a>
+							<a class="dropdown-item" asp-controller="Tuxedo" asp-action="Index">Tuxedo</a>
+						</li>
+						<li>
+							<a class="dropdown-item" asp-controller="Blazer" asp-action="Index">Blazer</a>
+						</li>
+						<li>
+							<a class="dropdown-item" asp-controller="Mangto" asp-action="Index">Mangto</a>
+						</li>
+						<li>
+							<a class="dropdown-item" asp-controller="Pants" asp-action="Index">Pants</a>
+						</li>
+						<li>
+							<a class="dropdown-item" asp-controller="Shirt" asp-action="Index">Shirt</a>
+						</li>
+						<li>
+							<a class="dropdown-item" asp-controller="Fabric" asp-action="Index">Fabric</a>
 						</li>
 					</ul>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link text-white" asp-controller="Appointment" asp-action="Index">Make an appointment</a>
+					<a class="nav-link text-white" asp-controller="Appointment" asp-action="Index">Booking</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -134,6 +147,24 @@
 			</ul>
 		</div>
 	</nav>
+	<div class="contact-slide">
+		<div class="contact-tab text-center">
+			CONTACT US
+		</div>
+		<div class="contact-content">
+			<p class="text-center mt-4">0246 6868 107 &nbsp; ZALO &nbsp; Facebook</p>
+			<hr class="border-light opacity-25">
+			<p class="text-center text-uppercase">unlimkimma@gmail.com</p>
+			<hr class="border-light opacity-25">
+
+			<p class="appointment text-center">BOOK AN APPOINTMENT</p>
+			<hr class="border-light opacity-25">
+			<div class="bottom-links">
+				<span>FAQs</span>
+				<span>Location</span>
+			</div>
+		</div>
+	</div>
 	<div class="main-fashion">
 		<main role="main" class="pb-3">
 			@RenderBody()
@@ -242,7 +273,7 @@
 					<li><a class="nav-link" asp-controller="Account" asp-action="Login">Đăng nhập</a></li>
 					<li><a class="nav-link" asp-controller="Account" asp-action="Register">Đăng ký</a></li>
 				}
-@* 				<li>
+				@* 				<li>
 					<a asp-controller="Cart" asp-action="Index" class="nav-link d-flex align-items-center gap-2">
 						<i class="fa-solid fa-bag-shopping"></i> Cart
 					</a>

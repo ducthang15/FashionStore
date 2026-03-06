@@ -11,46 +11,41 @@
 		 class="img-fluid w-100"
 		 alt="Bespoke Tailoring">
 </picture>
-<div class="container py-5 editorial-grid">
-    @for (int i = 0; i < Model.Count(); i++)
-    {
-        var item = Model.ElementAt(i);
-        var isReverse = i % 2 == 1;
+<div class="gallery-customer">
+	<div class="container py-5">
+		@for (int i = 0; i < Model.Count(); i++)
+		{
+			var item = Model.ElementAt(i);
+			var isReverse = i % 2 == 1;
 
-        <article class="editorial-item @(isReverse ? "reverse" : "")">
+			<article class="editorial-item @(isReverse ? "reverse" : "")">
+				@if (item.FeedbackImages != null && item.FeedbackImages.Any())
+				{
+					<div class="editorial-media">
+						<img src="@item.FeedbackImages.First().ImageUrl" alt="Feedback image" loading="lazy" />
+					</div>
+				}
+				<div class="editorial-content">
+					@if (!string.IsNullOrWhiteSpace(item.CustomerName))
+					{
+						<h2 class="editorial-title">
+							@item.CustomerName
+						</h2>
+					}
+					@if (!string.IsNullOrWhiteSpace(item.Content))
+					{
+						<p class="editorial-text">
+							@item.Content
+						</p>
+					}
+					<a href="#" class="editorial-link">
+						See more
+					</a>
+				</div>
 
-            <!-- IMAGE -->
-            @if (item.FeedbackImages != null && item.FeedbackImages.Any())
-            {
-                <div class="editorial-media">
-                    <img src="@item.FeedbackImages.First().ImageUrl"
-                         alt="Feedback image"
-                         loading="lazy" />
-                </div>
-            }
-
-            <!-- CONTENT -->
-            <div class="editorial-content">
-                @if (!string.IsNullOrWhiteSpace(item.CustomerName))
-                {
-                    <h2 class="editorial-title">
-                        @item.CustomerName
-                    </h2>
-                }
-
-                @if (!string.IsNullOrWhiteSpace(item.Content))
-                {
-                    <p class="editorial-text">
-                        @item.Content
-                    </p>
-                }
-
-                <a href="#" class="editorial-link">
-                    See more
-                </a>
-            </div>
-
-        </article>
-    }
+			</article>
+		}
+	</div>
 </div>
+
 
