@@ -18,12 +18,12 @@
     <div class="container text-center fs-5 col-md-8 mt-5">
         <p class="lh-lg text-dark">
             Nếu bạn muốn đặt lịch hẹn riêng, vui lòng điền thông tin bên dưới và chuyên viên tư vấn của chúng tôi sẽ sớm phản hồi.
-            Vui lòng chọn địa chỉ để đặt lịch hẹn. Hãy cho chúng tôi biết bên dưới.
+            Vui lòng chọn thời gian để đặt lịch hẹn. Hãy cho chúng tôi biết bên dưới.
         </p>
     </div>
-    <div class="container mb-5">
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="mt-5">
+            <div class="form-book">
                 <div class="text-dark">
                     <div class="row">
                         <div class="appoiment text-center">
@@ -62,9 +62,11 @@
                                         <textarea asp-for="Content" class="form-control rounded-0" style="height:120px" placeholder="Vui lòng nêu rõ chi tiết (kiểu dáng, chất liệu, dịp sử dụng,v.v...)"></textarea>
                                     </div>
                                 </div>
-                                <button type="submit" class="send-btn text-white px-4 border py-3">
+                                <div class="d-grid d-md-block">
+                                <button type="submit" class="send-btn text-white px-4 border py-3 text-uppercase">
                                     Submit
                                 </button>
+                                </div>
                             </form>
 
                         </div>

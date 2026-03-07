@@ -13,18 +13,37 @@
 </picture>
 <div class="container py-5">
 
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-6 mb-4">
-                <div class="d-flex align-items-center border rounded p-3 shadow-sm">
-                    <img src="@item.ImageUrl" style="width: 150px; height: 100px; object-fit: cover;" class="rounded me-3">
-                    <div>
-                        <h4 class="fw-bold"><a asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none text-dark">@item.Title</a></h4>
-                        <p class="small text-muted mb-0">@item.Summary</p>
-                    </div>
+    @{
+        var index = 0;
+    }
+
+    @foreach (var item in Model)
+    {
+        var isEven = index % 2 == 0;
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-6 col-md-6 col-12 @(isEven ? "order-md-1" : "order-md-2") order-2">
+                <div class="pe-lg-5">
+                    <h4 class="fw-bold">
+                        <a asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none text-dark">
+                            @item.Title
+                        </a>
+                    </h4>
+
+                    <p class="small text-muted">
+                        @item.Summary
+                    </p>
+                    <a asp-action="Details" asp-route-slug="@item.Slug" class="see-more-link text-decoration-none text-dark fw-semibold">
+                        See more <i class="ri-arrow-right-wide-line"></i>
+                    </a>
                 </div>
             </div>
-        }
-    </div>
+            <div class="col-lg-6 col-md-6 col-12 @(isEven ? "order-md-2" : "order-md-1") order-1 mb-3 mb-md-0">
+                <div class="ratio ratio-16x9">
+                    <img src="@item.ImageUrl" class="img-fluid rounded shadow-sm" style="object-fit: cover;" alt="@item.Title">
+                </div>
+            </div>
+        </div>
+        index++;
+    }
+
 </div>

@@ -6,3 +6,26 @@
         nav.classList.remove("scrolled");
     }
 });
+const btn = document.getElementById("backToTop");
+
+// Ẩn lúc đầu
+btn.style.display = "none";
+
+document.addEventListener("scroll", () => {
+    const scroll = document.documentElement.scrollTop;
+
+    if (scroll > 300) {
+        btn.style.display = "block";
+    } else {
+        btn.style.display = "none";
+    }
+});
+
+btn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    document.documentElement.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});

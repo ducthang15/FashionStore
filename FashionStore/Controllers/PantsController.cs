@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FashionStore.Controllers
 {
-    public class PantController : Controller
+    public class PantsController : Controller
     {
         private readonly fashionDbContext _context;
 
-        public PantController(fashionDbContext context)
+        public PantsController(fashionDbContext context)
         {
             _context = context;
         }

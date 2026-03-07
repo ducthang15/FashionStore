@@ -7,7 +7,9 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="icon" type="image/png" href="~/favicon.png" />
 	<link rel="stylesheet" href="~/css/site.css" />
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
 	@RenderSection("Styles", required: false)
 </head>
 <body>
@@ -19,53 +21,6 @@
 				<li class="nav-item">
 					<a class="nav-link text-white" asp-controller="AboutUs" asp-action="Index">About us</a>
 				</li>
-				<li>
-					<a class="nav-link text-white" asp-controller="Blog" asp-action="Index">Blog</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link text-white" asp-controller="Contact" asp-action="Index">Contact</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link text-white" asp-controller="Gallery" asp-action="Index">Customer</a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle text-white" href="#" id="accessoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-						Our Process
-					</a>
-					<ul class="dropdown-menu">
-						<li>
-							<a class="dropdown-item" asp-controller="Blog" asp-action="TailoringProcess">
-								Tailoring process
-							</a>
-						</li>
-						<li>
-							<a class="dropdown-item" asp-controller="Blog" asp-action="TailoringAtHome">
-								Tailoring at home
-							</a>
-						</li>
-						<li>
-							<a class="dropdown-item" asp-controller="Blog" asp-action="OnlineTailoring">
-								Online tailoring
-							</a>
-						</li>
-						<li>
-							<a class="dropdown-item" asp-controller="Blog" asp-action="TailoringUniforms">
-								Tailoring uniforms
-							</a>
-						</li>
-						<li>
-							<a class="dropdown-item" asp-controller="Blog" asp-action="ShuttleService">
-								Shuttle service
-							</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-			<a class="navbar-brand position-absolute top-50 start-50 translate-middle fw-bold fs-3"
-			   asp-controller="Home" asp-action="Index">
-				UNLIM
-			</a>
-			<ul class="navbar-nav d-none d-xl-flex ms-auto align-items-center">
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle text-white" href="#" id="accessoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						Accessories
@@ -116,10 +71,57 @@
 						</li>
 					</ul>
 				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle text-white" href="#" id="accessoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Our Process
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="dropdown-item" asp-controller="Blog" asp-action="TailoringProcess">
+								Tailoring process
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" asp-controller="Blog" asp-action="TailoringAtHome">
+								Tailoring at home
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" asp-controller="Blog" asp-action="OnlineTailoring">
+								Online tailoring
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" asp-controller="Blog" asp-action="TailoringUniforms">
+								Tailoring uniforms
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" asp-controller="Blog" asp-action="ShuttleService">
+								Shuttle service
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<a class="navbar-brand position-absolute top-50 start-50 translate-middle fw-bold fs-3"
+			   asp-controller="Home" asp-action="Index">
+				UNLIM
+			</a>
+			<ul class="navbar-nav d-none d-xl-flex ms-auto align-items-center">
+				<li class="nav-item">
+					<a class="nav-link text-white" asp-controller="Gallery" asp-action="Index">Customer</a>
+				</li>
+				<li>
+					<a class="nav-link text-white" asp-controller="Blog" asp-action="Index">Blog</a>
+				</li>
 				<li class="nav-item">
 					<a class="nav-link text-white" asp-controller="Appointment" asp-action="Index">Booking</a>
 				</li>
-				<li class="nav-item dropdown">
+				<li class="nav-item">
+					<a class="nav-link text-white" asp-controller="Contact" asp-action="Index">Contact</a>
+				</li>
+				@* <li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
 						<i class="fa-regular fa-user"></i>
 					</a>
@@ -135,7 +137,7 @@
 							<li><a class="dropdown-item" asp-controller="Account" asp-action="Register">Đăng ký</a></li>
 						}
 					</ul>
-				</li>
+				</li> *@
 				@* <li class="nav-item">
 					<a asp-controller="Cart" asp-action="Index" class="nav-link position-relative">
 						<i class="fa-solid fa-bag-shopping"></i>
@@ -148,11 +150,15 @@
 		</div>
 	</nav>
 	<div class="contact-slide">
-		<div class="contact-tab text-center">
+		<div class="contact-tab text-center d-md-block d-none">
 			CONTACT US
 		</div>
 		<div class="contact-content">
-			<p class="text-center mt-4">0246 6868 107 &nbsp; ZALO &nbsp; Facebook</p>
+			<p class="text-center mt-4">
+				<a href="tel:02466868107" class="text-white">0246 6868 107</a> |
+				<a href="https://zalo.me/0989473579" target="_blank" class="text-white">Zalo</a> |
+				<a href="https://www.facebook.com/MAYDOSUITCAOCAP" target="_blank" class="text-white">Facebook</a>
+			</p>
 			<hr class="border-light opacity-25">
 			<p class="text-center text-uppercase">unlimkimma@gmail.com</p>
 			<hr class="border-light opacity-25">
@@ -243,45 +249,116 @@
 			</div>
 		</div>
 	</footer>
-	<div class="offcanvas offcanvas-start luxury-offcanvas" tabindex="-1" id="mobileMenu">
-		<div class="offcanvas-header">
-			<h5 class="fw-bold">TAILORING</h5>
-			<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-		</div>
-		<div class="offcanvas-body">
-			<ul class="nav flex-column gap-3 text-uppercase">
+	<div class="offcanvas offcanvas-start luxury-offcanvass" tabindex="-1" id="mobileMenu">
 
-				<li><a class="nav-link" asp-controller="AboutUs" asp-action="Index">About us</a></li>
-				<li><a class="nav-link" asp-controller="Blog" asp-action="Index">Blog</a></li>
-				<li><a class="nav-link" asp-controller="Contact" asp-action="Index">Contact</a></li>
-				<li><a class="nav-link" asp-controller="Customer" asp-action="Index">Customer</a></li>
-				<li class="fw-bold">Our Process</li>
-				<li class="ps-3"><a class="nav-link" asp-controller="Blog" asp-action="TailoringProcess">Tailoring process</a></li>
-				<li class="ps-3"><a class="nav-link" asp-controller="Blog" asp-action="TailoringAtHome">Tailoring at home</a></li>
-				<li class="ps-3"><a class="nav-link" asp-controller="Blog" asp-action="OnlineTailoring">Online tailoring</a></li>
-				<li class="ps-3"><a class="nav-link" asp-controller="Blog" asp-action="TailoringUniforms">Tailoring uniforms</a></li>
-				<li class="ps-3"><a class="nav-link" asp-controller="Blog" asp-action="ShuttleService">Shuttle service</a></li>
-				<li><a class="nav-link fw-bold" asp-controller="Appointment" asp-action="Index">Make an appointment</a></li>
-				<!-- USER -->
-				@if (User.Identity.IsAuthenticated)
+		<div class="offcanvas-header border-bottom">
+			<h5 class="fw-bold mb-0">TAILORING</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+		</div>
+
+		<div class="offcanvas-body">
+			<ul class="nav flex-column text-uppercase">
+
+				<li class="nav-item">
+					<a class="nav-link py-3 text-dark" asp-controller="AboutUs" asp-action="Index">About us</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link py-3 text-dark" asp-controller="Blog" asp-action="Index">Blog</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link py-3 text-dark" asp-controller="Contact" asp-action="Index">Contact</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link py-3 text-dark" asp-controller="Gallery" asp-action="Index">Customer</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link py-3 text-dark d-flex justify-content-between" data-bs-toggle="collapse" href="#productMenu" role="button" aria-expanded="false">
+						Product <i class="ri-arrow-down-wide-line"></i>
+					</a>
+
+					<ul class="collapse list-unstyled ps-3" id="productMenu">
+						<li><a class="nav-link py-2 text-dark" asp-controller="Suit" asp-action="Index">Suit</a></li>
+						<li><a class="nav-link py-2 text-dark" asp-controller="Tuxedo" asp-action="Index">Tuxedo</a></li>
+						<li><a class="nav-link py-2 text-dark" asp-controller="Blazer" asp-action="Index">Blazer</a></li>
+						<li><a class="nav-link py-2 text-dark" asp-controller="Mangto" asp-action="Index">Mangto</a></li>
+						<li><a class="nav-link py-2 text-dark" asp-controller="Pants" asp-action="Index">Pants</a></li>
+						<li><a class="nav-link py-2 text-dark" asp-controller="Shirt" asp-action="Index">Shirt</a></li>
+						<li><a class="nav-link py-2 text-dark" asp-controller="Fabric" asp-action="Index">Fabric</a></li>
+					</ul>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link py-3 text-dark d-flex justify-content-between" href="#accessoriesMenu" role="button" data-bs-toggle="collapse" aria-expanded="false">
+						Accessories <i class="ri-arrow-down-wide-line"></i>
+					</a>
+					<ul class="collapse list-unstyled ps-3" id="accessoriesMenu">
+						<li>
+							<a class="nav-link py-2 text-dark" asp-controller="Caravat" asp-action="Index">
+								Caravat
+							</a>
+						</li>
+						<li>
+							<a class="nav-link py-2 text-dark" asp-controller="Cufflink" asp-action="Index">
+								Cufflinks
+							</a>
+						</li>
+						<li>
+							<a class="nav-link py-2 text-dark" asp-controller="Shoe" asp-action="Index">
+								Shoe
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="fw-bold mt-3 mb-2">Our Process</li>
+
+				<li class="nav-item">
+					<a class="nav-link ps-3 py-2 text-dark" asp-controller="Blog" asp-action="TailoringProcess">Tailoring process</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link ps-3 py-2 text-dark" asp-controller="Blog" asp-action="TailoringAtHome">Tailoring at home</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link ps-3 py-2 text-dark" asp-controller="Blog" asp-action="OnlineTailoring">Online tailoring</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link ps-3 py-2 text-dark" asp-controller="Blog" asp-action="TailoringUniforms">Tailoring uniforms</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link ps-3 py-2 text-dark" asp-controller="Blog" asp-action="ShuttleService">Shuttle service</a>
+				</li>
+				<li class="mt-3">
+					<a class="btn btn-dark w-100 text-uppercase" asp-controller="Appointment" asp-action="Index">
+						Make an appointment
+					</a>
+				</li>
+		@* 		@if (User.Identity.IsAuthenticated)
 				{
-					<li class="text-muted ps-1">Xin chào @User.Identity.Name</li>
-					<li><a class="nav-link" asp-controller="Account" asp-action="Logout">Đăng xuất</a></li>
+					<li class="text-muted small">Xin chào @User.Identity.Name</li>
+					<li>
+						<a class="nav-link py-2" asp-controller="Account" asp-action="Logout">Đăng xuất</a>
+					</li>
 				}
 				else
 				{
-					<li><a class="nav-link" asp-controller="Account" asp-action="Login">Đăng nhập</a></li>
-					<li><a class="nav-link" asp-controller="Account" asp-action="Register">Đăng ký</a></li>
-				}
-				@* 				<li>
-					<a asp-controller="Cart" asp-action="Index" class="nav-link d-flex align-items-center gap-2">
-						<i class="fa-solid fa-bag-shopping"></i> Cart
-					</a>
-				</li> *@
+					<li>
+						<a class="nav-link py-2" asp-controller="Account" asp-action="Login">Đăng nhập</a>
+					</li>
+					<li>
+						<a class="nav-link py-2" asp-controller="Account" asp-action="Register">Đăng ký</a>
+					</li>
+				} *@
 			</ul>
 		</div>
-
 	</div>
+	<button id="backToTop" class="bottom-0 btn btn-outline-light end-0 m-4 position-fixed">
+		<i class="ri-arrow-up-wide-fill"></i>
+	</button>
 	<script src="~/js/site.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 	@await RenderSectionAsync("Scripts", required: false)

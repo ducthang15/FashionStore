@@ -13,7 +13,7 @@
 		<div class="carousel-item active" data-bs-interval="3000">
 			<img src="~/image/banner-main.png" class="d-block w-100" style="height: 700px; object-fit: cover; filter: brightness(0.7);" alt="...">
 			<div class="carousel-caption text-center">
-				<a href="#products" class="booking-btn">
+				<a asp-controller="Appointment" asp-action="Index" class="booking-btn">
 					BOOK AN APPOINTMENT
 				</a>
 			</div>
@@ -21,7 +21,7 @@
 		<div class="carousel-item" data-bs-interval="3000">
 			<img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop" class="d-block w-100" style="height: 700px; object-fit: cover; filter: brightness(0.7);" alt="...">
 			<div class="carousel-caption text-center">
-				<a href="#products" class="booking-btn">
+				<a asp-controller="Appointment" asp-action="Index" class="booking-btn">
 					BOOK AN APPOINTMENT
 				</a>
 			</div>
@@ -58,7 +58,7 @@
 </div>
 
 <div class="luxury-banner mb-5">
-	<img src="/image/poster-index-2233.png" alt="poster" class="object-fit-cover w-100">
+	<img src="/image/poster-index-2233.png" alt="poster" class="object-fit-cover">
 	<div class="banner-content">
 		<p class="quote">
 			We don’t wish to have too many customers,
@@ -105,7 +105,7 @@
     </div>
 </div> *@
 <div class="video-bg">
-	<video autoplay muted loop playsinline>
+	<video autoplay muted loop playsinline preload="auto" poster="/image/poster.jpg">
 		<source src="/image/clipindex.mp4" type="video/mp4">
 	</video>
 </div>
@@ -113,10 +113,10 @@
 	<div class="container">
 		<h2 class="services-title text-center mb-4 mt-5">Our Services & Offers</h2>
 		<div class="devider"></div>
-		<div class="row text-center g-5">
+		<div class="row text-center">
 			<div class="col-lg-3 col-md-6">
 				<div class="service-card">
-					<img src="~/image/12.png" alt="Bespoke Tailoring">
+					<img src="~/image/12.png" alt="Bespoke Tailoring" class="object-fit-contain">
 					<h5 class="service-title">BESPOKE<br>TAILORING</h5>
 					<p class="service-text">
 						By taking 30 measurements, multiple fitting sessions, and offering customizable details from pocket to lining,
@@ -127,7 +127,7 @@
 
 			<div class="col-lg-3 col-md-6">
 				<div class="service-card">
-					<img src="~/image/Untitled.png" alt="Alteration and Care">
+					<img src="~/image/Untitled.png" alt="Alteration and Care" class="object-fit-contain">
 					<h5 class="service-title">ALTERATION<br>AND CARE</h5>
 					<p class="service-text">
 						High-quality bespoke alterations with precision and care. Returning customers may also enjoy our premium
@@ -138,7 +138,7 @@
 
 			<div class="col-lg-3 col-md-6">
 				<div class="service-card">
-					<img src="~/image/12.png" alt="Hand-made Accessories">
+					<img src="~/image/12.png" alt="Hand-made Accessories" class="object-fit-contain">
 					<h5 class="service-title">HAND-MADE<br>ACCESSORIES</h5>
 					<p class="service-text">
 						Handcrafted accessories from artisans worldwide including neckties, pocket squares, leather gloves and shoes,
@@ -149,7 +149,7 @@
 
 			<div class="col-lg-3 col-md-6">
 				<div class="service-card">
-					<img src="~/image/234.png" alt="Flexible Schedule">
+					<img src="~/image/234.png" alt="Flexible Schedule" class="object-fit-contain">
 					<h5 class="service-title">FLEXIBLE<br>SCHEDULE</h5>
 					<p class="service-text">
 						We adapt to your schedule with flexible timelines. Simply tell us your availability and we’ll arrange meetings
