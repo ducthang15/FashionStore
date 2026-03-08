@@ -7,6 +7,7 @@
     <video autoplay muted loop playsinline>
         <source src="~/image/clip-product.mp4" type="video/mp4">
     </video>
+    <div class="mobile-poster"></div>
 </div>
 <div class="banner-wrapper bg-image mb-5">
     <img src="~/image/accesory.png" alt="accessories" />
@@ -21,19 +22,31 @@
     }
     else
     {
-        <div class="row g-2">
+        <div class="row g-3">
             @foreach (var item in Model)
             {
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="product-box">
-                        <a asp-controller="Home" asp-action="Details" asp-route-slug="@item.Slug">
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="product-box h-100">
+
+                        <a asp-controller="Home"
+                           asp-action="Details"
+                           asp-route-slug="@item.Slug"
+                           class="text-decoration-none d-block">
+
                             <div class="product-img">
-                                <img src="@item.ImageUrl" alt="@item.ProductName" class="object-fit-cover">
+                                <img src="@item.ImageUrl"
+                                     alt="@item.ProductName"
+                                     loading="lazy">
                             </div>
-                            <div class="product-info">
-                                <p>@item.ProductName</p>
+
+                            <div class="product-info text-center p-2">
+                                <p class="m-0 small text-uppercase">
+                                    @item.ProductName
+                                </p>
                             </div>
+
                         </a>
+
                     </div>
                 </div>
             }

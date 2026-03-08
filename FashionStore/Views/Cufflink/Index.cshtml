@@ -7,6 +7,7 @@
     <video autoplay muted loop playsinline>
         <source src="~/image/clip-product.mp4" type="video/mp4">
     </video>
+    <div class="mobile-poster"></div>
 </div>
 <div class="banner-wrapper bg-image mb-5">
     <img src="~/image/accesory.png" alt="accessories" />
@@ -15,26 +16,37 @@
 <div class="container">
     @if (!Model.Any())
     {
-        <div class="alert alert-info text-center">Hiện chưa có sản phẩm túi xách nào. Vui lòng quay lại sau!</div>
+        <div class="alert alert-info text-center">
+            Hiện chưa có sản phẩm túi xách nào. Vui lòng quay lại sau!
+        </div>
     }
     else
     {
-        <div class="row row-cols-1 row-cols-md-4 g-2">
+        <div class="row g-3">
             @foreach (var item in Model)
             {
-                <div class="col">
-                    <div class="card h-100 product-box border-2">
-                        <a asp-controller="Home" asp-action="Details" asp-route-slug="@item.Slug">
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card h-100 product-box border-0">
+
+                        <a asp-controller="Home"
+                           asp-action="Details"
+                           asp-route-slug="@item.Slug"
+                           class="text-decoration-none">
 
                             <div class="product-img">
-                                <img src="@item.ImageUrl" alt="@item.ProductName" class="object-fit-cover">
+                                <img src="@item.ImageUrl"
+                                     alt="@item.ProductName"
+                                     loading="lazy">
                             </div>
 
                         </a>
 
-                        <div class="card-body text-center product-info">
-                            <h5 class="card-title text-white">@item.ProductName</h5>
+                        <div class="card-body text-center product-info p-2">
+                            <h6 class="card-title m-0 text-white text-uppercase">
+                                @item.ProductName
+                            </h6>
                         </div>
+
                     </div>
                 </div>
             }
