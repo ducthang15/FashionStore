@@ -17,7 +17,6 @@ namespace FashionStore.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            // Lấy sản phẩm và kèm theo tên Danh mục
             var products = await _context.Products.Include(p => p.Category).ToListAsync();
             return View(products);
         }

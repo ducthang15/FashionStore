@@ -1,6 +1,8 @@
 ﻿using FashionStore.Repository;
+using FashionStore.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<fashionDbContext>(options =>
@@ -19,8 +21,16 @@ builder.Services.AddAuthentication("CustomerScheme")
         options.Cookie.Name = "AdminCookie";
     });
 
-builder.Services.AddControllersWithViews();
-
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Conventions.Add(
+        new RouteTokenTransformerConvention(
+            new SlugifyParameterTransformer()));
+});
+builder.Services.AddRouting(options =>
+{
+    options.LowercaseUrls = true;
+});
 builder.Services.AddSession();
 var app = builder.Build();
 
@@ -52,7 +62,6 @@ app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
-// 2. Định tuyến cho trang Khách (Mặc định)
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

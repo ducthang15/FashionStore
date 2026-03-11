@@ -31,7 +31,7 @@ namespace FashionStore.Areas.Admin.Controllers
             var user = _context.Users
                 .FirstOrDefault(u => u.Username == Username
                                   && u.PasswordHash == passwordHash
-                                  && u.Role == "Admin"); // 👈 CHỈ ADMIN
+                                  && u.Role == "Admin"); 
 
             if (user == null)
             {
