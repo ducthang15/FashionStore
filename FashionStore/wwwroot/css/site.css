@@ -114,7 +114,6 @@ body {
         transform: translateX(0);
     }
 
-/* tab bên trái */
 
 .contact-tab {
     writing-mode: vertical-rl;
@@ -125,9 +124,9 @@ body {
     letter-spacing: 4px;
     font-size: 13px;
 }
-
-/* khung nội dung */
-
+.contact-page{
+    font-family: 'EB Garamond';
+}
 .contact-content {
     width: 320px;
     background: #8a5521;
@@ -135,7 +134,6 @@ body {
     font-size: 14px;
 }
 
-/* row */
 
 .contact-row {
     display: flex;
@@ -143,8 +141,6 @@ body {
     align-items: center;
     padding: 14px 20px;
 }
-
-/* line */
 
 .divider {
     height: 1px;

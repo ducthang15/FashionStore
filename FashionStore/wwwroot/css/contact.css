@@ -22,7 +22,10 @@ body {
 .our-story {
     background-color: #f8f9fa;
 }
+.d21323{
+    color:rebeccapurple;
 
+}
 .story-image img {
     transition: transform 0.6s ease;
 }

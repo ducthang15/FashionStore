@@ -14,11 +14,11 @@
             srcset="/image/appoinment.png">
     <img src="/image/appoinment.png" class="img-fluid w-100" alt="Bespoke Tailoring">
 </picture>
-<div class="make-appoinment">
+<div class="make-appoinment pb-4">
     <div class="container text-center fs-5 col-md-8 mt-5">
         <p class="lh-lg text-dark">
-            Nếu bạn muốn đặt lịch hẹn riêng, vui lòng điền thông tin bên dưới và chuyên viên tư vấn của chúng tôi sẽ sớm phản hồi.
-            Vui lòng chọn thời gian để đặt lịch hẹn. Hãy cho chúng tôi biết bên dưới.
+            If you would like to schedule a private appointment, please fill out the information below and our consultants will respond shortly.
+            Please select a time to schedule your appointment. Let us know below.
         </p>
     </div>
     <div class="container">
@@ -36,30 +36,30 @@
                                     <div class="col-md-6">
                                         <div class="form-floating mb-4">
                                             <input asp-for="FullName" class="form-control rounded-1 bg-light" placeholder="Họ và tên">
-                                            <label asp-for="FullName">Họ và tên của bạn *</label>
+                                            <label asp-for="FullName">Name *</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-4">
                                             <input asp-for="PhoneNumber" class="form-control rounded-1 bg-light" placeholder="Số điện thoại">
-                                            <label asp-for="PhoneNumber">Số điện thoại *</label>
+                                            <label asp-for="PhoneNumber">Phone number*</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-4">
                                             <input asp-for="Address" class="form-control rounded-1 bg-light" placeholder="Địa chỉ (Tùy chọn)">
-                                            <label asp-for="Address">Địa chỉ của bạn *</label>
+                                            <label asp-for="Address">Your address *</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-4">
                                             <input asp-for="AppointmentDate" id="appointmentDate" type="text" class="form-control rounded-1 bg-light" placeholder="Ngày giờ" />
-                                            <label asp-for="PhoneNumber">Chọn ngày giờ đặt lịch *</label>
+                                            <label asp-for="PhoneNumber">Date and time appointment *</label>
                                             <span asp-validation-for="AppointmentDate" class="text-danger small"></span>
                                         </div>
                                     </div>
                                     <div class="col-12 mb-3">
-                                        <textarea asp-for="Content" class="form-control rounded-0" style="height:120px" placeholder="Vui lòng nêu rõ chi tiết (kiểu dáng, chất liệu, dịp sử dụng,v.v...)"></textarea>
+                                        <textarea asp-for="Content" class="form-control rounded-0" style="height:120px" placeholder="Please specify details (style, material, occasion,...)"></textarea>
                                     </div>
                                 </div>
                                 <div class="d-grid d-md-block">
