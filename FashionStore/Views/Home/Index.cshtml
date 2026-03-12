@@ -11,7 +11,7 @@
 	</div>
 	<div class="carousel-inner">
 		<div class="carousel-item active" data-bs-interval="3000">
-			<img src="~/image/banner-main.png" class="d-block w-100" style="height: 700px; object-fit: cover; filter: brightness(0.7);" alt="...">
+			<img src="~/image/banner_home.png" class="d-block w-100" style="height: 700px; object-fit: cover; filter: brightness(0.7);" alt="...">
 			<div class="carousel-caption text-center">
 				<a asp-controller="Appointment" asp-action="Index" class="booking-btn">
 					BOOK AN APPOINTMENT
@@ -19,7 +19,7 @@
 			</div>
 		</div>
 		<div class="carousel-item" data-bs-interval="3000">
-			<img src="~/image/banner_home.png" class="d-block w-100" style="height: 700px; object-fit: cover; filter: brightness(0.7);" alt="...">
+			<img src="~/image/b3.png" class="d-block w-100" style="height: 700px; object-fit: cover; filter: brightness(0.7);" alt="...">
 			<div class="carousel-caption text-center">
 				<a asp-controller="Appointment" asp-action="Index" class="booking-btn">
 					BOOK AN APPOINTMENT
@@ -57,53 +57,16 @@
 	</div>
 </div>
 
-<div class="luxury-banner mb-5">
-	<img src="/image/poster-index-2233.png" alt="poster" class="object-fit-cover">
+<div class="luxury-banner">
+	<img src="/image/poster-index-2233.png" alt="poster" class="w-100">
 	<div class="banner-content">
-		<p class="quote">
+		<p class="quote fs-4">
 			We don’t wish to have too many customers,
 			but we try our best to have customers for life
 		</p>
 		<a href="#" class="btn-line">MAKE AN APPOINTMENT</a>
 	</div>
 </div>
-
-@* <div class="container" id="products">
-    <div class="text-center mb-5">
-        <h2 class="fw-bold text-uppercase">Sản Phẩm Nổi Bật</h2>
-        <div style="width: 60px; height: 4px; background-color: #e74c3c; margin: 10px auto;"></div>
-    </div>
-
-    <div class="row row-cols-1 row-cols-md-4 g-4">
-        @foreach (var item in Model)
-        {
-            <div class="col">
-                <div class="card h-100 product-card shadow-sm">
-                    <div class="position-relative overflow-hidden">
-                        <a asp-action="Details" asp-route-id="@item.ProductId">
-                            <img src="@item.ImageUrl" class="card-img-top p-3" alt="@item.ProductName" style="height: 250px; object-fit: contain;">
-                        </a>
-                        <span class="position-absolute top-0 start-0 bg-danger text-white p-2 rounded small">New</span>
-                    </div>
-
-                    <div class="card-body d-flex flex-column text-center">
-                        <h5 class="card-title text-truncate">
-                            <a asp-action="Details" asp-route-id="@item.ProductId" class="text-decoration-none text-dark">@item.ProductName</a>
-                        </h5>
-                        <p class="text-muted small">@item.Category?.CategoryName</p>
-                        <p class="price-tag">@item.Price.ToString("N0") đ</p>
-
-                        <div class="mt-auto">
-                            <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@item.ProductId" class="btn btn-custom w-100 bg-dark text-white">
-                                <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-</div> *@
 <div class="video-bg">
 	<video autoplay muted loop playsinline preload="auto">
 		<source src="/image/clipindex.mp4" type="video/mp4">
@@ -186,13 +149,33 @@
 	<div class="local-home-inf">
 		<div class="row">
 			<div class="col-md-6">
-				<h3 class="fw-bold mb-3 text-white">Thông tin cửa hàng</h3>
-				<ul class="list-unstyled mb-4 fs-5">
-					<li class="mb-3 text-white"><i class="fa-solid fa-location-dot text-danger me-3"></i> <strong>Địa chỉ:</strong> 107 Phố Kim Mã, Ba Đình, Hà Nội</li>
-					<li class="mb-3 text-white"><i class="fa-solid fa-location-dot text-danger me-3"></i> <strong>Địa chỉ:</strong> 105 Phố Kim Mã, Ba Đình, Hà Nội</li>
-					<li class="mb-3 text-white"><i class="fa-solid fa-phone text-success me-3"></i> <strong>Hotline:</strong> <a href="tel:0246 6868 107" class="text-decoration-none text-white">0246 6868 107</a></li>
-					<li class="mb-3 text-white"><i class="fa-solid fa-envelope text-warning me-3"></i> <strong>Email:</strong> unlimkimma@gmail.com</li>
-					<li class="mb-3 text-white"><i class="fa-solid fa-clock "></i> <strong>Thời gian làm việc: </strong> Thứ 2 - Chủ Nhật: 9 am đến 9:30 pm</li>
+				<h3 class="fw-bold mb-3 text-white text-center text-md-start">
+					Welcome To Our Showroom
+				</h3>
+				<ul class="list-unstyled mb-4">
+					<li class="d-flex align-items-start gap-3 mb-3 text-white">
+						<i class="fa-solid fa-location-dot text-danger mt-1"></i>
+						<span><strong>Address:</strong> 105-107 Kim Ma Street, Ba Dinh District, Hanoi</span>
+					</li>
+					<li class="d-flex align-items-start gap-3 mb-3 text-white">
+						<i class="fa-solid fa-phone text-success mt-1"></i>
+						<span>
+							<strong>Hotline:</strong>
+							<a href="tel:02466868107" class="text-white text-decoration-none">
+								0246 6868 107
+							</a>
+						</span>
+					</li>
+					<li class="d-flex align-items-start gap-3 mb-3 text-white">
+						<i class="fa-solid fa-envelope text-warning mt-1"></i>
+						<span><strong>Email:</strong> unlimkimma@gmail.com</span>
+					</li>
+
+					<li class="d-flex align-items-start gap-3 text-white">
+						<i class="fa-solid fa-clock mt-1"></i>
+						<span><strong>Working hours:</strong> Monday - Sunday: 9 am – 9:30 pm</span>
+					</li>
+
 				</ul>
 			</div>
 			<div class="col-md-6">
