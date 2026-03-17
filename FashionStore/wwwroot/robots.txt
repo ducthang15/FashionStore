@@ -3,4 +3,4 @@ Allow: /
 Disallow: /Admin/  
 Disallow: /Cart/   
 
-Sitemap: https://localhost:7140/sitemap.xml
+Sitemap: https://unlimtailor.com/sitemap.xml
