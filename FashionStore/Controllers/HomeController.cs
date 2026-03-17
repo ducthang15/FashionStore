@@ -20,7 +20,7 @@ namespace FashionStore.Controllers
             var products = await _context.Products.Include(p => p.Category).ToListAsync();
             return View(products);
         }
-        [Route("san-pham/{slug}")]
+        [Route("product/{slug}")]
         public async Task<IActionResult> Details(string slug)
         {
             if (string.IsNullOrEmpty(slug))

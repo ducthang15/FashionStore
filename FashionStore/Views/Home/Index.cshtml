@@ -6,8 +6,8 @@
 <link href="/css/site.css" rel="stylesheet" />
 <div id="heroCarousel" class="carousel slide shadow  overflow-hidden" data-bs-ride="carousel">
 	<div class="carousel-indicators">
-		<button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
-		<button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+		<button type="button" aria-label="Slide 1" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+		<button type="button" aria-label="Slide 2" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
 	</div>
 	<div class="carousel-inner">
 		<div class="carousel-item active" data-bs-interval="3000">
@@ -27,15 +27,13 @@
 			</div>
 		</div>
 	</div>
-	<button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+	<button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="carusel-left">
 		<span class="carousel-control-prev-icon"></span>
 	</button>
-	<button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+	<button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="carusel-right">
 		<span class="carousel-control-next-icon"></span>
 	</button>
 </div>
-
-
 <div class="split-section">
 	<div class="split-item left">
 		<img src="/image/lookbook_1_image.jpg" alt="About Us">
@@ -43,7 +41,7 @@
 		<div class="content">
 			<h2>ABOUT US</h2>
 			<p>Who we are</p>
-			<span class="link">DISCOVER MORE</span>
+			<a href="/aboutus" class="link text-light">DISCOVER MORE</a>
 		</div>
 	</div>
 
@@ -52,7 +50,7 @@
 		<div class="content">
 			<h2>BESPOKE</h2>
 			<p>Our service</p>
-			<span class="link">DISCOVER MORE</span>
+			<a href="/Blog" class="link text-light">DISCOVER MORE</a>
 		</div>
 	</div>
 </div>
@@ -64,7 +62,9 @@
 			We don’t wish to have too many customers,
 			but we try our best to have customers for life
 		</p>
-		<a href="#" class="btn-line">MAKE AN APPOINTMENT</a>
+		<a asp-controller="Appointment" asp-action="Index" class="booking-btn">
+			BOOK AN APPOINTMENT
+		</a>
 	</div>
 </div>
 <div class="video-bg">
@@ -79,7 +79,7 @@
 		<div class="row text-center">
 			<div class="col-lg-3 col-md-6">
 				<div class="service-card">
-					<img src="~/image/12.png" alt="Bespoke Tailoring" class="object-fit-contain">
+					<img src="~/image/BESPOKE.png" alt="Bespoke Tailoring" class="object-fit-contain">
 					<h5 class="service-title">BESPOKE<br>TAILORING</h5>
 					<p class="service-text">
 						By taking 30 measurements, multiple fitting sessions, and offering customizable details from pocket to lining,
@@ -90,7 +90,7 @@
 
 			<div class="col-lg-3 col-md-6">
 				<div class="service-card">
-					<img src="~/image/Untitled.png" alt="Alteration and Care" class="object-fit-contain">
+					<img src="~/image/ALTERATION.png" alt="Alteration and Care" class="object-fit-contain">
 					<h5 class="service-title">ALTERATION<br>AND CARE</h5>
 					<p class="service-text">
 						High-quality bespoke alterations with precision and care. Returning customers may also enjoy our premium
@@ -101,7 +101,7 @@
 
 			<div class="col-lg-3 col-md-6">
 				<div class="service-card">
-					<img src="~/image/12.png" alt="Hand-made Accessories" class="object-fit-contain">
+					<img src="~/image/setphukien.png" alt="Hand-made Accessories" class="object-fit-contain">
 					<h5 class="service-title">HAND-MADE<br>ACCESSORIES</h5>
 					<p class="service-text">
 						Handcrafted accessories from artisans worldwide including neckties, pocket squares, leather gloves and shoes,
@@ -112,7 +112,7 @@
 
 			<div class="col-lg-3 col-md-6">
 				<div class="service-card">
-					<img src="~/image/234.png" alt="Flexible Schedule" class="object-fit-contain">
+					<img src="~/image/time-detail.png" alt="Flexible Schedule" class="object-fit-contain">
 					<h5 class="service-title">FLEXIBLE<br>SCHEDULE</h5>
 					<p class="service-text">
 						We adapt to your schedule with flexible timelines. Simply tell us your availability and we’ll arrange meetings
@@ -127,21 +127,16 @@
 	<h2 class="partner-title"> Our Partners </h2>
 	<div class="partner-slider">
 		<div class="partner-track">
-
-			<!-- Logo -->
-			<div class="partner-item"><img src="/image/brand/brand_1.jpg"></div>
-			<div class="partner-item"><img src="/image/brand/brand_2.jpg"></div>
-			<div class="partner-item"><img src="/image/brand/brand_3.jpg"></div>
-			<div class="partner-item"><img src="/image/brand/brand_4.jpg"></div>
-			<div class="partner-item"><img src="/image/brand/brand_6.jpg"></div>
-
-			<!-- Lặp lại để tạo hiệu ứng infinite -->
-			<div class="partner-item"><img src="/image/brand/brand_1.jpg"></div>
-			<div class="partner-item"><img src="/image/brand/brand_2.jpg"></div>
-			<div class="partner-item"><img src="/image/brand/brand_3.jpg"></div>
-			<div class="partner-item"><img src="/image/brand/brand_4.jpg"></div>
-			<div class="partner-item"><img src="/image/brand/brand_6.jpg"></div>
-
+			<div class="partner-item"><img src="/image/brand/brand_1.jpg" alt="brand fabric"></div>
+			<div class="partner-item"><img src="/image/brand/brand_2.jpg" alt="brand fabric"></div>
+			<div class="partner-item"><img src="/image/brand/brand_3.jpg" alt="brand fabric"></div>
+			<div class="partner-item"><img src="/image/brand/brand_4.jpg" alt="brand fabric"></div>
+			<div class="partner-item"><img src="/image/brand/brand_6.jpg" alt="brand fabric"></div>
+			<div class="partner-item"><img src="/image/brand/brand_1.jpg" alt="brand fabric"></div>
+			<div class="partner-item"><img src="/image/brand/brand_2.jpg" alt="brand fabric"></div>
+			<div class="partner-item"><img src="/image/brand/brand_3.jpg" alt="brand fabric"></div>
+			<div class="partner-item"><img src="/image/brand/brand_4.jpg" alt="brand fabric"></div>
+			<div class="partner-item"><img src="/image/brand/brand_6.jpg" alt="brand fabric"></div>
 		</div>
 	</div>
 </section>
@@ -181,7 +176,7 @@
 			<div class="col-md-6">
 				<div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow">
 					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.0257817183474!2d105.82275571146384!3d21.031654387597015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab74dd21e98f%3A0x42d82f8cb7451bb6!2zMTA3IFAuIEtpbSBNw6MsIEtpbSBNw6MsIEJhIMSQw6xuaCwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1769751420963!5m2!1svi!2s"
-							style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+							style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Unlim Tailor - High-Quality Wedding Suits & Men's Vests - 107 Kim Mã, Ba Đình, Hanoi">
 					</iframe>
 				</div>
 			</div>

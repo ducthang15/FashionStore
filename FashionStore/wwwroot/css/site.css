@@ -233,7 +233,6 @@ body {
         align-items: center;
         color: white;
         text-align: center;
-        pointer-events: none;
     }
 
     /* hover zoom */
@@ -413,7 +412,7 @@ img.zalo {
 }
 
 .service-title {
-    color: #bf8d73;
+    color: #fff398;
     font-size: 18px;
     letter-spacing: 1px;
     margin-bottom: 15px;
@@ -422,7 +421,7 @@ img.zalo {
 .service-text {
     font-size: 14px;
     line-height: 1.7;
-    color: #c3c3c3;
+    color: white;
 }
 
 .send-btn {
