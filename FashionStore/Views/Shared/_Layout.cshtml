@@ -13,6 +13,37 @@
 
 		gtag('config', 'G-0LL1ZJ03B8');
 	</script>
+	<script type="application/ld+json">
+		{
+		  "@@context": "https://schema.org",
+		  "@@type": "Bespoke Tailoring",
+		  "name": "UNLIM TAILOR",
+		  "image": "https://unlimtailor.com/image/logo.png",
+		  "url": "https://unlimtailor.com",
+		  "telephone": "0989 473 579",
+		  "email": "unlimkimma@gmail.com",
+		  "address": {
+		  "@@type": "PostalAddress",
+		  "streetAddress": "107 Kim Ma",
+		  "addressLocality": "Hà Nội",
+		  "addressRegion": "Ba Đình",
+		  "addressCountry": "VN"
+		},
+		  "geo": {
+			"@@type": "GeoCoordinates",
+			"latitude": 21.03165,
+			"longitude": 105.82275
+		  },
+		  "openingHoursSpecification": {
+			"@@type": "OpeningHoursSpecification",
+			"dayOfWeek": [
+			  "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
+			],
+			"opens": "09:00",
+			"closes": "21:30"
+		  }
+		}
+	</script>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<title>@ViewData["Title"] - Unlim Bespoke Tailoring</title>
@@ -323,7 +354,7 @@
 						Make an appointment
 					</a>
 				</li>
-		@* 		@if (User.Identity.IsAuthenticated)
+				@* 		@if (User.Identity.IsAuthenticated)
 				{
 					<li class="text-muted small">Xin chào @User.Identity.Name</li>
 					<li>

@@ -38,3 +38,8 @@ tinymce.init({
     branding: false,
     language: 'vi'
 });
+//ho kinh doanh
+function toggleInfo() {
+    const box = document.querySelector('.cta-box');
+    box.classList.toggle('active');
+}

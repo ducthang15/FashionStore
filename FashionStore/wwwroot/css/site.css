@@ -614,12 +614,67 @@ img.zalo {
     }
 
 .blog-page {
-    background: url('/image/amv2g.png') no-repeat center center;
-    background-size: cover;
-    background-attachment: fixed;
+    position: relative;
     min-height: 100vh;
+    overflow: hidden;
 }
 
+    .blog-page::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url(/image/amv2g.png) no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed;
+        filter: brightness(40%) blur(3px);
+        z-index: -1;
+    }
+.cta-box {
+    margin-top: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.cta-header {
+    background: #111;
+    color: #fff;
+    padding: 12px 16px;
+    cursor: pointer;
+    align-items: center;
+    transition: 0.3s;
+}
+
+    .cta-header:hover {
+        background: #333;
+    }
+
+.cta-content {
+    max-height: 0;
+    overflow: hidden;
+    background: #f8f8f8;
+    transition: max-height 0.4s ease;
+    padding: 0 16px;
+}
+
+    .cta-content p {
+        margin: 15px 0;
+        color: #333;
+    }
+
+.cta-box.active .cta-content {
+    max-height: 200px;
+}
+
+.arrow {
+    transition: transform 0.3s;
+}
+
+.cta-box.active .arrow {
+    transform: rotate(180deg);
+}
 .product-dark {
     background: #111;
     color: #fff;
