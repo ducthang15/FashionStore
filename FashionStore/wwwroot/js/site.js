@@ -6,26 +6,71 @@
         nav.classList.remove("scrolled");
     }
 });
-const btn = document.getElementById("backToTop");
 
 // Ẩn lúc đầu
-btn.style.display = "none";
+const btn = document.getElementById("backToTop");
 
-document.addEventListener("scroll", () => {
-    const scroll = document.documentElement.scrollTop;
+if (btn) {
+    document.addEventListener("scroll", () => {
+        const scroll = document.documentElement.scrollTop;
 
-    if (scroll > 300) {
-        btn.style.display = "block";
-    } else {
-        btn.style.display = "none";
-    }
+        btn.style.display = scroll > 300 ? "block" : "none";
+    });
+
+    btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.documentElement.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+}
+
+$('#checkAll').on('change', function () {
+    $('input[name="ids"]').prop('checked', $(this).prop('checked'));
 });
+$(document).on('click', '#btnDeleteSelect', function (e) {
 
-btn.addEventListener("click", (e) => {
     e.preventDefault();
 
-    document.documentElement.scrollTo({
-        top: 0,
-        behavior: "smooth"
+    let checked = $('input[name="ids"]:checked').length;
+
+    if (checked === 0) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Chưa chọn sản phẩm',
+            text: 'Vui lòng chọn ít nhất 1 sản phẩm!'
+        });
+        return;
+    }
+
+    Swal.fire({
+        title: 'Xác nhận xoá?',
+        text: `Bạn sắp xoá ${checked} sản phẩm!`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Xoá ngay',
+        cancelButtonText: 'Huỷ',
+        confirmButtonColor: '#d33'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $(this).closest('form').submit();
+        }
+    });
+});
+$(document).on('click', '#btnDeleteAll', function () {
+
+    Swal.fire({
+        title: 'Xoá toàn bộ?',
+        text: 'Hành động này không thể hoàn tác!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Xoá tất cả',
+        cancelButtonText: 'Huỷ',
+        confirmButtonColor: '#d33'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "/Admin/ProductAdmin/DeleteAll";
+        }
     });
 });

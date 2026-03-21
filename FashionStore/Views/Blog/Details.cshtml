@@ -24,8 +24,10 @@
             <div class="blog-content fs-5 text-dark" style="line-height: 1.8;">
                 @Html.Raw(Model.Content?.Replace("\n", "<br>"))
             </div>
+            <div class="border-top">
 
-            <div class="mt-5">
+            </div>
+            <div class="float-end mt-4 mb-4">
                 <a asp-action="Index" class="btn btn-secondary"> Quay lại</a>
             </div>
         </div>

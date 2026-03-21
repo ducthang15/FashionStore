@@ -21,8 +21,8 @@
 				@foreach (var item in Model)
 				{
 						<tr>
-							<td class="ps-4 text-muted small">
-							@item.CreatedAt?.ToString("dd/MM/yyyy HH:mm")
+							<td class="ps-4 text-danger">
+							@item.CreatedAt?.ToString("dd/MM/yyyy - HH:mm")
 							</td>
 							<td>
 								<div class="fw-bold">@item.FullName</div>
@@ -30,7 +30,7 @@
 								<div class="small text-muted">@item.Email</div>
 							</td>
 							<td style="max-width: 400px;">
-								<p class="text-secondary mb-0 text-truncate">@item.Message</p>
+								<p class="text-secondary text-danger">@item.Message</p>
 							</td>
 							<td class="text-end pe-4">
 								<a href="tel:@item.Phone" class="btn btn-sm btn-success me-1" title="Gọi ngay">

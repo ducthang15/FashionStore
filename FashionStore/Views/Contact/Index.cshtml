@@ -1,9 +1,12 @@
 ﻿@model FashionStore.Repository.Models.Contact
 @{
-	ViewData["Title"] = "Contact";
-	ViewData["MetaDescription"] = "Liên hệ với UNLIM để được tư vấn thời trang, hỗ trợ đổi trả và khiếu nại";
-	ViewData["MetaKeywords"] = "liên hệ UNLIM, shop thời trang hà nội, địa chỉ shop quần áo";
+	ViewData["Title"] = "Liên Hệ UNLIM Tailor | May Đo Suit Cưới & Vest Nam Cao Cấp Hà Nội";
+
+	ViewData["MetaDescription"] = "Kết nối với UNLIM Tailor tại 107 Kim Mã để trải nghiệm dịch vụ may đo Suit cưới, Vest nam cao cấp. Đội ngũ chuyên gia sẵn sàng tư vấn phong cách riêng biệt cho bạn.";
+	ViewData["MetaKeywords"] = "liên hệ UNLIM, may đo suit cưới hà nội, vest nam cao cấp kim mã, nhà may tuxedo hà nội, địa chỉ UNLIM tailor, đặt lịch tư vấn vest";
+
 }
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="application/ld+json">
 	{
 	  "@@context": "https://schema.org",
@@ -42,7 +45,6 @@
 		 class="img-fluid w-100"
 		 alt="Bespoke Tailoring">
 </picture>
-
 <div class="contact-page">
 	<div class="container mb-4">
 		@if (TempData["SuccessMessage"] != null)
@@ -56,10 +58,10 @@
 			<div class="col-lg-6">
 				<h3 class="fw-bold mb-3 text-dark">CONTACT US</h3>
 				<ul class="list-unstyled mb-4 fs-6">
-					<li class="mb-3 text-dark"><i class="fa-solid fa-location-dot text-danger me-3"></i> <strong class="fw-bold">Address:</strong> 107 Kim Ma Street, Ba Dinh District, Hanoi</li>
+					<li class="mb-3 text-dark"><i class="fa-solid fa-location-dot text-danger me-3"></i> <strong class="fw-bold">Address:</strong> 105 - 107 Kim Ma Street, Ba Dinh District, Hanoi</li>
 					<li class="mb-3 text-dark"><i class="fa-solid fa-phone text-success me-3"></i> <strong class="fw-bold">Hotline:</strong> <a href="tel:0246 6868 107" class="text-decoration-none text-dark">0246 6868 107</a></li>
 					<li class="mb-3 text-dark"><i class="fa-solid fa-envelope text-warning me-3"></i> <strong class="fw-bold">Email:</strong> unlimkimma@gmail.com</li>
-					<li class="mb-3 text-dark"><i class="fa-solid fa-clock text-dark me-3"></i> <strong class="fw-bold">Working hours: </strong> Monday - Sunday: 9 am to 9:30 pm</li>
+					<li class="mb-3 text-dark"><i class="fa-solid fa-clock text-dark me-3"></i> <strong class="fw-bold">Working hours: </strong> Monday - Sunday: 9 am to 9 pm</li>
 				</ul>
 				<div class="ratio ratio-16x9 rounded-4 overflow-hidden">
 					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.0257817183474!2d105.82275571146384!3d21.031654387597015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab74dd21e98f%3A0x42d82f8cb7451bb6!2zMTA3IFAuIEtpbSBNw6MsIEtpbSBNw6MsIEJhIMSQw6xuaCwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1769751420963!5m2!1svi!2s"

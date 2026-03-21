@@ -3,6 +3,7 @@ using FashionStore.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using Microsoft.AspNetCore.Http.Features;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<fashionDbContext>(options =>
@@ -20,7 +21,10 @@ builder.Services.AddAuthentication("CustomerScheme")
         options.AccessDeniedPath = "/Admin/Account/Login";
         options.Cookie.Name = "AdminCookie";
     });
-
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = 52428800; 
+});
 builder.Services.AddControllersWithViews(options =>
 {
     options.Conventions.Add(

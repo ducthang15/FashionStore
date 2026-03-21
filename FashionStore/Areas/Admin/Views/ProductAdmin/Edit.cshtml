@@ -3,16 +3,13 @@
 @{
     ViewData["Title"] = "Sửa sản phẩm";
 }
-
 <div class="container mt-4">
     <h2><i class="fa-solid fa-pen text-warning"></i> Sửa Thông Tin: @Model.ProductName</h2>
-    <hr />
-
     <div class="row">
         <div class="col-md-6">
-            <form asp-action="Edit" method="post" class="shadow-sm p-4 bg-light rounded">
+            <form asp-action="Edit" method="post" enctype="multipart/form-data" class="shadow-sm p-4 bg-light rounded">
+                <div asp-validation-summary="All" class="text-danger"></div>
                 <input type="hidden" asp-for="ProductId" />
-
                 <div class="mb-3">
                     <label asp-for="ProductName" class="form-label fw-bold">Tên sản phẩm</label>
                     <input asp-for="ProductName" class="form-control" required />
@@ -30,8 +27,8 @@
                     <input asp-for="StockQuantity" type="number" class="form-control" required />
                 </div>
                 <div class="mb-3">
-                    <label asp-for="ImageUrl" class="form-label fw-bold">Link hình ảnh</label>
-                    <input asp-for="ImageUrl" class="form-control" />
+                    <label class="form-label fw-bold">Chọn ảnh mới</label>
+                    <input type="file" name="files" class="form-control" multiple accept="image/*" />
                 </div>
                 <button type="submit" class="btn btn-warning"><i class="fa-solid fa-save"></i> CẬP NHẬT</button>
                 <a asp-action="Index" class="btn btn-secondary ms-2">Hủy bỏ</a>

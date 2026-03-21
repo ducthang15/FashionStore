@@ -4,11 +4,10 @@
     ViewData["Title"] = "Thêm sản phẩm mới";
 }
 
-<div class="container mt-4">
-    <h2>Thêm Sản Phẩm Mới (Có Upload Ảnh)</h2>
-
+<div class="container mt-3">
+    <h2 class="text-decoration-underline">Thêm Sản Phẩm Mới</h2>
     <form asp-action="Create" method="post" enctype="multipart/form-data" class="shadow p-4 bg-light rounded">
-
+        <div asp-validation-summary="All" class="text-danger"></div>
         <div class="mb-3">
             <label asp-for="ProductName" class="form-label fw-bold">Tên sản phẩm</label>
             <input asp-for="ProductName" class="form-control" required />
@@ -29,10 +28,11 @@
         <div class="mb-3">
             <label class="form-label fw-bold">Chọn hình ảnh (Có thể chọn nhiều)</label>
             <input type="file" name="files" class="form-control" multiple accept="image/*" />
+            <div id="previewContainer" class="d-flex flex-wrap mt-3 gap-2"></div>
         </div>
 
         <div class="mb-3">
-            <label asp-for="Description" class="form-label fw-bold">Mô tả</label>
+            <label asp-for="Description" class="form-label fw-bold" id="Content">Mô tả</label>
             <textarea asp-for="Description" class="form-control" rows="3"></textarea>
         </div>
 
@@ -40,3 +40,6 @@
         <a asp-action="Index" class="btn btn-secondary">Hủy</a>
     </form>
 </div>
+@section Scripts {
+    <script src="~/js/addproduct.js"></script>
+}
