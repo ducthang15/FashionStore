@@ -17,9 +17,24 @@ namespace FashionStore.Areas.Admin.Controllers
             _context = context;
             _webHostEnvironment = webHostEnvironment;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? categoryId, string keyword)
         {
-            var products = await _context.Products.Include(p => p.Category).ToListAsync();
+            var query = _context.Products
+        .Include(p => p.Category)
+        .AsQueryable();
+            if (categoryId.HasValue)
+            {
+                query = query.Where(p => p.CategoryId == categoryId);
+            }
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                query = query.Where(p => p.ProductName.Contains(keyword));
+            }
+
+            var products = await query.ToListAsync();
+
+            ViewBag.CategoryId = new SelectList(_context.Categories, "CategoryId", "CategoryName");
+
             return View(products);
         }
         public IActionResult Create()
@@ -28,7 +43,7 @@ namespace FashionStore.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Product product, List<IFormFile> files)
+        public async Task<IActionResult> Create(Product product, List<IFormFile> files, int mainImageIndex)
         {
             ModelState.Remove("Category");
             ModelState.Remove("OrderDetails");
@@ -37,60 +52,33 @@ namespace FashionStore.Areas.Admin.Controllers
 
             if (!ModelState.IsValid)
             {
-                ViewBag.CategoryId = new SelectList(
-                    _context.Categories,
-                    "CategoryId",
-                    "CategoryName"
-                );
-
+                ViewBag.CategoryId = new SelectList(_context.Categories, "CategoryId", "CategoryName");
                 return View(product ?? new Product());
-            }
-            if (files != null)
-            {
-                if (files.Count > 5)
-                {
-                    ModelState.AddModelError("", "Chỉ được upload tối đa 5 ảnh");
-                }
-
-                foreach (var file in files)
-                {
-                    if (file.Length > 3 * 1024 * 1024) // 3MB
-                    {
-                        ModelState.AddModelError("", "Mỗi ảnh tối đa 3MB");
-                        break;
-                    }
-                }
             }
             product.Slug = SlugHelper.GenerateSlug(product.ProductName);
             if (_context.Products.Any(p => p.Slug == product.Slug))
             {
                 product.Slug += "-" + DateTime.Now.Ticks;
             }
-            if (files != null && files.Count > 0)
-            {
-                product.ImageUrl = await UploadFile(files[0]);
-            }
-            else
-            {
-                product.ImageUrl = "/images/no-image.png";
-            }
+            product.ImageUrl = "/images/no-image.png";
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
-
-            //LƯU NHIỀU ẢNH
             if (files != null && files.Count > 0)
             {
-                foreach (var file in files)
+                for (int i = 0; i < files.Count; i++)
                 {
-                    var fileName = await UploadFile(file);
+                    var fileName = await UploadFile(files[i]);
 
-                    var productImage = new ProductImage
+                    if (i == mainImageIndex)
                     {
-                        ImageUrl = fileName,
-                        ProductId = product.ProductId
-                    };
+                        product.ImageUrl = fileName;
+                    }
 
-                    _context.ProductImages.Add(productImage);
+                    _context.ProductImages.Add(new ProductImage
+                    {
+                        ProductId = product.ProductId,
+                        ImageUrl = fileName
+                    });
                 }
 
                 await _context.SaveChangesAsync();
@@ -129,7 +117,7 @@ namespace FashionStore.Areas.Admin.Controllers
             return View(product);
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, Product product, List<IFormFile>? files)
+        public async Task<IActionResult> Edit(int id, Product product, List<IFormFile>? files, int mainImageIndex)
         {
             if (id != product.ProductId) return NotFound();
 
@@ -169,12 +157,17 @@ namespace FashionStore.Areas.Admin.Controllers
 
                 if (files != null && files.Count > 0)
                 {
-                    existingProduct.ImageUrl = await UploadFile(files[0]);
                     var oldImages = _context.ProductImages.Where(x => x.ProductId == id);
                     _context.ProductImages.RemoveRange(oldImages);
-                    foreach (var file in files)
+
+                    for (int i = 0; i < files.Count; i++)
                     {
-                        var fileName = await UploadFile(file);
+                        var fileName = await UploadFile(files[i]);
+
+                        if (i == mainImageIndex)
+                        {
+                            existingProduct.ImageUrl = fileName;
+                        }
 
                         _context.ProductImages.Add(new ProductImage
                         {
