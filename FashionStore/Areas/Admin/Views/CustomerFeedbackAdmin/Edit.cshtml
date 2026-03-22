@@ -1,0 +1,48 @@
+﻿@model FashionStore.Repository.Models.CustomerFeedback
+
+@{
+    ViewData["Title"] = "Chỉnh sửa Feedback";
+}
+
+<div class="card p-4 shadow-sm">
+    <h4 class="mb-3">Chỉnh sửa Feedback</h4>
+
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="FeedbackId" />
+
+        <!-- ẢNH CŨ -->
+        <div class="mb-3">
+            <label class="fw-bold">Ảnh hiện tại</label>
+            <div class="row">
+                @foreach (var img in Model.FeedbackImages)
+                {
+                    <div class="col-md-3 text-center mb-3">
+                        <img src="@img.ImageUrl" class="img-fluid rounded mb-2" style="height:120px; object-fit:cover;" />
+                        <div>
+                            <input type="checkbox" name="deleteImageIds" value="@img.ImageId" />
+                            <small>Xoá</small>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="fw-bold">Thêm ảnh mới</label>
+            <input type="file" name="files" class="form-control" accept="image/*" multiple />
+        </div>
+        <div class="mb-3">
+            <label class="fw-bold">Nội dung</label>
+            <textarea asp-for="Content" class="form-control" rows="2"></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="fw-bold">Tags</label>
+            <input asp-for="Tags" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="fw-bold">Tên khách</label>
+            <input asp-for="CustomerName" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Cập nhật</button>
+    </form>
+</div>

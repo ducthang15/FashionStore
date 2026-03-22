@@ -85,8 +85,10 @@
                                 </td>
 
                                 <td class="text-end pe-4">
-                                    <form asp-action="Delete" asp-route-id="@item.FeedbackId" method="post" class="d-inline"
-                                          onsubmit="return confirm('Bạn có chắc chắn muốn xóa ảnh này không?');">
+                                    <a asp-action="Edit" asp-route-id="@item.FeedbackId" class="btn btn-sm btn-outline-primary" title="Chỉnh sửa">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </a>
+                                    <form asp-action="Delete" asp-route-id="@item.FeedbackId" method="post" class="d-inline" onsubmit="return confirm('Bạn có chắc chắn muốn xóa ảnh này không?');">
                                         <button type="submit" class="btn btn-sm btn-outline-danger" title="Xóa ảnh">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
