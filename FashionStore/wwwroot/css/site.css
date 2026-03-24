@@ -725,6 +725,7 @@ img.zalo {
 }
 
 .product-dark {
+    font-family: 'Inter', sans-serif;
     background: #111;
     color: #fff;
 }

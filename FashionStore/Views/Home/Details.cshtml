@@ -4,7 +4,6 @@
 }
 
 <div class="container-fluid product-dark py-5">
-
     <div class="container py-5">
         <nav class="mb-4 small">
             <a asp-action="Index" class="text-decoration-none text-light">Trang chủ</a>
@@ -27,16 +26,20 @@
             </div>
             <div class="col-lg-5 product-info">
                 <h4 class="fw-bold mb-2">@Model.ProductName</h4>
-                @*                 <small>Thương hiệu: @Model.Category?.CategoryName</small><br />
-                <small>Mã SP: @Model.ProductId</small>
-                <div class="fs-3 fw-bold my-4">
+                <h5>Thương hiệu: @Model.Category?.CategoryName</h5><br />
+                <div>Mô tả sản phẩm:</div>
+                @* <small>Mã SP: @Model.ProductId</small> *@
+                @* <div class="fs-3 fw-bold">
                     @Model.Price.ToString("N0") đ
-                </div> *@
+                </div>  *@
                 <p class="text-secondary">
                     @(string.IsNullOrEmpty(Model.Description)
                                         ? "Sản phẩm đang được cập nhật mô tả chi tiết."
                                         : Html.Raw(Model.Description))
                 </p>
+                <div class="text-center mt-5">
+                    Liên hệ: <span class="text-danger">098 947 3579</span> để biết thêm chi tiết!
+                </div>
                 @*  <p class="small text-secondary">
                     Còn lại: <strong>@Model.StockQuantity</strong> sản phẩm
                 </p> 
