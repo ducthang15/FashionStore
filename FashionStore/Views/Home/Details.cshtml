@@ -29,9 +29,7 @@
                 <h5>Thương hiệu: @Model.Category?.CategoryName</h5><br />
                 <div>Mô tả sản phẩm:</div>
                 <p class="text-secondary">
-                    @(string.IsNullOrEmpty(Model.Description)
-                                        ? "Sản phẩm đang được cập nhật mô tả chi tiết."
-                                        : Html.Raw(Model.Description))
+                   @Html.Raw(Model.Description)
                 </p>
                 <div class="text-center mt-5">
                     Liên hệ: <span class="text-danger">098 947 3579</span> để biết thêm chi tiết!

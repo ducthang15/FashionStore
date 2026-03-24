@@ -84,3 +84,65 @@
     }
 };
 $(() => ProductImageManager.init());
+
+const SummernoteManager = {
+    // 1. Cấu hình các selector để dễ quản lý
+    selectors: {
+        editor: '#Description',
+        uploadUrl: '/Admin/Upload/UploadImage'
+    },
+
+    // 2. Hàm khởi tạo
+    init() {
+        const $editor = $(this.selectors.editor);
+        if (!$editor.length) return; // Bảo vệ nếu trang không có editor
+
+        this.initEditor($editor);
+    },
+
+    // 3. Cấu hình chi tiết cho Summernote
+    initEditor($el) {
+        $el.summernote({
+            height: 400,
+            placeholder: 'Nhập mô tả sản phẩm...',
+            lang: 'vi-VN', // Nếu bạn có file ngôn ngữ tiếng Việt
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ],
+            callbacks: {
+                // Sử dụng arrow function để giữ đúng context 'this'
+                onImageUpload: (files) => {
+                    Array.from(files).forEach(file => this.uploadImage($el, file));
+                }
+            }
+        });
+    },
+
+    // 4. Hàm xử lý AJAX upload ảnh riêng biệt
+    uploadImage($el, file) {
+        const data = new FormData();
+        data.append("file", file);
+
+        $.ajax({
+            url: this.selectors.uploadUrl,
+            method: 'POST',
+            data: data,
+            contentType: false,
+            processData: false,
+            success: (url) => {
+                $el.summernote('insertImage', url);
+            },
+            error: () => {
+                alert('Upload ảnh thất bại. Vui lòng kiểm tra lại định dạng hoặc kích thước file.');
+            }
+        });
+    }
+};
+
+// Khởi chạy khi DOM đã sẵn sàng
+$(() => SummernoteManager.init());
