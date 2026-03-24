@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
+﻿using FashionStore.Repository;
 using FashionStore.Repository.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography;
+using FashionStore.Utilities;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
-using FashionStore.Repository;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace FashionStore.Controllers
@@ -18,8 +19,6 @@ namespace FashionStore.Controllers
         {
             _context = context;
         }
-
-        // --- ĐĂNG KÝ ---
         public IActionResult Register()
         {
             return View();
@@ -39,7 +38,7 @@ namespace FashionStore.Controllers
                 ModelState.AddModelError("ConfirmPassword", "Mật khẩu xác nhận không khớp.");
                 return View(user);
             }
-            user.PasswordHash = GetMD5(user.PasswordHash);
+            user.PasswordHash = PasswordHelper.Hash(user.PasswordHash);
             user.Role = "Customer"; // Mặc định là khách hàng
 
             _context.Users.Add(user);
@@ -47,8 +46,6 @@ namespace FashionStore.Controllers
 
             return RedirectToAction("Login");
         }
-
-        // --- ĐĂNG NHẬP ---
         public IActionResult Login(string returnUrl = "/")
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -58,23 +55,37 @@ namespace FashionStore.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(string Username, string Password, string returnUrl = "/")
         {
-            string passwordHash = GetMD5(Password);
-
             var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.Username == Username && u.PasswordHash == passwordHash && u.Role == "Customer");
+                .FirstOrDefaultAsync(u => u.Username == Username && u.Role == "Customer");
 
             if (user == null)
             {
                 ViewBag.Error = "Sai tên đăng nhập hoặc mật khẩu";
                 return View();
             }
+            if (!PasswordHelper.Verify(user.PasswordHash, Password))
+            {
+                // check MD5 cũ
+                string md5 = PasswordHelper.GetMD5(Password);
 
-            // Tạo danh sách quyền hạn (Claims)
+                if (user.PasswordHash != md5)
+                {
+                    ViewBag.Error = "Sai tên đăng nhập hoặc mật khẩu";
+                    return View();
+                }
+                user.PasswordHash = PasswordHelper.Hash(Password);
+                await _context.SaveChangesAsync();
+            }
+            if (user == null)
+            {
+                ViewBag.Error = "Sai tên đăng nhập hoặc mật khẩu";
+                return View();
+            }
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.FullName), 
-                new Claim(ClaimTypes.Role, user.Role),     
-                new Claim("UserId", user.UserId.ToString()) 
+                new Claim(ClaimTypes.Name, user.FullName ?? string.Empty),
+                new Claim(ClaimTypes.Role, user.Role ??string.Empty),
+                new Claim("UserId", user.UserId.ToString())
             };
 
             var claimsIdentity = new ClaimsIdentity(claims, "CustomerScheme");
@@ -88,27 +99,10 @@ namespace FashionStore.Controllers
 
             return Redirect(returnUrl);
         }
-
-        // --- ĐĂNG XUẤT ---
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync("CustomerScheme");
             return RedirectToAction("Index", "Home");
-        }
-
-        // Hàm mã hóa MD5 đơn giản
-        public static string GetMD5(string str)
-        {
-            MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] fromData = Encoding.UTF8.GetBytes(str);
-            byte[] targetData = md5.ComputeHash(fromData);
-            string byte2String = null;
-
-            for (int i = 0; i < targetData.Length; i++)
-            {
-                byte2String += targetData[i].ToString("x2");
-            }
-            return byte2String;
         }
     }
 }

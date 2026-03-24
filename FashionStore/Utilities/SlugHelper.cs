@@ -10,8 +10,6 @@ namespace FashionStore.Utilities
             if (string.IsNullOrEmpty(phrase)) return "";
 
             string str = phrase.ToLower();
-
-            // Xóa dấu tiếng Việt
             str = Regex.Replace(str, @"[áàạảãâấầậẩẫăắằặẳẵ]", "a");
             str = Regex.Replace(str, @"[éèẹẻẽêếềệểễ]", "e");
             str = Regex.Replace(str, @"[óòọỏõôốồộổỗơớờợởỡ]", "o");
@@ -19,11 +17,7 @@ namespace FashionStore.Utilities
             str = Regex.Replace(str, @"[íìịỉĩ]", "i");
             str = Regex.Replace(str, @"[ýỳỵỷỹ]", "y");
             str = Regex.Replace(str, @"[đ]", "d");
-
-            // Chỉ giữ lại ký tự a-z, 0-9 và dấu gạch ngang
             str = Regex.Replace(str, @"[^a-z0-9\s-]", "");
-
-            // Chuyển khoảng trắng thành gạch ngang
             str = Regex.Replace(str, @"\s+", "-").Trim();
 
             return str;

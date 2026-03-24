@@ -1,4 +1,5 @@
 ﻿using FashionStore.Repository;
+using FashionStore.Utilities;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -26,23 +27,38 @@ namespace FashionStore.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(string Username, string Password)
         {
-            string passwordHash = GetMD5(Password);
-
-            var user = _context.Users
-                .FirstOrDefault(u => u.Username == Username
-                                  && u.PasswordHash == passwordHash
-                                  && u.Role == "Admin"); 
+            var user = _context.Users.FirstOrDefault(u => u.Username == Username && u.Role == "Admin");
 
             if (user == null)
             {
-                ViewBag.Error = "Không phải tài khoản Admin";
+                ViewBag.Error = "Not Admin";
+                return View();
+            }
+
+            if (!PasswordHelper.Verify(user.PasswordHash, Password))
+            {
+                string md5 = PasswordHelper.GetMD5(Password);
+
+                if (user.PasswordHash != md5)
+                {
+                    ViewBag.Error = "Incorrect password!";
+                    return View();
+                }
+
+                // upgrade
+                user.PasswordHash = PasswordHelper.Hash(Password);
+                _context.SaveChanges();
+            }
+            if (user == null)
+            {
+                ViewBag.Error = "Not Admin";
                 return View();
             }
 
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.FullName),
-                new Claim(ClaimTypes.Role, user.Role),
+                new Claim(ClaimTypes.Name, user.FullName ?? string.Empty),
+                new Claim(ClaimTypes.Role, user.Role ?? string.Empty),
                 new Claim("UserId", user.UserId.ToString())
             };
 
@@ -52,22 +68,6 @@ namespace FashionStore.Areas.Admin.Controllers
                 new ClaimsPrincipal(identity));
 
             return RedirectToAction("Index", "ProductAdmin");
-        }
-        public static string GetMD5(string str)
-        {
-            using (MD5 md5 = MD5.Create())
-            {
-                byte[] fromData = Encoding.UTF8.GetBytes(str);
-                byte[] targetData = md5.ComputeHash(fromData);
-
-                StringBuilder sb = new StringBuilder();
-                foreach (byte b in targetData)
-                {
-                    sb.Append(b.ToString("x2"));
-                }
-
-                return sb.ToString();
-            }
         }
     }
 }

@@ -19,7 +19,7 @@ namespace FashionStore.Controllers
             // Lọc dữ liệu: Chỉ lấy sản phẩm có CategoryId == 2
             var dongHoList = await _context.Products
                 .Include(p => p.Category)
-                .Where(p => p.CategoryId == 2) // <--- ĐÂY LÀ CHÌA KHÓA
+                .Where(p => p.CategoryId == 2) 
                 .ToListAsync();
 
             return View(dongHoList);

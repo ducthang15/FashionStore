@@ -17,21 +17,24 @@ namespace FashionStore.Controllers
         public async Task<IActionResult> Index(int? id)
         {
             ViewBag.Categories = await _context.NewsCategories.ToListAsync();
-
-            // 2. Bắt đầu truy vấn bài viết
             var query = _context.News
-                .Include(n => n.NewsCategory) // Kèm theo tên danh mục
+                .Include(n => n.NewsCategory)
                 .Where(n => n.IsPublished == true);
             if (id.HasValue)
             {
                 query = query.Where(n => n.NewsCategoryId == id);
             }
-
             var newsList = await query
                 .OrderByDescending(n => n.CreatedAt)
                 .ToListAsync();
-            ViewBag.CurrentCategoryId = id;
+            var featuredNews = await _context.News
+                .Where(n => n.IsPublished)
+                .OrderByDescending(n => n.CreatedAt)
+                .Take(5)
+                .ToListAsync();
 
+            ViewBag.FeaturedNews = featuredNews;
+            ViewBag.CurrentCategoryId = id;
             return View(newsList);
         }
 

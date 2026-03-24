@@ -15,23 +15,19 @@ namespace FashionStore.Controllers
             _context = context;
         }
 
-        // Lấy giỏ hàng từ Session
         private List<CartItem> GetCartItems()
         {
             return HttpContext.Session.GetObjectFromJson<List<CartItem>>("Cart") ?? new List<CartItem>();
         }
 
-        // 1. Giao diện hiển thị giỏ hàng
         public IActionResult Index()
         {
             var cart = GetCartItems();
             return View(cart);
         }
 
-        // 2. Chức năng: Thêm sản phẩm vào giỏ (Liên kết với Database)
         public IActionResult AddToCart(int id)
         {
-            // Tìm sản phẩm trong Database-First
             var product = _context.Products.Find(id);
             if (product == null) return NotFound();
 
@@ -40,11 +36,10 @@ namespace FashionStore.Controllers
 
             if (existingItem != null)
             {
-                existingItem.Quantity++; // Đã có trong giỏ thì tăng số lượng
+                existingItem.Quantity++;
             }
             else
             {
-                // Chưa có thì tạo mới
                 cart.Add(new CartItem
                 {
                     ProductId = product.ProductId,
@@ -54,46 +49,34 @@ namespace FashionStore.Controllers
                     Quantity = 1
                 });
             }
-
-            // Lưu lại vào Session
-            HttpContext.Session.SetObjectAsJson("Cart", cart);
-
-            return RedirectToAction("Index"); // Chuyển đến trang xem Giỏ hàng
-        }
-        // 3. Chức năng: Xóa sản phẩm khỏi giỏ
-        public IActionResult RemoveFromCart(int id)
-        {
-            var cart = GetCartItems();
-
-            // Tìm và xóa sản phẩm có ProductId trùng khớp
-            cart.RemoveAll(c => c.ProductId == id);
-
-            // Lưu lại giỏ hàng mới vào Session
             HttpContext.Session.SetObjectAsJson("Cart", cart);
 
             return RedirectToAction("Index");
         }
-        // 4. Giao diện trang Thanh toán (Điền thông tin)
+        public IActionResult RemoveFromCart(int id)
+        {
+            var cart = GetCartItems();
+            cart.RemoveAll(c => c.ProductId == id);
+            HttpContext.Session.SetObjectAsJson("Cart", cart);
+
+            return RedirectToAction("Index");
+        }
         public IActionResult Checkout()
         {
             var cart = GetCartItems();
             if (cart.Count == 0)
             {
-                return RedirectToAction("Index", "Home"); // Giỏ hàng trống thì về trang chủ
+                return RedirectToAction("Index", "Home");
             }
-
-            // Truyền giỏ hàng sang View để hiển thị lại hóa đơn
             ViewBag.Total = cart.Sum(c => c.Total);
             return View(cart);
         }
-        // 5. Xử lý dữ liệu khi bấm nút Đặt Hàng (Lưu vào Database)
         [HttpPost]
         public async Task<IActionResult> Checkout(string ReceiverName, string ReceiverPhone, string ShippingAddress)
         {
             var cart = GetCartItems();
             if (cart.Count == 0) return RedirectToAction("Index", "Home");
 
-            // BƯỚC 1: TẠO HÓA ĐƠN CHÍNH (Bảng Orders)
             var order = new Order
             {
                 ReceiverName = ReceiverName,
@@ -105,33 +88,24 @@ namespace FashionStore.Controllers
                 PaymentMethod = "Thanh toán khi nhận hàng (COD)"
             };
 
-            // Lưu Hóa đơn vào Database để hệ thống tạo OrderId tự động
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
-
-            // BƯỚC 2: LƯU TỪNG MÓN HÀNG TRONG GIỎ (Bảng OrderDetails)
             foreach (var item in cart)
             {
                 var orderDetail = new OrderDetail
                 {
-                    OrderId = order.OrderId, // Lấy ID của hóa đơn vừa tạo ở trên
+                    OrderId = order.OrderId,
                     ProductId = item.ProductId,
                     Quantity = item.Quantity,
-                    UnitPrice = item.Price // Lưu giá tại thời điểm mua
+                    UnitPrice = item.Price
                 };
                 _context.OrderDetails.Add(orderDetail);
             }
 
-            await _context.SaveChangesAsync(); // Lưu tất cả chi tiết
-
-            // BƯỚC 3: XÓA SẠCH GIỎ HÀNG TRONG SESSION
+            await _context.SaveChangesAsync();
             HttpContext.Session.Remove("Cart");
-
-            // BƯỚC 4: CHUYỂN ĐẾN TRANG THÔNG BÁO THÀNH CÔNG
             return RedirectToAction("OrderSuccess");
         }
-
-        // 6. Trang thông báo Đặt hàng thành công
         public IActionResult OrderSuccess()
         {
             return View();

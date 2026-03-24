@@ -5,7 +5,7 @@ namespace FashionStore.Utilities
 {
     public class SlugifyParameterTransformer : IOutboundParameterTransformer
     {
-        public string TransformOutbound(object value)
+        public string TransformOutbound(object? value)
         {
             if (value == null) return null;
 

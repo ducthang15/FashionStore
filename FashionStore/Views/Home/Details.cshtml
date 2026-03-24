@@ -27,15 +27,17 @@
             </div>
             <div class="col-lg-5 product-info">
                 <h4 class="fw-bold mb-2">@Model.ProductName</h4>
-@*                 <small>Thương hiệu: @Model.Category?.CategoryName</small><br />
+                @*                 <small>Thương hiệu: @Model.Category?.CategoryName</small><br />
                 <small>Mã SP: @Model.ProductId</small>
                 <div class="fs-3 fw-bold my-4">
                     @Model.Price.ToString("N0") đ
                 </div> *@
                 <p class="text-secondary">
-                    @(string.IsNullOrEmpty(Model.Description)? "Sản phẩm đang được cập nhật mô tả chi tiết.": Model.Description)
+                    @(string.IsNullOrEmpty(Model.Description)
+                                        ? "Sản phẩm đang được cập nhật mô tả chi tiết."
+                                        : Html.Raw(Model.Description))
                 </p>
-               @*  <p class="small text-secondary">
+                @*  <p class="small text-secondary">
                     Còn lại: <strong>@Model.StockQuantity</strong> sản phẩm
                 </p> 
                 <div class="mb-3">
@@ -56,7 +58,7 @@
                     <strong>Màu sắc</strong><br />
                     <span class="d-inline-block rounded-circle bg-dark border" style="width:22px;height:22px;"></span>
                 </div> *@
-@*                 <div class="d-grid gap-3 mb-4">
+                @*                 <div class="d-grid gap-3 mb-4">
                     <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" class="btn btn-light py-3 fw-bold">
                         THÊM VÀO GIỎ
                     </a>

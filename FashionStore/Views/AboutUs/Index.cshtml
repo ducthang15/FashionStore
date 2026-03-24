@@ -65,7 +65,7 @@
 	</section>
 	<section class="journey-section">
 		<div class="container">
-			<h2 class="journey-title">OUR JOURNEY</h2>
+			<h2 class="journey-title pt-4 text-white">OUR JOURNEY</h2>
 
 			<div class="timeline-container">
 				<div class="timeline-item left">
@@ -165,7 +165,7 @@
 	<section class="craftsmanship-section">
 		<div class="container">
 			<div class="section-header text-center mt-5">
-				<h2>THE CRAFTSMANSHIP</h2>
+				<h1 class="mb-5">THE CRAFTSMANSHIP</h1>
 			</div>
 			<div class="craft-row">
 				<div class="craft-image">
@@ -202,7 +202,11 @@
 	<section class="cta py-5">
 		<h2 class="text-dark text-uppercase">Set An appointment</h2>
 		<div class="cta-buttons">
-			<button class="btn-book">BOOK NOW</button>
+			<button class="btn-book">
+				<a asp-controller="Appointment" asp-action="Index" class="text-decoration-none text-white">
+				BOOK AN APPOINTMENT
+			</a>
+			</button>
 		</div>
 	</section>
 	<section class="cta-inf">
