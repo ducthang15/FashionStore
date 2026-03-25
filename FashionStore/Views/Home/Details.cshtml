@@ -4,62 +4,53 @@
 }
 
 <div class="container-fluid product-dark py-5">
-    <div class="container py-5">
-        <nav class="mb-4 small">
-            <a asp-action="Index" class="text-decoration-none text-light">Trang chủ</a>
+    <div class="container mt-5">
+        <nav class="breadcrumb-title mb-4 small">
+
+            <a asp-controller="Home" asp-action="Index"
+               class="text-decoration-none text-light">
+                Trang chủ
+            </a>
             <span class="mx-2">/</span>
-            <span class="text-secondary">@Model.Category.CategoryName</span>
+            <a asp-controller="Suit" asp-action="Index"
+               class="text-decoration-none text-secondary">
+                @Model.Category.CategoryName
+            </a>
             <span class="mx-2">/</span>
-            <span class="text-secondary">@Model.ProductName</span>
+            <span class="text-white fw-semibold">
+                @Model.ProductName
+            </span>
         </nav>
         <div class="row g-4">
             <div class="col-lg-7 d-flex">
-                <div class="thumb-vertical me-3 d-grid">
+
+                <div class="d-flex flex-column gap-2 me-3">
                     @foreach (var img in Model.ProductImages)
                     {
-                        <img src="@img.ImageUrl" onclick="changeMainImage(this)" class="thumb-item" />
+                        <img src="@img.ImageUrl"
+                             onclick="changeMainImage(this)"
+                           
+                             width="70" height="70">
                     }
                 </div>
-                <div class="flex-grow-1 text-center">
-                    <img id="mainImage" src="@Model.ImageUrl" class="img-fluid" style="max-height: 700px; object-fit: contain;">
+                <div class="flex-grow-1 justify-content-center">
+                    <img id="mainImage"
+                         src="@Model.ImageUrl"
+                         class="img-fluid rounded border">
                 </div>
+
             </div>
             <div class="col-lg-5 product-info">
                 <h4 class="fw-bold mb-2">@Model.ProductName</h4>
                 <h5>Thương hiệu: @Model.Category?.CategoryName</h5><br />
                 <div>Mô tả sản phẩm:</div>
                 <p class="text-secondary">
-                   @Html.Raw(Model.Description)
+                    @Html.Raw(Model.Description)
                 </p>
                 <div class="text-center mt-5">
                     Liên hệ: <span class="text-danger">098 947 3579</span> để biết thêm chi tiết!
                 </div>
-                @*  <p class="small text-secondary">
-                    Còn lại: <strong>@Model.StockQuantity</strong> sản phẩm
-                </p> 
-                <div class="mb-3">
-                    <a href="#" class="text-info text-decoration-none">
-                        Nhắn để được tư vấn và nhận ưu đãi
-                    </a>
-                </div>
-                <div class="mb-3">
-                    <strong>Kích thước</strong>
-                    <div class="size-box mt-2">
-                        <span>Size S</span>
-                        <span>Size M</span>
-                        <span>Size L</span>
-                        <span>Size XL</span>
-                    </div>
-                </div>
-                <div class="mb-4">
-                    <strong>Màu sắc</strong><br />
-                    <span class="d-inline-block rounded-circle bg-dark border" style="width:22px;height:22px;"></span>
-                </div> *@
-                @*                 <div class="d-grid gap-3 mb-4">
-                    <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" class="btn btn-light py-3 fw-bold">
-                        THÊM VÀO GIỎ
-                    </a>
-                </div> *@
+
                 <hr class="border-secondary">
             </div>
         </div>

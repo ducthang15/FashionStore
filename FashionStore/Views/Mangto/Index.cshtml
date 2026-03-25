@@ -12,7 +12,24 @@
 <div class="banner-wrapper bg-image mb-5">
 	<img src="~/image/accesory.png" alt="accessories" />
 </div>
+@{
+	var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+	var action = ViewContext.RouteData.Values["action"]?.ToString();
+	var firstItem = Model.FirstOrDefault();
+}
 
+<nav class="breadcrumb-title container mb-4 small">
+	<a asp-controller="Home" asp-action="Index" class="text-decoration-none text-uppercase @(controller == "Home" ? "text-warning fw-semibold" : "text-light")">
+		Trang chủ
+	</a>
+	<span class="mx-2">/</span>
+	@if (firstItem?.Category != null)
+	{
+		<a asp-controller="Suit" asp-action="Index" class="text-decoration-none text-uppercase @(controller == "Suit" ? "text-warning fw-semibold" : "text-light")">
+			@firstItem.Category.CategoryName
+		</a>
+	}
+</nav>
 <div class="container">
 	@if (!Model.Any())
 	{
