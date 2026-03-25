@@ -14,7 +14,7 @@ namespace FashionStore.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index(int? id)
+        public async Task<IActionResult> Index(int? id, int page = 1)
         {
             ViewBag.Categories = await _context.NewsCategories.ToListAsync();
             var query = _context.News
@@ -24,8 +24,12 @@ namespace FashionStore.Controllers
             {
                 query = query.Where(n => n.NewsCategoryId == id);
             }
+            int pageSize = 10;
+            int totalItems = await query.CountAsync();
             var newsList = await query
                 .OrderByDescending(n => n.CreatedAt)
+                .Skip((page - 1) * pageSize)  
+                .Take(pageSize)
                 .ToListAsync();
             var featuredNews = await _context.News
                 .Where(n => n.IsPublished)
@@ -35,6 +39,8 @@ namespace FashionStore.Controllers
 
             ViewBag.FeaturedNews = featuredNews;
             ViewBag.CurrentCategoryId = id;
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalItems / pageSize);
             return View(newsList);
         }
 
