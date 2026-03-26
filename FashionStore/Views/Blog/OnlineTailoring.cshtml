@@ -1,46 +1,49 @@
 ﻿@model IEnumerable<FashionStore.Repository.Models.News>
 @{
-	ViewData["Title"] = ViewBag.CategoryName;
-	var index = 0;
+    ViewData["Title"] = ViewBag.CategoryName;
+    var index = 0;
 }
 <picture>
-	<source media="(min-width: 992px)"
-			srcset="/image/banner-main-project-2-(2).png">
-	<source media="(min-width: 576px)"
-			srcset="/image/banner-main-project-2-(2).png">
-	<img src="/image/banner-main-project-2-(2).png"
-		 class="img-fluid w-100"
-		 alt="Bespoke Tailoring">
+    <source media="(min-width: 992px)"
+            srcset="/image/banner-main-project-2-(2).png">
+    <source media="(min-width: 576px)"
+            srcset="/image/banner-main-project-2-(2).png">
+    <img src="/image/banner-main-project-2-(2).png"
+         class="img-fluid w-100"
+         alt="Bespoke Tailoring">
 </picture>
-<div class="container py-5">
+<h1 class="container text-dark text-uppercase mt-3">
+    @ViewBag.CategoryName
+</h1>
+<div class="container">
 
-	@foreach (var item in Model)
-	{
-		var isEven = index % 2 == 0;
-		<div class="row align-items-center mb-5">
-			<div class="col-lg-6 col-md-6 col-12 @(isEven ? "order-md-1" : "order-md-2") order-2">
-				<div class="pe-lg-5">
-					<h2 class="fw-bold">
-						<a asp-action="Details" asp-route-id="@item.NewsId" class="editorial-title text-decoration-none text-dark ">
-							@item.Title
-						</a>
-					</h2>
+    @foreach (var item in Model)
+    {
+        var isEven = index % 2 == 0;
+        <ar class="row align-items-center mb-5">
+            <div class="col-lg-6 col-md-6 col-12 @(isEven ? "order-md-1" : "order-md-2") order-2">
+                <div class="pe-lg-5">
+                    <h2 class="fw-bold">
+                        <a asp-action="Details" asp-route-slug="@item.Slug" class="editorial-title text-decoration-none text-dark ">
+                            @item.Title
+                        </a>
+                    </h2>
 
-					<p class="text-muted">
-						@item.Summary
-					</p>
-					<a asp-action="Details" asp-route-slug="@item.Slug" class="see-more-link text-decoration-none text-dark fw-semibold">
-						See more <i class="ri-arrow-right-wide-line"></i>
-					</a>
+                    <p class="text-muted">
+                        @item.Summary
+                    </p>
+                    <a asp-action="Details" asp-route-slug="@item.Slug" class="see-more-link text-decoration-none text-dark fw-semibold">
+                        See more <i class="ri-arrow-right-wide-line"></i>
+                    </a>
 
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6 col-12 @(isEven ? "order-md-2" : "order-md-1") order-1 mb-3 mb-md-0">
-				<div class="ratio ratio-16x9">
-					<img src="@item.ImageUrl" class="img-fluid" style="object-fit: cover;" alt="@item.Title">
-				</div>
-			</div>
-		</div>
-		index++;
-	}
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12 @(isEven ? "order-md-2" : "order-md-1") order-1 mb-3 mb-md-0">
+                <div class="ratio ratio-16x9">
+                    <img src="@item.ImageUrl" class="img-fluid" style="object-fit: cover;" alt="@item.Title">
+                </div>
+            </div>
+        </ar>
+        index++;
+    }
 </div>

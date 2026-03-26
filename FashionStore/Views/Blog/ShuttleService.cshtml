@@ -11,7 +11,10 @@
          class="img-fluid w-100"
          alt="Bespoke Tailoring">
 </picture>
-<div class="container py-5">
+<h1 class="container text-dark text-uppercase mt-3">
+    @ViewBag.CategoryName
+</h1>
+<div class="container">
 
     @{
         int index = 0;
@@ -24,7 +27,7 @@
             <div class="col-lg-6 col-md-6 col-12 @(isEven ? "order-md-1" : "order-md-2") order-2">
                 <div class="pe-lg-5">
                     <h2 class="fw-bold">
-                        <a asp-action="Details" asp-route-id="@item.NewsId" class="editorial-title text-decoration-none text-dark">
+                        <a asp-action="Details" asp-route-slug="@item.Slug" class="editorial-title text-decoration-none text-dark">
                             @item.Title
                         </a>
                     </h2>
