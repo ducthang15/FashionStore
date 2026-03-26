@@ -4,13 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FashionStore.Controllers
 {
-    public class CaravatController : Controller
+    public class CaravatController : BaseController
     {
-        private readonly fashionDbContext _context;
-
-        public CaravatController(fashionDbContext context)
+        public CaravatController(fashionDbContext context) : base(context)
         {
-            _context = context;
         }
 
         // 1. Trang danh sách (Chỉ hiện Đồng Hồ - CategoryId = 2)
@@ -21,7 +18,7 @@ namespace FashionStore.Controllers
                 .Include(p => p.Category)
                 .Where(p => p.CategoryId == 2) 
                 .ToListAsync();
-
+            ViewBag.CurrentCategoryId = 2;
             return View(dongHoList);
         }
 

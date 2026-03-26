@@ -4,13 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FashionStore.Controllers
 {
-    public class MangtoController : Controller
+    public class MangtoController : BaseController
     {
-        private readonly fashionDbContext _context;
-
-        public MangtoController(fashionDbContext context)
+        public MangtoController(fashionDbContext context) : base(context)
         {
-            _context = context;
         }
 
         public async Task<IActionResult> Index()
@@ -19,7 +16,7 @@ namespace FashionStore.Controllers
                 .Include(p => p.Category)
                 .Where(p => p.CategoryId == 13)
                 .ToListAsync();
-
+            ViewBag.CurrentCategoryId = 13;
             return View(ShoeList);
         }
     }

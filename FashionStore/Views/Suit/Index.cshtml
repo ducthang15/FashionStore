@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Custom Suit";
+    var categories = ViewBag.Categories as IEnumerable<FashionStore.Repository.Models.Category>;
 }
 <div class="video-bg">
     <video autoplay muted loop playsinline>
@@ -9,26 +10,32 @@
     </video>
     <div class="mobile-poster"></div>
 </div>
-<div class="banner-wrapper bg-image mb-2">
+<div class="banner-wrapper bg-image">
     <img src="~/image/accesory.png" alt="accessories" />
 </div>
 @{
     var controller = ViewContext.RouteData.Values["controller"]?.ToString();
     var action = ViewContext.RouteData.Values["action"]?.ToString();
-    var firstItem = Model.FirstOrDefault();
+    var currentCategoryId = ViewBag.CurrentCategoryId as int?;
 }
 
-<nav class="breadcrumb-title container mb-4 small">
-    <a asp-controller="Home" asp-action="Index" class="text-decoration-none text-uppercase @(controller == "Home" ? "text-warning fw-semibold" : "text-light")">
-        Trang chủ
-    </a>
-    <span class="mx-2">/</span>
-    @if (firstItem?.Category != null)
-    {
-        <a asp-controller="Suit" asp-action="Index" class="text-decoration-none text-uppercase @(controller == "Suit" ? "text-warning fw-semibold" : "text-light")">
-            @firstItem.Category.CategoryName
-        </a>
-    }
+<nav class="container-fluid breadcrumb-style mb-4 px-0">
+    <div class="d-flex d-md-flex d-none justify-content-center p-2">
+        <div class="d-flex gap-2 p-2 overflow-auto">
+            <a asp-controller="Home" asp-action="Index" class="breadcrumb-item-custom px-3 py-2 text-decoration-none border @(controller == "Home" ? "active" : "")">
+                Trang chủ
+            </a>
+            @if (categories != null)
+            {
+                foreach (var cate in categories)
+                {
+                    <a asp-controller="@cate.CategoryName" asp-action="Index" class="breadcrumb-item-custom px-3 py-2 text-decoration-none border @(currentCategoryId == cate.CategoryId ? "active" : "")">
+                        @cate.CategoryName
+                    </a>
+                }
+            }
+        </div>
+    </div>
 </nav>
 <div class="container">
     @if (!Model.Any())

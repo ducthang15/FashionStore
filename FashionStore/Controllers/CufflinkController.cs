@@ -4,13 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FashionStore.Controllers
 {
-    public class CufflinkController : Controller
+    public class CufflinkController : BaseController
     {
-        private readonly fashionDbContext _context;
-
-        public CufflinkController(fashionDbContext context)
+        public CufflinkController(fashionDbContext context) : base(context)
         {
-            _context = context;
         }
 
         public async Task<IActionResult> Index()
@@ -19,7 +16,7 @@ namespace FashionStore.Controllers
                 .Include(p => p.Category)
                 .Where(p => p.CategoryId == 1)
                 .ToListAsync();
-
+            ViewBag.CurrentCategoryId = 1;
             return View(cufflinksList);
         }
     }
