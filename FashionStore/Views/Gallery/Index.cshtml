@@ -1,51 +1,54 @@
 ﻿@model IEnumerable<FashionStore.Repository.Models.CustomerFeedback>
 @{
-	ViewData["Title"] = "Customer";
+    ViewData["Title"] = "Customer";
 }
-<picture>
-	<source media="(min-width: 992px)"
-			srcset="/image/banner-customer.png">
-	<source media="(min-width: 576px)"
-			srcset="/image/banner-customer.png">
-	<img src="/image/banner-customer.png"
-		 class="img-fluid w-100"
-		 alt="Bespoke Tailoring">
-</picture>
+<div class="position-relative text-white">
+    <picture>
+        <source media="(min-width: 992px)" srcset="/image/banner-customer.png">
+        <source media="(min-width: 576px)" srcset="/image/banner-customer.png">
+        <img src="/image/banner-customer.png" class="img-fluid w-100" alt="Khách hàng">
+    </picture>
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
+    <div class="position-absolute top-50 start-50 translate-middle text-center">
+        <h1 class="title-customer-signature fw-bold d-md-block d-none">CUSTOMER SIGNATURE</h1>
+        <p class="fs-4 d-md-block d-none">Crafted to reflect each client’s unique identity.</p>
+    </div>
+</div>
 <div class="gallery-customer">
-	<div class="container py-5">
-		@for (int i = 0; i < Model.Count(); i++)
-		{
-			var item = Model.ElementAt(i);
-			var isReverse = i % 2 == 1;
+    <div class="container py-5">
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            var item = Model.ElementAt(i);
+            var isReverse = i % 2 == 1;
 
-			<article class="editorial-item mb-4 @(isReverse ? "reverse" : "")">
-				@if (item.FeedbackImages != null && item.FeedbackImages.Any())
-				{
-					<div class="editorial-media">
-						<img src="@item.FeedbackImages.First().ImageUrl" alt="Feedback image" loading="lazy" />
-					</div>
-				}
-				<div class="editorial-content">
-					@if (!string.IsNullOrWhiteSpace(item.CustomerName))
-					{
-						<h2 class="editorial-title">
-							@item.CustomerName
-						</h2>
-					}
-					@if (!string.IsNullOrWhiteSpace(item.Content))
-					{
-						<p class="editorial-text">
-							@item.Content
-						</p>
-					}
-					<a href="#" class="editorial-link">
-						See more
-					</a>
-				</div>
+            <article class="editorial-item mb-4 bg-secondary-subtle p-2 @(isReverse ? "reverse" : "")">
+                @if (item.FeedbackImages != null && item.FeedbackImages.Any())
+                {
+                    <div class="editorial-media">
+                        <img src="@item.FeedbackImages.First().ImageUrl" alt="Feedback image" loading="lazy" />
+                    </div>
+                }
+                <div class="editorial-content bg-secondary-subtle p-2">
+                    @if (!string.IsNullOrWhiteSpace(item.CustomerName))
+                    {
+                        <h2 class="editorial-title">
+                            @item.CustomerName
+                        </h2>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(item.Content))
+                    {
+                        <p class="editorial-text">
+                            @item.Content
+                        </p>
+                    }
+                    <a href="#" class="editorial-link">
+                        See more
+                    </a>
+                </div>
 
-			</article>
-		}
-	</div>
+            </article>
+        }
+    </div>
 </div>
 
 

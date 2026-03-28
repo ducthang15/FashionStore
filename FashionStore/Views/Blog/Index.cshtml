@@ -52,13 +52,13 @@
 					{
 						<div class="col-md-6">
 							<div class="card h-100 shadow-sm border-0">
-								<img src="@item.ImageUrl" class="card-img-top" style="height: 200px; object-fit: cover;">
+								<img src="@item.ImageUrl" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Articles about customers and beautiful suits, weddings, festivals, formal, class, businessman, comfortable, well-groomed">
 								<div class="card-body">
 									<h5 class="card-title fw-bold">
 										<a asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none text-dark">@item.Title</a>
 									</h5>
 									<p class="card-text text-muted small text-truncate">@item.Summary</p>
-									<a asp-action="Details" asp-route-slug="@item.Slug" class="btn btn-outline-dark btn-sm">Read more</a>
+									<a asp-action="Details" asp-route-slug="@item.Slug" class="btn btn-outline-dark btn-sm">Read more <i class="ri-arrow-right-double-line"></i></a>
 								</div>
 							</div>
 						</div>
@@ -66,7 +66,7 @@
 				</div>
 				@if (!Model.Any())
 				{
-					<div class="alert alert-info">Không có bài viết nào.</div>
+					<div class="alert alert-info">There are no posts.</div>
 				}
 			</div>
 			<div class="col-md-4">
@@ -77,13 +77,18 @@
 				{
 					foreach (var item in ViewBag.FeaturedNews)
 					{
-						<div class="d-flex mb-3 align-items-center">
-							<img src="@item.ImageUrl" class="w-50" />
-							<a asp-action="Details" asp-route-slug="@item.Slug"
-							   class="text-white text-decoration-none small ms-3">
+						<a asp-action="Details" asp-route-slug="@item.Slug"
+						   class="d-flex mb-3 align-items-center text-white text-decoration-none">
+
+							<img src="@item.ImageUrl"
+								 style="width:80px; height:80px; object-fit:cover;"
+								 class="flex-shrink-0" />
+
+							<span class="small ms-3">
 								@item.Title
-							</a>
-						</div>
+							</span>
+
+						</a>
 					}
 				}
 			</div>
@@ -92,29 +97,20 @@
 <nav class="mt-4">
 	<ul class="pagination justify-content-center">
 		<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
-			<a class="page-link"
-			   asp-action="Index"
-			   asp-route-page="@(ViewBag.CurrentPage - 1)"
-			   asp-route-id="@ViewBag.CurrentCategoryId">
+			<a class="page-link" asp-action="Index" asp-route-page="@(ViewBag.CurrentPage - 1)"  asp-route-id="@ViewBag.CurrentCategoryId">
 				Previous
 			</a>
 		</li>
 		@for (int i = 1; i <= ViewBag.TotalPages; i++)
 		{
 			<li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
-				<a class="page-link"
-				   asp-action="Index"
-				   asp-route-page="@i"
-				   asp-route-id="@ViewBag.CurrentCategoryId">
+				<a class="page-link"  asp-action="Index" asp-route-page="@i" asp-route-id="@ViewBag.CurrentCategoryId">
 					@i
 				</a>
 			</li>
 		}
 		<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
-			<a class="page-link"
-			   asp-action="Index"
-			   asp-route-page="@(ViewBag.CurrentPage + 1)"
-			   asp-route-id="@ViewBag.CurrentCategoryId">
+			<a class="page-link" asp-action="Index" asp-route-page="@(ViewBag.CurrentPage + 1)" asp-route-id="@ViewBag.CurrentCategoryId">
 				Next
 			</a>
 		</li>

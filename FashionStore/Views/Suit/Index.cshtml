@@ -12,6 +12,10 @@
 </div>
 <div class="banner-wrapper bg-image">
     <img src="~/image/accesory.png" alt="accessories" />
+    <div class="position-absolute top-50 start-50 translate-middle text-center">
+        <h1 class="title-customer-signature fw-bold d-md-block d-none">CUSTOM TAILORED SUITS</h1>
+        <p class="fs-4 d-md-block d-none">Explore the unlim tailor suit collection where personal style is expressed through each subtle seam.</p>
+    </div>
 </div>
 @{
     var controller = ViewContext.RouteData.Values["controller"]?.ToString();
@@ -53,8 +57,6 @@
                     <div class="product-box h-100">
 
                         <a asp-controller="Home" asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none">
-
-                            <!-- Khung ảnh cố định -->
                             <div class="ratio ratio-3x4 product-img">
                                 <img src="@item.ImageUrl"
                                      alt="@item.ProductName"
