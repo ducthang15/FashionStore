@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace FashionStore.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductAdminController : BaseAdminController
     {
         private readonly fashionDbContext _context;
@@ -91,7 +92,6 @@ namespace FashionStore.Areas.Admin.Controllers
             string fileName = null;
             if (file != null)
             {
-                // Tạo tên file ngẫu nhiên để không trùng (VD: kjh123-anh.jpg)
                 string uploadDir = Path.Combine(_webHostEnvironment.WebRootPath, "images", "products");
                 fileName = Guid.NewGuid().ToString() + "-" + file.FileName;
                 string filePath = Path.Combine(uploadDir, fileName);
