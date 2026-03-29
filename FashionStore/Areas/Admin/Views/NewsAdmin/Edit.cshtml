@@ -1,0 +1,46 @@
+﻿@model FashionStore.Repository.Models.News
+@{
+    ViewData["Title"] = "Chỉnh sửa bài viết";
+}
+
+<div class="card shadow border-0 p-4">
+    <h3 class="mb-4 text-warning">Chỉnh sửa bài viết</h3>
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="NewsId" />
+        <div class="mb-3">
+            <label class="fw-bold">Tiêu đề</label>
+            <input asp-for="Title" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label class="fw-bold">Danh mục</label>
+            <select asp-for="NewsCategoryId" class="form-select" asp-items="ViewBag.NewsCategoryId"></select>
+        </div>
+        <div class="mb-3">
+            <label class="fw-bold">Ảnh hiện tại</label><br />
+            <img src="@Model.ImageUrl" width="150" class="mb-2 rounded" />
+        </div>
+        <div class="mb-3">
+            <label class="fw-bold">Đổi ảnh (nếu cần)</label>
+            <input type="file" name="file" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="fw-bold">Tóm tắt</label>
+            <textarea asp-for="Summary" class="form-control"></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="fw-bold">Nội dung</label>
+            <textarea asp-for="Content" class="form-control" rows="10"></textarea>
+        </div>
+        <div class="form-check mb-3">
+            <input asp-for="IsPublished" class="form-check-input" />
+            <label class="form-check-label">Public</label>
+        </div>
+        <button type="submit" class="btn btn-warning">Cập nhật</button>
+        <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/js/blog.js" defer></script>
+}
+<script src="https://cdn.tiny.cloud/1/gg9075l09p561nfyr6m1gyxv5n46i1jy70xgcrj4qgi98ils/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>

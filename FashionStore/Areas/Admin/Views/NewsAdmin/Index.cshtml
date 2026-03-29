@@ -75,9 +75,7 @@
                                 </td>
 
                                 <td class="text-end pe-4">
-                                    <a href="#" class="btn btn-sm btn-outline-primary me-1" title="Sửa bài viết">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </a>
+                                    <a asp-action="Edit" asp-route-id="@item.NewsId" class="btn btn-sm btn-warning">Edit</a>
 
                                     <form asp-action="Delete" asp-route-id="@item.NewsId" method="post" class="d-inline"
                                           onsubmit="return confirm('Bạn có chắc chắn muốn xóa bài viết: @item.Title?');">

@@ -86,21 +86,18 @@
 $(() => ProductImageManager.init());
 
 const SummernoteManager = {
-    // 1. Cấu hình các selector để dễ quản lý
     selectors: {
         editor: '#Description',
         uploadUrl: '/Admin/Upload/UploadImage'
     },
 
-    // 2. Hàm khởi tạo
     init() {
         const $editor = $(this.selectors.editor);
-        if (!$editor.length) return; // Bảo vệ nếu trang không có editor
+        if (!$editor.length) return; 
 
         this.initEditor($editor);
     },
 
-    // 3. Cấu hình chi tiết cho Summernote
     initEditor($el) {
         $el.summernote({
             height: 400,
@@ -115,7 +112,7 @@ const SummernoteManager = {
                 ['view', ['fullscreen', 'codeview', 'help']]
             ],
             callbacks: {
-                // Sử dụng arrow function để giữ đúng context 'this'
+
                 onImageUpload: (files) => {
                     Array.from(files).forEach(file => this.uploadImage($el, file));
                 }
@@ -123,7 +120,6 @@ const SummernoteManager = {
         });
     },
 
-    // 4. Hàm xử lý AJAX upload ảnh riêng biệt
     uploadImage($el, file) {
         const data = new FormData();
         data.append("file", file);

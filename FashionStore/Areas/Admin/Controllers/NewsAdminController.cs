@@ -57,6 +57,51 @@ namespace FashionStore.Areas.Admin.Controllers
             ViewBag.NewsCategoryId = new SelectList(_context.NewsCategories, "NewsCategoryId", "CategoryName", news.NewsCategoryId);
             return View(news);
         }
+        public async Task<IActionResult> Edit(int id)
+        {
+            var news = await _context.News.FindAsync(id);
+            if (news == null) return NotFound();
+
+            ViewBag.NewsCategoryId = new SelectList(_context.NewsCategories, "NewsCategoryId", "CategoryName", news.NewsCategoryId);
+            return View(news);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, News news, IFormFile? file)
+        {
+            if (id != news.NewsId) return NotFound();
+            ModelState.Remove("NewsCategory");
+            var existingNews = await _context.News.AsNoTracking().FirstOrDefaultAsync(n => n.NewsId == id);
+            if (existingNews == null) return NotFound();
+            if (string.IsNullOrEmpty(news.Slug))
+            {
+                news.Slug = SlugHelper.GenerateSlug(news.Title);
+            }
+
+            if (_context.News.Any(n => n.Slug == news.Slug && n.NewsId != id))
+            {
+                news.Slug += "-" + DateTime.Now.Ticks;
+            }
+
+            if (ModelState.IsValid)
+            {
+                if (file != null)
+                {
+                    news.ImageUrl = await UploadFile(file);
+                }
+                else
+                {
+                    news.ImageUrl = existingNews.ImageUrl;
+                }
+                news.CreatedAt = existingNews.CreatedAt;
+
+                _context.Update(news);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+            ViewBag.NewsCategoryId = new SelectList(_context.NewsCategories, "NewsCategoryId", "CategoryName", news.NewsCategoryId);
+            return View(news);
+        }
         public async Task<IActionResult> Delete(int id)
         {
             var news = await _context.News.FindAsync(id);

@@ -51,7 +51,12 @@ namespace FashionStore.Controllers
                 .FirstOrDefaultAsync(n => n.Slug == slug);
 
             if (news == null) return NotFound();
+            var suitProducts = await _context.Products
+               .Where(p => p.CategoryId == 8)
+               .Take(5)
+               .ToListAsync();
 
+            ViewBag.SuitProducts = suitProducts;
             return View(news);
         }
         public async Task<IActionResult> ShuttleService()
