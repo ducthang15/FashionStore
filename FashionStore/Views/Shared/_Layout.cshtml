@@ -185,7 +185,7 @@
                     </ul>
                 </li>
             </ul>
-            <a class="navbar-brand position-absolute top-50 start-50 translate-middle fw-bold fs-3"
+            <a class="navbar-brand position-absolute top-50 start-50 translate-middle fw-bold fs-6"
                asp-controller="Home" asp-action="Index">
                 UNLIM TAILOR
             </a>
@@ -238,13 +238,15 @@
             <div class="row">
                 <div class="col-md-3 mb-3">
                     <h5 class="text-uppercase fw-bold mb-3">UNLIM TAILOR</h5>
-                    <p>We don't wish to have many customers, but we try our best to have customers for life</p>
-                    <p><i class="fa-solid fa-location-dot me-2"></i> 105-107 Kim Ma Street, Ba Dinh District, Hanoi</p>
-                    <p><i class="fa-solid fa-phone me-2"></i>098 947 3579</p>
+                   <div class="footer-block-details-content list-unstyled">
+                        <p>We don't wish to have many customers, but we try our best to have customers for life</p>
+                        <p><i class="fa-solid fa-location-dot me-2"></i> 105-107 Kim Ma Street, Ba Dinh District, Hanoi</p>
+                        <p><i class="fa-solid fa-phone me-2"></i>098 947 3579</p>
+                   </div>
                 </div>
                 <div class="col-md-3 mb-3">
                     <h5 class="text-uppercase fw-bold mb-3">How May We Help You?</h5>
-                    <ul class="list-unstyled">
+                    <ul class="footer-block-details-content list-unstyled">
                         <li><a href="/" class="text-white text-decoration-none mb-2 d-block">Home</a></li>
                         <li><a href="/aboutus" class="text-white text-decoration-none mb-2 d-block">About Us</a></li>
                         <li><a href="/" class="text-white text-decoration-none mb-2 d-block">Return Policy</a></li>
@@ -253,7 +255,7 @@
                 </div>
                 <div class="col-md-3 mb-3">
                     <h5 class="text-uppercase fw-bold mb-3">About us</h5>
-                    <ul class="list-unstyled">
+                    <ul class="footer-block-details-content list-unstyled">
                         <li><a href="/appointment" class="text-white text-decoration-none mb-2 d-block">Booking</a></li>
                         <li><a href="/" class="text-white text-decoration-none mb-2 d-block">FAQs</a></li>
                         <li><a href="/" class="text-white text-decoration-none mb-2 d-block">Partners</a></li>
@@ -261,20 +263,33 @@
                     </ul>
                 </div>
                 <div class="col-md-3 mb-3">
-                    <h5 class="text-uppercase fw-bold mb-3">Flow us</h5>
-                    <div>
-                        <a href="https://www.facebook.com/MAYDOSUITCAOCAP" class="btn btn-outline-light me-2 "><i class="fa-brands fa-facebook-f"></i><span class="visually-hidden">Facebook</span></a>
-                        <a href="https://www.instagram.com/unlim.tailor/" class="btn btn-outline-light me-2 "><i class="fa-brands fa-instagram"></i><span class="visually-hidden">Instagram</span></a>
-                        <a href="https://wa.me/84989473579" class="btn btn-outline-light me-2 "><i class="fa-brands fa-whatsapp"></i><span class="visually-hidden">Facebook</span></a>
-                        <a href="https://www.tripadvisor.com/Attraction_Review-g293924-d33295118-Reviews-Unlim_Tailor-Hanoi.html" class="btn btn-outline-light me-2"><img src="~/image/tripadvisor.png" class="tripadvisor" alt="tripadvisor" /><span class="visually-hidden">Tripadvisor</span></a>
-                        <a href="https://zalo.me/0989473579" class="btn btn-outline-light me-2"><img src="~/image/icons8-zalo-50.png" class="zalo" alt="zalo" /><span class="visually-hidden">Zalo</span></a>
-                    </div>
-                    <div class="mt-3">
-                        <p class="small text-white">Subscribe to promotions</p>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Email...">
-                            <button class="btn btn-warning" type="button">Send</button>
-                        </div>
+                    <h5 class="text-uppercase fw-bold mb-3">Follow Us</h5>
+                    <div class="d-flex gap-2">
+                        <a href="https://www.facebook.com/MAYDOSUITCAOCAP"
+                           class="social-btn">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+
+                        <a href="https://www.instagram.com/unlim.tailor/"
+                           class="social-btn">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="https://wa.me/84989473579"
+                           class="social-btn">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+
+                        <a href="https://www.tripadvisor.com/Attraction_Review-g293924-d33295118-Reviews-Unlim_Tailor-Hanoi.html"
+                           class="social-btn">
+                            <img src="~/image/tripadvisor.png" class="icon-img" />
+                        </a>
+
+                        <a href="https://zalo.me/0989473579"
+                           class="social-btn">
+                            <img src="~/image/icons8-zalo-50.png" class="icon-img" />
+                        </a>
+
                     </div>
                 </div>
             </div>
@@ -304,12 +319,10 @@
         </div>
     </footer>
     <div class="offcanvas offcanvas-start luxury-offcanvass" tabindex="-1" id="mobileMenu">
-
         <div class="offcanvas-header border-bottom">
-            <h5 class="fw-bold mb-0">TAILORING</h5>
+            <h5 class="fw-bold mb-0">UNLIM TAILOR</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
-
         <div class="offcanvas-body">
             <ul class="nav flex-column text-uppercase">
 

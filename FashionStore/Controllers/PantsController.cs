@@ -10,14 +10,35 @@ namespace FashionStore.Controllers
         {
         }
 
-        public async Task<IActionResult> Index()
+         public async Task<IActionResult> Index(string? sort, int page = 1)
         {
-            var ShoeList = await _context.Products
+            int pageSize = 8;
+
+            var query = _context.Products
                 .Include(p => p.Category)
-                .Where(p => p.CategoryId == 9)
+                .Where(p => p.CategoryId == 9);
+            if (sort == "name")
+            {
+                query = query.OrderBy(p => p.ProductName);
+            }
+            else
+            {
+                query = query.OrderByDescending(p => p.CreatedAt ?? DateTime.MinValue);
+            }
+
+            int totalItems = await query.CountAsync();
+
+            var products = await query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+            ViewBag.CurrentSort = sort;
             ViewBag.CurrentCategoryId = 9;
-            return View(ShoeList);
+
+            return View(products);
         }
     }
 }

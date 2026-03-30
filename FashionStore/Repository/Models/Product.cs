@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FashionStore.Repository.Models;
 
+[Table("Products", Schema = "dbo")]
 public partial class Product
 {
     [Key]
@@ -28,6 +29,9 @@ public partial class Product
     [StringLength(200)]
     [Unicode(false)]
     public string? Slug { get; set; }
+
+    [Column(TypeName = "datetime")]
+    public DateTime? CreatedAt { get; set; }
 
     [ForeignKey("CategoryId")]
     [InverseProperty("Products")]

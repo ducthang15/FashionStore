@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FashionStore.Repository.Models;
 
+[Table("Contacts", Schema = "dbo")]
 public partial class Contact
 {
     [Key]

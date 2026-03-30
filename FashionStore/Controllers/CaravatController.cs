@@ -9,17 +9,35 @@ namespace FashionStore.Controllers
         public CaravatController(fashionDbContext context) : base(context)
         {
         }
-
-        // 1. Trang danh sách (Chỉ hiện Đồng Hồ - CategoryId = 2)
-        public async Task<IActionResult> Index()
+         public async Task<IActionResult> Index(string? sort, int page = 1)
         {
-            // Lọc dữ liệu: Chỉ lấy sản phẩm có CategoryId == 2
-            var dongHoList = await _context.Products
+            int pageSize = 8;
+
+            var query = _context.Products
                 .Include(p => p.Category)
-                .Where(p => p.CategoryId == 2) 
+                .Where(p => p.CategoryId == 2);
+            if (sort == "name")
+            {
+                query = query.OrderBy(p => p.ProductName);
+            }
+            else
+            {
+                query = query.OrderByDescending(p => p.CreatedAt ?? DateTime.MinValue);
+            }
+
+            int totalItems = await query.CountAsync();
+
+            var products = await query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+            ViewBag.CurrentSort = sort;
             ViewBag.CurrentCategoryId = 2;
-            return View(dongHoList);
+
+            return View(products);
         }
 
         // 2. Tái sử dụng trang chi tiết (Không cần viết lại)

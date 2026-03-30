@@ -27,7 +27,7 @@
     <div class="d-flex d-md-flex d-none justify-content-center p-2">
         <div class="d-flex gap-2 p-2 overflow-auto">
             <a asp-controller="Home" asp-action="Index" class="breadcrumb-item-custom px-3 py-2 text-decoration-none border @(controller == "Home" ? "active" : "")">
-                Trang chủ
+                Home
             </a>
             @if (categories != null)
             {
@@ -41,6 +41,16 @@
         </div>
     </div>
 </nav>
+@* <form method="get" class="mb-3 container">
+    <select name="sort" onchange="this.form.submit()" class="form-select w-auto">
+        <option value="" selected="@(ViewBag.CurrentSort == null)">
+            Mới nhất
+        </option>
+        <option value="name" selected="@(ViewBag.CurrentSort?.ToString() == "name")">
+            Tên A-Z
+        </option>
+    </select>
+</form> *@
 <div class="container">
     @if (!Model.Any())
     {
@@ -78,3 +88,34 @@
         </div>
     }
 </div>
+<nav class="mt-4">
+    <ul class="pagination custom-pagination justify-content-center">
+        <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+            <a class="page-link"
+               asp-action="Index"
+               asp-route-page="@(ViewBag.CurrentPage - 1)"
+               asp-route-sort="@ViewBag.CurrentSort">
+                &lsaquo;
+            </a>
+        </li>
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                <a class="page-link"
+                   asp-action="Index"
+                   asp-route-page="@i"
+                   asp-route-sort="@ViewBag.CurrentSort">
+                    @i
+                </a>
+            </li>
+        }
+        <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+            <a class="page-link"
+               asp-action="Index"
+               asp-route-page="@(ViewBag.CurrentPage + 1)"
+               asp-route-sort="@ViewBag.CurrentSort">
+                &rsaquo;
+            </a>
+        </li>
+    </ul>
+</nav>

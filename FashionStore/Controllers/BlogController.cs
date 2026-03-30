@@ -53,7 +53,7 @@ namespace FashionStore.Controllers
             if (news == null) return NotFound();
             var suitProducts = await _context.Products
                .Where(p => p.CategoryId == 8)
-               .Take(5)
+               .Take(8)
                .ToListAsync();
 
             ViewBag.SuitProducts = suitProducts;

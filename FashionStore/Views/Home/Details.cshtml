@@ -2,18 +2,14 @@
 @{
     ViewData["Title"] = Model.ProductName;
 }
-
 <div class="container-fluid product-dark py-5">
     <div class="container mt-5">
         <nav class="breadcrumb-title mb-4 small">
-
-            <a asp-controller="Home" asp-action="Index"
-               class="text-decoration-none text-light">
+            <a asp-controller="Home" asp-action="Index" class="text-decoration-none text-light text-uppercase">
                 Trang chủ
             </a>
             <span class="mx-2">/</span>
-            <a asp-controller="Suit" asp-action="Index"
-               class="text-decoration-none text-secondary text-uppercase">
+            <a asp-controller="Suit" asp-action="Index" class="text-decoration-none text-secondary text-uppercase fw-bold">
                 @Model.Category.CategoryName
             </a>
             <span class="mx-2">/</span>
@@ -23,35 +19,42 @@
         </nav>
         <div class="row g-4">
             <div class="col-lg-7 d-flex">
-
-                <div class="d-flex flex-column gap-2 me-3">
+                <div class="d-flex flex-column gap-2 me-5">
                     @foreach (var img in Model.ProductImages)
                     {
-                        <img src="@img.ImageUrl"
-                             onclick="changeMainImage(this)"
-                           
-                             width="70" height="70">
+                        <img src="@img.ImageUrl" onclick="changeMainImage(this)" width="70" height="70">
                     }
                 </div>
                 <div class="flex-grow-1 justify-content-center">
-                    <img id="mainImage"
-                         src="@Model.ImageUrl"
-                         class="img-fluid rounded border">
+                    <img id="mainImage" src="@Model.ImageUrl" class="img-fluid rounded border w-75">
                 </div>
-
             </div>
             <div class="col-lg-5 product-info">
                 <h1 class="fw-bold mb-2">@Model.ProductName</h1>
-                <div><strong class="text-danger fw-bold fs-5"> Danh mục: </strong>@Model.Category?.CategoryName</div>
-                <div class="text-danger fw-bold fs-5">Mô tả sản phẩm:</div>
-                <p class="text-secondary">
+                <div class="text-secondary">
+                    <strong class="text-danger fw-bold fs-5">
+                        Category: <br />
+                </strong>@Model.Category?.CategoryName</div>
+                <div class="text-danger fw-bold fs-5">Product description:</div>
+                <span class="text-secondary">
                     @Html.Raw(Model.Description)
-                </p>
+                </span>
                 <div class="text-center mt-5">
                     Liên hệ: <span class="text-danger">098 947 3579</span> để biết thêm chi tiết!
                 </div>
-
                 <hr class="border-secondary">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-dark border-secondary">
+            <div class="modal-header border-0">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0 overflow-hidden text-center">
+                <img id="modalImage" src="" class="img-fluid" style="cursor: zoom-in; transition: transform 0.2s ease;">
             </div>
         </div>
     </div>
@@ -59,8 +62,9 @@
 <script>
     function changeMainImage(el) {
         document.getElementById("mainImage").src = el.src;
-        document.querySelectorAll(".thumb-item")
-            .forEach(x => x.classList.remove("active"));
-        el.classList.add("active");
+
+    // Xóa class active ở các ảnh cũ và thêm vào ảnh vừa chọn
+    document.querySelectorAll(".thumb-item").forEach(x => x.classList.remove("active"));
+    el.classList.add("active");
     }
 </script>

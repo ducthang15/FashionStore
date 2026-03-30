@@ -27,7 +27,7 @@
 	<div class="d-flex d-md-flex d-none justify-content-center p-2">
 		<div class="d-flex gap-2 p-2 overflow-auto">
 			<a asp-controller="Home" asp-action="Index" class="breadcrumb-item-custom px-3 py-2 text-decoration-none border @(controller == "Home" ? "active" : "")">
-				Trang chủ
+				Home
 			</a>
 			@if (categories != null)
 			{
@@ -45,7 +45,7 @@
 	@if (!Model.Any())
 	{
 		<div class="alert alert-info text-center">
-			Hiện chưa có sản phẩm.
+			Hiện chưa có sản phẩm!
 		</div>
 	}
 	else
@@ -81,3 +81,34 @@
 		</div>
 	}
 </div>
+<nav class="mt-4">
+	<ul class="pagination custom-pagination justify-content-center">
+		<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+			<a class="page-link"
+			   asp-action="Index"
+			   asp-route-page="@(ViewBag.CurrentPage - 1)"
+			   asp-route-sort="@ViewBag.CurrentSort">
+				&lsaquo;
+			</a>
+		</li>
+		@for (int i = 1; i <= ViewBag.TotalPages; i++)
+		{
+			<li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+				<a class="page-link"
+				   asp-action="Index"
+				   asp-route-page="@i"
+				   asp-route-sort="@ViewBag.CurrentSort">
+					@i
+				</a>
+			</li>
+		}
+		<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+			<a class="page-link"
+			   asp-action="Index"
+			   asp-route-page="@(ViewBag.CurrentPage + 1)"
+			   asp-route-sort="@ViewBag.CurrentSort">
+				&rsaquo;
+			</a>
+		</li>
+	</ul>
+</nav>

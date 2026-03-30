@@ -54,7 +54,7 @@ $(document).on('click', '#btnDeleteSelect', function (e) {
         confirmButtonColor: '#d33'
     }).then((result) => {
         if (result.isConfirmed) {
-            $(this).closest('form').submit();
+            $(this).closest('form').trigger('submit');
         }
     });
 });
@@ -72,5 +72,41 @@ $(document).on('click', '#btnDeleteAll', function () {
         if (result.isConfirmed) {
             window.location.href = "/Admin/ProductAdmin/DeleteAll";
         }
+    });
+});
+$(function () {
+    const $mainImg = $("#mainImage");
+    const $modalImg = $("#modalImage");
+    const $modalEle = $('#imageModal');
+    let scale = 1;
+    $mainImg.on("click", function () {
+        const currentSrc = $(this).attr("src");
+
+        $modalImg.attr("src", currentSrc).css({
+            "transform": "scale(1)",
+            "transform-origin": "center center"
+        });
+
+        scale = 1;
+        $modalEle.modal('show');
+    });
+    $modalImg.on("wheel", function (e) {
+        e.preventDefault();
+        const oe = e.originalEvent;
+        const offset = $(this).offset();
+        const x = ((oe.pageX - offset.left) / $(this).width()) * 100;
+        const y = ((oe.pageY - offset.top) / $(this).height()) * 100;
+        scale += oe.deltaY < 0 ? 0.2 : -0.2;
+        scale = Math.max(1, Math.min(scale, 5));
+
+        $(this).css({
+            "transform-origin": `${x}% ${y}%`,
+            "transform": `scale(${scale})`,
+            "cursor": scale > 1 ? "zoom-out" : "zoom-in"
+        });
+    });
+    $modalEle.on('hidden.bs.modal', function () {
+        scale = 1;
+        $modalImg.css("transform", "scale(1)");
     });
 });
