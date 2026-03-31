@@ -21,8 +21,8 @@
             <h5 class="mt-3 text-dark">@Model.Summary</h5>
             <p class="text-muted"><i class="fa-regular fa-clock"></i> @Model.CreatedAt?.ToString("dd/MM/yyyy")</p>
             <hr>
-            <div class="blog-content fs-5 text-dark" style="line-height: 1.8;">
-                @Html.Raw(Model.Content?.Replace("\n", "<br>"))
+            <div class="blog-content text-dark">
+                @Html.Raw(Model.Content)
             </div>
             <div class="border-top">
 
