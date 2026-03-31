@@ -46,6 +46,21 @@ namespace FashionStore.Controllers
         {
             return View();
         }
+        [Route("return-policy")]
+        public IActionResult ReturnPolicy()
+        {
+            return View();
+        }
+        [Route("care")]
+        public IActionResult  Care()
+        {
+            return View();
+        }
+        [Route("FAQs")]
+        public IActionResult FAQs()
+        {
+            return View();
+        }   
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

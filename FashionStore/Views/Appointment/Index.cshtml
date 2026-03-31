@@ -15,8 +15,8 @@
     <img src="/image/appoinment.png" class="img-fluid w-100" alt="Bespoke Tailoring">
 </picture>
 <div class="make-appoinment pb-4">
-    <div class="container text-center fs-5 col-md-8 mt-5">
-        <p class="lh-lg text-dark">
+    <div class="container text-center fs-5 col-md-8 mt-3">
+        <p class="text-dark">
             If you would like to schedule a private appointment, please fill out the information below and our consultants will respond shortly.
             Please select a time to schedule your appointment. Let us know below.
         </p>
@@ -35,25 +35,25 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-floating mb-4">
-                                            <input asp-for="FullName" class="form-control rounded-1 bg-light" placeholder="Họ và tên">
+                                            <input asp-for="FullName" class="form-control rounded-1 bg-light" placeholder="Name">
                                             <label asp-for="FullName">Name *</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-4">
-                                            <input asp-for="PhoneNumber" class="form-control rounded-1 bg-light" placeholder="Số điện thoại">
+                                            <input asp-for="PhoneNumber" class="form-control rounded-1 bg-light" placeholder="Number">
                                             <label asp-for="PhoneNumber">Phone number*</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-4">
-                                            <input asp-for="Address" class="form-control rounded-1 bg-light" placeholder="Địa chỉ (Tùy chọn)">
-                                            <label asp-for="Address">Your address *</label>
+                                            <input asp-for="Address" class="form-control rounded-1 bg-light" placeholder="Address">
+                                            <label asp-for="Address">Your address *(optional)</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating mb-4">
-                                            <input asp-for="AppointmentDate" id="appointmentDate" type="text" class="form-control rounded-1 bg-light" placeholder="Ngày giờ" />
+                                            <input asp-for="AppointmentDate" id="appointmentDate" type="text" class="form-control rounded-1 bg-light" placeholder="Date and time" />
                                             <label asp-for="PhoneNumber">Date and time appointment *</label>
                                             <span asp-validation-for="AppointmentDate" class="text-danger small"></span>
                                         </div>
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="d-grid d-md-block">
                                 <button type="submit" class="send-btn text-white px-4 border py-3 text-uppercase">
-                                    Submit
+                                        CONFIRM APPOINTMENT
                                 </button>
                                 </div>
                             </form>

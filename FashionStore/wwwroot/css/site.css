@@ -210,7 +210,7 @@ a.dropdown-item {
     .luxury-nav.scrolled {
         background: rgb(0 0 0 / 36%);
         backdrop-filter: blur(6px);
-        padding: 25px 0;
+        padding: 35px 0;
     }
 
     .luxury-nav .nav-link {
@@ -600,6 +600,7 @@ img.zalo {
 }
 
 .send-btn {
+    letter-spacing: 2px;
     background-color: #3a1d0f;
 }
 
@@ -946,6 +947,61 @@ img.zalo {
     box-shadow: 0 10px 25px rgba(0,0,0,0.35);
 }
 
+.hero-section {
+    background-color: #1F0B02;
+    color: #c5a059;
+    padding: 75px 0;
+    margin-bottom: 50px;
+}
+
+.policy-card {
+    border: none;
+    border-bottom: 1px solid #eee;
+    border-radius: 0;
+    transition: all 0.3s ease;
+}
+
+    .policy-card:hover {
+        background-color: #fcf9f3;
+    }
+
+.icon-box {
+    color: #c5a059;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.accent-line {
+    width: 50px;
+    height: 2px;
+    background-color: #c5a059;
+    margin: 20px 0;
+}
+
+.sidebar-contact {
+    background-color: #f8f9fa;
+    border: 1px solid #c5a059;
+    padding: 30px;
+    position: sticky;
+    top: 20px;
+}
+
+.btn-gold {
+    background-color: #c5a059;
+    color: white;
+    border: none;
+    border-radius: 0;
+    padding: 10px 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+    .btn-gold:hover {
+        background-color: #a68545;
+        color: white;
+    }
+
+
 /*mobile*/
 @media (max-width: 576px) {
 
@@ -998,7 +1054,6 @@ img.zalo {
 
 .editorial-title {
     font-family: 'EB Garamond', Garamond, Baskerville, 'Times New Roman', serif;
-    font-size: 40px;
     font-weight: 400;
     text-transform: capitalize;
     color: #121212;
@@ -1070,7 +1125,6 @@ img.zalo {
             direction: ltr;
         }
 
-/* IMAGE */
 .editorial-media img {
     width: 100%;
     height: auto;
@@ -1078,14 +1132,12 @@ img.zalo {
     display: block;
 }
 
-/* CONTENT */
 .editorial-content {
     max-width: 420px;
 }
 
 .editorial-title {
     font-family: "Playfair Display", serif;
-    font-size: 2rem;
     font-weight: 500;
     margin-bottom: 1rem;
 }

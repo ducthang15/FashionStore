@@ -249,15 +249,16 @@
                     <ul class="footer-block-details-content list-unstyled">
                         <li><a href="/" class="text-white text-decoration-none mb-2 d-block">Home</a></li>
                         <li><a href="/aboutus" class="text-white text-decoration-none mb-2 d-block">About Us</a></li>
-                        <li><a href="/" class="text-white text-decoration-none mb-2 d-block">Return Policy</a></li>
-                        <li><a href="/contact" class="text-white text-decoration-none d-block">Contact</a></li>
+                        <li><a asp-controller="Home" asp-action="ReturnPolicy" class="text-white text-decoration-none mb-2 d-block">Return Policy</a></li>
+                        <li><a asp-controller="Home" asp-action="Care" class="text-white text-decoration-none d-block mb-2 d-block">Care & Maintenance</a></li>
+                        <li><a href="/contact" class="text-white text-decoration-none d-block mb-2">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 mb-3">
                     <h5 class="text-uppercase fw-bold mb-3">About us</h5>
                     <ul class="footer-block-details-content list-unstyled">
                         <li><a href="/appointment" class="text-white text-decoration-none mb-2 d-block">Booking</a></li>
-                        <li><a href="/" class="text-white text-decoration-none mb-2 d-block">FAQs</a></li>
+                        <li><a asp-controller="Home" asp-action="FAQs" class="text-white text-decoration-none mb-2 d-block">FAQs</a></li>
                         <li><a href="/" class="text-white text-decoration-none mb-2 d-block">Partners</a></li>
                         <li><a href="/" class="text-white text-decoration-none mb-2 d-block">Careers</a></li>
                     </ul>

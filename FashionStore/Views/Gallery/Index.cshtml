@@ -31,9 +31,9 @@
                 <div class="editorial-content bg-secondary-subtle p-2">
                     @if (!string.IsNullOrWhiteSpace(item.CustomerName))
                     {
-                        <h2 class="editorial-title">
+                        <h1 class="editorial-title">
                             @item.CustomerName
-                        </h2>
+                        </h1>
                     }
                     @if (!string.IsNullOrWhiteSpace(item.Content))
                     {
@@ -41,9 +41,6 @@
                             @item.Content
                         </p>
                     }
-                    <a href="#" class="editorial-link">
-                        See more
-                    </a>
                 </div>
 
             </article>
