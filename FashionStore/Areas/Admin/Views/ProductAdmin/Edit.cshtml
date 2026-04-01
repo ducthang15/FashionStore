@@ -3,10 +3,12 @@
 @{
     ViewData["Title"] = "Sửa sản phẩm";
 }
+
 <div class="container mt-4">
-    <h2><i class="fa-solid fa-pen text-warning"></i> Sửa Thông Tin: @Model.ProductName</h2>
+    <h2>Edit: @Model.ProductName</h2>
+
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <form asp-action="Edit" method="post" enctype="multipart/form-data" class="shadow-sm p-4 bg-light rounded">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <input type="hidden" asp-for="ProductId" />
@@ -14,25 +16,65 @@
                     <label asp-for="ProductName" class="form-label fw-bold">Tên sản phẩm</label>
                     <input asp-for="ProductName" class="form-control" required />
                 </div>
-                <div class="mb-3">
-                    <label asp-for="CategoryId" class="form-label fw-bold">Danh mục</label>
-                    <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.CategoryId"></select>
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label asp-for="Price" class="form-label fw-bold">Giá bán</label>
+                        <input asp-for="Price" type="number" class="form-control" required />
+                    </div>
+
+                    <div class="mb-3 col-md-4">
+                        <label asp-for="StockQuantity" class="form-label fw-bold">Tồn kho</label>
+                        <input asp-for="StockQuantity" type="number" class="form-control" required />
+                    </div>
+
+                    <div class="mb-3 col-md-4">
+                        <label asp-for="CategoryId" class="form-label fw-bold">Danh mục</label>
+                        <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.CategoryId">
+                            <option value="">-- Chọn danh mục --</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="Price" class="form-label fw-bold">Giá bán</label>
-                    <input asp-for="Price" type="number" class="form-control" required />
-                </div>
-                <div class="mb-3">
-                    <label asp-for="StockQuantity" class="form-label fw-bold">Tồn kho</label>
-                    <input asp-for="StockQuantity" type="number" class="form-control" required />
+                    <label class="form-label fw-bold">Ảnh hiện tại</label>
+                    <div class="d-flex flex-wrap gap-2">
+                        @if (Model.ProductImages != null)
+                        {
+                            foreach (var img in Model.ProductImages)
+                            {
+                                <img src="@img.ImageUrl" width="100" class="border rounded" />
+                            }
+                        }
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label fw-bold">Chọn ảnh mới</label>
                     <input type="file" name="files" class="form-control" multiple accept="image/*" />
+                    <input type="hidden" name="mainImageIndex" id="mainImageIndex" value="0" />
+                    <div id="previewContainer" class="d-flex flex-wrap mt-3 gap-2"></div>
                 </div>
-                <button type="submit" class="btn btn-warning"><i class="fa-solid fa-save"></i> CẬP NHẬT</button>
-                <a asp-action="Index" class="btn btn-secondary ms-2">Hủy bỏ</a>
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label fw-bold">Mô tả</label>
+                    <textarea id="Description" asp-for="Description" class="form-control"></textarea>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-warning">
+                        <i class="fa-solid fa-save"></i> CẬP NHẬT
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary ms-2">Hủy bỏ</a>
+                </div>
             </form>
         </div>
     </div>
 </div>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+
+@section Scripts {
+    <script>
+        $('#Description').summernote({
+            height: 300
+        });
+    </script>
+
+    <script src="~/js/addproduct.js"></script>
+}

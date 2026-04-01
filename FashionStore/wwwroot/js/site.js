@@ -7,7 +7,6 @@
     }
 });
 
-// Ẩn lúc đầu
 const btn = document.getElementById("backToTop");
 
 if (btn) {
@@ -93,10 +92,12 @@ $(function () {
     $modalImg.on("wheel", function (e) {
         e.preventDefault();
         const oe = e.originalEvent;
-        const offset = $(this).offset();
-        const x = ((oe.pageX - offset.left) / $(this).width()) * 100;
-        const y = ((oe.pageY - offset.top) / $(this).height()) * 100;
-        scale += oe.deltaY < 0 ? 0.2 : -0.2;
+        const rect = this.getBoundingClientRect();
+        const offsetX = oe.clientX - rect.left;
+        const offsetY = oe.clientY - rect.top;
+        const x = (offsetX / rect.width) * 100;
+        const y = (offsetY / rect.height) * 100;
+        scale += oe.deltaY < 0 ? 0.25 : -0.25;
         scale = Math.max(1, Math.min(scale, 5));
 
         $(this).css({
