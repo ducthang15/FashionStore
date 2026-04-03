@@ -14,13 +14,13 @@
 }
 
 body {
-    font-family: 'EB Garamond', Garamond, Baskerville, 'Times New Roman', serif;
+    font-family: 'Montserrat', sans-serif;
     color: var(--text-white);
     line-height: 1.6;
 }
 
 .our-story {
-    font-family: 'EB Garamond', Garamond, Baskerville, 'Times New Roman', serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .d21323 {
@@ -123,7 +123,7 @@ body {
 }
 
     .cta h2 {
-        font-family: 'EB Garamond', Garamond, Baskerville, 'Times New Roman', serif;
+        font-family: 'Montserrat', sans-serif;
         font-size: 2rem;
         margin-bottom: 2rem;
     }
@@ -179,19 +179,19 @@ img {
     .craft-content h4 {
         font-weight: 400;
         color: black;
-        font-family: 'EB Garamond', Garamond, Baskerville, 'Times New Roman', serif;
+        font-family: 'Montserrat', sans-serif;
         margin-bottom: 10px;
     }
 
     .craft-content h3 {
         margin-bottom: 15px;
-        font-family: 'EB Garamond', Garamond, Baskerville, 'Times New Roman', serif;
+        font-family: 'Montserrat', sans-serif;
         font-size: 19px;
     }
 
     .craft-content p {
         color: var(--text-grey);
-        font-family: 'EB Garamond', Garamond, Baskerville, 'Times New Roman', serif;
+        font-family: 'Montserrat', sans-serif;
         line-height: 1.7;
     }
 
