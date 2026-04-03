@@ -1,119 +1,121 @@
 ﻿@model IEnumerable<FashionStore.Repository.Models.News>
 @{
-	ViewData["Title"] = "Blog";
+    ViewData["Title"] = "Blog";
 }
 <div class="blog-page">
-	<div class="position-relative text-white">
-		<picture>
-			<source media="(min-width: 992px)"
-					srcset="/image/abus-hand.png">
-			<source media="(min-width: 576px)"
-					srcset="/image/abus-hand.png">
-			<img src="/image/abus-hand.png"
-				 class="img-fluid w-100"
-				 alt="Bespoke Tailoring">
-		</picture>
-		<div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
-		<div class="position-absolute top-50 start-50 translate-middle text-center px-4 d-none d-md-block">
-			<h1 class="fs-2 fw-semibold mb-3">
-				A Craftsmanship Story
-			</h1>
-			<p class="text-uppercase small mb-4">
-				The Art of Bespoke Tailoring
-			</p>
-			<p class="mx-auto mb-4" style="max-width: 850px;">
-				Bespoke tailoring is our most premium offering, allowing you to create your own unique custom pieces —
-				from precise measurements to cloth choice to styling features.
+    <div class="position-relative text-white">
+        <picture>
+            <source media="(min-width: 992px)"
+                    srcset="/image/poster-index-2233.png">
+            <source media="(min-width: 576px)"
+                    srcset="/image/poster-index-2233.png">
+            <img src="/image/poster-index-2233.png"
+                 class="img-fluid w-100"
+                 alt="Bespoke Tailoring">
+        </picture>
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
+        <div class="position-absolute top-50 start-50 translate-middle text-center px-4 d-none d-md-block">
+            <h1 class="fs-3">
+                A Craftsmanship Story
+            </h1>
+            <p class="text-uppercase small">
+                The Art of Bespoke Tailoring
+            </p>
+            <p class="mx-auto" style="max-width: 850px;">
+                Bespoke tailoring is our most premium offering, allowing you to create your own unique custom pieces —
+                from precise measurements to cloth choice to styling features.
 
-			</p>
-			<h5 class="mt-4 mb-2">
-				How a Garment is Born
-			</h5>
-			<p class="fst-italic">
-				Time, skill, and creativity: these are the essential elements that transform fabric into a finished garment.
-			</p>
-		</div>
-	</div>
-	<nav class="container breadcrumb-title mb-2 mt-2 small d-md-block d-none">
-		<a asp-controller="Home" asp-action="Index"
-		   class="text-decoration-none text-uppercase text-secondary fw-semibold">
-			Trang chủ
-		</a>
-		<span class="mx-2">/</span>
-		<span class="text-white fw-semibold text-uppercase">
-			Blog
-		</span>
-	</nav>
-	<div class="container mt-5">
-		<div class="row">
-			<div class="col-md-8 mb-3">
-				<div class="row g-4">
-					@foreach (var item in Model)
-					{
-						<div class="col-md-6">
-							<div class="card h-100 shadow-sm border-0">
-								<img src="@item.ImageUrl" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Articles about customers and beautiful suits, weddings, festivals, formal, class, businessman, comfortable, well-groomed">
-								<div class="card-body">
-									<h5 class="card-title fw-bold">
-										<a asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none text-dark">@item.Title</a>
-									</h5>
-									<p class="card-text text-muted small text-truncate">@item.Summary</p>
-									<a asp-action="Details" asp-route-slug="@item.Slug" class="btn btn-outline-dark btn-sm">Read more <i class="ri-arrow-right-double-line"></i></a>
-								</div>
-							</div>
-						</div>
-					}
-				</div>
-				@if (!Model.Any())
-				{
-					<div class="alert alert-info">There are no posts.</div>
-				}
-			</div>
-			<div class="col-md-4">
-				<h5 class="fw-bold mb-3">
-					RELATED NEWS
-				</h5>
-				@if (ViewBag.FeaturedNews != null)
-				{
-					foreach (var item in ViewBag.FeaturedNews)
-					{
-						<a asp-action="Details" asp-route-slug="@item.Slug"
-						   class="d-flex mb-3 align-items-center text-white text-decoration-none">
+            </p>
+            <h5>
+                How a Garment is Born
+            </h5>
+            <p class="fst-italic">
+                Time, skill, and creativity: these are the essential elements that transform fabric into a finished garment.
+            </p>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 mb-3">
+                <div class="row g-4">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-12">
+                            <div class="card h-100 border-0">
+                                <div class="row">
+                                    <div class="col-md-4 bg-black">
+                                        <img src="@item.ImageUrl" class="image-blog-detail" alt="Articles about customers and suits">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title fw-bold">
+                                                <a asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none text-dark">
+                                                    @item.Title
+                                                </a>
+                                            </h5>
+                                            <p class="text-muted small mb-2">
+                                                <i class="ri-time-line"></i> @item.CreatedAt?.ToString("dd/MM/yyyy")
+                                            </p>
+                                            <p class="card-text text-muted">
+                                                @item.Summary
+                                            </p>
+                                        </div>
+                                        <div class="p-3">
+                                            <a asp-action="Details" asp-route-slug="@item.Slug" class="btn btn-outline-dark btn-sm">
+                                                Read more <i class="ri-arrow-right-double-line"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                @if (!Model.Any())
+                {
+                    <div class="alert alert-info">There are no posts.</div>
+                }
+            </div>
+            <div class="col-md-4">
+                <h5 class="fw-bold mb-3">
+                    RELATED NEWS
+                </h5>
+                @if (ViewBag.FeaturedNews != null)
+                {
+                    foreach (var item in ViewBag.FeaturedNews)
+                    {
+                        <a asp-action="Details" asp-route-slug="@item.Slug" class="d-flex mb-3 align-items-center text-white text-decoration-none">
+                            <img src="@item.ImageUrl" style="width:80px; height:80px; object-fit:cover;" class="flex-shrink-0" />
+                            <span class="small ms-3">
+                                @item.Title
+                            </span>
 
-							<img src="@item.ImageUrl"
-								 style="width:80px; height:80px; object-fit:cover;"
-								 class="flex-shrink-0" />
-
-							<span class="small ms-3">
-								@item.Title
-							</span>
-
-						</a>
-					}
-				}
-			</div>
-		</div>
-	</div>
-	<nav class="mt-4">
-		<ul class="pagination custom-pagination justify-content-center">
-			<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
-				<a class="page-link" asp-action="Index"asp-route-page="@(ViewBag.CurrentPage - 1)" asp-route-id="@ViewBag.CurrentCategoryId">
-					&lsaquo;
-				</a>
-			</li>
-			@for (int i = 1; i <= ViewBag.TotalPages; i++)
-			{
-				<li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
-					<a class="page-link" asp-action="Index" asp-route-page="@i" asp-route-id="@ViewBag.CurrentCategoryId">
-						@i
-					</a>
-				</li>
-			}
-			<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
-				<a class="page-link" asp-action="Index" asp-route-page="@(ViewBag.CurrentPage + 1)" asp-route-id="@ViewBag.CurrentCategoryId">
-					&rsaquo;
-				</a>
-			</li>
-		</ul>
-	</nav>
+                        </a>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <nav class="mt-4">
+        <ul class="pagination custom-pagination justify-content-center">
+            <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+                <a class="page-link" asp-action="Index" asp-route-page="@(ViewBag.CurrentPage - 1)" asp-route-id="@ViewBag.CurrentCategoryId">
+                    &lsaquo;
+                </a>
+            </li>
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                    <a class="page-link" asp-action="Index" asp-route-page="@i" asp-route-id="@ViewBag.CurrentCategoryId">
+                        @i
+                    </a>
+                </li>
+            }
+            <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+                <a class="page-link" asp-action="Index" asp-route-page="@(ViewBag.CurrentPage + 1)" asp-route-id="@ViewBag.CurrentCategoryId">
+                    &rsaquo;
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>

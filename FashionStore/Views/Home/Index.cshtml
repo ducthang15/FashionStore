@@ -10,22 +10,35 @@
         <button type="button" aria-label="Slide 2" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
     </div>
     <div class="carousel-inner">
+
+        <!-- SLIDE 1 -->
         <div class="carousel-item active" data-bs-interval="3000">
-            <img src="~/image/banner_home.png" class="d-block w-100" style="height: 700px; object-fit: cover; filter: brightness(0.7);" alt="...">
+            <picture>
+                <source media="(max-width: 767px)" srcset="/image/carousel-light-kt212.jpg">
+                <img src="~/image/banner_home.png" class="d-block w-100 carousel-img" alt="">
+            </picture>
+
             <div class="carousel-caption text-center">
                 <a asp-controller="Appointment" asp-action="Index" class="booking-btn">
                     BOOK AN APPOINTMENT
                 </a>
             </div>
         </div>
+
+        <!-- SLIDE 2 -->
         <div class="carousel-item" data-bs-interval="3000">
-            <img src="~/image/b3.png" class="d-block w-100" style="height: 700px; object-fit: cover; filter: brightness(0.7);" alt="...">
+            <picture>
+                <source media="(max-width: 767px)" srcset="/image/carousel-light-kt213.png">
+                <img src="~/image/b3.png" class="d-block w-100 carousel-img" alt="">
+            </picture>
+
             <div class="carousel-caption text-center">
                 <a asp-controller="Appointment" asp-action="Index" class="booking-btn">
                     BOOK AN APPOINTMENT
                 </a>
             </div>
         </div>
+
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="carusel-left">
         <span class="carousel-control-prev-icon"></span>
@@ -58,7 +71,7 @@
 <div class="luxury-banner">
     <img src="/image/poster-index-2233.png" alt="poster" class="w-100">
     <div class="banner-content">
-        <p class="quote fs-4 d-md-block d-none">
+        <p class="quote fs-5 d-md-block d-none">
             We don’t wish to have too many customers,
             but we try our best to have customers for life
         </p>
