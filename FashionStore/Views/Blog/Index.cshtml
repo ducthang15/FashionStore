@@ -18,9 +18,9 @@
             <h1 class="fs-3">
                 A Craftsmanship Story
             </h1>
-            <p class="text-uppercase small">
-                The Art of Bespoke Tailoring
-            </p>
+            <h3 class="text-uppercase small">
+                UNLIM Tailor Bespoke Tailoring
+            </h3>
             <p class="mx-auto" style="max-width: 850px;">
                 Bespoke tailoring is our most premium offering, allowing you to create your own unique custom pieces —
                 from precise measurements to cloth choice to styling features.
@@ -38,8 +38,8 @@
         <div class="row gx-lg-5">
 
             <div class="col-lg-8 mb-4">
-                <h2 class="fw-bold mb-4 border-bottom pb-2">
-                    Bài viết mới nhất
+                <h2>
+                    Our Articles
                 </h2>
 
                 @if (Model != null && Model.Any())
@@ -67,7 +67,6 @@
                                                         @item.Title
                                                     </a>
                                                 </h4>
-
                                                 <p class="card-text text-muted text-clamp-3 mb-4">
                                                     @item.Summary
                                                 </p>
@@ -96,9 +95,9 @@
 
             <div class="col-lg-4">
                 <div class="sidebar-widget sticky-lg-top" style="top: 2rem;">
-                    <h5 class="fw-bold mb-4 d-flex align-items-center text-white">
-                         RELATED NEWS
-                    </h5>
+                    <h3>
+                        Related News
+                    </h3>
 
                     <div class="d-flex flex-column gap-1">
                         @if (ViewBag.FeaturedNews != null)
@@ -112,7 +111,7 @@
                                             @item.Title
                                         </h6>
                                         <p class="text-white detail-read">
-                                            Đọc ngay <i class="ri-arrow-right-s-line align-middle"></i>
+                                            Read more <i class="ri-arrow-right-s-line align-middle"></i>
                                         </p>
                                     </div>
                                 </a>

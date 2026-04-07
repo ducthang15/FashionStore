@@ -42,10 +42,6 @@ namespace FashionStore.Controllers
         {
             return View();
         }
-        public IActionResult AboutUs()
-        {
-            return View();
-        }
         [Route("return-policy")]
         public IActionResult ReturnPolicy()
         {

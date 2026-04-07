@@ -31,6 +31,11 @@
     },
 
     renderImage(url, fileName, index) {
+
+        const productName = $('input[name="ProductName"]').val();
+
+        const altText = productName ? productName.trim() : fileName;
+
         const $wrapper = $('<div>', {
             css: {
                 position: 'relative',
@@ -40,7 +45,8 @@
 
         const $img = $('<img>', {
             src: url,
-            title: fileName,
+            title: altText,
+            alt: altText, // ✅ thêm alt ở đây
             css: {
                 width: '120px',
                 height: '120px',
@@ -62,6 +68,7 @@
                 left: '5px'
             }
         });
+
         if (index === 0) {
             $radio.prop('checked', true);
             this.$mainInput.val(0);

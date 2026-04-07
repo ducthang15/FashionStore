@@ -22,11 +22,11 @@
                 <div class="d-flex flex-column gap-2 me-5">
                     @foreach (var img in Model.ProductImages)
                     {
-                        <img src="@img.ImageUrl" onclick="changeMainImage(this)" width="70" height="70">
+                        <img src="@img.ImageUrl" onclick="changeMainImage(this)" width="70" height="70" alt="@Model.ProductName - detail images">
                     }
                 </div>
                 <div class="flex-grow-1 justify-content-center">
-                    <img id="mainImage" src="@Model.ImageUrl" class="img-fluid rounded border w-75">
+                    <img id="mainImage" src="@Model.ImageUrl" class="img-fluid rounded border w-75" alt="@Model.ProductName">
                 </div>
             </div>
             <div class="col-lg-5 product-info">
