@@ -60,6 +60,7 @@ namespace FashionStore.Controllers
 
             return View(newsList);
         }
+        [Route("Blog/Details/{slug}")]
         public async Task<IActionResult> Details(string slug)
         {
             var news = await _context.News
