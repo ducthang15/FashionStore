@@ -13,6 +13,10 @@ namespace FashionStore.Controllers
 
         public async Task<IActionResult> Index(string? sort, int page = 1)
         {
+            if (page < 1)
+            {
+                return RedirectToAction("Index", new { page = 1, sort });
+            }
             int pageSize = 8;
 
             var query = _context.Products

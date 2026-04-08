@@ -22,7 +22,7 @@
                 <div class="d-flex flex-column gap-2 me-5">
                     @foreach (var img in Model.ProductImages)
                     {
-                        <img src="@img.ImageUrl" onclick="changeMainImage(this)" width="70" height="70" alt="@Model.ProductName - detail images">
+                        <img src="@img.ImageUrl" onclick="changeMainImage(this)" width="70" alt="@Model.ProductName - detail images">
                     }
                 </div>
                 <div class="flex-grow-1 justify-content-center">
@@ -31,11 +31,10 @@
             </div>
             <div class="col-lg-5 product-info">
                 <h1 class="fw-bold mb-2">@Model.ProductName</h1>
-                <div class="text-secondary">
-                    <strong class="text-danger fw-bold fs-5">
-                        Category: <br />
-                </strong>@Model.Category?.CategoryName</div>
-                <div class="text-danger fw-bold fs-5">Product description:</div>
+                <span class="text-secondary">
+                    <strong class="text-danger">Product line:</strong> @Model.Category?.CategoryName
+                </span><br>
+                <span class="text-danger fw-bold">Description:</span>
                 <span class="text-secondary">
                     @Html.Raw(Model.Description)
                 </span>
