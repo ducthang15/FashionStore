@@ -63,12 +63,12 @@ body {
 }
 
 .pillars {
-    padding: 80px 5%;
+    padding: 60px 5%;
     text-align: center;
 }
 
 .section-title {
-    font-size: 3rem;
+    font-size: 40px;
     margin-bottom: 3rem;
     color: var(--bg-dark);
 }
@@ -140,10 +140,12 @@ body {
     border: 1px solid white;
 }
 
-img {
+.journey-image-next{
+    width: 10rem;
+}
+.pillar-item-image-icon{
     width: 8rem;
 }
-
 .craftsmanship-section {
     background-color: #fff;
     padding: 1px 0;
@@ -176,7 +178,7 @@ img {
     flex: 1;
 }
 
-    .craft-content h4 {
+    .craft-content h5 {
         font-weight: 400;
         color: black;
         font-family: 'Montserrat', sans-serif;
@@ -202,8 +204,7 @@ img {
 
 .journey-title {
     text-align: center;
-    font-size: 3rem;
-    font-weight: 300;
+    font-size: 40px;
     letter-spacing: 4px;
     margin-bottom: 60px;
     color: #333;
