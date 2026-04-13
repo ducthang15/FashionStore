@@ -60,7 +60,6 @@ namespace FashionStore.Controllers
 
             return View(newsList);
         }
-        [Route("Blog/Details/{slug}")]
         public async Task<IActionResult> Details(string slug)
         {
             var news = await _context.News
@@ -70,10 +69,19 @@ namespace FashionStore.Controllers
             if (news == null) return NotFound();
             var suitProducts = await _context.Products
                .Where(p => p.CategoryId == 8)
-               .Take(8)
+               .Take(9)
                .ToListAsync();
 
             ViewBag.SuitProducts = suitProducts;
+            var related = await _context.News
+            .Where(n => n.NewsCategoryId == news.NewsCategoryId
+                 && n.Slug != slug
+                 && n.IsPublished)
+            .OrderByDescending(n => n.CreatedAt)
+                .Take(9)
+                .ToListAsync();
+
+            ViewBag.Related = related;
             return View(news);
         }
         public async Task<IActionResult> ShuttleService()

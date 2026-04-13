@@ -236,11 +236,13 @@ a.dropdown-item {
 .carousel-item {
     height: 600px;
 }
+
 @media (max-width: 767px) {
     .carousel-item {
         height: 100vh;
     }
 }
+
 .carousel-img {
     width: 100%;
     height: 100%;
@@ -371,8 +373,6 @@ a.dropdown-item {
         font-size: 18px;
     }
 
-/* bottom */
-
 .bottom-links {
     display: flex;
     justify-content: space-between;
@@ -390,7 +390,7 @@ a.dropdown-item {
 
 .split-section {
     display: flex;
-    height: 60vh;
+    min-height: 70vh;
     overflow: hidden;
 }
 
@@ -424,7 +424,6 @@ a.dropdown-item {
         text-align: center;
     }
 
-    /* hover zoom */
     .split-item:hover img {
         transform: scale(1.08);
     }
@@ -473,7 +472,7 @@ a.dropdown-item {
     line-height: 1.6;
     opacity: 0.9;
 }
-/* Kích thước icon đồng đều */
+
 .social-btn {
     width: 40px;
     height: 40px;
@@ -599,6 +598,7 @@ img.zalo {
     letter-spacing: 1px;
     margin-bottom: 15px;
 }
+
 .blog-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(0,0,0,0.05);
@@ -609,7 +609,6 @@ img.zalo {
         box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
     }
 
-/* Hiệu ứng ảnh bài viết */
 .blog-img-wrapper {
     overflow: hidden;
 }
@@ -626,7 +625,54 @@ img.zalo {
     transform: scale(1.05);
 }
 
-/* Giới hạn số dòng text để card không bị xô lệch */
+.slick-prev:before, .slick-next:before {
+    font-family: 'slick';
+    font-size: 30px;
+    line-height: 1;
+    opacity: .75;
+    color: #333 !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-prev {
+    left: -40px;
+    z-index: 1;
+}
+
+.slick-next {
+    right: -40px;
+    z-index: 1;
+}
+
+.suit-slider {
+    padding: 0 10px;
+    margin-bottom: 30px;
+}
+
+.slick-dots {
+    bottom: -20px;
+}
+
+    .slick-dots li {
+        margin: 0 2px;
+        width: 15px;
+    }
+
+        .slick-dots li button:before {
+            font-size: 8px;
+            color: #ccc;
+            opacity: 1;
+        }
+
+        .slick-dots li.slick-active button:before {
+            color: #333;
+        }
+
+.suit-slider .card {
+    margin-bottom: 10px;
+}
+
 .text-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -640,6 +686,7 @@ img.zalo {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
 .sidebar-widget {
     padding: 24px;
 }
@@ -650,9 +697,11 @@ img.zalo {
     padding: 8px;
     background: transparent;
 }
-.detail-read{
+
+.detail-read {
     font-size: 11px;
 }
+
 .related-news-item:hover {
     background-color: black;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
@@ -664,6 +713,7 @@ img.zalo {
     object-fit: cover;
     border-radius: 10px;
 }
+
 .service-text {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;

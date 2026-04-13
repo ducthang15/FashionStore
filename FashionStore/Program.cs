@@ -60,7 +60,7 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "blog_details",
-    pattern: "Blog/Details/{slug}",
+    pattern: "blog/details/{slug}",
     defaults: new { controller = "Blog", action = "Details" });
 
 app.MapControllerRoute(
