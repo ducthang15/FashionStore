@@ -29,9 +29,9 @@ public class SitemapController : Controller
         var news = _context.News.ToList();
         foreach (var n in news)
         {
-            urlset.Add(CreateUrlElement(ns, $"{baseUrl}/Blog/Details/{n.Slug}", "0.7", "monthly"));
+            urlset.Add(CreateUrlElement(ns, $"{baseUrl}/blog/details/{n.Slug}", "0.9", "monthly"));
         }
-        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/Home/AboutUs", "0.8", "monthly"));
+        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/aboutUs", "0.8", "monthly"));
 
         var doc = new XDocument(urlset);
         return Content(doc.ToString(), "text/xml", Encoding.UTF8);
