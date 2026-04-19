@@ -6,10 +6,12 @@
     <div class="container mt-5">
         <nav class="breadcrumb-title mb-4 small">
             <a asp-controller="Home" asp-action="Index" class="text-decoration-none text-light text-uppercase">
-                Trang chủ
+                Home
             </a>
             <span class="mx-2">/</span>
-            <a asp-controller="Suit" asp-action="Index" class="text-decoration-none text-secondary text-uppercase fw-bold">
+            <a asp-controller="@Model.Category.CategoryName"
+               asp-action="Index"
+               class="text-decoration-none text-secondary text-uppercase fw-bold">
                 @Model.Category.CategoryName
             </a>
             <span class="mx-2">/</span>
