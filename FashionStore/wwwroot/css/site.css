@@ -1000,7 +1000,6 @@ img.zalo {
         background: url(/image/amv2g.png) no-repeat center center;
         background-size: cover;
         background-attachment: fixed;
-        filter: brightness(40%) blur(3px);
         z-index: -1;
     }
 

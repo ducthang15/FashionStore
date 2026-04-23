@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FashionStore.Repository.Models;
 
-[Table("News", Schema = "dbo")]
 public partial class News
 {
     [Key]
@@ -33,6 +32,8 @@ public partial class News
     [StringLength(200)]
     [Unicode(false)]
     public string? Slug { get; set; }
+
+    public int ViewCount { get; set; }
 
     [ForeignKey("NewsCategoryId")]
     [InverseProperty("News")]

@@ -67,6 +67,21 @@ namespace FashionStore.Controllers
                 .FirstOrDefaultAsync(n => n.Slug == slug);
 
             if (news == null) return NotFound();
+            string cookieKey = "Viewed_News_" + news.NewsId; // Giả sử khóa chính của bạn là NewsId
+            if (!Request.Cookies.ContainsKey(cookieKey))
+            {
+                news.ViewCount++;
+                await _context.SaveChangesAsync();
+
+                // Tạo Cookie để đánh dấu khách đã xem bài này
+                CookieOptions option = new CookieOptions
+                {
+                    Expires = DateTime.Now.AddMinutes(2),
+                    HttpOnly = true,
+                    IsEssential = true
+                };
+                Response.Cookies.Append(cookieKey, "v", option);
+            }
             var suitProducts = await _context.Products
                .Where(p => p.CategoryId == 8)
                .Take(9)
