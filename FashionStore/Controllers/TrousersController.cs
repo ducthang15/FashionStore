@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FashionStore.Controllers
 {
-    public class MangtoController : BaseController
+    public class TrousersController : BaseController
     {
-        public MangtoController(fashionDbContext context) : base(context)
+        public TrousersController(fashionDbContext context) : base(context)
         {
         }
 
-        public async Task<IActionResult> Index(string? sort, int page = 1)
+         public async Task<IActionResult> Index(string? sort, int page = 1)
         {
             if (page < 1)
             {
@@ -20,7 +20,7 @@ namespace FashionStore.Controllers
 
             var query = _context.Products
                 .Include(p => p.Category)
-                .Where(p => p.CategoryId == 13);
+                .Where(p => p.CategoryId == 9);
             if (sort == "name")
             {
                 query = query.OrderBy(p => p.ProductName);
@@ -40,7 +40,7 @@ namespace FashionStore.Controllers
             ViewBag.CurrentPage = page;
             ViewBag.TotalPages = (int)Math.Ceiling((double)totalItems / pageSize);
             ViewBag.CurrentSort = sort;
-            ViewBag.CurrentCategoryId = 13;
+            ViewBag.CurrentCategoryId = 9;
 
             return View(products);
         }

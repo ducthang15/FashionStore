@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FashionStore.Repository.Models;
 
-[Table("Products", Schema = "dbo")]
 public partial class Product
 {
     [Key]

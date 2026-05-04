@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FashionStore.Repository.Models;
 
-[Table("FeedbackImages", Schema = "dbo")]
 public partial class FeedbackImage
 {
     [Key]
