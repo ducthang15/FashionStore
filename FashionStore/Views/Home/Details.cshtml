@@ -9,9 +9,7 @@
                 Home
             </a>
             <span class="mx-2">/</span>
-            <a asp-controller="@Model.Category.CategoryName"
-               asp-action="Index"
-               class="text-decoration-none text-secondary text-uppercase fw-bold">
+            <a asp-controller="@Model.Category.CategoryName" asp-action="Index" class="text-decoration-none text-secondary text-uppercase fw-bold">
                 @Model.Category.CategoryName
             </a>
             <span class="mx-2">/</span>
@@ -31,17 +29,18 @@
                     <img id="mainImage" src="@Model.ImageUrl" class="img-fluid rounded border w-75" alt="@Model.ProductName">
                 </div>
             </div>
-            <div class="col-lg-5 product-info">
-                <h1 class="fw-bold mb-2">@Model.ProductName</h1>
+            <div class="col-lg-5 product-info d-flex flex-column">
+                <div class="flex-grow-1">
+                <h2 class="fw-bold mb-2">@Model.ProductName</h2>
                 <span class="text-secondary">
-                    <strong class="text-danger">Product line:</strong> @Model.Category?.CategoryName
+                        <strong>Product type: @Model.Category?.CategoryName</strong>
                 </span><br>
-                <span class="text-danger fw-bold">Description:</span>
-                <span class="text-secondary">
+                    <span class="text-secondary">
                     @Html.Raw(Model.Description)
                 </span>
-                <div class="text-center mt-5">
-                    Liên hệ: <span class="text-danger">098 947 3579</span> để biết thêm chi tiết!
+                </div>
+                <div class="text-center mt-auto pt-4">
+                    CONTACT: <span class="text-danger">098 947 3579</span> để biết thêm chi tiết!
                 </div>
                 <hr class="border-secondary">
             </div>
@@ -65,6 +64,9 @@
 </a>
 <a href="tel:0989473579" class="call-circle">
     <i class="fa-solid fa-phone"></i>
+</a>
+<a href="https://zalo.me/0989473579" target="_blank" class="zalo-circle">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo" />
 </a>
 <script>
     function changeMainImage(el) {

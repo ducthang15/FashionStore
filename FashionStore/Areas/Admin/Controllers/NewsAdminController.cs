@@ -1,9 +1,8 @@
-﻿using FashionStore.Repository;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using FashionStore.Repository.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using FashionStore.Repository;
 using FashionStore.Utilities;
 
 namespace FashionStore.Areas.Admin.Controllers
@@ -93,10 +92,19 @@ namespace FashionStore.Areas.Admin.Controllers
                     news.ImageUrl = existingNews.ImageUrl;
                 }
                 news.CreatedAt = existingNews.CreatedAt;
+                var existing = await _context.News.FindAsync(id);
+                if (existing == null) return NotFound();
 
-                _context.Update(news);
+                if (file != null)
+                {
+                    existing.ImageUrl = await UploadFile(file);
+                }
+                existing.Title = news.Title;
+                existing.Content = news.Content;
+                existing.Slug = news.Slug;
+                existing.NewsCategoryId = news.NewsCategoryId;
+                existing.IsPublished = news.IsPublished;
                 await _context.SaveChangesAsync();
-
                 return RedirectToAction(nameof(Index));
             }
             ViewBag.NewsCategoryId = new SelectList(_context.NewsCategories, "NewsCategoryId", "CategoryName", news.NewsCategoryId);

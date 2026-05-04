@@ -3,50 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-TJM3DC5R');</script>
+    <!-- End Google Tag Manager -->
     <meta name="google-site-verification" content="pmGO9F4dJg0RjJXL1QqLs7zmuX5JhnE8BxpnrIR1EAE" />
     <meta name="description" content="@(ViewData["MetaDescription"] ?? "UNLIM TAILOR's premium men's fashion collection. Unique designs featuring suits, tuxedos, blazers, trench coats, leather shoes, and luxury accessories. Specializing in tailoring beautiful suits in Hanoi, including business suits and wedding suits. View the complete collection!")" />
     <title>@(ViewData["Title"] ?? "UNLIM TAILOR") - Unlim Bespoke Tailoring</title>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag(){dataLayer.push(arguments);}
-
-        gtag('consent', 'default', {
-
-          'ad_storage': 'denied',
-
-          'ad_user_data': 'denied',
-
-          'ad_personalization': 'denied',
-
-          'analytics_storage': 'denied',
-
-        });
-
-        // Set default consent for all other regions according to your requirements
-
-        gtag('consent', 'default', {
-
-          'ad_storage': 'denied',
-
-          'ad_user_data': 'denied',
-
-          'ad_personalization': 'denied',
-
-          'analytics_storage': 'denied'
-
-        });
-    </script>
-    <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/9c689493377e7c843af563c82e9b8459/script.js"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LL1ZJ03B8"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-0LL1ZJ03B8');
-        gtag('config', 'AW-11195776473');
-    </script>
+  @*   <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/9c689493377e7c843af563c82e9b8459/script.js"></script> *@
     <script type="application/ld+json">
         {
           "@@context": "https://schema.org",
@@ -90,6 +58,12 @@
     @RenderSection("Styles", required: false)
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJM3DC5R"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top luxury-nav">
         <div class="container position-relative">
             <button class="navbar-toggler d-xl-none border-0 text-white navbar-toggler-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="open-menu">
@@ -217,7 +191,9 @@
             <hr class="border-light opacity-25">
             <p class="text-center text-uppercase">unlimkimma@gmail.com</p>
             <hr class="border-light opacity-25">
-            <p class="appointment text-center">BOOK AN APPOINTMENT</p>
+            <a asp-controller="Appointment" asp-action="Index" class="appointment d-block text-center text-white text-decoration-none">
+                BOOK AN APPOINTMENT
+            </a>
             <hr class="border-light opacity-25">
             <div class="bottom-links">
                 <span><a class="nav-link text-white" asp-controller="Home" asp-action="FAQs">FAQs</a></span>
@@ -239,6 +215,7 @@
                         <p>We don't wish to have many customers, but we try our best to have customers for life</p>
                         <p><i class="fa-solid fa-location-dot me-2"></i> 105-107 Kim Ma Street, Ba Dinh District, Hanoi</p>
                         <p><i class="fa-solid fa-phone me-2"></i>098 947 3579</p>
+                        <p><i class="fa-solid fa-phone me-2"></i>0246 6868 107</p>
                     </div>
                 </div>
                 <div class="col-md-3 mb-3">

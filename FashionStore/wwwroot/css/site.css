@@ -97,12 +97,23 @@ body {
     color: #fff;
     font-size: 22px;
     text-decoration: none;
-    z-index: 1;
+    z-index: 100;
     animation: pulse 1.5s infinite;
+}
+.zalo-circle {
+    position: fixed;
+    bottom: 220px;
+    right: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 100;
 }
 .call-circle {
     position: fixed;
-    bottom: 20px;
+    bottom: 220px;
     right: 20px;
     width: 47px;
     height: 47px;
@@ -114,11 +125,11 @@ body {
     color: #fff;
     font-size: 22px;
     text-decoration: none;
-    z-index: 1;
+    z-index: 100;
     animation: ring 1s infinite;
 }
 .call-btn, .call-circle {
-    bottom: 100px; 
+    bottom: 100px;
 }
 @keyframes ring {
     0% {
@@ -315,6 +326,9 @@ a.dropdown-item {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+.carousel-item {
+    aspect-ratio: 16 / 9;
 }
 
 .booking-btn {
