@@ -27,7 +27,7 @@
                 @if (item.FeedbackImages != null && item.FeedbackImages.Any())
                 {
                     <div class="editorial-media">
-                        <img src="@item.FeedbackImages.First().ImageUrl" alt="Feedback image" loading="lazy" />
+                        <img src="@item.FeedbackImages.First().ImageUrl" alt="Feedback image" loading="lazy" data-aos="fade-left" data-aos-duration="800" data-aos-delay="100" />
                     </div>
                 }
                 <div class="editorial-content bg-secondary-subtle p-2">
@@ -49,5 +49,7 @@
         }
     </div>
 </div>
-
+<script>
+    AOS.init();
+</script>
 
