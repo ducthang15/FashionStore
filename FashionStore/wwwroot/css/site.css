@@ -55,9 +55,9 @@ body {
 .custom-pagination .page-link {
     background-color: transparent;
     border: none;
-    color: #ffffff;
+    color: #5e2e2e;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1rem;
     transition: all 0.3s ease;
 }
 

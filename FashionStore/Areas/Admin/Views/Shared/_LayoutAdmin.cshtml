@@ -18,7 +18,7 @@
         <div id="sidebar-wrapper">
             <div class="sidebar-heading text-center text-uppercase">unlimtailor</div>
             <div class="list-group list-group-flush mt-3">
-                <div class="text-secondary small fw-bold px-4 mb-2 mt-2">QUẢN LÝ CỬA HÀNG</div>
+                <div class="text-secondary small fw-bold px-4 mb-2 mt-2">Controll Panel</div>
                 
                 <a asp-area="Admin" asp-controller="ProductAdmin" asp-action="Index" 
                    class="list-group-item list-group-item-action @(ViewContext.RouteData.Values["Controller"]?.ToString() == "ProductAdmin" ? "active" : "")">
@@ -26,20 +26,20 @@
                 </a>
                 <a asp-area="Admin" asp-controller="OrderAdmin" asp-action="Index" 
                    class="list-group-item list-group-item-action @(ViewContext.RouteData.Values["Controller"]?.ToString() == "OrderAdmin" ? "active" : "")">
-                    <i class="fa-solid fa-cart-shopping"></i> Đơn Hàng
+                  Đơn Hàng
                 </a>
                 <a asp-area="Admin" asp-controller="AppointmentAdmin" asp-action="Index" 
                    class="list-group-item list-group-item-action @(ViewContext.RouteData.Values["Controller"]?.ToString() == "AppointmentAdmin" ? "active" : "")">
-                    <i class="fa-solid fa-calendar-check"></i> Lịch Hẹn
+                    Lịch Hẹn
                 </a>
                 <a asp-area="Admin" asp-controller="NewsAdmin" asp-action="Index" class="list-group-item ...">
-                    <i class="fa-solid fa-newspaper"></i> Quản lý Blog
+                    Quản lý Blog
                 </a>
                 <a asp-area="Admin" asp-controller="ContactAdmin" asp-action="Index" class="list-group-item ...">
-                    <i class="fa-solid fa-comments"></i> Phản hồi khách hàng
+                     Phản hồi khách hàng
                 </a>
                 <a asp-area="Admin" asp-controller="CustomerFeedbackAdmin" asp-action="index" class="list-group-item ...">
-                    <i class="fa-solid fa-comments"></i> Lookbook
+                     Lookbook
                 </a>
 
                 <div class="text-secondary small fw-bold px-4 mb-2 mt-4">HỆ THỐNG</div>
