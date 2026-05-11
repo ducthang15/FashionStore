@@ -14,7 +14,7 @@ public class SitemapController : Controller
     [Route("sitemap.xml")]
     public IActionResult Index()
     {
-        var baseUrl = $"{Request.Scheme}://{Request.Host}";
+        var baseUrl = "https://unlimtailor.com";
 
         XNamespace ns = "http://www.sitemaps.org/schemas/sitemap/0.9";
         var urlset = new XElement(ns + "urlset");

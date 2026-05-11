@@ -1,9 +1,10 @@
 ﻿using FashionStore.Repository;
 using FashionStore.Utilities;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using Microsoft.AspNetCore.Rewrite;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<fashionDbContext>(options =>
@@ -37,7 +38,10 @@ builder.Services.AddRouting(options =>
 });
 builder.Services.AddSession();
 var app = builder.Build();
-
+var rewriteOptions = new Microsoft.AspNetCore.Rewrite.RewriteOptions()
+    .AddRedirectToNonWwwPermanent() // Ép về non-www (301 redirect)
+    .AddRedirectToHttpsPermanent();   // Ép về https cho an toàn
+app.UseRewriter(rewriteOptions);
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
