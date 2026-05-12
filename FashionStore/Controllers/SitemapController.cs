@@ -31,7 +31,7 @@ public class SitemapController : Controller
         {
             urlset.Add(CreateUrlElement(ns, $"{baseUrl}/blog/details/{n.Slug}", "0.9", "monthly"));
         }
-        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/aboutUs", "0.8", "monthly"));
+        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/aboutus", "0.8", "monthly"));
 
         var doc = new XDocument(urlset);
         return Content(doc.ToString(), "text/xml", Encoding.UTF8);
