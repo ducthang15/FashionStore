@@ -111,4 +111,110 @@ $(function () {
         $modalImg.css("transform", "scale(1)");
     });
 });
+$(function () {
 
+    $('.live-search-input').each(function () {
+
+        let searchTimeout;
+
+        const $searchInput = $(this);
+        const $searchBox = $searchInput.closest('.live-search-box');
+        const $searchResults = $searchBox.find('.search-results-dropdown');
+
+        $searchInput.on('input', function () {
+
+            clearTimeout(searchTimeout);
+
+            const query = $(this).val().trim();
+
+            // Ít hơn 2 ký tự thì ẩn
+            if (query.length < 2) {
+                $searchResults.hide();
+                return;
+            }
+
+            searchTimeout = setTimeout(function () {
+
+                $searchResults
+                    .html(`
+                        <div class="p-3 text-center text-white">
+                            <i class="fa-solid fa-spinner fa-spin"></i>
+                            Searching...
+                        </div>
+                    `)
+                    .show();
+
+                $.ajax({
+                    url: '/Search/LiveSearch',
+                    type: 'GET',
+                    data: {
+                        keyword: query
+                    },
+                    success: function (data) {
+
+                        $searchResults.empty();
+
+                        if (data.length > 0) {
+
+                            $.each(data, function (index, item) {
+
+                                $searchResults.append(`
+                                    <a href="${item.url}" class="search-item">
+                                        ${item.image
+                                        ? `<img src="${item.image}" alt="${item.title}">`
+                                        : ''
+                                    }
+
+                                        <div class="search-item-info">
+                                            <span class="search-item-title">
+                                                ${item.title}
+                                            </span>
+
+                                            <span class="search-item-meta">
+                                                ${item.type}
+                                                ${item.price ? `| ${item.price}` : ''}
+                                            </span>
+                                        </div>
+                                    </a>
+                                `);
+
+                            });
+
+                        } else {
+
+                            $searchResults.html(`
+                                <div class="p-3 text-center text-white-50"
+                                     style="font-size:13px;">
+                                    No matching results found.
+                                </div>
+                            `);
+
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Search Error:', error);
+                    }
+                });
+
+            }, 300);
+
+        });
+
+        // Click ngoài thì ẩn
+        $(document).on('click', function (e) {
+
+            if (!$searchBox.is(e.target) &&
+                $searchBox.has(e.target).length === 0) {
+
+                $searchResults.hide();
+            }
+
+        });
+
+    });
+
+});
+function toggleInfo() {
+    const box = document.querySelector('.cta-box');
+    box.classList.toggle('active');
+}

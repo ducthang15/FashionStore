@@ -62,5 +62,6 @@ namespace FashionStore.Controllers
         {
             return View(new Models.ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }

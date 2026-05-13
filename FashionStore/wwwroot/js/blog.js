@@ -1,6 +1,4 @@
-﻿
-//TYNE
-tinymce.init({
+﻿tinymce.init({
     selector: '#Content',
     height: 550,
 

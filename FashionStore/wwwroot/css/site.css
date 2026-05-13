@@ -55,7 +55,7 @@ body {
 .custom-pagination .page-link {
     background-color: transparent;
     border: none;
-    color: #5e2e2e;
+    color: #ffffff;
     font-weight: bold;
     font-size: 1rem;
     transition: all 0.3s ease;
@@ -63,7 +63,7 @@ body {
 
 .custom-pagination .page-item.active .page-link {
     background-color: transparent;
-    color: #d4af37;
+    color: #ffffff;
     border: none;
 }
 
@@ -75,7 +75,7 @@ body {
 
 .custom-pagination .page-item.disabled .page-link {
     background-color: transparent;
-    color: #444;
+    color: #fff;
     cursor: not-allowed;
 }
 
@@ -83,9 +83,10 @@ body {
     box-shadow: none;
     background-color: transparent;
 }
+
 .messenger-circle {
     position: fixed;
-    bottom: 160px; 
+    bottom: 160px;
     right: 20px;
     width: 50px;
     height: 50px;
@@ -100,6 +101,7 @@ body {
     z-index: 100;
     animation: pulse 1.5s infinite;
 }
+
 .zalo-circle {
     position: fixed;
     bottom: 220px;
@@ -111,6 +113,7 @@ body {
     text-decoration: none;
     z-index: 100;
 }
+
 .call-circle {
     position: fixed;
     bottom: 220px;
@@ -128,9 +131,103 @@ body {
     z-index: 100;
     animation: ring 1s infinite;
 }
+
 .call-btn, .call-circle {
     bottom: 100px;
 }
+/* --- LIVE SEARCH UI --- */
+.live-search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.live-search-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+    padding: 5px 25px 5px 5px;
+    width: 100px; /* Chiều rộng mặc định */
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+}
+
+    .live-search-input:focus {
+        outline: none;
+        border-bottom-color: #d4af37; /* Màu vàng gold khi click vào */
+        width: 180px; /* Dài ra khi click */
+    }
+
+    .live-search-input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+        font-style: italic;
+    }
+
+.live-search-box .search-icon {
+    position: absolute;
+    right: 5px;
+    color: #fff;
+    font-size: 14px;
+    pointer-events: none; /* Để không chặn click vào input */
+}
+
+.search-results-dropdown {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    width: 320px;
+    background: rgba(28, 28, 30, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    display: none;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1050;
+}
+
+.search-item {
+    display: flex;
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+    color: #fff;
+    transition: background 0.2s;
+}
+
+    .search-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #d4af37;
+    }
+
+    .search-item img {
+        width: 45px;
+        height: 45px;
+        object-fit: cover;
+        margin-right: 12px;
+        border-radius: 2px;
+    }
+
+.search-item-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.search-item-title {
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 4px;
+}
+
+.search-item-meta {
+    font-size: 11px;
+    color: #d4af37;
+}
+
 @keyframes ring {
     0% {
         transform: rotate(0) scale(1);
@@ -151,6 +248,7 @@ body {
     100% {
         transform: rotate(0) scale(1);
     }
+
     0% {
         transform: scale(1);
     }
@@ -163,6 +261,7 @@ body {
         transform: scale(1);
     }
 }
+
 #imageModal .modal-body {
     height: 80vh;
     display: flex;
@@ -286,6 +385,7 @@ a.dropdown-item {
     background: rgb(54 27 9);
     padding: 28px 0;
     transition: all 0.35s ease;
+    position: sticky;
 }
 
     .luxury-nav.scrolled {
@@ -316,17 +416,98 @@ a.dropdown-item {
     height: 600px;
 }
 
+.ios-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(28, 28, 30, 0.75);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px calc(10px + env(safe-area-inset-bottom));
+    z-index: 1040;
+    border-top: 0.5px solid rgba(255, 255, 255, 0.15);
+}
+
+.ios-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #8e8e93; /* Màu xám chuẩn của icon chưa active trên iOS */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    flex: 1; /* Chia đều khoảng cách cho 4 nút */
+    transition: color 0.2s ease-in-out;
+}
+
+    .ios-nav-item i {
+        font-size: 22px;
+        margin-bottom: 4px;
+    }
+
+    .ios-nav-item span {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+    }
+
+    .ios-nav-item:hover,
+    .ios-nav-item.active {
+        color: #1780ff;
+    }
+
 @media (max-width: 767px) {
+    .live-search-box {
+        display: block;
+    }
+
+    .search-item {
+        background-color: rgb(54 27 9);
+    }
+
+    .live-search-mobile {
+        background: rgb(54 27 9);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        padding: 10px 30px 10px 15px;
+        width: 100% !important;
+    }
+
+        .live-search-mobile:focus {
+            background: rgb(57 20 20);
+        }
+    .booking-make {
+        background-color: rgb(54 27 9);
+    }
+    .live-search-box .search-icon {
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .search-results-dropdown {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        right: auto;
+        top: calc(100% + 5px);
+        max-height: 250px;
+        overflow-y: auto;
+        z-index: 9999;
+    }
+
     .carousel-item {
         height: 100vh;
     }
 }
 
 .carousel-img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
 }
+
 .carousel-item {
     aspect-ratio: 16 / 9;
 }
@@ -1159,7 +1340,6 @@ img.zalo {
 
 /*mobile*/
 @media (max-width: 576px) {
-
     .product-info {
         font-family: 'Montserrat', sans-serif;
         font-size: 16px;

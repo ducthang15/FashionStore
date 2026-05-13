@@ -70,7 +70,7 @@
                 height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top luxury-nav">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top luxury-nav">
         <div class="container position-relative">
             <button class="navbar-toggler d-xl-none border-0 text-white navbar-toggler-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="open-menu">
             </button>
@@ -163,7 +163,7 @@
             </ul>
             <a class="navbar-brand position-absolute top-50 start-50 translate-middle ms-1"
                asp-controller="Home" asp-action="Index">
-                <img src="~/image/brand/ul-lg-dcmright.png" alt="UNLIM TAILOR Logo Suit Vest Bespoke" style="height:70px;" class="logo-unlim">
+                <img src="~/image/brand/ul-lg-dcmright.png" alt="UNLIM TAILOR Logo Suit Vest Bespoke" style="height:60px;" class="logo-unlim">
             </a>
             <ul class="navbar-nav d-none d-lg-flex align-items-center">
                 <li class="nav-item">
@@ -180,6 +180,14 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" asp-controller="Home" asp-action="FAQs">FAQs</a>
+                </li>
+                <li class="nav-item ms-3 position-relative">
+                    <div class="live-search-box">
+                        <input type="text" id="liveSearchInput" class="live-search-input" placeholder="Search..." autocomplete="off">
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <div id="searchResults" class="search-results-dropdown shadow">
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -312,24 +320,27 @@
     </footer>
     <div class="offcanvas offcanvas-start luxury-offcanvass" tabindex="-1" id="mobileMenu">
         <div class="offcanvas-header border-bottom">
-            <img src="~/image/brand/ul-lg-dcmright.png" alt="UNLIM TAILOR Logo Suit Vest Bespoke" style="height:70px;" class="logo-unlim">
+            <img src="~/image/brand/ul-lg-dcmright.png" alt="UNLIM TAILOR Logo Suit Vest Bespoke" style="height:60px;" class="logo-unlim">
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-header d-lg-none pb-0">
+            <div class="live-search-box w-100 position-relative mt-3">
+                <input type="text" class="live-search-input live-search-mobile w-100" placeholder="Search suit, fabrics..." autocomplete="off">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <div class="search-results-dropdown shadow"></div>
+            </div>
         </div>
         <div class="offcanvas-body">
             <ul class="nav flex-column text-uppercase">
-
                 <li class="nav-item">
                     <a class="nav-link py-3 text-dark" asp-controller="AboutUs" asp-action="Index">About us</a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link py-3 text-dark" asp-controller="Blog" asp-action="Index">Blog</a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link py-3 text-dark" asp-controller="Contact" asp-action="Index">Contact</a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link py-3 text-dark" asp-controller="Gallery" asp-action="Index">Customer</a>
                 </li>
@@ -406,16 +417,31 @@
                     <a class="nav-link py-3 text-dark" asp-controller="Home" asp-action="FAQs">FAQs</a>
                 </li>
                 <li class="mt-2">
-                    <a class="btn btn-dark w-100 text-uppercase" asp-controller="Appointment" asp-action="Index">
+                    <a class="btn booking-make w-100 text-uppercase text-white" asp-controller="Appointment" asp-action="Index">
                         Make an appointment
                     </a>
                 </li>
             </ul>
         </div>
     </div>
-    <button id="backToTop" class="bottom-0 btn btn-outline-warning bg-dark bg-opacity-50 end-0 m-4 position-fixed" aria-label="Scroll up">
-        <i class="ri-skip-up-line"></i>
-    </button>
+    <div class="ios-bottom-nav d-md-none">
+        <a asp-controller="Home" asp-action="Index" class="ios-nav-item active">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a asp-controller="Appointment" asp-action="Index" class="ios-nav-item">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>Booking</span>
+        </a>
+        <a href="https://wa.me/84989473579" class="ios-nav-item">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>Whatsapp</span>
+        </a>
+        <a asp-controller="FAQs" asp-action="Index" class="ios-nav-item">
+            <i class="fa-solid fa-comment-dots"></i>
+            <span>FAQs</span>
+        </a>
+    </div>
     <script src="~/js/site.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)

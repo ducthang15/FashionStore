@@ -1,12 +1,11 @@
 ﻿@model IEnumerable<FashionStore.Repository.Models.Product>
 
 @{
-    ViewData["Title"] = "UNLIM Tailor Bespoke Tailoring Service";
+    ViewData["Title"] = "Bespoke Tailor In Hanoi | Bespoke Tailoring Services  | UNLIM Tailor";
     ViewData["MetaDescription"] = "Unlim Tailor offers bespoke tailoring services for suits, tuxedos, and high-end men's attire in Hanoi's Old Quarter and downtown. Experience the exquisite craftsmanship and timeless style for both domestic and international clients.";
-
 }
 <link href="/css/site.css" rel="stylesheet" />
-<div id="heroCarousel" class="carousel slide shadow  overflow-hidden" data-bs-ride="carousel">
+<div id="heroCarousel" class="carousel slide shadow overflow-hidden" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button type="button" aria-label="Slide 1" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
         <button type="button" aria-label="Slide 2" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
@@ -15,10 +14,10 @@
         <div class="carousel-item active" data-bs-interval="3000">
             <picture>
                 <source media="(max-width: 767px)" srcset="/image/carousel-light-kt212.png">
-                <img src="~/image/hero-bnxhid1.png" class="d-block w-100 carousel-img" alt="unlimtailor bespoke in hanoi">
+                <img src="~/image/hero-bnxhid1.png" class="d-block w-100 carousel-img h-100" alt="unlimtailor bespoke in hanoi">
             </picture>
 
-            <div class="carousel-caption text-center">
+            <div class="carousel-caption text-center unlim-caption">
                 <a asp-controller="Appointment" asp-action="Index" class="booking-btn">
                     BOOK AN APPOINTMENT
                 </a>
@@ -27,10 +26,10 @@
         <div class="carousel-item" data-bs-interval="3000">
             <picture>
                 <source media="(max-width: 767px)" srcset="/image/carousel-light-kt213.png">
-                 <img src="~/image/banner_home.png" class="d-block w-100 carousel-img" alt="tailor near me old the quarter in hanoi">
+                <img src="~/image/banner_home.png" class="d-block w-100 carousel-img h-100" alt="tailor near me old the quarter in hanoi">
             </picture>
 
-            <div class="carousel-caption text-center">
+            <div class="carousel-caption text-center unlim-caption">
                 <a asp-controller="Appointment" asp-action="Index" class="booking-btn">
                     BOOK AN APPOINTMENT
                 </a>
@@ -110,7 +109,7 @@
             <div class="partner-item"><img src="/image/brand/brand_2.jpg" alt="brand fabric"></div>
             <div class="partner-item"><img src="/image/brand/brand_3.jpg" alt="brand fabric"></div>
             <div class="partner-item"><img src="/image/brand/brand_4.jpg" alt="brand fabric"></div>
-            <div class="partner-item"><img src="/image/brand/scabal.jpg"  alt="brand fabric"></div>
+            <div class="partner-item"><img src="/image/brand/scabal.jpg" alt="brand fabric"></div>
             <div class="partner-item"><img src="/image/brand/brand_6.jpg" alt="brand fabric"></div>
             <div class="partner-item"><img src="/image/brand/Zegna.png" alt="brand fabric"></div>
             <div class="partner-item"><img src="/image/brand/lanificio-cerruti.jpg" alt="brand fabric"></div>
@@ -118,7 +117,7 @@
             <div class="partner-item"><img src="/image/brand/brand_2.jpg" alt="brand fabric"></div>
             <div class="partner-item"><img src="/image/brand/brand_3.jpg" alt="brand fabric"></div>
             <div class="partner-item"><img src="/image/brand/brand_4.jpg" alt="brand fabric"></div>
-            <div class="partner-item"><img src="/image/brand/scabal.jpg"  alt="brand fabric"></div>
+            <div class="partner-item"><img src="/image/brand/scabal.jpg" alt="brand fabric"></div>
             <div class="partner-item"><img src="/image/brand/brand_6.jpg" alt="brand fabric"></div>
             <div class="partner-item"><img src="/image/brand/Zegna.png" alt="brand fabric"></div>
             <div class="partner-item"><img src="/image/brand/lanificio-cerruti.jpg" alt="brand fabric"></div>
