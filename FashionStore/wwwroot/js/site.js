@@ -171,8 +171,7 @@ $(function () {
                                             </span>
 
                                             <span class="search-item-meta">
-                                                ${item.type}
-                                                ${item.price ? `| ${item.price}` : ''}
+                                               ${item.type}
                                             </span>
                                         </div>
                                     </a>
@@ -213,6 +212,29 @@ $(function () {
 
     });
 
+});
+let lastScrollTop = 0;
+const bottomNav = document.querySelector(".ios-bottom-nav");
+
+window.addEventListener("scroll", function () {
+
+    let currentScroll =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+    // Vuốt xuống -> ẩn
+    if (currentScroll > lastScrollTop && currentScroll > 100) {
+
+        bottomNav.classList.add("hide-nav");
+
+    }
+    // Vuốt lên -> hiện
+    else {
+
+        bottomNav.classList.remove("hide-nav");
+
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 });
 function toggleInfo() {
     const box = document.querySelector('.cta-box');
