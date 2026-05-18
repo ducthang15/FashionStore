@@ -32,6 +32,7 @@
                     <div class="row">
                         <div class="appoiment text-center">
                             <form asp-action="Book" method="post" class="container">
+                                @Html.AntiForgeryToken()
                                 <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
                                 <div class="row">
                                     <div class="col-md-6">

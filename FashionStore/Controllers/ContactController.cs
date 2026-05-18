@@ -20,6 +20,7 @@ namespace FashionStore.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Send(Contact contact)
         {
             if (ModelState.IsValid)

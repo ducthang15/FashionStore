@@ -135,6 +135,9 @@ body {
 .call-btn, .call-circle {
     bottom: 100px;
 }
+.offcanvas-header {
+    background-color: rgb(54 27 9);
+}
 /* --- LIVE SEARCH UI --- */
 .live-search-box {
     position: relative;
@@ -147,17 +150,17 @@ body {
     border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     color: #fff;
-    padding: 5px 25px 5px 5px;
-    width: 100px; /* Chiều rộng mặc định */
-    font-size: 13px;
+    padding: 0px 18px 0px 5px;
+    width: 80px; 
+    font-size: 12px;
     font-family: 'Montserrat', sans-serif;
     transition: all 0.3s ease;
 }
 
     .live-search-input:focus {
         outline: none;
-        border-bottom-color: #d4af37; /* Màu vàng gold khi click vào */
-        width: 180px; /* Dài ra khi click */
+        border-bottom-color: #d4af37; 
+        width: 180px; 
     }
 
     .live-search-input::placeholder {
@@ -170,7 +173,7 @@ body {
     right: 5px;
     color: #fff;
     font-size: 14px;
-    pointer-events: none; /* Để không chặn click vào input */
+    pointer-events: none;
 }
 
 .search-results-dropdown {
@@ -472,7 +475,7 @@ a.dropdown-item {
     }
 
     .live-search-mobile {
-        background: rgb(54 27 9);
+        background: #343a40;
         border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 6px;
         padding: 10px 30px 10px 15px;
@@ -480,7 +483,7 @@ a.dropdown-item {
     }
 
         .live-search-mobile:focus {
-            background: rgb(57 20 20);
+            background: #343a40;
         }
     .booking-make {
         background-color: rgb(54 27 9);

@@ -74,7 +74,7 @@
         <div class="container position-relative">
             <button class="navbar-toggler d-xl-none border-0 text-white navbar-toggler-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="open-menu">
             </button>
-            <ul class="navbar-nav d-none d-lg-flex">
+            <ul class="navbar-nav d-none d-lg-flex flex-grow-1">
                 <li class="nav-item">
                     <a class="nav-link text-white" asp-controller="AboutUs" asp-action="Index">About us</a>
                 </li>
@@ -165,7 +165,7 @@
                asp-controller="Home" asp-action="Index">
                 <img src="~/image/brand/ul-lg-dcmright.png" alt="UNLIM TAILOR Logo Suit Vest Bespoke" style="height:60px;" class="logo-unlim">
             </a>
-            <ul class="navbar-nav d-none d-lg-flex align-items-center">
+            <ul class="navbar-nav d-none d-lg-flex align-items-center flex-grow-1 justify-content-end">
                 <li class="nav-item">
                     <a class="nav-link text-white" asp-controller="Gallery" asp-action="Index">Customer</a>
                 </li>
@@ -184,7 +184,7 @@
                 <li class="nav-item ms-3 position-relative">
                     <div class="live-search-box">
                         <input type="text" id="liveSearchInput" class="live-search-input" placeholder="Search..." autocomplete="off">
-                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
                         <div id="searchResults" class="search-results-dropdown shadow">
                         </div>
                     </div>
@@ -323,7 +323,7 @@
             <img src="~/image/brand/ul-lg-dcmright.png" alt="UNLIM TAILOR Logo Suit Vest Bespoke" style="height:60px;" class="logo-unlim">
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
-        <div class="offcanvas-header d-lg-none pb-0">
+        <div class="offcanvas-header-1 mx-4 d-lg-none pb-0">
             <div class="live-search-box w-100 position-relative mt-3">
                 <input type="text" class="live-search-input live-search-mobile w-100" placeholder="Search ..." autocomplete="off">
                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
@@ -414,27 +414,27 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link py-3 text-dark" asp-controller="Home" asp-action="FAQs">FAQs</a>
-                </li>
-                <li class="mt-2">
-                    <a class="btn booking-make w-100 text-uppercase text-white" asp-controller="Appointment" asp-action="Index">
-                        Make an appointment
+                    <a class="nav-link py-3 text-dark" asp-controller="Appointment" asp-action="Index">
+                        Book an appointment
                     </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link py-3 text-dark" asp-controller="Home" asp-action="FAQs">FAQs</a>
                 </li>
             </ul>
         </div>
     </div>
     <div class="ios-bottom-nav d-md-none">
         <a asp-controller="Home" asp-action="Index" class="ios-nav-item">
-            <i class="fa-solid fa-house"></i>
+            <i class="ri-home-line"></i>
             <span>Home</span>
         </a>
         <a asp-controller="Appointment" asp-action="Index" class="ios-nav-item">
-            <i class="fa-solid fa-calendar-check"></i>
+            <i class="ri-timer-2-line"></i>
             <span>Booking</span>
         </a>
         <a href="https://wa.me/84989473579" class="ios-nav-item">
-            <i class="fa-brands fa-whatsapp"></i>
+            <i class="ri-whatsapp-line"></i>
             <span>Whatsapp</span>
         </a>
         <a href="https://maps.app.goo.gl/CRHZhjMrvW1wQLUv6" class="ios-nav-item">

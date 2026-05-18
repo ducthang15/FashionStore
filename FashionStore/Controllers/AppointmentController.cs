@@ -2,8 +2,8 @@
 using FashionStore.Repository;
 using Microsoft.AspNetCore.Mvc;
 using MailKit.Net.Smtp;
-using MimeKit;          
-using Microsoft.Extensions.Configuration; 
+using MimeKit;
+using Microsoft.AspNetCore.RateLimiting;
 
 namespace FashionStore.Controllers
 {
@@ -24,6 +24,8 @@ namespace FashionStore.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        [EnableRateLimiting("appointmentLimiter")]
         public async Task<IActionResult> Book(Appointment appointment)
         {
             if (ModelState.IsValid)
@@ -96,9 +98,9 @@ namespace FashionStore.Controllers
                     await client.DisconnectAsync(true);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
         }
 

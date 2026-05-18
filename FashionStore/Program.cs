@@ -1,10 +1,11 @@
-﻿using FashionStore.Repository;
-using FashionStore.Utilities;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
-using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.RateLimiting;
+using System.Threading.RateLimiting;
+using Microsoft.AspNetCore.Rewrite;
+using FashionStore.Repository;
+using FashionStore.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<fashionDbContext>(options =>
@@ -37,15 +38,26 @@ builder.Services.AddRouting(options =>
     options.LowercaseUrls = true;
 });
 builder.Services.AddSession();
-var app = builder.Build();
+builder.Services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = 429;
+
+    options.AddFixedWindowLimiter("appointmentLimiter", opt =>
+    {
+        opt.PermitLimit = 3;
+        opt.Window = TimeSpan.FromMinutes(1);
+
+        opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        opt.QueueLimit = 0;
+    });
+}); var app = builder.Build();
 var rewriteOptions = new Microsoft.AspNetCore.Rewrite.RewriteOptions()
-    .AddRedirectToNonWwwPermanent() // Ép về non-www (301 redirect)
-    .AddRedirectToHttpsPermanent();   // Ép về https cho an toàn
+    .AddRedirectToNonWwwPermanent() 
+    .AddRedirectToHttpsPermanent();  
 app.UseRewriter(rewriteOptions);
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -56,6 +68,7 @@ app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapStaticAssets();
+app.UseRateLimiter();
 
 app.MapControllerRoute(
     name: "blog_category",

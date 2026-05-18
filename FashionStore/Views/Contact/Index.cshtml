@@ -74,6 +74,7 @@
 					<h3 class="fw-medium text-center">Send us a message </h3>
 					<p class="text-center">We will contact you as soon as possible!</p>
 					<form asp-action="Send" method="post">
+						@Html.AntiForgeryToken()
 						<div class="form-floating">
 							<input asp-for="FullName" class="form-control" placeholder="Name" />
 							<label asp-for="FullName">Name</label>
