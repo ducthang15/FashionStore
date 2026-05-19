@@ -13,7 +13,9 @@ body {
     font-weight: 400;
     color: #fffbf7;
 }
-
+.main-bg-brown {
+    background-color: rgb(38 26 18);
+}
 .navbar a {
     opacity: 0.9;
 }
@@ -135,6 +137,7 @@ body {
 .call-btn, .call-circle {
     bottom: 100px;
 }
+
 .offcanvas-header {
     background-color: rgb(54 27 9);
 }
@@ -151,7 +154,7 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     color: #fff;
     padding: 0px 18px 0px 5px;
-    width: 80px; 
+    width: 80px;
     font-size: 12px;
     font-family: 'Montserrat', sans-serif;
     transition: all 0.3s ease;
@@ -159,8 +162,8 @@ body {
 
     .live-search-input:focus {
         outline: none;
-        border-bottom-color: #d4af37; 
-        width: 180px; 
+        border-bottom-color: #d4af37;
+        width: 180px;
     }
 
     .live-search-input::placeholder {
@@ -434,20 +437,22 @@ a.dropdown-item {
     z-index: 1040;
     border-top: 0.5px solid rgba(255, 255, 255, 0.15);
 }
+
     .ios-bottom-nav.hide-nav {
         transform: translateY(100%);
     }
-    .ios-nav-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        color: #8e8e93; /* Màu xám chuẩn của icon chưa active trên iOS */
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        flex: 1; /* Chia đều khoảng cách cho 4 nút */
-        transition: color 0.2s ease-in-out;
-    }
+
+.ios-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #8e8e93; /* Màu xám chuẩn của icon chưa active trên iOS */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    flex: 1; /* Chia đều khoảng cách cho 4 nút */
+    transition: color 0.2s ease-in-out;
+}
 
     .ios-nav-item i {
         font-size: 22px;
@@ -466,6 +471,7 @@ a.dropdown-item {
     }
 
 @media (max-width: 767px) {
+
     .live-search-box {
         display: block;
     }
@@ -485,9 +491,11 @@ a.dropdown-item {
         .live-search-mobile:focus {
             background: #343a40;
         }
+
     .booking-make {
         background-color: rgb(54 27 9);
     }
+
     .live-search-box .search-icon {
         right: 15px;
         top: 50%;
@@ -782,7 +790,6 @@ img.zalo {
 
 .services-title {
     font-family: 'Montserrat', sans-serif;
-    font-style: italic;
     font-size: 48px;
     text-align: center;
     margin-bottom: 20px;
@@ -816,10 +823,16 @@ img.zalo {
 }
 
 .service-title {
-    color: #fff398;
-    font-size: 18px;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #E2D1B3;
+    text-align: center;
+    line-height: 1.4;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .blog-card {
@@ -939,7 +952,8 @@ img.zalo {
 
 .service-text {
     font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
+    text-align: center;
     line-height: 1.7;
     color: white;
 }
@@ -989,6 +1003,173 @@ img.zalo {
         max-height: 70%;
         object-fit: contain;
     }
+
+/* ===== COLLECTION SECTION ===== */
+.collection-section {
+    background: #FAF9F6;
+    overflow: hidden;
+}
+
+.collection-title {
+    font-family: Montserrat, serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.collection-subtitle {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #666;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+/* ===== SLIDER ===== */
+#suitSlider {
+    margin: 0 -10px;
+}
+
+.suit-card {
+    padding: 12px 10px;
+}
+
+.suit-card-inner {
+    background: #fff;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    transform: scale(0.94);
+    height: 100%;
+}
+
+/* ===== IMAGE ===== */
+.suit-image-wrapper {
+    height: 420px; /* ép chiều cao đồng đều */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+    .suit-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+/* ===== CONTENT ===== */
+.suit-info-box {
+    position: relative;
+    padding: 10px;
+    background: #111;
+    color: #fff;
+    transition: all 0.35s ease;
+    min-height: 150px;
+}
+
+.suit-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: inherit;
+}
+
+.suit-type {
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #c5c5c5;
+    margin-bottom: 12px;
+}
+
+.suit-price {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.btn-detail-arrow {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 38px;
+    height: 50px;
+    border-radius: 50%;
+    background: #E2D1B3;
+    color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.35s ease;
+}
+
+.slick-center .suit-card-inner,
+.suit-card-inner:hover {
+    transform: scale(1);
+}
+
+    .slick-center .suit-info-box,
+    .suit-card-inner:hover .suit-info-box {
+        background: #E2D1B3;
+        color: #111;
+    }
+
+    .slick-center .suit-type,
+    .suit-card-inner:hover .suit-type {
+        color: black;
+    }
+
+    .slick-center .btn-detail-arrow,
+    .suit-card-inner:hover .btn-detail-arrow {
+        background: #111;
+        color: #fff;
+    }
+
+    .slick-center .suit-image-wrapper img,
+    .suit-card-inner:hover .suit-image-wrapper img {
+        transform: scale(1.05);
+    }
+
+.slick-prev,
+.slick-next {
+    display: none !important;
+}
+.position-relative.px-md-5 {
+    position: relative;
+}
+
+.slick-arrow-custom {
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: #111;
+    color: #fff;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .slick-arrow-custom:hover {
+        background: #E2D1B3;
+        color: #111;
+    }
+
+.prev-arrow {
+    left: -15px;
+}
+
+.next-arrow {
+    right: -15px;
+}
 
 @keyframes scroll {
     from {
@@ -1095,6 +1276,7 @@ img.zalo {
 .gallery-customer {
     background-color: #FDFCF9;
 }
+
 .editorial-item {
     display: flex;
     gap: 20px;
@@ -1118,6 +1300,7 @@ img.zalo {
     flex: 1;
     min-width: 0;
 }
+
 .contact-send {
     background-color: #3a1d0f;
 }
@@ -1367,6 +1550,18 @@ img.zalo {
 
 /*mobile*/
 @media (max-width: 576px) {
+    /* Ẩn hẳn 2 nút mũi tên thô cứng trên điện thoại vì khách vuốt màn hình (Swipe) tiện hơn */
+    .slick-arrow-custom {
+        display: none !important;
+    }
+
+    /* Thu hẹp khoảng cách đệm trên mobile để hiển thị card gọn gàng hơn */
+    .position-relative.px-md-4,
+    .position-relative.px-md-5 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
     .product-info {
         font-family: 'Montserrat', sans-serif;
         font-size: 16px;

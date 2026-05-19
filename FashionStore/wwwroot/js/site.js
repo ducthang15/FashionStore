@@ -240,3 +240,52 @@ function toggleInfo() {
     const box = document.querySelector('.cta-box');
     box.classList.toggle('active');
 }
+$(function () {
+    const $slider = $('#suitSlider');
+
+    if (!$slider.length) return;
+
+    // Khởi tạo cấu trúc Slick Slider Center Mode cao cấp
+    $slider.slick({
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        centerMode: true,
+        centerPadding: '0px',
+        focusOnSelect: true,
+        arrows: true,
+        dots: false,
+        prevArrow: $('#slidePrev'),
+        nextArrow: $('#slideNext'),
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2,
+                    centerMode: false
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                    centerMode: true,
+                    centerPadding: '30px'
+                }
+            }
+        ]
+    });
+
+    // Thêm hiệu ứng chủ động: Khi tải trang lần đầu, ép phần tử chính giữa nhận trạng thái active ổn định
+    setTimeout(function () {
+        $('.suit-card-inner').removeClass('active');
+        $('.slick-center .suit-card-inner').addClass('active');
+    }, 300);
+
+    // Lắng nghe sự kiện trượt của Slider để gán class active mượt mà
+    $slider.on('afterChange', function (event, slick, currentSlide) {
+        $('.suit-card-inner').removeClass('active');
+        $('.slick-center .suit-card-inner').addClass('active');
+    });
+});
