@@ -1,4 +1,4 @@
-﻿using FashionStore.Models; 
+﻿using FashionStore.Models;
 using FashionStore.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +35,14 @@ namespace FashionStore.Controllers
             {
                 return NotFound();
             }
-
+            var relatedProducts = await _context.Products.Include(p => p.Category)
+             .Where(p =>
+             p.CategoryId == product.CategoryId &&
+             p.ProductId != product.ProductId)
+                .OrderByDescending(p => p.ProductId)
+                .Take(8)
+                .ToListAsync();
+            ViewBag.RelatedProducts = relatedProducts;
             return View(product);
         }
         public IActionResult Privacy()
@@ -48,7 +55,7 @@ namespace FashionStore.Controllers
             return View();
         }
         [Route("care")]
-        public IActionResult  Care()
+        public IActionResult Care()
         {
             return View();
         }
@@ -56,7 +63,7 @@ namespace FashionStore.Controllers
         public IActionResult FAQs()
         {
             return View();
-        }   
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

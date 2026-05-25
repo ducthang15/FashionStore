@@ -14,7 +14,6 @@
                  class="img-fluid w-100"
                  alt="Bespoke Tailoring">
         </picture>
-        <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
         <div class="position-absolute top-50 start-50 translate-middle text-center px-4 d-none d-md-block">
             <h1 class="fs-3">
                 A Craftsmanship Story
@@ -35,45 +34,40 @@
             </p>
         </div>
     </div>
-    <div class="container mt-3 mb-5">
+    <div class="container mt-3">
         <div class="row gx-lg-5">
-
-            <div class="col-lg-8 mb-4">
-                <h2>
-                    Our Articles
-                </h2>
-
+            <div class="col-lg-8">
                 @if (Model != null && Model.Any())
                 {
-                    <div class="row g-4">
+                    <div class="row g-3">
                         @foreach (var item in Model)
                         {
                             <div class="col-12">
                                 <div class="card blog-card h-100 overflow-hidden">
-                                    <div class="row g-0 h-100">
-                                        <div class="col-md-5 col-lg-4 blog-img-wrapper">
+                                    <div class="row h-100">
+                                        <div class="col-md-6 col-lg-5 blog-img-wrapper">
                                             <a asp-action="Details" asp-route-slug="@item.Slug" class="d-block h-100">
                                                 <img src="@item.ImageUrl" class="blog-img" alt="@item.Title">
                                             </a>
                                         </div>
-                                        <div class="col-md-7 col-lg-8">
-                                            <div class="card-body d-flex flex-column h-100 p-4">
+                                        <div class="col-md-6 col-lg-7">
+                                            <div class="card-body d-flex flex-column h-100">
                                                 <div class="d-flex align-items-center gap-3">
-                                                    <p class="text-muted small mb-0 fw-medium">
-                                                        <i class="ri-calendar-line text-primary align-middle me-1"></i>
+                                                    <p class="text-muted small mb-0">
+                                                        <i class="ri-calendar-line align-middle me-1 text-muted"></i>
                                                         @(item.CreatedAt?.ToString("dd/MM/yyyy") ?? "Đang cập nhật")
                                                     </p>
                                                     <span class="text-muted small">
-                                                        <i class="fa-regular fa-eye me-1"></i>
-                                                        @item.ViewCount lượt xem
+                                                        <i class="fa-regular fa-eye me-1 text-muted"></i>
+                                                        @item.ViewCount view
                                                     </span>
                                                 </div>
-                                                <h5 class="card-title fw-bold mb-3">
+                                                <h6 class="card-title text-uppercase">
                                                     <a asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none text-dark title-hover">
                                                         @item.Title
                                                     </a>
-                                                </h5>
-                                                <p class="card-text text-muted text-clamp-3 mb-4">
+                                                </h6>
+                                                <p class="title-hover-p card-text text-muted text-clamp-3 mb-4">
                                                     @item.Summary
                                                 </p>
 
@@ -100,7 +94,7 @@
             </div>
 
             <div class="col-lg-4">
-                <div class="sidebar-widget sticky-lg-top" style="top: 2rem;">
+                <div class="sidebar-widget title-hover">
                     <h3>
                         Related News
                     </h3>
@@ -113,7 +107,7 @@
                                 <a asp-action="Details" asp-route-slug="@item.Slug" class="related-news-item d-flex text-decoration-none">
                                     <img src="@item.ImageUrl" class="related-img shadow-sm flex-shrink-0" alt="@item.Title" />
                                     <div class="ms-3">
-                                        <h6 class="mb-1 text-clamp-2 title-hover lh-base text-white">
+                                        <h6 class="text-clamp-2 title-hover text-white">
                                             @item.Title
                                         </h6>
                                         <p class="text-white detail-read">

@@ -11,9 +11,17 @@
     </video>
     <div class="mobile-poster"></div>
 </div>
-<div class="banner-wrapper bg-image">
-    <img src="~/image/accesory.png" alt="accessories" />
-    <div class="position-absolute top-50 start-50 translate-middle text-center">
+<div class="position-relative overflow-hidden">
+    <picture>
+        <source media="(min-width: 992px)"
+                srcset="/image/custom-suit-unlim.jpg">
+        <source media="(max-width: 991px)"
+                srcset="/image/custom-suit-unlim.jpg">
+        <img src="/image/custom-suit-unlim.jpg"
+             class="img-fluid w-100"
+             alt="Custom Tailored Shirt">
+    </picture>
+    <div class="position-absolute top-50 start-50 translate-middle text-center text-white d-none d-md-block">
         <h1 class="title-customer-signature fw-bold d-md-block d-none">CUSTOM TAILORED SUITS</h1>
         <p class="fs-4 d-md-block d-none">Explore the unlim tailor suit collection where personal style is expressed through each subtle seam.</p>
     </div>

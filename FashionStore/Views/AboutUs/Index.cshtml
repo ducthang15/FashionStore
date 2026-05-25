@@ -34,7 +34,7 @@
                 <span class="text-uppercase d-block mx-auto letter-spacing">
                     Our Story
                 </span>
-                <h1 class="mt-2 mb-4 text-dark">
+                <h1 class="text-dark">
                     UNLIM Tailor – Tailoring Class
                 </h1>
                 <p class="text-secondary lh-lg">
@@ -196,30 +196,10 @@
     </div>
 </section>
 <section class="cta py-5 bg-body-secondary">
-    <h4 class="text-dark text-uppercase">Set An appointment</h4>
     <div class="cta-buttons">
-        <button class="btn-book">
-            <a asp-controller="Appointment" asp-action="Index" class="text-decoration-none text-white">
-                BOOK AN APPOINTMENT
-            </a>
-        </button>
-    </div>
-</section>
-<section class="cta-inf">
-    <div class="cta-box text-center">
-        <div class="cta-header" onclick="toggleInfo()">
-            <span>Want to know more about us. Click here to find out more details!</span>
-            <span class="arrow">▼</span>
-        </div>
-
-        <div class="cta-content" id="ctaContent">
-            <img src="~/image/brand/LOGO-2.png" alt="loggo" style="height:2px;"/>
-            <p class="text-center">
-                CÔNG TY TNHH MAY MẶC UNLIM VIỆT NAM | GPKD số 0109496957
-                Cấp ngày 15/01/2021 tại Sở kế hoạch và đầu tư Thành phố Hà Nội |
-                Địa chỉ: Tầng 1, Số 107 Kim Mã, Phường Giảng Võ, Quận Ba Đình, Thành Phố Hà Nội
-            </p>
-        </div>
+        <a asp-controller="Appointment" asp-action="Index" class="btn-book text-decoration-none text-white d-inline-block text-center">
+            <h4 class="text-dark text-uppercase text-decoration-underline">book An appointment</h4>
+        </a>
     </div>
 </section>
 <a href="https://www.facebook.com/MAYDOSUITCAOCAP" target="_blank" class="messenger-circle d-md-none">

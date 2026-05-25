@@ -13,9 +13,11 @@ body {
     font-weight: 400;
     color: #fffbf7;
 }
+
 .main-bg-brown {
     background-color: rgb(38 26 18);
 }
+
 .navbar a {
     opacity: 0.9;
 }
@@ -418,8 +420,9 @@ a.dropdown-item {
         font-family: 'Montserrat', sans-serif;
     }
 
-.carousel-item {
-    height: 600px;
+.related-products-carousel .carousel-item {
+    height: auto;
+    aspect-ratio: unset;
 }
 
 .ios-bottom-nav {
@@ -470,61 +473,10 @@ a.dropdown-item {
         color: #1780ff;
     }
 
-@media (max-width: 767px) {
-
-    .live-search-box {
-        display: block;
-    }
-
-    .search-item {
-        background-color: rgb(54 27 9);
-    }
-
-    .live-search-mobile {
-        background: #343a40;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 6px;
-        padding: 10px 30px 10px 15px;
-        width: 100% !important;
-    }
-
-        .live-search-mobile:focus {
-            background: #343a40;
-        }
-
-    .booking-make {
-        background-color: rgb(54 27 9);
-    }
-
-    .live-search-box .search-icon {
-        right: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    .search-results-dropdown {
-        position: absolute;
-        width: 100%;
-        left: 0;
-        right: auto;
-        top: calc(100% + 5px);
-        max-height: 250px;
-        overflow-y: auto;
-        z-index: 9999;
-    }
-
-    .carousel-item {
-        height: 100vh;
-    }
-}
-
 .carousel-img {
     object-fit: cover;
 }
 
-.carousel-item {
-    aspect-ratio: 16 / 9;
-}
 
 .booking-btn {
     color: white;
@@ -664,8 +616,7 @@ a.dropdown-item {
 }
 
 .local-home-inf {
-    background-color: #00000069;
-    padding: 1.4rem;
+    padding: 10px;
 }
 
 .luxury-banner {
@@ -923,13 +874,8 @@ img.zalo {
     overflow: hidden;
 }
 
-.sidebar-widget {
-    padding: 24px;
-}
-
 .related-news-item {
     transition: all 0.2s ease;
-    border-radius: 10px;
     padding: 8px;
     background: transparent;
 }
@@ -944,10 +890,9 @@ img.zalo {
 }
 
 .related-img {
-    width: 85px;
-    height: 85px;
+    width: 150px;
+    height: 80px;
     object-fit: cover;
-    border-radius: 10px;
 }
 
 .service-text {
@@ -1006,7 +951,6 @@ img.zalo {
 
 /* ===== COLLECTION SECTION ===== */
 .collection-section {
-    background: #FAF9F6;
     overflow: hidden;
 }
 
@@ -1105,37 +1049,7 @@ img.zalo {
     transition: all 0.35s ease;
 }
 
-.slick-center .suit-card-inner,
-.suit-card-inner:hover {
-    transform: scale(1);
-}
 
-    .slick-center .suit-info-box,
-    .suit-card-inner:hover .suit-info-box {
-        background: #E2D1B3;
-        color: #111;
-    }
-
-    .slick-center .suit-type,
-    .suit-card-inner:hover .suit-type {
-        color: black;
-    }
-
-    .slick-center .btn-detail-arrow,
-    .suit-card-inner:hover .btn-detail-arrow {
-        background: #111;
-        color: #fff;
-    }
-
-    .slick-center .suit-image-wrapper img,
-    .suit-card-inner:hover .suit-image-wrapper img {
-        transform: scale(1.05);
-    }
-
-.slick-prev,
-.slick-next {
-    display: none !important;
-}
 .position-relative.px-md-5 {
     position: relative;
 }
@@ -1304,7 +1218,11 @@ img.zalo {
 .contact-send {
     background-color: #3a1d0f;
 }
-
+.footer-inf-about {
+    color: #beb1b1;
+    font-size: 11px;
+    text-align: center;
+}
 .footer-bg {
     font-family: 'Montserrat', sans-serif;
     background-image: url("https://theme.hstatic.net/200000759169/1001361744/14/bkg_full.png?v=1027");
@@ -1354,47 +1272,11 @@ img.zalo {
         left: 0;
         right: 0;
         bottom: 0;
-        background: url(/image/amv2g.png) no-repeat center center;
+        background: url(/image/brand/bgroundedsoft.jpg) no-repeat center center;
         background-size: cover;
         background-attachment: fixed;
         z-index: -1;
     }
-
-.cta-box {
-    margin-top: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.cta-header {
-    background: #111;
-    color: #fff;
-    padding: 12px 16px;
-    cursor: pointer;
-    align-items: center;
-    transition: 0.3s;
-}
-
-    .cta-header:hover {
-        background: #333;
-    }
-
-.cta-content {
-    max-height: 0;
-    overflow: hidden;
-    background: #f8f8f8;
-    transition: max-height 0.4s ease;
-    padding: 0 16px;
-}
-
-    .cta-content p {
-        margin: 15px 0;
-        color: #333;
-    }
-
-.cta-box.active .cta-content {
-    max-height: 200px;
-}
 
 .arrow {
     transition: transform 0.3s;
@@ -1546,29 +1428,6 @@ img.zalo {
         background-color: #a68545;
         color: white;
     }
-
-
-/*mobile*/
-@media (max-width: 576px) {
-    /* Ẩn hẳn 2 nút mũi tên thô cứng trên điện thoại vì khách vuốt màn hình (Swipe) tiện hơn */
-    .slick-arrow-custom {
-        display: none !important;
-    }
-
-    /* Thu hẹp khoảng cách đệm trên mobile để hiển thị card gọn gàng hơn */
-    .position-relative.px-md-4,
-    .position-relative.px-md-5 {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
-
-    .product-info {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 16px;
-        padding: 12px;
-    }
-}
-
 .process-image img {
     width: 100%;
     height: auto;
@@ -1744,8 +1603,103 @@ img.zalo {
             width: 70px;
         }
 }
+@media (max-width: 767px) {
 
+    /* Đảm bảo khung slider phụ thuộc hoàn toàn vào nội dung */
+    .collection-section .carousel-inner {
+        height: auto;
+    }
+
+    .live-search-box {
+        display: block;
+    }
+
+    .search-item {
+        background-color: rgb(54 27 9);
+    }
+
+    .live-search-mobile {
+        background: #343a40;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        padding: 10px 30px 10px 15px;
+        width: 100% !important;
+    }
+
+        .live-search-mobile:focus {
+            background: #343a40;
+        }
+
+    .booking-make {
+        background-color: rgb(54 27 9);
+    }
+
+    .live-search-box .search-icon {
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .search-results-dropdown {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        right: auto;
+        top: calc(100% + 5px);
+        max-height: 250px;
+        overflow-y: auto;
+        z-index: 9999;
+    }
+
+    .related-products-carousel .carousel-item {
+        height: auto;
+        aspect-ratio: unset;
+    }
+}
 @media (max-width: 576px) {
+    .title-hover{
+        font-size: 16px;
+    }
+    .title-hover-p {
+        font-size: 14px;
+    }
+    .slick-arrow-custom {
+        display: flex;
+        top: 50%;
+        width: 38px;
+        height: 38px;
+        background-color: rgba(17, 17, 17, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+
+    .prev-arrow {
+        left: 8px;
+    }
+
+    .next-arrow {
+        right: 8px;
+    }
+
+    .slick-arrow-custom svg {
+        width: 16px;
+        height: 16px;
+        color: #ffffff;
+    }
+
+    .position-relative.px-md-4,
+    .position-relative.px-md-5 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .product-info {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        padding: 12px;
+    }
+
     .footer_payment .list-payment {
         gap: 12px;
     }

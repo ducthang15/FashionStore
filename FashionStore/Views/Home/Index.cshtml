@@ -14,7 +14,7 @@
         <div class="carousel-item active" data-bs-interval="3000">
             <picture>
                 <source media="(max-width: 767px)" srcset="/image/carousel-light-kt212.png">
-                <img src="~/image/hero-bnxhid1.png" class="d-block w-100 carousel-img h-100" alt="unlimtailor bespoke in hanoi">
+                <img src="~/image/hero-bnxhid1.jpg" class="d-block w-100 carousel-img h-100" alt="unlimtailor bespoke in hanoi">
             </picture>
 
             <div class="carousel-caption text-center unlim-caption">
@@ -25,7 +25,7 @@
         </div>
         <div class="carousel-item" data-bs-interval="3000">
             <picture>
-                <source media="(max-width: 767px)" srcset="/image/carousel-light-kt213.png">
+                <source media="(max-width: 767px)" srcset="/image/carousel-light-kt213.jpg">
                 <img src="~/image/banner_home.png" class="d-block w-100 carousel-img h-100" alt="tailor near me old the quarter in hanoi">
             </picture>
 
@@ -50,59 +50,115 @@
     </video>
     <img src="/image/amv2g.png" class="video-mobile w-100" alt="background-unlimtailor-107kimma">
 </div> *@
-<section class="main-bg-brown">
-    <section class="collection-section">
-        <div class="container relative mt-5 mb-5">
-            <div class="text-center mb-3">
-                <h2 class="collection-title text-dark">The Collection</h2>
-                <p class="collection-subtitle text-dark">You can customize the fabric, color, and every detail to create a suit that's uniquely yours.</p>
-            </div>
-            <div class="position-relative px-md-5">
-                <button class="slick-arrow-custom prev-arrow" id="slidePrev" type="button" aria-label="Previous slide">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-                    </svg>
-                </button>
-                <button class="slick-arrow-custom next-arrow" id="slideNext" type="button" aria-label="Next slide">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                    </svg>
-                </button>
-                <div id="suitSlider" class="row">
-                    @if (Model != null && Model.Any())
-                    {
-                        @foreach (var item in Model)
-                        {
-                            <div class="suit-card">
-                                <div class="suit-card-inner">
-                                    <a asp-controller="Home" asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none">
-                                        <div class="suit-image-wrapper">
-                                            <img src="@item.ImageUrl" alt="@item.ProductName" class="img-fluid" loading="lazy">
-                                        </div>
-                                    </a>
+<section class="collection-section">
+    <div class="container relative mt-5">
+        <div class="text-center mb-3">
+            <h2 class="collection-title text-dark">The Collection</h2>
+            <p class="collection-subtitle text-dark">You can customize the fabric, color, and every detail to create a suit that's uniquely yours.</p>
+        </div>
 
-                                    <div class="suit-info-box">
-                                        <h3 class="suit-name text-clamp-2">@item.ProductName</h3>
-                                        <p class="suit-type">Product line: @item.Category?.CategoryName</p>
-                                        <a asp-controller="Home" asp-action="Details" asp-route-slug="@item.Slug" class="btn-detail-arrow text-decoration-none rounded-4">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z" />
-                                            </svg>
-                                        </a>
+        <div class="position-relative px-md-5">
+            @if (Model != null && Model.Any())
+            {
+                <div id="suitBootstrapSlider" class="carousel slide" data-bs-ride="carousel">
+
+                    <button class="slick-arrow-custom prev-arrow" type="button" data-bs-target="#suitBootstrapSlider" data-bs-slide="prev" aria-label="Previous slide">
+                        <i class="ri-arrow-left-s-line"></i>
+                    </button>
+                    <button class="slick-arrow-custom next-arrow" type="button" data-bs-target="#suitBootstrapSlider" data-bs-slide="next" aria-label="Next slide">
+                        <i class="ri-arrow-right-s-line"></i>
+                    </button>
+
+                    <div class="carousel-inner">
+                        @{
+                            var products = Model.ToList();
+                            var totalProducts = products.Count;
+                        }
+
+                        @for (int i = 0; i < totalProducts; i++)
+                        {
+                            <div class="carousel-item @(i == 0 ? "active" : "")">
+                                <div id="suitSlider" class="row justify-content-center">
+
+                                    <div class="suit-card col-11 col-sm-7 col-md-4">
+                                        <div class="suit-card-inner">
+                                            <a asp-controller="Home" asp-action="Details" asp-route-slug="@products[i].Slug" class="text-decoration-none">
+                                                <div class="suit-image-wrapper">
+                                                    <img src="@products[i].ImageUrl" alt="@products[i].ProductName" class="img-fluid" loading="lazy">
+                                                </div>
+                                            </a>
+                                            <div class="suit-info-box">
+                                                <h3 class="suit-name text-clamp-2">@products[i].ProductName</h3>
+                                                <p class="suit-type">Product line: @products[i].Category?.CategoryName</p>
+                                                <a asp-controller="Home" asp-action="Details" asp-route-slug="@products[i].Slug" class="btn-detail-arrow text-decoration-none rounded-4">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    @{
+                                        var nextIndex1 = (i + 1) % totalProducts; // Dùng phép chia lấy dư để tạo vòng lặp vô hạn sang sản phẩm đầu tiên
+                                        var nextProduct1 = products[nextIndex1];
+                                    }
+                                    <div class="suit-card col-md-4 d-none d-md-block">
+                                        <div class="suit-card-inner">
+                                            <a asp-controller="Home" asp-action="Details" asp-route-slug="@nextProduct1.Slug" class="text-decoration-none">
+                                                <div class="suit-image-wrapper">
+                                                    <img src="@nextProduct1.ImageUrl" alt="@nextProduct1.ProductName" class="img-fluid" loading="lazy">
+                                                </div>
+                                            </a>
+                                            <div class="suit-info-box">
+                                                <h3 class="suit-name text-clamp-2">@nextProduct1.ProductName</h3>
+                                                <p class="suit-type">Product line: @nextProduct1.Category?.CategoryName</p>
+                                                <a asp-controller="Home" asp-action="Details" asp-route-slug="@nextProduct1.Slug" class="btn-detail-arrow text-decoration-none rounded-4">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @{
+                                        var nextIndex2 = (i + 2) % totalProducts;
+                                        var nextProduct2 = products[nextIndex2];
+                                    }
+                                    <div class="suit-card col-md-4 d-none d-md-block">
+                                        <div class="suit-card-inner">
+                                            <a asp-controller="Home" asp-action="Details" asp-route-slug="@nextProduct2.Slug" class="text-decoration-none">
+                                                <div class="suit-image-wrapper">
+                                                    <img src="@nextProduct2.ImageUrl" alt="@nextProduct2.ProductName" class="img-fluid" loading="lazy">
+                                                </div>
+                                            </a>
+                                            <div class="suit-info-box">
+                                                <h3 class="suit-name text-clamp-2">@nextProduct2.ProductName</h3>
+                                                <p class="suit-type">Product line: @nextProduct2.Category?.CategoryName</p>
+                                                <a asp-controller="Home" asp-action="Details" asp-route-slug="@nextProduct2.Slug" class="btn-detail-arrow text-decoration-none rounded-4">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         }
-                    }
-                    else
-                    {
-                        <div class="p-4 text-center text-muted">No custom designs available at the moment.</div>
-                    }
+                    </div>
                 </div>
-
-            </div>
+            }
+            else
+            {
+                <div class="p-4 text-center text-muted">No custom designs available at the moment.</div>
+            }
         </div>
-    </section>
+    </div>
+</section>
+<section class="main-bg-brown">
     <section class="services-section">
         <div class="container">
             <h2 class="services-title text-center mt-5">How it works</h2>
@@ -178,50 +234,50 @@
             </div>
         </div>
     </section>
-    <section class="container local-home pb-4 mt-4">
-        <div class="local-home-inf rounded-4">
-            <div class="row">
-                <div class="col-md-6">
-                    <h3 class="fw-bold mb-3 text-white text-center text-md-start">
-                        Welcome To Our Showroom
-                    </h3>
-                    <ul class="list-unstyled mb-4">
-                        <li class="d-flex align-items-start gap-3 mb-3 text-white">
-                            <i class="fa-solid fa-location-dot text-danger mt-1"></i>
-                            <span><strong>Address:</strong> 105-107 Kim Ma Street, Ba Dinh District, Hanoi</span>
-                        </li>
-                        <li class="d-flex align-items-start gap-3 mb-3 text-white">
-                            <i class="fa-solid fa-phone text-success mt-1"></i>
-                            <span>
-                                <strong>Hotline:</strong>
-                                <a href="tel:02466868107" class="text-white text-decoration-none">
-                                    0246 6868 107
-                                </a> or
-                                <a href="tel:0989473579" class="text-white text-decoration-none">
-                                    098 947 3579
-                                </a>
-                            </span>
-                        </li>
-                        <li class="d-flex align-items-start gap-3 mb-3 text-white">
-                            <i class="fa-solid fa-envelope text-warning mt-1"></i>
-                            <span><strong>Email:</strong> unlimkimma@gmail.com</span>
-                        </li>
+</section>
+<section class="container local-home pb-4">
+    <div class="local-home-inf">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="fw-bold mb-3 text-center text-md-start text-dark mt-4">
+                    Welcome To Our Showroom
+                </h4>
+                <ul class="list-unstyled mb-4">
+                    <li class="d-flex align-items-start gap-3 mb-3 text-dark">
+                        <i class="ri-map-2-line"></i>
+                        <span><strong>Address:</strong> 105-107 Kim Ma Street, Ba Dinh Ward, Hanoi</span>
+                    </li>
+                    <li class="d-flex align-items-start gap-3 mb-3 text-dark">
+                        <i class="ri-phone-line"></i>
+                        <span>
+                            <strong>Hotline:</strong>
+                            <a href="tel:02466868107" class="text-dark text-decoration-none">
+                                0246 6868 107
+                            </a> or
+                            <a href="tel:0989473579" class="text-dark text-decoration-none">
+                                098 947 3579
+                            </a>
+                        </span>
+                    </li>
+                    <li class="d-flex align-items-start gap-3 mb-3 text-dark">
+                        <i class="ri-mail-send-line"></i>
+                        <span><strong>Email:</strong> unlimkimma@gmail.com</span>
+                    </li>
 
-                        <li class="d-flex align-items-start gap-3 text-white">
-                            <i class="fa-solid fa-clock mt-1"></i>
-                            <span><strong>Working hours :</strong> Monday - Sunday : 9 am – 9 pm</span>
-                        </li>
+                    <li class="d-flex align-items-start gap-3 text-dark">
+                        <i class="ri-time-line"></i>
+                        <span><strong>Working hours :</strong> Monday - Sunday : 9 am – 9 pm</span>
+                    </li>
 
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7448.05183271988!2d105.82533600000001!3d21.031649!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab13c6cba743%3A0x4f96a3971ba92e1f!2sUNLIM%20Tailor%20-%20Bespoke%20suit%20H%C3%A0%20N%E1%BB%99i!5e0!3m2!1svi!2sus!4v1774840677856!5m2!1svi!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <div class="ratio ratio-16x9 overflow-hidden ">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7448.05183271988!2d105.82533600000001!3d21.031649!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab13c6cba743%3A0x4f96a3971ba92e1f!2sUNLIM%20Tailor%20-%20Bespoke%20suit%20H%C3%A0%20N%E1%BB%99i!5e0!3m2!1svi!2sus!4v1774840677856!5m2!1svi!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </section>
 <div class="luxury-banner">
     <img src="/image/poster-index-2233.png" alt="poster" class="w-100">
