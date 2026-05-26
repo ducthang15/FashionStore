@@ -1,0 +1,50 @@
+﻿@model FashionStore.Repository.Models.Redirect
+
+@{
+    ViewData["Title"] = "Chỉnh sửa cấu hình";
+}
+
+<div class="container mt-4" style="max-width: 700px;">
+    <div class="card shadow">
+        <div class="card-header bg-warning text-dark">
+            <h4 class="mb-0">Chỉnh sửa lệnh chuyển hướng</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="CreatedAt" />
+
+                <div class="mb-3">
+                    <label asp-for="OldUrl" class="form-label">Đường dẫn cũ</label>
+                    <div class="input-group">
+                        <span class="input-group-text">/</span>
+                        <input asp-for="OldUrl" class="form-control" required />
+                    </div>
+                    <span asp-validation-for="OldUrl" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="NewUrl" class="form-label">Đường dẫn mới</label>
+                    <div class="input-group">
+                        <span class="input-group-text">/</span>
+                        <input asp-for="NewUrl" class="form-control" required />
+                    </div>
+                    <span asp-validation-for="NewUrl" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Loại</label>
+                    <select asp-for="IsPermanent" class="form-select">
+                        <option value="true">301 Moved Permanently</option>
+                        <option value="false">302 Found</option>
+                    </select>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    <a asp-action="Index" class="btn btn-secondary">Hủy bỏ</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

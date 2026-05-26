@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.RateLimiting;
 using System.Threading.RateLimiting;
 using Microsoft.AspNetCore.Rewrite;
+using FashionStore.Middlewares;
 using FashionStore.Repository;
 using FashionStore.Utilities;
 
@@ -63,6 +64,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseMiddleware<UrlRedirectMiddleware>();
 app.UseRouting();
 app.UseSession();
 app.UseAuthentication();

@@ -1,0 +1,54 @@
+﻿@model FashionStore.Repository.Models.Redirect
+
+@{
+    ViewData["Title"] = "Thêm mới chuyển hướng";
+}
+
+<div class="container mt-4" style="max-width: 700px;">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Thêm cấu hình chuyển hướng mới</h4>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <strong>Lưu ý quan trọng:</strong> KHÔNG nhập tên miền (https://...) và KHÔNG để dấu gạch chéo <code>/</code> ở đầu tiên. <br />
+                <em>Ví dụ đúng: <code>fabric</code> hoặc <code>product/ao-mang-to-cao-cap</code></em>
+            </div>
+
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="OldUrl" class="form-label font-weight-bold">Đường dẫn cũ (Cần chặn)</label>
+                    <div class="input-group">
+                        <span class="input-group-text">/</span>
+                        <input asp-for="OldUrl" class="form-control" placeholder="Ví dụ: fabric" required />
+                    </div>
+                    <span asp-validation-for="OldUrl" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="NewUrl" class="form-label font-weight-bold">Đường dẫn mới (Đích nhảy đến)</label>
+                    <div class="input-group">
+                        <span class="input-group-text">/</span>
+                        <input asp-for="NewUrl" class="form-control" placeholder="Ví dụ: fabrics" required />
+                    </div>
+                    <span asp-validation-for="NewUrl" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label font-weight-bold">Loại chuyển hướng (Chuẩn SEO)</label>
+                    <select asp-for="IsPermanent" class="form-select">
+                        <option value="true">301 Moved Permanently (Khuyên dùng - Giữ điểm SEO)</option>
+                        <option value="false">302 Found (Tạm thời)</option>
+                    </select>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-success">Lưu cấu hình</button>
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -38,6 +38,8 @@ public partial class fashionDbContext : DbContext
 
     public virtual DbSet<ProductImage> ProductImages { get; set; }
 
+    public virtual DbSet<Redirect> Redirects { get; set; }
+
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -133,6 +135,12 @@ public partial class fashionDbContext : DbContext
             entity.HasKey(e => e.ImageId).HasName("PK__ProductI__7516F70CAFC8CB41");
 
             entity.HasOne(d => d.Product).WithMany(p => p.ProductImages).HasConstraintName("FK__ProductIm__Produ__52593CB8");
+        });
+
+        modelBuilder.Entity<Redirect>(entity =>
+        {
+            entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
+            entity.Property(e => e.IsPermanent).HasDefaultValue(true);
         });
 
         modelBuilder.Entity<User>(entity =>

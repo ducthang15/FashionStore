@@ -1,0 +1,50 @@
+﻿@model IEnumerable<FashionStore.Repository.Models.Redirect>
+
+@{
+    ViewData["Title"] = "Quản lý Chuyển hướng URL (301/302)";
+}
+
+<div class="container-fluid mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>URL (Redirects)</h2>
+        <a asp-action="Create" class="btn btn-primary"> Add Link</a>
+    </div>
+    <div class="card shadow">
+        <div class="card-body">
+            <table class="table table-bordered table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Đường dẫn cũ</th>
+                        <th>Đường dẫn mới</th>
+                        <th>Loại</th>
+                        <th>Ngày tạo</th>
+                        <th class="text-center">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><small class="text-danger">/@item.OldUrl</small></td>
+                            <td><small class="text-success">/@item.NewUrl</small></td>
+                            <td>
+                                <span class="badge @(item.IsPermanent ? "bg-success" : "bg-warning")">
+                                    @(item.IsPermanent ? "301 (Vĩnh viễn)" : "302 (Tạm thời)")
+                                </span>
+                            </td>
+                            <td>@item.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td class="text-center">
+                                <div class="d-flex justify-content-center gap-2">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Sửa</a>
+                                    <form asp-action="Delete" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn xóa lệnh chuyển hướng này? Link cũ sẽ bị lỗi 404 lại!');">
+                                        <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
