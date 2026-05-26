@@ -1,5 +1,4 @@
 ﻿using FashionStore.Repository;
-using FashionStore.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -49,7 +48,7 @@ namespace FashionStore.Controllers
 
             var featuredNews = await _context.News
                 .Where(n => n.IsPublished)
-                .OrderByDescending(n => n.CreatedAt)
+                .OrderBy(n => n.CreatedAt)
                 .Take(5)
                 .ToListAsync();
 

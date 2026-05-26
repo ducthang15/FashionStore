@@ -2,15 +2,17 @@
     ViewData["Title"] = "Appointment scheduled successfully";
 }
 
-<div class="container text-center mt-5 mb-5 pt-5 pb-5">
-    <div class="card shadow border-0 mx-auto p-5 rounded-4" style="max-width: 600px;">
-        <i class="fa-solid fa-circle-check text-success mb-4" style="font-size: 80px;"></i>
-        <h2 class="text-success fw-bold mb-3">Đã Gửi Yêu Cầu!</h2>
-        <p class="fs-5 text-muted">
-            Cảm ơn bạn đã đặt lịch hẹn. Chúng tôi sẽ liên hệ lại với số điện thoại của bạn sớm nhất để xác nhận.
-        </p>
-        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-dark rounded-pill px-5 mt-3">
-            Về Trang Chủ
-        </a>
+<div class="success-book-customer">
+    <div class="container text-center p-5">
+        <div class="mx-auto bg-black opacity-75 p-3" style="max-width: 600px;">
+            <i class="fa-solid fa-circle-check text-success mb-4 fs-1"></i>
+            <h2 class="text-white fw-bold mb-3">APPOINTMENT SENT!</h2>
+            <p class="fs-6 text-white">
+                Thank you for scheduling an appointment. We will contact you by phone as soon as possible to confirm.
+            </p>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-light rounded-pill px-5 mt-3">
+                HOME PAGE
+            </a>
+        </div>
     </div>
 </div>
