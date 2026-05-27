@@ -98,6 +98,7 @@ namespace FashionStore.Controllers
             ViewBag.Related = related;
             return View(news);
         }
+        [Route("blog/shuttle-service")]
         public async Task<IActionResult> ShuttleService()
         {
             // Giả sử ID của Shuttle Service trong SQL là 5
@@ -111,6 +112,7 @@ namespace FashionStore.Controllers
             ViewBag.CategoryName = category?.CategoryName;
             return View("ShuttleService", posts);
         }
+        [Route("blog/online-tailoring")]
         public async Task<IActionResult> OnlineTailoring()
         {
             int serviceCategoryId = 2;
@@ -123,6 +125,7 @@ namespace FashionStore.Controllers
             ViewBag.CategoryName = category?.CategoryName;
             return View("OnlineTailoring", posts);
         }
+        [Route("blog/tailoring-at-home")]
         public async Task<IActionResult> TailoringAtHome()
         {
             int serviceCategoryId = 1;
@@ -135,6 +138,7 @@ namespace FashionStore.Controllers
             ViewBag.CategoryName = category?.CategoryName;
             return View("TailoringAtHome", posts);
         }
+        [Route("blog/tailoring-process")]
         public async Task<IActionResult> TailoringProcess()
         {
             int serviceCategoryId = 5;
@@ -147,6 +151,7 @@ namespace FashionStore.Controllers
             ViewBag.CategoryName = category?.CategoryName;
             return View("TailoringProcess", posts);
         }
+        [Route("blog/tailoring-uniforms")]
         public async Task<IActionResult> TailoringUniforms()
         {
             int serviceCategoryId = 3;

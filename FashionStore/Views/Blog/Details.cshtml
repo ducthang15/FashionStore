@@ -8,18 +8,38 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 }
+@{
+    string categoryUrl = Model.NewsCategory?.CategoryName switch
+    {
+        "tailoring-process" => "/blog/tailoring-process",
+        "online-tailoring" => "/blog/online-tailoring",
+        "tailoring-at-home" => "/blog/tailoring-at-home",
+        "tailoring-uniforms" => "/blog/tailoring-uniforms",
+        "shuttle-service" => "/blog/shuttle-service",
+        _ => "/blog"
+    };
+}
 <nav class="container breadcrumb-title mb-3 small mt-2">
-    <a asp-controller="Home" asp-action="Index" class="text-decoration-none text-dark text-uppercase fw-semibold">
+
+    <a asp-controller="Home"
+       asp-action="Index"
+       class="text-decoration-none text-dark text-uppercase fw-semibold">
         <i class="ri-home-2-line"></i>
     </a>
+
     <span class="text-dark">/</span>
-    <a asp-controller="@Model.NewsCategory?.CategoryName" asp-action="Index" class="text-decoration-none text-secondary text-uppercase fw-bold">
+
+    <a href="@categoryUrl"
+       class="text-decoration-none text-secondary text-uppercase fw-bold">
         @Model.NewsCategory?.CategoryName
     </a>
+
     <span class="text-dark">/</span>
+
     <span class="text-dark fw-semibold text-uppercase text-muted">
         @Model.Title
     </span>
+
 </nav>
 <div class="container mt-2">
     <div class="row justify-content-center">
@@ -48,7 +68,9 @@
                             foreach (var item in ViewBag.Related)
                             {
                                 <div class="col-md-6 mb-3">
-                                    <a href="/blog/details/@item.Slug" class="text-decoration-none text-dark">
+                                    <a asp-controller="Blog"
+                                       asp-action="Details"
+                                       asp-route-slug="@item.Slug" class="text-decoration-none text-dark">
                                         <div class="d-flex gap-3">
                                             <img src="@item.ImageUrl" style="width:100px; height:70px; object-fit:cover;" class="rounded" />
                                             <div>

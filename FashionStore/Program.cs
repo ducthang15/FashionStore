@@ -74,7 +74,7 @@ app.UseRateLimiter();
 
 app.MapControllerRoute(
     name: "blog_category",
-    pattern: "Blog/Category/{slug}",
+    pattern: "blog/category/{slug}",
     defaults: new { controller = "Blog", action = "Category" });
 
 app.MapControllerRoute(

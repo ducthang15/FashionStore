@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\images\news\26246d43-3d12-4988-baeb-056529021e6b--xQYR3-GCr7pZmtD5t_PabPck1ZXBZWyZao9qbycHna72W9TZABR0vwttykovDu1XEX5cQ4VirhXjjv7m_eAWWFabfCjKg0yoEr0qCaz4VEc5-UX8uDApe617fxVN2UhCT4oGk0h6gEARLE6yXvS30AQSGYaoIhrPNXWpnxL4htRSdB5EWRnzQerGuYWJqMF.jfif\**" />
+    <Content Remove="wwwroot\images\news\26246d43-3d12-4988-baeb-056529021e6b--xQYR3-GCr7pZmtD5t_PabPck1ZXBZWyZao9qbycHna72W9TZABR0vwttykovDu1XEX5cQ4VirhXjjv7m_eAWWFabfCjKg0yoEr0qCaz4VEc5-UX8uDApe617fxVN2UhCT4oGk0h6gEARLE6yXvS30AQSGYaoIhrPNXWpnxL4htRSdB5EWRnzQerGuYWJqMF.jfif\**" />
+    <EmbeddedResource Remove="wwwroot\images\news\26246d43-3d12-4988-baeb-056529021e6b--xQYR3-GCr7pZmtD5t_PabPck1ZXBZWyZao9qbycHna72W9TZABR0vwttykovDu1XEX5cQ4VirhXjjv7m_eAWWFabfCjKg0yoEr0qCaz4VEc5-UX8uDApe617fxVN2UhCT4oGk0h6gEARLE6yXvS30AQSGYaoIhrPNXWpnxL4htRSdB5EWRnzQerGuYWJqMF.jfif\**" />
+    <None Remove="wwwroot\images\news\26246d43-3d12-4988-baeb-056529021e6b--xQYR3-GCr7pZmtD5t_PabPck1ZXBZWyZao9qbycHna72W9TZABR0vwttykovDu1XEX5cQ4VirhXjjv7m_eAWWFabfCjKg0yoEr0qCaz4VEc5-UX8uDApe617fxVN2UhCT4oGk0h6gEARLE6yXvS30AQSGYaoIhrPNXWpnxL4htRSdB5EWRnzQerGuYWJqMF.jfif\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MailKit" Version="4.15.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.ViewCompilation" Version="2.3.0" />
