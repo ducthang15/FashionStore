@@ -14,7 +14,6 @@ public partial class News
     [StringLength(200)]
     public string Title { get; set; } = null!;
 
-    [StringLength(500)]
     public string? Summary { get; set; }
 
     public string? Content { get; set; }

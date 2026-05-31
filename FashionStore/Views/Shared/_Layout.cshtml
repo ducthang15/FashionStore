@@ -13,23 +13,24 @@
     <!-- End Google Tag Manager -->
     <meta name="google-site-verification" content="pmGO9F4dJg0RjJXL1QqLs7zmuX5JhnE8BxpnrIR1EAE" />
     <meta name="description" content="@(ViewData["MetaDescription"] ?? "UNLIM TAILOR's premium men's fashion collection. Unique designs featuring suits, tuxedos, blazers, trench coats, leather shoes, and luxury accessories. Specializing in tailoring beautiful suits in Hanoi, including business suits and wedding suits. View the complete collection!")" />
-    <title>@(ViewData["Title"] ?? "UNLIM TAILOR") - Unlim Bespoke Tailoring</title>
+<title>@(ViewData["Title"] != null ? $"{ViewData["Title"]} - UNLIM TAILOR" : "UNLIM TAILOR - Premium Bespoke Suit In Hanoi")</title>
     @*   <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/9c689493377e7c843af563c82e9b8459/script.js"></script> *@
     <script type="application/ld+json">
         {
           "@@context": "https://schema.org",
           "@@type": "ClothingStore",
           "name": "UNLIM TAILOR",
-          "image": "https://unlimtailor.com/images/logo.png",
+          "image": "https://unlimtailor.com/image/brand/ul-lg-dcmright.png",
           "url": "https://unlimtailor.com",
           "telephone": "0989473579",
           "email": "unlimkimma@gmail.com",
+          "hasMap": "https://maps.app.goo.gl/CRHZhjMrvW1wQLUv6",
           "address": {
           "@@type": "PostalAddress",
-          "streetAddress": "107 Kim Ma",
-          "addressLocality": "Hà Nội",
-          "addressRegion": "Ba Đình",
-          "addressCountry": "VN"
+           "streetAddress": "105-107 Kim Ma",
+           "addressLocality": "Ba Đình",
+           "addressRegion": "Hà Nội",
+           "addressCountry": "VN"
         },
           "geo": {
             "@@type": "GeoCoordinates",
@@ -69,7 +70,6 @@
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJM3DC5R"
                 height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top luxury-nav">
         <div class="container position-relative">
             <button class="navbar-toggler d-xl-none border-0 text-white navbar-toggler-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="open-menu">
@@ -79,85 +79,39 @@
                     <a class="nav-link text-white" asp-controller="AboutUs" asp-action="Index">About us</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="accessoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-white" asp-controller="Caravat" asp-action="Index" id="accessoryDropdown" role="button" aria-expanded="false">
                         Accessories
                     </a>
-                    <ul class="dropdown-menu rounded-0 lh-lg">
-                        <li>
-                            <a class="dropdown-item" asp-controller="Caravat" asp-action="Index">
-                                Caravat
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" asp-controller="Cufflink" asp-action="Index">
-                                Cufflinks
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" asp-controller="Shoe" asp-action="Index">
-                                Shoe
-                            </a>
-                        </li>
+                    <ul class="dropdown-menu rounded-0 lh-lg" aria-labelledby="accessoryDropdown">
+                        <li><a class="dropdown-item" asp-controller="Caravat" asp-action="Index">Caravat</a></li>
+                        <li><a class="dropdown-item" asp-controller="Cufflink" asp-action="Index">Cufflinks</a></li>
+                        <li><a class="dropdown-item" asp-controller="Shoe" asp-action="Index">Shoe</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="accessoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-white" asp-controller="Suit" asp-action="Index" id="productDropdown" role="button" aria-expanded="false">
                         Product
                     </a>
-                    <ul class="dropdown-menu rounded-0 lh-lg">
-                        <li>
-                            <a class="dropdown-item" asp-controller="Suit" asp-action="Index">Suit</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" asp-controller="Tuxedo" asp-action="Index">Tuxedo</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" asp-controller="Blazer" asp-action="Index">Blazer</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" asp-controller="Coat" asp-action="Index">Coat</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" asp-controller="Trousers" asp-action="Index">Trousers</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" asp-controller="Shirt" asp-action="Index">Shirt</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" asp-controller="Fabrics" asp-action="Index">Fabrics</a>
-                        </li>
+                    <ul class="dropdown-menu rounded-0 lh-lg" aria-labelledby="productDropdown">
+                        <li><a class="dropdown-item" asp-controller="Suit" asp-action="Index">Suit</a></li>
+                        <li><a class="dropdown-item" asp-controller="Tuxedo" asp-action="Index">Tuxedo</a></li>
+                        <li><a class="dropdown-item" asp-controller="Blazer" asp-action="Index">Blazer</a></li>
+                        <li><a class="dropdown-item" asp-controller="Coat" asp-action="Index">Coat</a></li>
+                        <li><a class="dropdown-item" asp-controller="Trousers" asp-action="Index">Trousers</a></li>
+                        <li><a class="dropdown-item" asp-controller="Shirt" asp-action="Index">Shirt</a></li>
+                        <li><a class="dropdown-item" asp-controller="Fabrics" asp-action="Index">Fabrics</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="accessoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-white" asp-controller="Blog" asp-action="TailoringProcess" id="processDropdown" role="button" aria-expanded="false">
                         Our Process
                     </a>
-                    <ul class="dropdown-menu rounded-0 lh-lg">
-                        <li>
-                            <a class="dropdown-item" asp-controller="Blog" asp-action="TailoringProcess">
-                                Tailoring process
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" asp-controller="Blog" asp-action="TailoringAtHome">
-                                Tailoring at home
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" asp-controller="Blog" asp-action="OnlineTailoring">
-                                Online tailoring
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" asp-controller="Blog" asp-action="TailoringUniforms">
-                                Tailoring uniforms
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" asp-controller="Blog" asp-action="ShuttleService">
-                                Shuttle service
-                            </a>
-                        </li>
+                    <ul class="dropdown-menu rounded-0 lh-lg" aria-labelledby="processDropdown">
+                        <li><a class="dropdown-item" asp-controller="Blog" asp-action="TailoringProcess">Tailoring process</a></li>
+                        <li><a class="dropdown-item" asp-controller="Blog" asp-action="TailoringAtHome">Tailoring at home</a></li>
+                        <li><a class="dropdown-item" asp-controller="Blog" asp-action="OnlineTailoring">Online tailoring</a></li>
+                        <li><a class="dropdown-item" asp-controller="Blog" asp-action="TailoringUniforms">Tailoring uniforms</a></li>
+                        <li><a class="dropdown-item" asp-controller="Blog" asp-action="ShuttleService">Shuttle service</a></li>
                     </ul>
                 </li>
             </ul>
@@ -350,10 +304,9 @@
                     <a class="nav-link py-3 text-dark" asp-controller="Gallery" asp-action="Index">Customer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link py-3 text-dark d-flex justify-content-between" data-bs-toggle="collapse" href="#productMenu" role="button" aria-expanded="false">
+                    <a class="nav-link py-3 text-dark d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#productMenu" role="button" aria-expanded="false">
                         Product <i class="ri-arrow-down-wide-line"></i>
                     </a>
-
                     <ul class="collapse list-unstyled ps-3" id="productMenu">
                         <li><a class="nav-link py-2 text-dark" asp-controller="Suit" asp-action="Index">Suit</a></li>
                         <li><a class="nav-link py-2 text-dark" asp-controller="Tuxedo" asp-action="Index">Tuxedo</a></li>
@@ -365,63 +318,29 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link py-3 text-dark d-flex justify-content-between" href="#accessoriesMenu" role="button" data-bs-toggle="collapse" aria-expanded="false">
+                    <a class="nav-link py-3 text-dark d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#accessoriesMenu" role="button" aria-expanded="false">
                         Accessories <i class="ri-arrow-down-wide-line"></i>
                     </a>
                     <ul class="collapse list-unstyled ps-3" id="accessoriesMenu">
-                        <li>
-                            <a class="nav-link py-2 text-dark" asp-controller="Caravat" asp-action="Index">
-                                Caravat
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link py-2 text-dark" asp-controller="Cufflink" asp-action="Index">
-                                Cufflinks
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link py-2 text-dark" asp-controller="Shoe" asp-action="Index">
-                                Shoe
-                            </a>
-                        </li>
+                        <li><a class="nav-link py-2 text-dark" asp-controller="Caravat" asp-action="Index">Caravat</a></li>
+                        <li><a class="nav-link py-2 text-dark" asp-controller="Cufflink" asp-action="Index">Cufflinks</a></li>
+                        <li><a class="nav-link py-2 text-dark" asp-controller="Shoe" asp-action="Index">Shoe</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link py-3 text-dark d-flex justify-content-between" href="#processMenu" role="button" data-bs-toggle="collapse" aria-expanded="false">
+                    <a class="nav-link py-3 text-dark d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#processMenu" role="button" aria-expanded="false">
                         Our Process <i class="ri-arrow-down-wide-line"></i>
                     </a>
                     <ul class="collapse list-unstyled ps-3" id="processMenu">
-                        <li>
-                            <a class="nav-link py-2 text-dark" asp-controller="Blog" asp-action="TailoringProcess">
-                                Tailoring process
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link py-2 text-dark" asp-controller="Blog" asp-action="TailoringAtHome">
-                                Tailoring at home
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link py-2 text-dark" asp-controller="Blog" asp-action="OnlineTailoring">
-                                Online tailoring
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link py-2 text-dark" asp-controller="Blog" asp-action="TailoringUniforms">
-                                Tailoring uniforms
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link py-2 text-dark" asp-controller="Blog" asp-action="ShuttleService">
-                                Shuttle service
-                            </a>
-                        </li>
+                        <li><a class="nav-link py-2 text-dark" asp-controller="Blog" asp-action="TailoringProcess">Tailoring process</a></li>
+                        <li><a class="nav-link py-2 text-dark" asp-controller="Blog" asp-action="TailoringAtHome">Tailoring at home</a></li>
+                        <li><a class="nav-link py-2 text-dark" asp-controller="Blog" asp-action="OnlineTailoring">Online tailoring</a></li>
+                        <li><a class="nav-link py-2 text-dark" asp-controller="Blog" asp-action="TailoringUniforms">Tailoring uniforms</a></li>
+                        <li><a class="nav-link py-2 text-dark" asp-controller="Blog" asp-action="ShuttleService">Shuttle service</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link py-3 text-dark" asp-controller="Appointment" asp-action="Index">
-                        Book an appointment
-                    </a>
+                    <a class="nav-link py-3 text-dark" asp-controller="Appointment" asp-action="Index">Book an appointment</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link py-3 text-dark" asp-controller="Home" asp-action="FAQs">FAQs</a>
