@@ -17,7 +17,16 @@ namespace FashionStore.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var products = await _context.Products.Include(p => p.Category).ToListAsync();
+            // product show
+            var products = await _context.Products
+    .Include(p => p.Category)
+    .Where(p => p.Category.CategoryName == "Suit")
+    .ToListAsync();
+            //review customer
+            ViewBag.Reviews = await _context.CustomerReviews
+            .Where(x => x.IsPublished)
+            .OrderBy(x => x.DisplayOrder)
+            .ToListAsync();
             return View(products);
         }
         [Route("product/{slug}")]

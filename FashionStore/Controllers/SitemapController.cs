@@ -20,6 +20,20 @@ public class SitemapController : Controller
         var urlset = new XElement(ns + "urlset");
 
         urlset.Add(CreateUrlElement(ns, $"{baseUrl}/", "1.0", "daily"));
+        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/suit", "0.9", "weekly"));
+        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/tuxedo", "0.9", "weekly"));
+        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/faqs", "0.9", "weekly"));
+        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/trousers", "0.9", "weekly"));
+        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/shirts", "0.9", "weekly"));
+        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/coat", "0.9", "monthly"));
+        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/blazers", "0.9", "monthly"));
+        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/fabrics", "0.9", "monthly"));
+        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/cufflink", "0.9", "monthly"));
+        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/shoe", "0.9", "monthly"));
+        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/caravat", "0.9", "monthly"));
+        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/appointment", "0.9", "weekly"));
+        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/contact", "0.9", "weekly"));
+        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/gallery", "0.9", "weekly"));
 
         var products = _context.Products.ToList();
         foreach (var p in products)

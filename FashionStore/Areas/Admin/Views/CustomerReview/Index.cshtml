@@ -1,0 +1,42 @@
+﻿@model IEnumerable<FashionStore.Repository.Models.CustomerReview>
+@{
+    ViewData["Title"] = "Add review";
+}
+<a asp-action="Create" class="btn btn-primary mb-3">
+   + Add Review
+</a>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Rating</th>
+            <th>Profession</th>
+            <th>Publish</th>
+            <th>Content</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CustomerName</td>
+
+                <td>@item.Rating ★</td>
+
+                <td>@item.Profession</td>
+
+
+                <td>@item.IsPublished</td>
+
+                <td>@item.ReviewContent</td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ReviewId" >
+                        Edit
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

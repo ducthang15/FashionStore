@@ -44,6 +44,9 @@
                 <a asp-area="Admin" asp-controller="Redirects" asp-action="Index" class="list-group-item list-group-item-action @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Redirects" ? "active" : "")">
                    Cấu hình Redirect
                 </a>
+                <a asp-area="Admin" asp-controller="CustomerReview" asp-action="index" class="list-group-item ...">
+                     Add review
+                </a>
                 <div class="text-secondary small fw-bold px-4 mb-2 mt-4">HỆ THỐNG</div>
                 <a asp-area="" asp-controller="Home" asp-action="Index" target="_blank" class="list-group-item list-group-item-action">
                     <i class="fa-solid fa-earth-americas"></i> Xem Website

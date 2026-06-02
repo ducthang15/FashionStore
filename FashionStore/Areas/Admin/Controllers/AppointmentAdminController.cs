@@ -1,7 +1,8 @@
 ﻿using FashionStore.Repository;
+using FashionStore.Repository.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
 
 namespace FashionStore.Areas.Admin.Controllers
 {
@@ -14,13 +15,10 @@ namespace FashionStore.Areas.Admin.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var appointments = await _context.Appointments
-                .OrderByDescending(a => a.CreatedAt)
-                .ToListAsync();
-
-            return View(appointments);
+            ViewBag.Reviews = _context.CustomerReviews.Where(x => x.IsPublished).OrderBy(x => x.DisplayOrder).ToList();
+            return View(new Appointment());
         }
         [HttpPost]
         public async Task<IActionResult> UpdateStatus(int id, string status)

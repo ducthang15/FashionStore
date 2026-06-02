@@ -1,9 +1,10 @@
-﻿using FashionStore.Repository.Models;
+﻿using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.EntityFrameworkCore;
+using FashionStore.Repository.Models;
 using FashionStore.Repository;
 using Microsoft.AspNetCore.Mvc;
 using MailKit.Net.Smtp;
 using MimeKit;
-using Microsoft.AspNetCore.RateLimiting;
 
 namespace FashionStore.Controllers
 {
@@ -18,9 +19,17 @@ namespace FashionStore.Controllers
             _configuration = configuration;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            ViewBag.Reviews = await _context.CustomerReviews
+         .Where(x => x.IsPublished)
+         .OrderBy(x => x.DisplayOrder)
+         .ToListAsync();
+
+            // 2. Khởi tạo model rỗng truyền ra View để Form đặt lịch hoạt động không bị lỗi
+            var model = new Appointment();
+
+            return View(model);
         }
 
         [HttpPost]
@@ -39,6 +48,12 @@ namespace FashionStore.Controllers
 
                 return RedirectToAction("Success");
             }
+
+            ViewBag.Reviews = _context.CustomerReviews
+                .Where(x => x.IsPublished)
+                .OrderBy(x => x.DisplayOrder)
+                .ToList();
+
             return View("Index", appointment);
         }
 

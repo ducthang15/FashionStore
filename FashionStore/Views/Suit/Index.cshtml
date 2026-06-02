@@ -77,20 +77,15 @@
 
                         <a asp-controller="Home" asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none">
                             <div class="ratio ratio-3x4 product-img">
-                                <img src="@item.ImageUrl"
-                                     alt="@item.ProductName"
-                                     class="w-100 h-100 product-image"
-                                     loading="lazy">
+                                <img src="@item.ImageUrl" alt="@item.ProductName" class="w-100 h-100 product-image"  loading="lazy">
                             </div>
-
                             <div class="product-info text-center p-2">
                                 <p class="m-0 small text-uppercase">
                                     @item.ProductName
                                 </p>
+                                <p class="text-danger ">Contact us</p>
                             </div>
-
                         </a>
-
                     </div>
                 </div>
             }

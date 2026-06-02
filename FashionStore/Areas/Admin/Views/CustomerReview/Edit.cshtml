@@ -1,0 +1,74 @@
+﻿@model FashionStore.Repository.Models.CustomerReview
+@{
+    ViewData["Title"] = "Edit-review";
+}
+<h2>Edit Customer Review</h2>
+
+<form asp-action="Edit"
+      method="post"
+      enctype="multipart/form-data">
+
+    <input type="hidden" asp-for="ReviewId" />
+
+    <div class="mb-3">
+        <label>Customer Name</label>
+        <input asp-for="CustomerName" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Profession</label>
+        <input asp-for="Profession" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Country</label>
+        <input asp-for="Country" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Rating</label>
+        <select asp-for="Rating" class="form-select">
+            <option value="5">★★★★★</option>
+            <option value="4">★★★★</option>
+            <option value="3">★★★</option>
+            <option value="2">★★</option>
+            <option value="1">★</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Review Content</label>
+        <textarea asp-for="ReviewContent" rows="5" class="form-control"></textarea>
+    </div>
+
+    <!-- AVATAR -->
+    <div class="mb-3">
+        <label>Avatar Image</label>
+        <input type="file" name="avatarFile" class="form-control" />
+
+        @if (!string.IsNullOrEmpty(Model.AvatarImage))
+        {
+            <img src="@Model.AvatarImage" width="80" class="mt-2 rounded-circle" />
+        }
+    </div>
+
+    <!-- SUIT -->
+    <div class="mb-3">
+        <label>Suit Image</label>
+        <input type="file" name="suitFile" class="form-control" />
+
+        @if (!string.IsNullOrEmpty(Model.SuitImage))
+        {
+            <img src="@Model.SuitImage" width="120" class="mt-2" />
+        }
+    </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="IsPublished" class="form-check-input" />
+        <label class="form-check-label">Publish</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Update
+    </button>
+</form>

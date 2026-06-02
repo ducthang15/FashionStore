@@ -24,6 +24,8 @@ public partial class fashionDbContext : DbContext
 
     public virtual DbSet<CustomerFeedback> CustomerFeedbacks { get; set; }
 
+    public virtual DbSet<CustomerReview> CustomerReviews { get; set; }
+
     public virtual DbSet<FeedbackImage> FeedbackImages { get; set; }
 
     public virtual DbSet<News> News { get; set; }
@@ -41,7 +43,6 @@ public partial class fashionDbContext : DbContext
     public virtual DbSet<Redirect> Redirects { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Appointment>(entity =>
@@ -70,6 +71,15 @@ public partial class fashionDbContext : DbContext
 
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.IsPublished).HasDefaultValue(true);
+        });
+
+        modelBuilder.Entity<CustomerReview>(entity =>
+        {
+            entity.HasKey(e => e.ReviewId).HasName("PK__Customer__74BC79CE0C9504C5");
+
+            entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
+            entity.Property(e => e.IsPublished).HasDefaultValue(true);
+            entity.Property(e => e.Rating).HasDefaultValue(5);
         });
 
         modelBuilder.Entity<FeedbackImage>(entity =>
