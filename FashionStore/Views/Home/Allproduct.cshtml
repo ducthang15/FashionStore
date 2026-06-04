@@ -1,0 +1,84 @@
+﻿@model IEnumerable<FashionStore.Repository.Models.Product>
+
+@{
+    ViewData["Title"] = "Custom Fabrics";
+    ViewData["MetaDescription"] = "We have thousands of Italian and British fabric samples, trending fabrics for 2026, high-quality yarn, Italian, British and American styles, diverse, lightweight and breathable.";
+    var categories = ViewBag.Categories as IEnumerable<FashionStore.Repository.Models.Category>;
+}
+
+<div class="bg-main py-2">
+    <div class="container">
+        @if (!Model.Any())
+        {
+            <div class="alert alert-info text-center">
+                Hiện chưa có sản phẩm !
+            </div>
+        }
+        else
+        {
+            <section class="unlim-lookbook">
+
+                <div class="unlim-masonry-grid">
+
+                    @foreach (var item in Model)
+                    {
+                        <article class="unlim-masonry-item">
+
+                            <a asp-controller="Home" asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none">
+                                <img src="@item.ImageUrl" alt="@item.ProductName" loading="lazy">
+                                <div class="unlim-overlay text-white">
+                                    <h5>@item.ProductName</h5>
+                                    <span>@item.Category?.CategoryName</span>
+                                   
+                                </div>
+                            </a>
+                        </article>
+                    }
+                </div>
+            </section>
+        }
+    </div>
+    <nav class="mt-4">
+        <ul class="pagination custom-pagination justify-content-center">
+            <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+                <a class="page-link"
+                   asp-action="Allproduct"
+                   asp-route-page="@(ViewBag.CurrentPage - 1)"
+                   asp-route-sort="@ViewBag.CurrentSort">
+                    &lsaquo;
+                </a>
+            </li>
+
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                    <a class="page-link"
+                       asp-action="Allproduct"
+                       asp-route-page="@i"
+                       asp-route-sort="@ViewBag.CurrentSort">
+                        @i
+                    </a>
+                </li>
+            }
+
+            <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+                <a class="page-link"
+                   asp-action="Allproduct"
+                   asp-route-page="@(ViewBag.CurrentPage + 1)"
+                   asp-route-sort="@ViewBag.CurrentSort">
+                    &rsaquo;
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+</div>
+<a href="https://www.facebook.com/MAYDOSUITCAOCAP" target="_blank" class="messenger-circle d-md-none">
+    <i class="fa-brands fa-facebook-messenger"></i>
+</a>
+<a href="tel:0989473579" class="call-circle d-md-none">
+    <i class="fa-solid fa-phone"></i>
+</a>
+<a href="https://zalo.me/0989473579" target="_blank" class="zalo-circle d-md-none">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo" />
+</a>

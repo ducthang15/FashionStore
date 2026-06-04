@@ -24,9 +24,9 @@ public class SitemapController : Controller
         urlset.Add(CreateUrlElement(ns, $"{baseUrl}/tuxedo", "0.9", "weekly"));
         urlset.Add(CreateUrlElement(ns, $"{baseUrl}/faqs", "0.9", "weekly"));
         urlset.Add(CreateUrlElement(ns, $"{baseUrl}/trousers", "0.9", "weekly"));
-        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/shirts", "0.9", "weekly"));
+        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/shirt", "0.9", "weekly"));
         urlset.Add(CreateUrlElement(ns, $"{baseUrl}/coat", "0.9", "monthly"));
-        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/blazers", "0.9", "monthly"));
+        urlset.Add(CreateUrlElement(ns, $"{baseUrl}/blazer", "0.9", "monthly"));
         urlset.Add(CreateUrlElement(ns, $"{baseUrl}/fabrics", "0.9", "monthly"));
         urlset.Add(CreateUrlElement(ns, $"{baseUrl}/cufflink", "0.9", "monthly"));
         urlset.Add(CreateUrlElement(ns, $"{baseUrl}/shoe", "0.9", "monthly"));

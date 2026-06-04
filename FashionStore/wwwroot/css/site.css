@@ -54,15 +54,15 @@ body {
 
 .custom-pagination {
     gap: 10px;
+    margin-bottom: 0px;
 }
-    /* ITEM */
+
     .custom-pagination .page-item {
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    /* LINK */
     .custom-pagination .page-link {
         width: 30px;
         height: 30px;
@@ -546,13 +546,6 @@ a.dropdown-item {
     letter-spacing: 1px;
 }
 
-.video-mobile {
-    display: none;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 .contact-slide {
     position: fixed;
     right: 0;
@@ -588,7 +581,6 @@ a.dropdown-item {
     color: white;
     font-size: 14px;
 }
-
 
 .contact-row {
     display: flex;
@@ -1294,20 +1286,21 @@ img.zalo {
     min-height: 100vh;
     overflow: hidden;
 }
-
-    .blog-page::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url(/image/brand/bgroundedsoft.jpg) no-repeat center center;
-        background-size: cover;
-        background-attachment: fixed;
-        z-index: -1;
-    }
-
+.bg-main{
+    background-color: black;
+}
+.blog-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(/image/brand/bgroundedsoft.jpg) no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: -1;
+}
 .arrow {
     transition: transform 0.3s;
 }
@@ -1605,6 +1598,68 @@ img.zalo {
     border-bottom: 1px solid #000;
     padding-bottom: 2px;
 }
+.unlim-lookbook {
+    padding: 30px 0;
+}
+
+.unlim-masonry-grid {
+    column-count: 4;
+    column-gap: 5px;
+}
+
+.unlim-masonry-item {
+    position: relative;
+    margin-bottom: 5px;
+    break-inside: avoid;
+    overflow: hidden;
+    background: #fff;
+}
+
+    .unlim-masonry-item a {
+        display: block;
+        position: relative;
+    }
+
+    .unlim-masonry-item img {
+        width: 100%;
+        display: block;
+        transition: all .6s ease;
+    }
+
+.unlim-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 25px;
+    background: linear-gradient( to top, rgba(0,0,0,.85), rgba(0,0,0,.3), transparent );
+    opacity: 0;
+    transition: .4s;
+}
+
+    .unlim-overlay h3 {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+
+    .unlim-overlay span {
+        color: rgba(255,255,255,.85);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+.unlim-masonry-item:hover img {
+    transform: scale(1.08);
+}
+
+.unlim-masonry-item:hover .unlim-overlay {
+    opacity: 1;
+}
+
 
 /* MOBILE */
 
@@ -1623,6 +1678,9 @@ img.zalo {
 }
 
 @media (max-width: 991px) {
+    .unlim-masonry-grid {
+        column-count: 3;
+    }
     .thumb-vertical {
         display: flex;
         gap: 10px;
@@ -1636,6 +1694,9 @@ img.zalo {
 }
 
 @media (max-width: 767px) {
+    .unlim-masonry-grid {
+        column-count: 2;
+    }
 
     /* Đảm bảo khung slider phụ thuộc hoàn toàn vào nội dung */
     .collection-section .carousel-inner {
@@ -1690,6 +1751,9 @@ img.zalo {
 }
 
 @media (max-width: 576px) {
+    .unlim-masonry-grid {
+        column-count: 2;
+    }
     .hero-section {
         padding: 0;
     }

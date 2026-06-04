@@ -19,9 +19,9 @@ namespace FashionStore.Controllers
         {
             // product show
             var products = await _context.Products
-    .Include(p => p.Category)
-    .Where(p => p.Category.CategoryName == "Suit")
-    .ToListAsync();
+            .Include(p => p.Category)
+            .Where(p => p.Category.CategoryName == "Suit")
+            .ToListAsync();
             //review customer
             ViewBag.Reviews = await _context.CustomerReviews
             .Where(x => x.IsPublished)
@@ -62,6 +62,37 @@ namespace FashionStore.Controllers
         public IActionResult ReturnPolicy()
         {
             return View();
+        }
+        [Route("all-product")]
+        public async Task<IActionResult> Allproduct(string? sort, int page = 1)
+        {
+            int pageSize = 16;
+
+            var query = _context.Products
+                .Include(p => p.Category)
+                .AsQueryable();
+
+            if (sort == "name")
+            {
+                query = query.OrderBy(p => p.ProductName);
+            }
+            else
+            {
+                query = query.OrderByDescending(p => p.CreatedAt ?? DateTime.MinValue);
+            }
+
+            int totalItems = await query.CountAsync();
+
+            var products = await query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+            ViewBag.CurrentSort = sort;
+
+            return View(products);
         }
         [Route("care")]
         public IActionResult Care()

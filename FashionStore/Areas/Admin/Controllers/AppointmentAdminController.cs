@@ -14,11 +14,13 @@ namespace FashionStore.Areas.Admin.Controllers
         {
             _context = context;
         }
-
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            ViewBag.Reviews = _context.CustomerReviews.Where(x => x.IsPublished).OrderBy(x => x.DisplayOrder).ToList();
-            return View(new Appointment());
+            var appointments = await _context.Appointments
+                .OrderByDescending(x => x.CreatedAt)
+                .ToListAsync();
+
+            return View(appointments);
         }
         [HttpPost]
         public async Task<IActionResult> UpdateStatus(int id, string status)
