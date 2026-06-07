@@ -35,18 +35,22 @@ h1, h2, h3, h4, h5, .font-serif {
 
 .lead-text {
     font-size: 14px;
+    font-family: "Montserrat",sans-serif;
 }
 
-/* Custom Buttons */
+.testament {
+    font-size: 14px;
+    font-family: "Montserrat",sans-serif;
+}
+
 .btn-gold-solid {
     background-color: var(--gold);
     color: #000;
     border: 1px solid var(--gold);
     padding: 14px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 400;
     transition: all 0.4s ease;
 }
 
@@ -57,12 +61,11 @@ h1, h2, h3, h4, h5, .font-serif {
     }
 
 .btn-gold-outline {
-    background-color: transparent;
+    font-family: 'Montserrat';
     color: var(--gold);
     border: 1px solid var(--gold);
-    padding: 16px;
+    padding: 14px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
     font-size: 0.85rem;
     transition: all 0.4s ease;
 }
@@ -102,7 +105,6 @@ h1, h2, h3, h4, h5, .font-serif {
 
 .map-wrapper {
     width: 100%;
-    height: 400px;
     overflow: hidden;
 }
 
@@ -210,14 +212,54 @@ h1, h2, h3, h4, h5, .font-serif {
 
 .testimonial-section {
     background: #0f0f0f;
+    overflow: hidden;
+}
+.carousel-item {
+    position: relative;
+    overflow: hidden;
+    min-height: 750px;
 }
 
+.testimonial-bg {
+    position: absolute;
+    inset: -100px;
+    background-size: cover;
+    background-position: center;
+    filter: blur(30px);
+    transform: scale(1.2);
+    opacity: .5;
+}
+    .testimonial-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient( to bottom, rgba(15,17,16,.55), rgba(15,17,16,.85) );
+    }
+
+.testimonial-card {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+.carousel-control-prev,
+.carousel-control-next {
+    z-index: 10;
+}
 .testimonial-card {
     max-width: 800px;
     margin: auto;
     text-align: center;
 }
-
+.carousel-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient( ellipse at center, transparent 40%, rgba(15,17,16,.2) 60%, rgba(15,17,16,.6) 80%, rgba(15,17,16,.95) 100% );
+}
 .testimonial-avatar {
     width: 360px;
     height: 400px;
@@ -235,12 +277,19 @@ h1, h2, h3, h4, h5, .font-serif {
     color: #d8d8d8;
     font-size: 15px;
     font-family: 'Cormorant Garamond',serif;
+    line-height: 1.7;
+    min-height: calc(1.7em * 5);
+    overflow: hidden;
+    display: -webkit-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
 }
 
 .client-name {
     color: #fff;
-    margin-top: 20px;
-    font-family: 'Playfair Display',serif;
+    margin-top: 10px;
+    font-family: 'Cormorant Garamond',serif;
 }
 
 .client-info {
@@ -269,7 +318,7 @@ h1, h2, h3, h4, h5, .font-serif {
 
 .why-unlim-4 {
     background: #0f0f12;
-    padding: 50px 20px;
+    padding: 40px 10px;
     color: #fff;
     font-family: "Segoe UI", sans-serif;
 }
@@ -288,7 +337,7 @@ h1, h2, h3, h4, h5, .font-serif {
 .wu-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
+    gap: 10px;
 }
 
 .wu-item {
@@ -350,6 +399,25 @@ h1, h2, h3, h4, h5, .font-serif {
 
 /* responsive */
 @media(max-width:900px) {
+    .carousel-item {
+        min-height: 650px;
+    }
+
+    .testimonial-bg {
+        position: absolute;
+        inset: -100px;
+        background-size: cover;
+        background-position: center;
+        filter: blur(50px);
+        transform: scale(1.2);
+        opacity: .5;
+        z-index: 0;
+    }
+
+    .testimonial-avatar {
+        width: 260px;
+        height: 320px;
+    }
     .wu-grid {
         grid-template-columns: 1fr;
     }
@@ -358,8 +426,7 @@ h1, h2, h3, h4, h5, .font-serif {
         flex-direction: column;
     }
 
-    .wu-img,
-    .wu-content {
+    .wu-img,.wu-content {
         width: 100%;
     }
 

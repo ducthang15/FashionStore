@@ -110,16 +110,16 @@
                 <p class="mb-3 lead-text ">
                     Using the traditional Full Canvas construction method—crafted entirely by hand with a horsehair canvas foundation—thousands of meticulous hand stitches are placed to sculpt and shape the chest. Over time, the jacket gradually adapts to your posture and natural movements, creating a fit that becomes increasingly personal, comfortable, and remarkably refined with every wear.
                 </p>
-                <a href="tel:0989473579" class="text-gold text-decoration-none tracking-wide text-uppercase font-serif border-bottom border-gold">
+@*                 <a href="tel:0989473579" class="text-gold text-decoration-none tracking-wide text-uppercase font-serif border-bottom border-gold">
                     Call Now <i class="fa-solid fa-arrow-right ms-2"></i>
-                </a>
+                </a> *@
             </div>
         </div>
     </div>
 </section>
 <section class="testimonial-section py-3">
-    <div class="container">
-        <div class="text-center mb-5">
+    <div class="testimonial-section-main container">
+        <div class="text-center">
             <h6 class="text-gold text-uppercase font-serif letter-spacing">
                 Client Testimonials
             </h6>
@@ -129,30 +129,32 @@
         </div>
         <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-
                 @if (reviews != null && reviews.Any())
                 {
                     @for (int i = 0; i < reviews.Count; i++)
                     {
                         var item = reviews[i];
                         <div class="carousel-item @(i == 0 ? "active" : "")">
-                            <div class="testimonial-card">
+                            <div class="testimonial-bg"
+                                 style="background-image:url('@item.SuitImage')">
+                            </div>
+                            <div class="testimonial-card mt-4">
                                 <img src="@item.SuitImage" class="testimonial-avatar" alt="@item.CustomerName">
                                 <div>
                                     <img src="@item.AvatarImage" class="avt-customer" />
                                 </div>
+                                <h5 class="client-name">
+                                    @item.CustomerName
+                                </h5>
+                                <p class="testimonial-text">
+                                    "@item.ReviewContent"
+                                </p>
                                 <div class="stars">
                                     @for (int s = 0; s < item.Rating; s++)
                                     {
                                         <span>★</span>
                                     }
                                 </div>
-                                <p class="testimonial-text">
-                                    "@item.ReviewContent"
-                                </p>
-                                <h5 class="client-name">
-                                    @item.CustomerName
-                                </h5>
                                 <span class="client-info">
                                     @item.Profession · @item.Country
                                 </span>
@@ -182,7 +184,7 @@
         <div class="text-center pb-4">
             <h5 class="text-gold tracking-widest mb-3 small">FABRIC COLLECTION</h5>
             <h2 class="display-5 font-serif">The Foundation of True Elegance</h2>
-            <p class="col-lg-6 mx-auto mt-3">True sophistication begins with the finest Merino wool fibers. Explore a curated selection of world-renowned fabrics, sourced from prestigious mills and now available at UNLIM Tailor for your next bespoke creation.</p>
+            <p class="col-lg-6 mx-auto mt-3 d-none d-lg-block">True sophistication begins with the finest Merino wool fibers. Explore a curated selection of world-renowned fabrics, sourced from prestigious mills and now available at UNLIM Tailor for your next bespoke creation.</p>
         </div>
 
         <div class="row g-2">
@@ -220,7 +222,7 @@
     <div class="container">
         <div class="wu-title">
             <h3 class="display-5 font-serif">Why Do Customers Choose UNLIM Tailor?</h3>
-            <p>This isn't just an ordinary tailor shop — it's a place where you can create your own personal style.</p>
+            <p class="d-none d-lg-block">This isn't just an ordinary tailor shop — it's a place where you can create your own personal style.</p>
         </div>
         <div class="wu-grid">
             <!-- 1 -->
@@ -275,7 +277,11 @@
                     </p>
                 </div>
             </div>
-
+        </div>
+        <div class="text-center text-nowrap mt-4">
+            <a href="https://m.me/unlimtailor" class="btn-gold-outline">
+                A Conversation with Our Master Tailor
+            </a>
         </div>
     </div>
 </section>
@@ -286,7 +292,7 @@
             <div class="col-lg-4 mb-5 mb-lg-0">
                 <h5 class="text-gold tracking-widest mb-3 small">The Bespoke Journey</h5>
                 <h3 class="display-5 font-serif mb-4">The Art of the Bespoke Journey</h3>
-                <p class="lead-text">A true bespoke suit requires patience. At UNLIM, the journey takes between three and four weeks, involving dozens of hours of meticulous handcraftsmanship by our most skilled artisans. Every stage is carried out with precision and care, ensuring a garment that is uniquely yours in both fit and character.</p>
+                <p class="lead-text d-none d-lg-block">A true bespoke suit requires patience. At UNLIM, the journey takes between three and four weeks, involving dozens of hours of meticulous handcraftsmanship by our most skilled artisans. Every stage is carried out with precision and care, ensuring a garment that is uniquely yours in both fit and character.</p>
             </div>
             <div class="col-lg-7 offset-lg-1">
                 <div class="timeline-box">
@@ -315,16 +321,11 @@
             </div>
         </div>
     </div>
-    <div class="text-center text-nowrap">
-        <a href="https://m.me/unlimtailor" class="btn-gold-outline">
-            A Conversation with Our Master Tailor
-        </a>
-    </div>
 </section>
 <section>
     <div class="container text-center py-5">
         <h3 class="display-5 font-serif">Let Us Serve You.</h3>
-        <p class="col-lg-8 font-serif lead-text mb-3 mx-auto">
+        <p class="testament col-lg-8 mb-3 mx-auto">
             A testament to the confidence of a successful man. Book an appointment today to receive the most attentive consultation from bespoke tailoring experts at UNLIM TAILOR.
         </p>
         <div class="d-flex flex-column flex-sm-row justify-content-center gap-4">
