@@ -10,7 +10,6 @@
 }
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<link href="~/css/site.css" rel="stylesheet" />
 @section Styles {
     <link rel="stylesheet" href="~/css/landbook.css" asp-append-version="true" />
 }
@@ -35,31 +34,31 @@
                             <div class="text-dark">
                                 <div class="row">
                                     <div class="appoiment text-center">
-                                        <form asp-action="Book" method="post" class="container">
+                                        <form id="bookingForm" asp-action="Book" method="post" class="container">
                                             @Html.AntiForgeryToken()
                                             <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-4">
-                                                        <input asp-for="FullName" class="form-control rounded-1 bg-light" placeholder="Name">
+                                                        <input asp-for="FullName" class="form-control bg-light" placeholder="Name">
                                                         <label asp-for="FullName">Name *</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-4">
-                                                        <input asp-for="PhoneNumber" class="form-control rounded-1 bg-light" placeholder="Number">
+                                                        <input asp-for="PhoneNumber" class="form-control bg-light" placeholder="Number">
                                                         <label asp-for="PhoneNumber">Phone number*</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-4">
-                                                        <input asp-for="Address" class="form-control rounded-1 bg-light" placeholder="Address">
+                                                        <input asp-for="Address" class="form-control bg-light" placeholder="Address">
                                                         <label asp-for="Address">Your address *(optional)</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-4">
-                                                        <input asp-for="AppointmentDate" id="appointmentDate" type="text" class="form-control rounded-1 bg-light" placeholder="Date and time" />
+                                                        <input asp-for="AppointmentDate" id="appointmentDate" type="text" class="form-control bg-light" placeholder="Date and time" required />
                                                         <label asp-for="PhoneNumber">Date and time appointment *</label>
                                                         <span asp-validation-for="AppointmentDate" class="text-danger small"></span>
                                                     </div>
@@ -93,7 +92,6 @@
         </div>
     </div>
 </section>
-
 <!-- 2. BRAND ETHOS - TRIẾT LÝ -->
 <section class="py-3">
     <div class="container">
@@ -344,6 +342,13 @@
         </div>
     </div>
 </section>
+<div id="loadingOverlay" class="loading-overlay d-none">
+    <div class="text-center text-white">
+        <div class="spinner-border mb-3" role="status"></div>
+        <h5>Sending appointment...</h5>
+        <p>Please wait a moment</p>
+    </div>
+</div>
 <!-- FLOATING ACTIONS DESKTOP -->
 <div class="float-btn-group d-none d-lg-block">
     <a href="https://wa.me/84989473579" class="float-btn bg-whatsapp"><i class="fa-brands fa-whatsapp"></i></a>

@@ -24,7 +24,15 @@ if (btn) {
         });
     });
 }
+$(() => {
+    const $form = $('#bookingForm');
 
+    $form.on('submit', function () {
+        if (this.checkValidity()) {
+            $('#loadingOverlay').removeClass('d-none');
+        }
+    });
+});
 $('#checkAll').on('change', function () {
     $('input[name="ids"]').prop('checked', $(this).prop('checked'));
 });

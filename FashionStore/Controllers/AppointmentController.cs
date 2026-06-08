@@ -22,14 +22,11 @@ namespace FashionStore.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.Reviews = await _context.CustomerReviews
-         .Where(x => x.IsPublished)
-         .OrderBy(x => x.DisplayOrder)
-         .ToListAsync();
-
-            // 2. Khởi tạo model rỗng truyền ra View để Form đặt lịch hoạt động không bị lỗi
-            var model = new Appointment();
-
-            return View(model);
+            .Where(x => x.IsPublished)
+            .OrderBy(x => x.DisplayOrder)
+            .ToListAsync();
+                var model = new Appointment();
+                     return View(model);
         }
 
         [HttpPost]
@@ -37,6 +34,14 @@ namespace FashionStore.Controllers
         [EnableRateLimiting("appointmentLimiter")]
         public async Task<IActionResult> Book(Appointment appointment)
         {
+            if (appointment.AppointmentDate == DateTime.MinValue)
+            {
+                ModelState.AddModelError(
+                    "AppointmentDate",
+                    "Please select an appointment date."
+                );
+            }
+
             if (ModelState.IsValid)
             {
                 appointment.CreatedAt = DateTime.Now;
@@ -44,19 +49,19 @@ namespace FashionStore.Controllers
 
                 _context.Appointments.Add(appointment);
                 await _context.SaveChangesAsync();
+
                 await SendEmailToAdmin(appointment);
 
                 return RedirectToAction("Success");
             }
 
-            ViewBag.Reviews = _context.CustomerReviews
+            ViewBag.Reviews = await _context.CustomerReviews
                 .Where(x => x.IsPublished)
                 .OrderBy(x => x.DisplayOrder)
-                .ToList();
+                .ToListAsync();
 
             return View("Index", appointment);
         }
-
         private async Task SendEmailToAdmin(Appointment appointment)
         {
             try

@@ -80,10 +80,8 @@
                                 <form asp-action="UpdateStatus" method="post" class="d-inline" id="complete-form-@item.AppointmentId">
                                     <input type="hidden" name="id" value="@item.AppointmentId" />
                                     <input type="hidden" name="status" value="Hoàn thành" />
-
-                                    <button type="button" class="btn btn-sm btn-outline-success"
-                                            onclick="checkPasswordAndSubmit('complete-form-@item.AppointmentId')">
-                                        <i class="fa-solid fa-flag-checkered"></i> Hoàn thành
+                                    <button type="button" class="btn btn-sm btn-outline-success" onclick="checkPasswordAndSubmit('complete-form-@item.AppointmentId')">
+                                         Hoàn thành
                                     </button>
                                 </form>
                             }

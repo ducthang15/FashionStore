@@ -1,10 +1,7 @@
 ﻿@model FashionStore.Repository.Models.Contact
 @{
     ViewData["Title"] = "Contact UNLIM Tailor | High-End Custom Tailored Wedding Suits & Men's Vests in Hanoi";
-
     ViewData["MetaDescription"] = "Connect with UNLIM Tailor at 107 Kim Mã to experience premium bespoke wedding suits and men's vests. Our team of experts is ready to advise you on a unique style.";
-    ViewData["MetaKeywords"] = "Contact UNLIM, bespoke wedding suit tailoring in Hanoi, high-end men's suits in Kim Ma, tuxedo tailor in Hanoi, UNLIM tailor address, schedule a suit consultation.";
-
 }
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="application/ld+json">
@@ -38,152 +35,10 @@
       }
     }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-
-<style>
-    .journey-contact {
-        font-family: 'Montserrat', sans-serif;
-        color: #2c3e50;
-        background-color: #ffffff;
-    }
-
-    .serif-title {
-        font-family: 'Lora', serif;
-        color: #1a252f;
-    }
-
-    .text-copper {
-        color: #b87333;
-    }
-
-    .bg-light-cream {
-        background-color: #faf9f7;
-    }
-
-    .contact-hero {
-        position: relative;
-        min-height: 400px;
-        background-image: url('/image/107-KimMa-BaDinh-Hanoi.jpg');
-        background-size: cover;
-        background-position: center 30%;
-    }
-
-        .contact-hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(26, 37, 47, 0.4);
-        }
-
-    .hero-content {
-        position: relative;
-        z-index: 2;
-    }
-
-    .process-step {
-        padding: 20px 10px;
-        border-right: 1px solid #eaeaea;
-        transition: transform 0.3s ease;
-    }
-
-        .process-step:last-child {
-            border-right: none;
-        }
-
-    .step-number {
-        font-family: 'Lora', serif;
-        font-size: 3rem;
-        color: #f1e9e3;
-        margin-bottom: -20px;
-        position: relative;
-        z-index: 1;
-    }
-
-    .step-title {
-        position: relative;
-        z-index: 2;
-        font-weight: 500;
-        letter-spacing: 1px;
-    }
-
-    /* Form liên hệ thanh thoát */
-    .elegant-form .form-control {
-        border: none;
-        border-bottom: 1px solid #d1d1d1;
-        border-radius: 0;
-        padding: 12px 0;
-        background: transparent;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 300;
-        transition: all 0.4s;
-    }
-
-        .elegant-form .form-control:focus {
-            border-bottom-color: #b87333;
-            box-shadow: none;
-        }
-
-    .elegant-form label {
-        padding-left: 0;
-        color: #7f8c8d;
-        font-family: 'Lora', serif;
-        font-style: italic;
-    }
-
-    /* Nút bấm tối giản */
-    .btn-copper {
-        background-color: #b87333;
-        color: #fff;
-        border: 1px solid #b87333;
-        border-radius: 0;
-        padding: 15px 40px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        font-size: 0.85rem;
-        transition: all 0.3s;
-    }
-
-        .btn-copper:hover {
-            background-color: transparent;
-            color: #b87333;
-        }
-</style>
-
+@section Styles {
+    <link rel="stylesheet" href="~/css/contact.css" asp-append-version="true" />
+}
 <div class="journey-contact">
-    <section class="py-3 bg-light-cream border-bottom">
-        <div class="container">
-            <div class="text-center mb-2">
-                <h2 class="serif-title">Contact Us</h2>
-                <p class="text-muted fw-light">Please leave your contact information so we can serve you as quickly as possible. Just fill in a few details and we will contact you within 15 minutes.</p>
-                <div style="width: 50px; height: 1px; background-color: #b87333; margin: 0 auto;"></div>
-            </div>
-
-            <div class="row text-center g-0">
-                <div class="col-md-4 process-step">
-                    <h4 class="step-title text-uppercase fs-6 mt-3">The Showroom</h4>
-                    <p class="text-muted small fw-light mt-3 px-3">
-                    <p class="fw-light mb-1 mt-2">105 - 107 Kim Ma Street</p>
-                    <p class="fw-light mb-0">Ba Dinh Ward, HaNoi</p>.</p>
-                </div>
-                <div class="col-md-4 process-step">
-                    <h4 class="step-title text-uppercase fs-6 mt-3">Contact</h4>
-                    <p class="fw-light mb-1 mt-2"><a href="tel:02466868107" class="text-decoration-none text-dark">Hot line: 0246 6868 107</a></p>
-                    <p class="fw-light mb-0"><a href="mailto:unlimkimma@gmail.com" class="text-decoration-none text-dark">unlimkimma@gmail.com</a></p>
-                </div>
-                <div class="col-md-4 process-step">
-                    <h4 class="step-title text-uppercase fs-6 mt-3">Opening Hours</h4>
-                    <p class="fw-light mb-0 mt-2">Monday – Sunday<br>9:00 AM – 9:00 PM</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. Form & Thông tin liên hệ -->
     <section class="py-2 my-md-4">
         <div class="container">
             @if (TempData["SuccessMessage"] != null)
@@ -200,13 +55,13 @@
                     </div>
                 </div>
                 <div class="col-lg-7">
-                    <form asp-action="Send" method="post" class="elegant-form">
+                    <form asp-action="Send" method="post" class="elegant-form p-2">
                         @Html.AntiForgeryToken()
                         <div class="row">
                             <h4 class="step-title serif-title">Fill in the information</h4>
                             <div class="col-md-6 mb-2">
                                 <div class="form-floating">
-                                    <input asp-for="FullName" class="form-control" placeholder="Name" />
+                                    <input asp-for="FullName" class="form-control" placeholder="Name"/>
                                     <label asp-for="FullName">First & Last Name *</label>
                                     <span asp-validation-for="FullName" class="text-danger small"></span>
                                 </div>
@@ -233,14 +88,41 @@
                         </div>
 
                         <button type="submit" class="btn btn-copper w-100 fw-medium">
-                            Send Request
+                           Send
                         </button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
-    <section class="container">
+    <section class="py-3 bg-light-cream container">
+        <div class="container">
+            <div class="text-center mb-2">
+                <h2 class="serif-title">Contact Us</h2>
+                <p class="text-muted fw-light">Please leave your contact information so we can serve you as quickly as possible. Just fill in a few details and we will contact you within 15 minutes.</p>
+                <div style="width: 50px; height: 1px; background-color: #b87333; margin: 0 auto;"></div>
+            </div>
+
+            <div class="row text-center g-0">
+                <div class="col-md-4 process-step">
+                    <h4 class="step-title text-uppercase fs-6 mt-3">The Showroom</h4>
+                    <p class="text-muted small fw-light mt-3 px-3">
+                    <p class="fw-light mb-1 mt-2">105 - 107 Kim Ma Street</p>
+                    <p class="fw-light mb-0">Ba Dinh Ward, HaNoi</p>
+                </div>
+                <div class="col-md-4 process-step">
+                    <h4 class="step-title text-uppercase fs-6 mt-3">Contact</h4>
+                    <p class="fw-light mb-1 mt-2"><a href="tel:02466868107" class="text-decoration-none text-dark">Hot line: 0246 6868 107</a></p>
+                    <p class="fw-light mb-0"><a href="mailto:unlimkimma@gmail.com" class="text-decoration-none text-dark">unlimkimma@gmail.com</a></p>
+                </div>
+                <div class="col-md-4 process-step">
+                    <h4 class="step-title text-uppercase fs-6 mt-3">Opening Hours</h4>
+                    <p class="fw-light mb-0 mt-2">Monday – Sunday<br>9:00 AM – 9:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container mt-3">
         <div class="mb-3">
             <div style="height: 370px; width: 100%;">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7448.05183271988!2d105.82533600000001!3d21.031649!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab13c6cba743%3A0x4f96a3971ba92e1f!2sUNLIM%20Tailor%20-%20Bespoke%20suit%20H%C3%A0%20N%E1%BB%99i!5e0!3m2!1svi!2sus!4v1774840677856!5m2!1svi!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -248,38 +130,6 @@
         </div>
     </section>
 </div>
-<style>
-    .float-contact {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        z-index: 999;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .float-icon {
-        width: 45px;
-        height: 45px;
-        background: #ffffff;
-        border: 1px solid #b87333;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #b87333;
-        text-decoration: none;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        transition: 0.3s;
-    }
-
-        .float-icon:hover {
-            background: #b87333;
-            color: #fff;
-            transform: translateY(-3px);
-        }
-</style>
 <div class="float-contact">
     <a href="https://www.facebook.com/MAYDOSUITCAOCAP" target="_blank" class="float-icon"><i class="fa-brands fa-facebook-messenger fs-5"></i></a>
     <a href="tel:0989473579" class="float-icon"><i class="fa-solid fa-phone fs-5"></i></a>

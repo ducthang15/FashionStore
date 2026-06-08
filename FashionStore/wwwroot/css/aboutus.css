@@ -1,0 +1,855 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+:root {
+    --cream: #F5F0E8;
+    --warm-white: #FBF8F3;
+    --parchment: #EDE4D3;
+    --charcoal: #1C1C1C;
+    --slate: #3A3A3A;
+    --text-primary: #1A1816;
+    --text-secondary: #5C5854;
+    --text-muted: #8A8580;
+    --gold: #B8945A;
+    --gold-light: #D4C09A;
+    --gold-pale: #E8DCC8;
+    --burgundy: #722F37;
+    --burgundy-deep: #4A1E24;
+    --navy: #1B2A3A;
+    --thread: #C4A265;
+    --font-editorial: 'Bodoni Moda', serif;
+    --font-ui: 'DM Sans', sans-serif;
+    --ease-lux: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--cream);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* ================= FABRIC TEXTURE OVERLAY ================= */
+.fabric-texture {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.03;
+    background-image: repeating-linear-gradient( 0deg, transparent, transparent 2px, rgba(0,0,0,0.5) 2px, rgba(0,0,0,0.5) 4px );
+}
+
+/* ================= LUXURY TYPOGRAPHY ================= */
+.editorial-display {
+    font-family: var(--font-editorial);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+
+.editorial-italic {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-weight: 400;
+}
+
+.ui-label {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.gold-accent {
+    color: var(--gold);
+}
+
+/* ================= HERO – PATTERN-CUT INSPIRED ================= */
+.hero-pattern {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    overflow: hidden;
+    background: var(--warm-white);
+}
+
+    .hero-pattern .hero-visual {
+        position: relative;
+        overflow: hidden;
+        background: var(--charcoal);
+    }
+
+        .hero-pattern .hero-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+            filter: brightness(0.9) sepia(0.15);
+            transform: scale(1.05);
+            transition: transform 1.5s var(--ease-lux);
+        }
+
+    .hero-pattern:hover .hero-visual img {
+        transform: scale(1);
+    }
+
+/* Pattern-cut overlay lines */
+.pattern-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+    .pattern-lines .line {
+        position: absolute;
+        background: rgba(255,255,255,0.08);
+    }
+
+        .pattern-lines .line.h1 {
+            width: 100%;
+            height: 1px;
+            top: 33.333%;
+        }
+
+        .pattern-lines .line.h2 {
+            width: 100%;
+            height: 1px;
+            top: 66.666%;
+        }
+
+        .pattern-lines .line.v1 {
+            width: 1px;
+            height: 100%;
+            left: 25%;
+        }
+
+        .pattern-lines .line.v2 {
+            width: 1px;
+            height: 100%;
+            left: 75%;
+        }
+
+        .pattern-lines .line.d1 {
+            width: 140%;
+            height: 1px;
+            top: 50%;
+            left: -20%;
+            transform: rotate(-35deg);
+            background: rgba(184, 148, 90, 0.15);
+        }
+
+.hero-pattern .hero-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-copy .brand-mark {
+    font-family: var(--font-editorial);
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    position: relative;
+    padding-left: 3rem;
+}
+
+    .hero-copy .brand-mark::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 2rem;
+        height: 1px;
+        background: var(--gold);
+    }
+
+.hero-copy h1 {
+    font-family: var(--font-editorial);
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    font-weight: 600;
+    line-height: 1.05;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+    .hero-copy h1 em {
+        font-style: italic;
+        color: var(--gold);
+        display: block;
+        font-weight: 400;
+    }
+
+.hero-copy .hero-description {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 420px;
+    margin: 1.5rem 0 2.5rem;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--gold-pale);
+}
+
+.hero-copy .hero-cta-group {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.btn-lux {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.2rem;
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.4s var(--ease-lux);
+    position: relative;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+}
+
+    .btn-lux.primary {
+        background: var(--charcoal);
+        color: var(--cream);
+    }
+
+        .btn-lux.primary:hover {
+            background: var(--gold);
+            color: var(--charcoal);
+            gap: 1.2rem;
+        }
+
+    .btn-lux.secondary {
+        color: var(--text-primary);
+        border-bottom: 1px solid var(--gold-pale);
+        padding: 0.5rem 0;
+        letter-spacing: 0.15em;
+    }
+
+        .btn-lux.secondary:hover {
+            border-bottom-color: var(--gold);
+            color: var(--gold);
+        }
+
+    .btn-lux .arrow {
+        transition: transform 0.3s var(--ease-spring);
+    }
+
+    .btn-lux:hover .arrow {
+        transform: translateX(5px);
+    }
+
+@media (max-width: 1024px) {
+    .hero-pattern {
+        grid-template-columns: 1fr;
+        grid-template-rows: 50vh auto;
+    }
+
+        .hero-pattern .hero-copy {
+            padding: 3rem 2rem;
+        }
+}
+
+.swatch-strip {
+    display: flex;
+    border-top: 1px solid var(--gold-pale);
+    border-bottom: 1px solid var(--gold-pale);
+    background: var(--warm-white);
+    position: relative;
+    z-index: 2;
+}
+
+.swatch-item {
+    flex: 1;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s var(--ease-lux);
+    border-right: 1px solid var(--gold-pale);
+    position: relative;
+}
+
+    .swatch-item:last-child {
+        border-right: none;
+    }
+
+    .swatch-item:hover {
+        background: var(--parchment);
+    }
+
+    .swatch-item .fabric-sample {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 1rem;
+        border-radius: 50%;
+        border: 2px solid var(--gold-pale);
+        transition: all 0.4s;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .swatch-item:hover .fabric-sample {
+        border-color: var(--gold);
+        transform: scale(1.1);
+        box-shadow: 0 0 0 8px rgba(184, 148, 90, 0.08);
+    }
+
+    .swatch-item .fabric-sample img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .swatch-item .swatch-name {
+        font-family: var(--font-editorial);
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-bottom: 0.3rem;
+    }
+
+    .swatch-item .swatch-origin {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+@media (max-width: 768px) {
+    .swatch-strip {
+        flex-wrap: wrap;
+    }
+
+    .swatch-item {
+        flex: 1 1 50%;
+        border-bottom: 1px solid var(--gold-pale);
+    }
+}
+
+/* ================= OUR STORY – MAGAZINE SPREAD ================= */
+.story-spread {
+    background: var(--cream);
+    position: relative;
+}
+
+    .story-spread .spread-container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        align-items: center;
+    }
+
+    .story-spread .spread-image-side {
+        position: relative;
+    }
+
+        .story-spread .spread-image-side .main-image {
+            width: 85%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border: 1px solid var(--gold-pale);
+            position: relative;
+            z-index: 2;
+        }
+
+        .story-spread .spread-image-side .accent-box {
+            position: absolute;
+            bottom: -30px;
+            right: 0;
+            width: 55%;
+            aspect-ratio: 1/1;
+            background: url('/image/shirt-unlim-mischef.jpg');
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+    .story-spread .spread-text-side {
+        padding: 3rem 4rem;
+        position: relative;
+    }
+
+        .story-spread .spread-text-side .ui-label {
+            margin-bottom: 1rem;
+        }
+
+        .story-spread .spread-text-side h2 {
+            font-family: var(--font-editorial);
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 600;
+            line-height: 1.15;
+            margin-bottom: 2rem;
+            color: var(--charcoal);
+        }
+
+        .story-spread .spread-text-side p {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .story-spread .spread-text-side .thread-quote {
+            border-left: 3px solid var(--gold);
+            padding: 1rem 1.5rem;
+            margin: 2rem 0;
+            font-family: var(--font-editorial);
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--burgundy);
+            background: rgba(184, 148, 90, 0.04);
+        }
+
+@media (max-width: 1024px) {
+    .story-spread .spread-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .story-spread .spread-image-side .main-image {
+        width: 100%;
+    }
+
+    .story-spread .spread-text-side {
+        padding: 2rem 1rem;
+    }
+}
+
+/* ================= CRAFT CAROUSEL – HORIZONTAL SCROLL ================= */
+.craft-showcase {
+    background: var(--warm-white);
+    padding: 5rem 1rem;
+    border-top: 1px solid var(--gold-pale);
+    border-bottom: 1px solid var(--gold-pale);
+}
+
+    .craft-showcase .showcase-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        padding: 0 2rem;
+    }
+
+        .craft-showcase .showcase-header h2 {
+            font-family: var(--font-editorial);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+
+.craft-scroll {
+    gap: 1rem;
+    padding: 1rem;
+    cursor: grab;
+}
+
+    .craft-scroll::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .craft-scroll::-webkit-scrollbar-track {
+        background: var(--gold-pale);
+    }
+
+    .craft-scroll::-webkit-scrollbar-thumb {
+        background: var(--gold);
+        border-radius: 2px;
+    }
+
+.craft-card {
+    flex: 0 0 380px;
+    scroll-snap-align: start;
+    background: var(--cream);
+    border: 1px solid var(--gold-pale);
+    padding: 0;
+    transition: all 0.4s var(--ease-lux);
+    position: relative;
+    overflow: hidden;
+}
+
+    .craft-card:hover {
+        border-color: var(--gold);
+        transform: translateY(-8px);
+        box-shadow: 0 30px 50px rgba(0,0,0,0.06);
+    }
+
+    .craft-card .card-image-wrap {
+        overflow: hidden;
+        height: 280px;
+    }
+
+    .craft-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s var(--ease-lux);
+    }
+
+    .craft-card:hover img {
+        transform: scale(1.08);
+    }
+
+    .craft-card h4 {
+        font-family: var(--font-editorial);
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: 0.8rem;
+    }
+
+    .craft-card p {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+@media (max-width: 768px) {
+    .craft-card {
+        flex: 0 0 300px;
+    }
+}
+
+/* ================= PILLARS – THREE COLUMN ELEVATED ================= */
+.pillars-elevated {
+    padding: 2rem 1rem;
+    background: var(--cream);
+    position: relative;
+}
+
+    .pillars-elevated .section-ornament {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+        .pillars-elevated .section-ornament img {
+            width: 40px;
+            opacity: 0.5;
+        }
+
+    .pillars-elevated .section-title {
+        text-align: center;
+        font-family: var(--font-editorial);
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 600;
+        margin-bottom: 2rem;
+    }
+
+.pillars-trio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pillar-item-elevated {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--warm-white);
+    border: 1px solid transparent;
+    transition: all 0.5s var(--ease-lux);
+    position: relative;
+}
+
+    .pillar-item-elevated:hover {
+        border-color: var(--gold-pale);
+        background: white;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+    }
+
+    .pillar-item-elevated .pillar-icon-ring {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        border: 2px solid var(--gold-pale);
+        margin: 0 auto 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s var(--ease-spring);
+        background: var(--cream);
+    }
+
+    .pillar-item-elevated:hover .pillar-icon-ring {
+        border-color: var(--gold);
+        background: var(--gold-pale);
+        transform: scale(1.1);
+    }
+
+    .pillar-item-elevated .pillar-icon-ring img {
+        width: 40px;
+        opacity: 0.6;
+        transition: opacity 0.3s;
+    }
+
+    .pillar-item-elevated:hover .pillar-icon-ring img {
+        opacity: 1;
+    }
+
+    .pillar-item-elevated h4 {
+        font-family: var(--font-editorial);
+        font-size: 1.4rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+
+    .pillar-item-elevated p {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+@media (max-width: 768px) {
+    .pillars-trio {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .pillars-elevated {
+        padding: 2rem 1rem;
+    }
+}
+
+/* ================= CRAFTSMANSHIP – INTERLOCKING PANELS ================= */
+.craft-interlock {
+    padding: 1.5rem 1.5rem;
+    background: var(--warm-white);
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.interlock-panel {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 5rem;
+    position: relative;
+}
+
+    .interlock-panel.reverse {
+        flex-direction: row-reverse;
+    }
+
+    .interlock-panel .interlock-image {
+        flex: 1;
+        position: relative;
+        z-index: 2;
+    }
+
+        .interlock-panel .interlock-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 400px;
+            filter: brightness(1.05);
+        }
+
+    .interlock-panel .interlock-text {
+        flex: 1;
+        background: var(--cream);
+        padding: 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        z-index: 3;
+        margin-left: -30px;
+        border: 1px solid var(--gold-pale);
+    }
+
+    .interlock-panel.reverse .interlock-text {
+        margin-left: 0;
+        margin-right: -30px;
+    }
+
+    .interlock-panel .interlock-text .tag {
+        font-size: 0.65rem;
+        letter-spacing: 0.3em;
+        color: var(--gold);
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+
+    .interlock-panel .interlock-text h3 {
+        font-family: var(--font-editorial);
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        color: var(--charcoal);
+    }
+
+    .interlock-panel .interlock-text p {
+        color: var(--text-secondary);
+        line-height: 1.9;
+        font-size: 0.95rem;
+    }
+
+    .interlock-panel .stitch-detail {
+        position: absolute;
+        width: 60px;
+        height: 2px;
+        background: var(--thread);
+        opacity: 0.6;
+    }
+
+        .interlock-panel .stitch-detail.top-left {
+            top: 25px;
+            left: 25px;
+        }
+
+        .interlock-panel .stitch-detail.bottom-right {
+            bottom: 25px;
+            right: 25px;
+        }
+
+@media (max-width: 1024px) {
+    .interlock-panel,
+    .interlock-panel.reverse {
+        flex-direction: column;
+    }
+
+        .interlock-panel .interlock-text {
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: -20px;
+            padding: 1.5rem;
+        }
+
+        .interlock-panel.reverse .interlock-text {
+            margin-top: -20px;
+        }
+}
+
+/* ================= CTA – TAILOR'S CHALK STYLE ================= */
+.cta-chalk {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: var(--charcoal);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+}
+
+    .cta-chalk::before {
+        content: '';
+        position: absolute;
+        inset: 30px;
+        border: 1px solid rgba(255,255,255,0.08);
+        pointer-events: none;
+    }
+
+    .cta-chalk .chalk-mark {
+        font-family: var(--font-editorial);
+        font-style: italic;
+        font-size: 1.3rem;
+        color: var(--gold-light);
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-chalk h2 {
+        font-family: var(--font-editorial);
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--cream);
+    }
+
+    .cta-chalk p {
+        color: var(--text-muted);
+        max-width: 500px;
+        margin: 0 auto 2.5rem;
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+.btn-lux.cream {
+    background: var(--cream);
+    color: var(--charcoal);
+}
+
+    .btn-lux.cream:hover {
+        background: var(--gold);
+        color: var(--charcoal);
+    }
+
+/* ================= FLOATING CONTACT – REFINED ================= */
+.contact-refined {
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+    .contact-refined a {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--warm-white);
+        border: 1px solid var(--gold-pale);
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: all 0.3s;
+        font-size: 1rem;
+    }
+
+        .contact-refined a:hover {
+            background: var(--charcoal);
+            border-color: var(--charcoal);
+            color: var(--cream);
+        }
+
+        .contact-refined a img {
+            width: 18px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .contact-refined a:hover img {
+            opacity: 1;
+            filter: brightness(2);
+        }
+
+/* ================= FOOTER NOTE ================= */
+.footer-note-lux {
+    text-align: center;
+    padding: 2rem;
+    background: var(--cream);
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border-top: 1px solid var(--gold-pale);
+}

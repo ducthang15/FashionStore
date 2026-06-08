@@ -107,7 +107,19 @@ h1, h2, h3, h4, h5, .font-serif {
     width: 100%;
     overflow: hidden;
 }
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.85);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+    .loading-overlay.d-none {
+        display: none !important;
+    }
 .hero-fullscreen {
     background: url(/image/brand/bgroundedsoft.jpg) no-repeat center center;
     display: flex;
