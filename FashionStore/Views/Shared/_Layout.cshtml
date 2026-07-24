@@ -132,9 +132,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" asp-controller="Contact" asp-action="Index">Contact</a>
                 </li>
-                <li class="nav-item">
+@*                 <li class="nav-item">
                     <a class="nav-link text-white" asp-controller="Home" asp-action="FAQs">FAQs</a>
-                </li>
+                </li> *@
                 <li class="nav-item ms-3 position-relative">
                     <div class="live-search-box">
                         <input type="text" id="liveSearchInput" class="live-search-input" placeholder="Search..." autocomplete="off">
@@ -247,7 +247,7 @@
                     </div>
                 </div>
             </div>
-            <div class="footer_content-bottom-wrapper page-width">
+           @*  <div class="footer_content-bottom-wrapper page-width">
                 <div class="footer_column footer_column-info">
                     <div class="footer_payment">
                         <span class="visually-hidden">Payment methods</span>
@@ -265,7 +265,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> *@
             <hr class="border-secondary">
             <div class="text-center small text-white">
                 &copy; 2026 UnlimTailor. All rights reserved. Designed by unlimtailor
@@ -307,22 +307,13 @@
 
                     <div class="d-flex justify-content-between align-items-center">
 
-                        <a class="nav-link py-3 text-dark"
-                           asp-controller="Home"
-                           asp-action="Allproduct">
+                        <a class="nav-link py-3 text-dark"  asp-controller="Home"  asp-action="Allproduct">
                             Product
                         </a>
-
-                        <a class="px-3 text-dark"
-                           data-bs-toggle="collapse"
-                           href="#productMenu"
-                           role="button"
-                           aria-expanded="false">
+                        <a class="px-3 text-dark" data-bs-toggle="collapse"  href="#productMenu" role="button" aria-expanded="false">
                             <i class="ri-arrow-down-wide-line"></i>
                         </a>
-
                     </div>
-
                     <ul class="collapse list-unstyled ps-3" id="productMenu">
                         <li><a class="nav-link py-2 text-dark" asp-controller="Suit" asp-action="Index">Suit</a></li>
                         <li><a class="nav-link py-2 text-dark" asp-controller="Tuxedo" asp-action="Index">Tuxedo</a></li>
@@ -332,7 +323,6 @@
                         <li><a class="nav-link py-2 text-dark" asp-controller="Shirt" asp-action="Index">Shirt</a></li>
                         <li><a class="nav-link py-2 text-dark" asp-controller="Fabrics" asp-action="Index">Fabrics</a></li>
                     </ul>
-
                 </li>
                 <li class="nav-item">
                     <div class="d-flex justify-content-between align-items-center">

@@ -6,9 +6,6 @@
     var categories = ViewBag.Categories as IEnumerable<FashionStore.Repository.Models.Category>;
 }
 <div class="video-bg">
-    <video autoplay muted loop playsinline>
-        <source src="~/image/clip-product.mp4" type="video/mp4">
-    </video>
     <div class="mobile-poster"></div>
 </div>
 <div class="banner-wrapper bg-image">
@@ -17,6 +14,7 @@
         <h1 class="title-customer-signature fw-bold d-md-block d-none">CUSTOM TAILORED TUXEDO</h1>
         <p class="fs-4 d-md-block d-none">Explore the unlim tailor tuxedo collection where personal style is expressed through each subtle seam.</p>
     </div>
+    <h3 class="position-absolute top-50 start-50 translate-middle text-center px-4 d-block d-md-none">Custom Tuxedo</h3>
 </div>
 @{
     var controller = ViewContext.RouteData.Values["controller"]?.ToString();

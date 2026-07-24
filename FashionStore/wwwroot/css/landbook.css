@@ -121,7 +121,7 @@ h1, h2, h3, h4, h5, .font-serif {
         display: none !important;
     }
 .hero-fullscreen {
-    background: url(/image/brand/bgroundedsoft.jpg) no-repeat center center;
+    background: url(/image/backgroud-custom-blog.jpg) no-repeat center center;
     display: flex;
     align-items: center;
     min-height: 100vh;

@@ -285,7 +285,7 @@ body {
 
 .swatch-item {
     flex: 1;
-    padding: 2rem;
+    padding: 1rem;
     text-align: center;
     cursor: pointer;
     transition: all 0.4s var(--ease-lux);
@@ -302,8 +302,8 @@ body {
     }
 
     .swatch-item .fabric-sample {
-        width: 100px;
-        height: 100px;
+        width: 160px;
+        height: 160px;
         margin: 0 auto 1rem;
         border-radius: 50%;
         border: 2px solid var(--gold-pale);

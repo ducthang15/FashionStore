@@ -6,9 +6,6 @@
     var categories = ViewBag.Categories as IEnumerable<FashionStore.Repository.Models.Category>;
 }
 <div class="video-bg">
-    <video autoplay muted loop playsinline>
-        <source src="~/image/clip-product.mp4" type="video/mp4">
-    </video>
     <div class="mobile-poster"></div>
 </div>
 <div class="position-relative overflow-hidden">
@@ -25,6 +22,7 @@
       @*   <h1 class="title-customer-signature fw-bold d-md-block d-none">DISCOVER THE UNLIM TAILOR CUFFLINKS COLLECTION</h1>
         <p class="fs-4 d-md-block d-none">The perfect accessory to complete the modern gentleman’s style.</p> *@
     </div>
+    <h3 class="position-absolute top-50 start-50 translate-middle text-center px-4 d-block d-md-none">Cufflinks</h3>
 </div>
 @{
     var controller = ViewContext.RouteData.Values["controller"]?.ToString();

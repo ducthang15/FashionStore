@@ -353,12 +353,12 @@ body {
 .journey-contact {
     font-family: 'Montserrat', sans-serif;
     color: #2c3e50;
-    background-color: #ffffff;
+    background:url('/image/backgroud-custom-blog.jpg');
 }
 
 .serif-title {
     font-family: 'Lora', serif;
-    color: #1a252f;
+    color: #ffffff;
 }
 
 .text-copper {
