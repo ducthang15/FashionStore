@@ -1662,7 +1662,9 @@ img.zalo {
 .masonry-grid {
     column-count: 1;
 }
-
+.service-text-sure{
+    font-size: 14px;
+}
 @media (max-width: 991px) {
     .unlim-masonry-grid {
         column-count: 3;

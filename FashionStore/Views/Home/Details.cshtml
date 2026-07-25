@@ -30,79 +30,103 @@
                 </div>
             </div>
             <div class="col-lg-5 product-info d-flex flex-column">
-                <div class="flex-grow-1">
-                    <h1 class="text-uppercase fs-4">@Model.ProductName</h1>
+                <div class="detail-product-catalog">
+                    <h1 class="text-uppercase fs-6">@Model.ProductName</h1>
                     <span class="text-secondary">
-                        <strong>Product type: @Model.Category?.CategoryName</strong>
+                        <strong>Product catalog: @Model.Category?.CategoryName</strong>
                     </span><br>
-                    <span class="text-secondary">
-                        @Html.Raw(Model.Description)
-                    </span>
                 </div>
-                <div class="text-center mt-auto pt-4">
-                    Please contact the following phone number for more details:
-                    <a href="tel:0989473579" class="text-danger">098 947 3579</a>
+                <div class="container my-4">
+                    <div class="text-dark">
+                        <div class="fs-6 text-white">
+                            Booking: <strong class="fw-bold">0989 473 579</strong> <span class="text-secondary">(9:00 - 21:00)</span>
+                        </div>
+                        <hr class="border-secondary border-1 opacity-50 my-3">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-auto justify-content-lg-between g-3 pt-2 align-items-center">
+                            <div class="col d-flex align-items-center gap-2">
+                                <i class="fa-solid fa-truck-fast text-danger"></i>
+                                <span class="service-text-sure text-white text-nowrap">Delivery everywhere</span>
+                            </div>
+
+                            <div class="col d-flex align-items-center gap-2">
+                                <i class="fa-solid fa-scissors text-danger"></i>
+                                <span class="service-text-sure text-white text-nowrap">Free warranty</span>
+                            </div>
+
+                            <div class="col d-flex align-items-center gap-2">
+                                <i class="fa-solid fa-user-tie text-danger"></i>
+                                <span class="service-text-sure text-white text-lg-nowrap">Tailoring at client's home for bill from 1.000.000 VND</span>
+                            </div>
+                          
+                        </div>
+                    </div>
                 </div>
-                <hr class="border-secondary">
+                <div class="align-items-center mt-3">
+                    <a asp-controller="Appointment" asp-action="Index" class="btn-custom p-3 text-decoration-none rounded-0">
+                        Book an Appointment <span class="arrow"></span>
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="d-flex justify-content-between align-items-center mb-2 mt-5">
-            <h5 class="text-white">
-                Related Products
-            </h5>
+        <div class="d-flex justify-content-between align-items-center mt-5">
+            <span class="text-secondary">
+                @Html.Raw(Model.Description)
+            </span>
         </div>
-        <div id="relatedProductsCarousel" class="carousel slide related-products-carousel" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                @{
-                    var products = ViewBag.RelatedProducts as List<FashionStore.Repository.Models.Product>;
-                    int chunkSize = 4;
-                }
-                @if (products != null)
-                {
-                    for (int i = 0; i < products.Count; i += chunkSize)
-                    {
-                        var chunk = products.Skip(i).Take(chunkSize).ToList();
-                        <div class="carousel-item @(i == 0 ? "active" : "")">
-                            <div class="row g-2">
+        <div class="text-center mt-auto pt-4">
+            Please contact the following phone number for more details:
+            <a href="tel:0989473579" class="text-danger">098 947 3579</a>
+        </div>
+        <div class="related-products-section mt-5 pt-5 border-top border-secondary">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="fs-4 text-uppercase text-white tracking-wide mb-0">Related Products</h3>
+                <div class="carousel-controls d-flex gap-2">
+                    <button class="btn btn-sm btn-outline-light rounded-circle" type="button" data-bs-target="#relatedProductsCarousel" data-bs-slide="prev">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-light rounded-circle" type="button" data-bs-target="#relatedProductsCarousel" data-bs-slide="next">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
 
-                                @foreach (var item in chunk)
-                                {
-                                    <div class="col-6 col-md-3">
-                                        <a asp-controller="Home" asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none">
-                                            <div class="card h-100 bg-dark text-white">
-                                                <div class="ratio ratio-1x1">
-                                                    <img src="@item.ImageUrl" class="card-img-top object-fit-cover" alt="@item.ProductName"
-                                                         loading="lazy">
-                                                </div>
-
-                                                <div class="card-body text-center">
-
-                                                    <p class="card-title">
-                                                        @item.ProductName
-                                                    </p>
-                                                    <p class="text-secondary text-uppercase">
-                                                        @item.Category?.CategoryName
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                }
-                            </div>
-                        </div>
+            <div id="relatedProductsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    @{
+                        var products = ViewBag.RelatedProducts as List<FashionStore.Repository.Models.Product>;
+                        int chunkSize = 4;
                     }
-                }
-                <button class="carousel-control-prev" type="button" data-bs-target="#relatedProductsCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#relatedProductsCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                </button>
+                    @if (products != null && products.Any())
+                    {
+                        for (int i = 0; i < products.Count; i += chunkSize)
+                        {
+                            var chunk = products.Skip(i).Take(chunkSize).ToList();
+                            <div class="carousel-item @(i == 0 ? "active" : "")">
+                                <div class="row row-cols-2 row-cols-md-4 g-3">
+                                    @foreach (var item in chunk)
+                                    {
+                                        <div class="col">
+                                            <div class="card h-100 bg-black border-secondary product-card hover-lift">
+                                                <a asp-controller="Home" asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none">
+                                                    <div class="ratio ratio-1x1 overflow-hidden">
+                                                        <img src="@item.ImageUrl" class="card-img-top object-fit-cover product-img" alt="@item.ProductName" loading="lazy">
+                                                    </div>
+                                                    <div class="card-body text-center p-3">
+                                                        <h6 class="card-title text-white text-truncate mb-1">@item.ProductName</h6>
+                                                        <small class="text-secondary text-uppercase fs-7">@item.Category?.CategoryName</small>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="container">
 </div>
 <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
