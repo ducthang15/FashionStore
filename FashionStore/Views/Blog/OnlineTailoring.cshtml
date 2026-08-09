@@ -5,6 +5,9 @@
 
     var index = 0;
 }
+<h1 class="container text-dark text-uppercase fs-2 text-center mt-2">
+    @ViewBag.CategoryName
+</h1>
 <picture>
     <source media="(min-width: 992px)"
             srcset="/image/online-tailoring-at-unlim.jpg">
@@ -14,10 +17,7 @@
          class="img-fluid w-100"
          alt="Bespoke Tailoring">
 </picture>
-<h1 class="container text-dark text-uppercase mt-3">
-    @ViewBag.CategoryName
-</h1>
-<div class="container">
+<div class="container mt-3">
 
     @foreach (var item in Model)
     {
@@ -25,11 +25,11 @@
         <ar class="row align-items-center mb-5">
             <div class="col-lg-6 col-md-6 col-12 @(isEven ? "order-md-1" : "order-md-2") order-2">
                 <div class="pe-lg-5">
-                    <h2 class="fw-bold">
+                    <h4 class="fs-5">
                         <a asp-action="Details" asp-route-slug="@item.Slug" class="editorial-title text-decoration-none text-dark ">
                             @item.Title
                         </a>
-                    </h2>
+                    </h4>
 
                     <p class="text-muted">
                         @item.Summary

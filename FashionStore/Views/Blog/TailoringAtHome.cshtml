@@ -3,6 +3,9 @@
     ViewData["Title"] = ViewBag.CategoryName;
     ViewData["MetaDescription"] = "Experience our completely free in-home bespoke tailoring service from UNLIM Tailor. Our team of experts will provide consultation and take measurements at your home, guaranteeing top-quality Bespoke tailoring and a lifetime warranty.";
 }
+<h1 class="container text-dark text-uppercase fs-2 text-center mt-2">
+    @ViewBag.CategoryName
+</h1>
 <picture>
     <source media="(min-width: 992px)"
             srcset="/image/banner-main-project-2-(2).png">
@@ -12,10 +15,7 @@
          class="img-fluid w-100"
          alt="Bespoke Tailoring">
 </picture>
-<h1 class="container text-dark text-uppercase mt-3">
-    @ViewBag.CategoryName
-</h1>
-<div class="container">
+<div class="container mt-3">
 
     @{
         var index = 0;
@@ -27,7 +27,7 @@
         <div class="row align-items-center mb-5">
             <div class="col-lg-6 col-md-6 col-12 @(isEven ? "order-md-1" : "order-md-2") order-2">
                 <div class="pe-lg-5">
-                    <h4 class="fw-bold">
+                    <h4 class="fs-5">
                         <a asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none text-dark">
                             @item.Title
                         </a>
