@@ -150,14 +150,57 @@
         </div>
     </div>
 </section> *@
+@if (ViewBag.LatestNews != null)
+{
+    <section class="latest-blog py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="title-journal text-dark">Our Journal</h2>
+            </div>
+            <div class="row g-2 mt-4">
+                @foreach (var item in ViewBag.LatestNews)
+                {
+                    <div class="col-lg-4 col-md-6">
+                        <article class="blog-card h-100">
+
+                            <div class="blog-image-wrapper">
+                                <a asp-controller="Blog"  asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none">
+                                    <img src="@item.ImageUrl" alt="@item.Title" class="img-fluid w-100" loading="lazy">
+                                </a>
+                            </div>
+                            <div class="pt-3">
+                                <div class="small text-muted mb-2">
+                                    @(item.CreatedAt?.ToString("dd/MM/yyyy") ?? "")
+                                </div>
+                                <h6 class="title-blog-journal text-truncate fw-semibold">
+                                    <a asp-controller="Blog"  asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none text-dark">
+                                        @item.Title
+                                    </a>
+                                </h6>
+                                <p class="summary-title-blog text-muted text-clamp-3">
+                                    @item.Summary
+                                </p>
+                                <a asp-controller="Blog" asp-action="Details" asp-route-slug="@item.Slug" class="text-warning text-decoration-none">
+                                    Read more
+                                    <i class="ri-arrow-right-line"></i>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                }
+            </div>
+            <div class="text-center mt-5">
+                <a asp-controller="Blog" asp-action="Index" class="btn btn-outline-dark px-4">
+                    View All Articles
+                </a>
+            </div>
+        </div>
+    </section>
+}
 <section class="main-bg-brown">
     <section class="services-section">
         <div class="container">
             <h2 class="services-title text-center mt-1">How it works</h2>
-            <h6 class="text-center">Still not convinced we're a good fit for one another? Let us prove it.</h6>
-            <div class="text-center mb-2">
-                <a asp-controller="AboutUs" asp-action="Index" class="btn btn-outline-light mb-3 mt-3 text-center">Learn more</a>
-            </div>
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="service-card">
@@ -201,9 +244,12 @@
                     </div>
                 </div>
             </div>
+            <div class="text-center mb-2">
+                <a asp-controller="AboutUs" asp-action="Index" class="btn btn-outline-light mb-3 mt-3 text-center">Learn more</a>
+            </div>
         </div>
     </section>
-    <section class="partner-section container d-md-block d-none">
+    <section class="partner-section container">
         <h2 class="partner-title"> Our Partners </h2>
         <div class="partner-slider">
             <div class="partner-track">
@@ -226,8 +272,14 @@
             </div>
         </div>
     </section>
+    <div class="text-center mt-5">
+        <a asp-controller="Appointment" asp-action="Index" class="btn-gold-solid fw-semibold">
+            BOOK AN APPOINTMENT
+        </a>
+    </div>
 </section>
-<section class="container local-home pb-4">
+<section class="mt-5">
+    <section class="container local-home pb-4">
     <div class="local-home-inf">
         <div class="row">
             <div class="col-md-6">
@@ -271,6 +323,225 @@
         </div>
     </div>
 </section>
+</section>
+<div class="container text-dark mb-5 mt-5">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="faqs-card">
+                <h2 class="text-center find-us-on-title">Frequently Asked Questions</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="accordion accordion-flush" id="accordionQuestion">
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="accordionQuestionHeader0">
+                                    <button class="accordion-button fs-15 fw-normal collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionQuestionBody0">
+                                        Where is the best bespoke suit tailor in Hanoi?
+                                    </button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="accordionQuestionBody0">
+                                    <div class="accordion-body">
+                                        At Unlim Tailor, we are widely regarded as one of the best bespoke suit tailors in Hanoi.
+                                        Our clients include politicians, statesmen, and business leaders who trust us to perfect their image.
+                                        We don't mass-produce—we handcraft each suit with meticulous care, precision, and a deep understanding of the responsibility our clients bear.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="accordionQuestionHeader1">
+                                    <button class="accordion-button fs-15 fw-normal collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionQuestionBody1" aria-expanded="false">
+                                        Are there any good tailors in Hanoi's Old Quarter?
+                                    </button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="accordionQuestionBody1">
+                                    <div class="accordion-body">
+                                        While Hanoi's Old Quarter has many tailors, Unlim Tailor offers a different level of service.
+                                        Located just a 20-minute drive from the Old Quarter at 107 Kim Ma Street, Hanoi, we are a reputable tailor specializing in bespoke, high-end suits with thousands of fabric options.
+                                        Our approach is private, sophisticated, and focused on those who need more than just a suit—they need an image that reflects their status and leadership.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="accordionQuestionHeader2">
+                                    <button class="accordion-button fs-15 fw-normal collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionQuestionBody2">
+                                        How can I find a reliable tailor near me in Hanoi?
+                                    </button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="accordionQuestionBody2">
+                                    <div class="accordion-body">
+                                        If you're looking for a tailor near me in Hanoi, look no further than Unlim Tailor. We serve international clients and local elites, politicians, and embassies who demand perfection.
+                                        Each suit is handcrafted using premium Italian and English fabrics, and we offer a discreet, personalized experience that gentlemen will appreciate from the very first encounter.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="accordionQuestionHeader3">
+                                    <button class="accordion-button fs-15 fw-normal collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionQuestionBody3">
+                                        Are you one of the best tailors in Hanoi for business executives?
+                                    </button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="accordionQuestionBody3">
+                                    <div class="accordion-body">
+                                        Yes. Unlim Tailor is consistently recognized among the best tailors in Hanoi by business leaders and international visitors.
+                                        We specialize in custom clothing Hanoi's elite trust. Our philosophy is simple: respect for who you are and what you represent.
+                                        That's why we serve those who carry great responsibility—because their image must be flawless.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="accordionQuestionHeader4">
+                                    <button class="accordion-button fs-15 fw-normal collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionQuestionBody4">
+                                        Do you offer custom clothing and custom suit services?
+                                    </button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="accordionQuestionBody4">
+                                    <div class="accordion-body">
+                                        Absolutely. We are a premier destination for custom clothing Hanoi has to offer.
+                                        At Unlim Tailor, custom suit Hanoi means more than measurements—it means understanding your public image, your lifestyle, and your personal style.
+                                        We tailor exclusively to you, using the finest fabrics from Italy and England.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="accordionQuestionHeader5">
+                                    <button class="accordion-button fs-15 fw-normal collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionQuestionBody5">
+                                        Are the staff fluent in English and knowledgeable about bespoke tailoring based on individual measurements?
+                                    </button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="accordionQuestionBody5">
+                                    <div class="accordion-body">
+                                        We have staff fluent in English and several other languages. Our professional team understands your body shape and measurements.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="accordionQuestionHeader6">
+                                    <button class="accordion-button fs-15 fw-normal collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionQuestionBody6">
+                                        Does Unlim Tailor offer a lifetime warranty on its suits?
+                                    </button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="accordionQuestionBody6">
+                                    <div class="accordion-body">
+                                        Yes. Unlim Tailor proudly offers a lifetime warranty on all our bespoke suits. We take responsibility for every stitch, ensuring your suit will remain perfect for years to come.
+                                        For our clients – politicians, executives, and leaders – peace of mind is just as important as the fit.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="accordion accordion-flush" id="accordionQuestion2">
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="accordionQuestion2Header0">
+                                    <button class="accordion-button fs-15 fw-normal collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionQuestion2Body0">
+                                        Do you offer in-home tailoring services?
+                                    </button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="accordionQuestion2Body0">
+                                    <div class="accordion-body">
+                                        Yes, Unlim Tailor is a pioneer in providing free in-home tailoring services in Hanoi since 2020. Our consultants will come to your home or office with fabric samples and catalogs.
+                                        Whether you need a shirt or a suit, we offer a great experience – perfect for busy people looking for a tailor near them.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="accordionQuestion2Header1">
+                                    <button class="accordion-button fs-15 fw-normal collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionQuestion2Body1">
+                                        How does your online tailoring service work?
+                                    </button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="accordionQuestion2Body1">
+                                    <div class="accordion-body">
+                                        For customers who cannot visit our showroom, Unlim Tailor offers online tailoring services with virtual consultations.
+                                        Our experts will guide you from fabric selection and design to remote measurements.
+                                        With 8 years of experience, we are committed to delivering quality comparable to the best tailors in Hanoi – and worldwide.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="accordionQuestion2Header2">
+                                    <button class="accordion-button fs-15 fw-normal collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionQuestion2Body2">
+                                        Do you provide complimentary pick-up services?
+                                    </button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="accordionQuestion2Body2">
+                                    <div class="accordion-body">
+                                        Yes. Unlim Tailor offers free pick-up and drop-off service for all customers.
+                                        We will pick you up and drop you off at your preferred location – completely free of charge. This is part of our commitment to providing a 5-star customer experience.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="accordionQuestion2Header3">
+                                    <button class="accordion-button fs-15 fw-normal collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionQuestion2Body3">
+                                        What is the home tailoring process like?
+                                    </button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="accordionQuestion2Body3">
+                                    <div class="accordion-body">
+                                        It's very simple. Contact us via hotline, Zalo, or website. We will confirm your time and location. Our consultant will come with fabric and samples. We will take your measurements,
+                                        tailor your suit, and deliver it to your door with a lifetime warranty. That's why we are the tailor of choice for influential men.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="accordionQuestion2Header4">
+                                    <button class="accordion-button fs-15 fw-normal collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionQuestion2Body4">
+                                        How long does it take to make a custom suit?
+                                    </button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="accordionQuestion2Body4">
+                                    <div class="accordion-body">
+                                        At Unlim Tailor, a custom suit typically takes 10 to 14 days from measurement to final delivery. We prioritize quality and precision—because
+                                        our clients, from business leaders to statesmen, deserve nothing less. Need it faster? Just let us know your timeline.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="accordionQuestion2Header5">
+                                    <button class="accordion-button fs-15 fw-normal collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionQuestion2Body5">
+                                        Do you offer express tailoring services for urgent orders?
+                                    </button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="accordionQuestion2Body5">
+                                    <div class="accordion-body">
+                                        Yes. We understand that our customers have busy schedules (such as urgent flights, weddings, festivals, work, etc.). Unlim Tailor offers express tailoring services for urgent orders, completed within 4 to 6 days.
+                                        Please contact us directly and we will accommodate your schedule without compromising the quality of craftsmanship you expect from one of the best tailors in Hanoi.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="accordionQuestion2Header6">
+                                    <button class="accordion-button fs-15 fw-normal collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionQuestion2Body6">
+                                        How long does shipping take for international orders?
+                                    </button>
+                                </h2>
+                                <div class="accordion-collapse collapse" id="accordionQuestion2Body6">
+                                    <div class="accordion-body">
+                                        Shipping time varies by destination. For international clients, delivery typically takes 10 to 20 business days, depending on your location. We coordinate closely to ensure your custom suit arrives safely and on time—because we know your schedule matters.
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="luxury-banner">
     <img src="/image/poster-index-2233.png" alt="poster" class="w-100">
     <div class="banner-content">

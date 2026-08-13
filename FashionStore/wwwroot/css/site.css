@@ -392,31 +392,25 @@ a.dropdown-item {
     transform: translateY(0);
 }
 
-.luxury-nav .nav-item > .nav-link {
-    position: relative;
-    display: inline-block;
+.luxury-nav .nav-item > .nav-link::after {
+    display: none;
 }
 
-    .luxury-nav .nav-item > .nav-link:not(.dropdown-toggle)::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -6px;
-        width: 100%;
-        height: 2px;
-        background: #f5c542;
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.3s ease;
-    }
-
-    .luxury-nav .nav-item > .nav-link:hover::after {
-        transform: scaleX(1);
-    }
+.luxury-nav .nav-indicator {
+    position: absolute;
+    height: 2px;
+    background: #f5c542;
+    left: 0;
+    bottom: 20px;
+    width: 0;
+    pointer-events: none;
+    z-index: 999;
+    transition: left 0.35s cubic-bezier(.4, 0, .2, 1), width 0.35s cubic-bezier(.4, 0, .2, 1);
+}
 
 .luxury-nav {
     font-family: 'Montserrat', sans-serif;
-    background: rgb(54 27 9);
+    background: url("/image/bkg_full.jpg");
     padding: 28px 0;
     transition: all 0.35s ease;
     position: sticky;
@@ -437,6 +431,23 @@ a.dropdown-item {
     .luxury-nav .navbar-brand {
         letter-spacing: 1px;
     }
+
+.latest-blog .blog-image-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+    .latest-blog .blog-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+.summary-title-blog {
+    line-height: 30px;
+}
 
 .luxury-offcanvass {
     font-family: 'Montserrat', sans-serif;
@@ -631,7 +642,15 @@ a.dropdown-item {
 .bottom-links {
     display: flex;
     justify-content: space-between;
-    padding: 15px 20px;
+}
+
+    .bottom-links :hover {
+        color: #ffc107;
+    }
+
+.link-warning:hover {
+    color: #ffc107;
+    transition: color 0.2s ease-in-out;
 }
 
 .local-home {
@@ -762,11 +781,36 @@ img.zalo {
     padding-bottom: 30px;
 }
 
+.title-journal {
+    font-size: 40px;
+}
+
 .services-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 48px;
+    font-size: 40px;
     text-align: center;
     margin-bottom: 20px;
+}
+
+.btn-gold-solid {
+    text-decoration: none;
+    background-color: #C5A059;
+    color: white;
+    border: 1px solid #C5A059;
+    padding: 14px;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+}
+
+    .btn-gold-solid:hover {
+        background-color: transparent;
+        color: var(--gold);
+        box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
+    }
+
+.btn-gold-outline:hover {
+    background-color: var(--gold);
+    color: #000;
 }
 
 .divider {
@@ -904,7 +948,7 @@ img.zalo {
 }
 
 .detail-read {
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .related-news-item:hover {
@@ -941,7 +985,11 @@ img.zalo {
     margin-bottom: 40px;
     font-family: 'Montserrat', sans-serif;
     font-style: italic;
-    font-size: 48px;
+    font-size: 40px;
+}
+
+.find-us-on-title {
+    font-size: 40px;
 }
 
 .partner-slider {
@@ -1211,7 +1259,7 @@ img.zalo {
         }
 
 .gallery-customer {
-    background:url('/image/background-custom-clothings.jpg');
+    background: url('/image/background-custom-clothings.jpg');
 }
 
 .editorial-item {
@@ -1250,8 +1298,8 @@ img.zalo {
 
 .footer-bg {
     font-family: 'Montserrat', sans-serif;
-   /* background-image: url("https://theme.hstatic.net/200000759169/1001361744/14/bkg_full.png?v=1027");*/
-   background-color: black;
+    /* background-image: url("https://theme.hstatic.net/200000759169/1001361744/14/bkg_full.png?v=1027");*/
+    background-color: black;
     padding-bottom: 5rem;
     padding-top: 5rem;
     display: block;
@@ -1290,9 +1338,11 @@ img.zalo {
     min-height: 100vh;
     overflow: hidden;
 }
-.bg-main{
+
+.bg-main {
     background-color: black;
 }
+
 .blog-page::before {
     content: "";
     position: absolute;
@@ -1305,6 +1355,7 @@ img.zalo {
     background-attachment: fixed;
     z-index: -1;
 }
+
 .arrow {
     transition: transform 0.3s;
 }
@@ -1584,6 +1635,7 @@ img.zalo {
     border-bottom: 1px solid #000;
     padding-bottom: 2px;
 }
+
 .unlim-lookbook {
     padding: 30px 0;
 }
@@ -1662,13 +1714,16 @@ img.zalo {
 .masonry-grid {
     column-count: 1;
 }
-.service-text-sure{
+
+.service-text-sure {
     font-size: 14px;
 }
+
 @media (max-width: 991px) {
     .unlim-masonry-grid {
         column-count: 3;
     }
+
     .thumb-vertical {
         display: flex;
         gap: 10px;
@@ -1742,6 +1797,7 @@ img.zalo {
     .unlim-masonry-grid {
         column-count: 2;
     }
+
     .hero-section {
         padding: 0;
     }

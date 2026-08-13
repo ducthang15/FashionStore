@@ -244,3 +244,91 @@ window.addEventListener("scroll", function () {
 
     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 });
+$(function () {
+
+    var $nav = $(".luxury-nav");
+
+    if (!$nav.length) return;
+
+    $nav.find(".nav-indicator").remove();
+
+    var $indicator = $('<span class="nav-indicator"></span>');
+    $nav.append($indicator);
+
+    // Lấy tất cả menu desktop
+    var $links = $nav.find(
+        ".navbar-nav.d-none.d-lg-flex > .nav-item > .nav-link"
+    );
+
+    var currentPath = window.location.pathname
+        .replace(/\/+$/, "")
+        .toLowerCase();
+
+    var $activeLink = $();
+
+    $links.each(function () {
+
+        var $link = $(this);
+        var href = $link.attr("href");
+
+        if (!href) return;
+
+        var linkPath = new URL(
+            href,
+            window.location.origin
+        ).pathname
+            .replace(/\/+$/, "")
+            .toLowerCase();
+
+        if (linkPath === currentPath) {
+            $activeLink = $link;
+        }
+
+    });
+    function moveIndicator($link, animate) {
+
+        if (!$link.length) return;
+
+        var navLeft = $nav.offset().left;
+        var linkLeft = $link.offset().left;
+
+        if (!animate) {
+            $indicator.css("transition", "none");
+        }
+
+        $indicator.css({
+            left: (linkLeft - navLeft) + "px",
+            width: $link.outerWidth() + "px"
+        });
+
+        if (!animate) {
+
+            $indicator[0].offsetHeight;
+
+            $indicator.css(
+                "transition",
+                "left 0.35s cubic-bezier(.4,0,.2,1), " +
+                "width 0.35s cubic-bezier(.4,0,.2,1)"
+            );
+        }
+    }
+
+    if ($activeLink.length) {
+        moveIndicator($activeLink, false);
+    }
+
+    $links.on("mouseenter", function () {
+
+        moveIndicator($(this), true);
+
+    });
+
+    $nav.on("mouseleave", function () {
+
+        if ($activeLink.length) {
+            moveIndicator($activeLink, true);
+        }
+
+    });
+
+});

@@ -27,6 +27,12 @@ namespace FashionStore.Controllers
             .Where(x => x.IsPublished)
             .OrderBy(x => x.DisplayOrder)
             .ToListAsync();
+            ViewBag.LatestNews = await _context.News
+           .Where(n => n.IsPublished)
+           .OrderByDescending(n => n.CreatedAt)
+           .Take(3)
+           .ToListAsync();
+
             return View(products);
         }
         [Route("product/{slug}")]

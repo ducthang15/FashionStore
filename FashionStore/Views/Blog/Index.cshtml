@@ -82,13 +82,35 @@
                 {
                     <div class="text-center py-5 bg-light rounded-4 border">
                         <i class="ri-article-line fs-1 text-muted mb-3 d-block"></i>
-                        <h5 class="text-muted fw-normal">Hiện tại chưa có bài viết nào.</h5>
+                        <h5 class="text-muted fw-normal">No article</h5>
                     </div>
                 }
+                <nav class="mt-4">
+                    <ul class="pagination custom-pagination justify-content-center">
+                        <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+                            <a class="page-link" asp-action="Index" asp-route-page="@(ViewBag.CurrentPage - 1)" asp-route-id="@ViewBag.CurrentCategoryId">
+                                &lsaquo;
+                            </a>
+                        </li>
+                        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                                <a class="page-link" asp-action="Index" asp-route-page="@i" asp-route-id="@ViewBag.CurrentCategoryId">
+                                    @i
+                                </a>
+                            </li>
+                        }
+                        <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+                            <a class="page-link" asp-action="Index" asp-route-page="@(ViewBag.CurrentPage + 1)" asp-route-id="@ViewBag.CurrentCategoryId">
+                                &rsaquo;
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
 
             <div class="col-lg-4">
-                <div class="sidebar-widget title-hover d-none d-lg-block">
+                <div class="sidebar-widget title-hover">
                     <h3>
                         Related News
                     </h3>
@@ -103,7 +125,7 @@
                                         <h6 class="text-clamp-2 text-uppercase title-hover text-white">
                                             @item.Title
                                         </h6>
-                                        <p class="text-white detail-read">
+                                        <p class="text-warning detail-read">
                                             Read more <i class="ri-arrow-right-s-line align-middle"></i>
                                         </p>
                                     </div>
@@ -120,28 +142,6 @@
 
         </div>
     </div>
-    <nav class="mt-4">
-        <ul class="pagination custom-pagination justify-content-center">
-            <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
-                <a class="page-link" asp-action="Index" asp-route-page="@(ViewBag.CurrentPage - 1)" asp-route-id="@ViewBag.CurrentCategoryId">
-                    &lsaquo;
-                </a>
-            </li>
-            @for (int i = 1; i <= ViewBag.TotalPages; i++)
-            {
-                <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
-                    <a class="page-link" asp-action="Index" asp-route-page="@i" asp-route-id="@ViewBag.CurrentCategoryId">
-                        @i
-                    </a>
-                </li>
-            }
-            <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
-                <a class="page-link" asp-action="Index" asp-route-page="@(ViewBag.CurrentPage + 1)" asp-route-id="@ViewBag.CurrentCategoryId">
-                    &rsaquo;
-                </a>
-            </li>
-        </ul>
-    </nav>
 </div>
 <a href="https://www.facebook.com/MAYDOSUITCAOCAP" target="_blank" class="messenger-circle d-md-none">
     <i class="fa-brands fa-facebook-messenger"></i>

@@ -152,20 +152,28 @@
         </div>
         <div class="contact-content">
             <p class="text-center mt-4">
-                <a href="tel:02466868107" class="text-white text-decoration-none">0246 6868 107</a> |
-                <a href="https://zalo.me/0989473579" target="_blank" class="text-white text-decoration-none">ZALO</a> |
-                <a href="https://www.facebook.com/MAYDOSUITCAOCAP" target="_blank" class="text-white text-decoration-none">FACEBOOK</a>
+                <a href="tel:02466868107" class="text-white text-decoration-none link-warning transition">0246 6868 107</a> |
+                <a href="https://zalo.me/0989473579" target="_blank" class="text-white text-decoration-none link-warning transition">Zalo</a> |
+                <a href="https://www.facebook.com/MAYDOSUITCAOCAP" target="_blank" class="text-white text-decoration-none link-warning transition">Facebook</a>
             </p>
             <hr class="border-light opacity-25">
-            <p class="text-center text-uppercase">unlimkimma@gmail.com</p>
+            <p class="text-center">
+                <a href="mailto:unlimkimma@gmail.com" class="text-white text-decoration-none link-warning">unlimkimma@gmail.com</a>
+            </p>
             <hr class="border-light opacity-25">
-            <a asp-controller="Appointment" asp-action="Index" class="appointment d-block text-center text-white text-decoration-none">
-                BOOK AN APPOINTMENT
+            <a asp-controller="Appointment" asp-action="Index" class="appointment d-block text-center text-white text-decoration-none link-warning">
+                Book An Appointment
             </a>
             <hr class="border-light opacity-25">
             <div class="bottom-links">
-                <span><a class="nav-link text-white" asp-controller="Home" asp-action="FAQs">FAQs</a></span>
-                <span>Location</span>
+                <a asp-controller="Home" asp-action="FAQs" class="ios-nav-item">
+                    <i class="ri-question-line"></i>
+                    <span class="fs-6 fw-light">FAQs</span>
+                </a>
+                <a href="https://wa.me/84989473579" class="ios-nav-item">
+                    <i class="ri-whatsapp-line"></i>
+                    <span class="fs-6 fw-light">Whatsapp</span>
+                </a>
             </div>
         </div>
     </div>
@@ -180,7 +188,6 @@
                 <div class="col-md-3 mb-3">
                     <h5 class="text-uppercase mb-3">UNLIM TAILOR</h5>
                     <div class="footer-block-details-content list-unstyled">
-                        <p>We don't wish to have many customers, but we try our best to have customers for life</p>
                         <p><i class="fa-solid fa-location-dot me-2"></i> 105-107 Kim Ma Street, Ba Dinh Ward, HaNoi</p>
                         <p><i class="fa-solid fa-phone me-2"></i>098 947 3579</p>
                         <p><i class="fa-solid fa-phone me-2"></i>0246 6868 107</p>
@@ -193,7 +200,6 @@
                         <li><a asp-controller="Home" asp-action="ReturnPolicy" class="text-white text-decoration-none mb-2 d-block">Return Policy</a></li>
                         <li><a href="/aboutus" class="text-white text-decoration-none mb-2 d-block">About Us</a></li>
                         <li><a href="/contact" class="text-white text-decoration-none d-block mb-2">Contact</a></li>
-                        <li><a href="/" class="text-white text-decoration-none mb-2 d-block">Partners</a></li>
                         <li><a asp-controller="Home" asp-action="FAQs" class="text-white text-decoration-none mb-2 d-block">FAQs</a></li>
                     </ul>
                 </div>
@@ -373,7 +379,7 @@
             <span>Home</span>
         </a>
         <a asp-controller="Appointment" asp-action="Index" class="ios-nav-item">
-            <i class="ri-timer-2-line"></i>
+            <i class="ri-calendar-schedule-line"></i>
             <span>Booking</span>
         </a>
         <a href="https://wa.me/84989473579" class="ios-nav-item">
