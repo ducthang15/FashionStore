@@ -1,0 +1,65 @@
+﻿@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+}
+
+<nav class="container-fluid breadcrumb-style mb-4 px-0">
+    <div class="d-flex justify-content-center p-2">
+        <div class="d-flex gap-2 p-2 overflow-auto">
+
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="breadcrumb-item-custom px-3 py-2 text-decoration-none border @(controller == "Home" ? "active" : "")">
+                Home
+            </a>
+
+            <a asp-controller="Suit"
+               asp-action="Index"
+               class="breadcrumb-item-custom px-3 py-2 text-decoration-none border @(controller == "Suit" ? "active" : "")">
+                Custom Suit
+            </a>
+
+            <a asp-controller="Tuxedo"
+               asp-action="Index"
+               class="breadcrumb-item-custom px-3 py-2 text-decoration-none border @(controller == "Tuxedo" ? "active" : "")">
+                Custom Tuxedo
+            </a>
+
+            <a asp-controller="Blazer"
+               asp-action="Index"
+               class="breadcrumb-item-custom px-3 py-2 text-decoration-none border @(controller == "Blazer" ? "active" : "")">
+                Custom Blazer
+            </a>
+
+            <a asp-controller="Coat"
+               asp-action="Index"
+               class="breadcrumb-item-custom px-3 py-2 text-decoration-none border @(controller == "Coat" ? "active" : "")">
+                Custom OverCoat
+            </a>
+
+            <a asp-controller="Trousers"
+               asp-action="Index"
+               class="breadcrumb-item-custom px-3 py-2 text-decoration-none border @(controller == "Trousers" ? "active" : "")">
+                Custom Trousers
+            </a>
+
+            <a asp-controller="Shirt"
+               asp-action="Index"
+               class="breadcrumb-item-custom px-3 py-2 text-decoration-none border @(controller == "Shirt" ? "active" : "")">
+                Custom Shirt
+            </a>
+
+            <a asp-controller="Fabrics"
+               asp-action="Index"
+               class="breadcrumb-item-custom px-3 py-2 text-decoration-none border @(controller == "Fabrics" ? "active" : "")">
+                Fabrics
+            </a>
+
+            <a asp-controller="Gallery"
+               asp-action="Index"
+               class="breadcrumb-item-custom px-3 py-2 text-decoration-none border @(controller == "Gallery" ? "active" : "")">
+                Customer Gallery
+            </a>
+
+        </div>
+    </div>
+</nav>

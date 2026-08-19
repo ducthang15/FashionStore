@@ -80,7 +80,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" asp-controller="Home" asp-action="Allproduct" id="accessoryDropdown" role="button" aria-expanded="false">
-                        Accessories
+                        Accessories <i class="ri-arrow-drop-down-fill"></i>
                     </a>
                     <ul class="dropdown-menu rounded-0 lh-lg" aria-labelledby="accessoryDropdown">
                         <li><a class="dropdown-item" asp-controller="Caravat" asp-action="Index">Caravat</a></li>
@@ -90,21 +90,21 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" asp-controller="Home" asp-action="Allproduct" id="productDropdown" role="button" aria-expanded="false">
-                        Product
+                        Product <i class="ri-arrow-drop-down-fill"></i>
                     </a>
                     <ul class="dropdown-menu rounded-0 lh-lg" aria-labelledby="productDropdown">
-                        <li><a class="dropdown-item" asp-controller="Suit" asp-action="Index">Suit</a></li>
-                        <li><a class="dropdown-item" asp-controller="Tuxedo" asp-action="Index">Tuxedo</a></li>
-                        <li><a class="dropdown-item" asp-controller="Blazer" asp-action="Index">Blazer</a></li>
-                        <li><a class="dropdown-item" asp-controller="Coat" asp-action="Index">Coat</a></li>
-                        <li><a class="dropdown-item" asp-controller="Trousers" asp-action="Index">Trousers</a></li>
-                        <li><a class="dropdown-item" asp-controller="Shirt" asp-action="Index">Shirt</a></li>
+                        <li><a class="dropdown-item" asp-controller="Suit" asp-action="Index">Custom Suit</a></li>
+                        <li><a class="dropdown-item" asp-controller="Tuxedo" asp-action="Index">Custom Tuxedo</a></li>
+                        <li><a class="dropdown-item" asp-controller="Blazer" asp-action="Index">Custom Blazer</a></li>
+                        <li><a class="dropdown-item" asp-controller="Coat" asp-action="Index">Custom OverCoat</a></li>
+                        <li><a class="dropdown-item" asp-controller="Trousers" asp-action="Index">Custom Trousers</a></li>
+                        <li><a class="dropdown-item" asp-controller="Shirt" asp-action="Index">Custom Shirt</a></li>
                         <li><a class="dropdown-item" asp-controller="Fabrics" asp-action="Index">Fabrics</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" asp-controller="Blog" asp-action="TailoringProcess" id="processDropdown" role="button" aria-expanded="false">
-                        Our Process
+                        Our Process <i class="ri-arrow-drop-down-fill"></i>
                     </a>
                     <ul class="dropdown-menu rounded-0 lh-lg" aria-labelledby="processDropdown">
                         <li><a class="dropdown-item" asp-controller="Blog" asp-action="TailoringProcess">Tailoring process</a></li>
@@ -117,7 +117,7 @@
             </ul>
             <a class="navbar-brand position-absolute top-50 start-50 translate-middle ms-1"
                asp-controller="Home" asp-action="Index">
-                <img src="~/image/brand/ul-lg-dcmright.png" alt="UNLIM TAILOR Logo Suit Vest Bespoke" style="height:60px;" class="logo-unlim">
+                <img src="~/image/brand/ul-logo.png" alt="UNLIM TAILOR Logo Suit Vest Bespoke" style="height:35px;" class="logo-unlim">
             </a>
             <ul class="navbar-nav d-none d-lg-flex align-items-center flex-grow-1 justify-content-end">
                 <li class="nav-item">
@@ -132,9 +132,6 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" asp-controller="Contact" asp-action="Index">Contact</a>
                 </li>
-@*                 <li class="nav-item">
-                    <a class="nav-link text-white" asp-controller="Home" asp-action="FAQs">FAQs</a>
-                </li> *@
                 <li class="nav-item ms-3 position-relative">
                     <div class="live-search-box">
                         <input type="text" id="liveSearchInput" class="live-search-input" placeholder="Search..." autocomplete="off">
@@ -321,12 +318,12 @@
                         </a>
                     </div>
                     <ul class="collapse list-unstyled ps-3" id="productMenu">
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Suit" asp-action="Index">Suit</a></li>
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Tuxedo" asp-action="Index">Tuxedo</a></li>
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Blazer" asp-action="Index">Blazer</a></li>
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Coat" asp-action="Index">Coat</a></li>
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Trousers" asp-action="Index">Trousers</a></li>
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Shirt" asp-action="Index">Shirt</a></li>
+                        <li><a class="nav-link py-2 text-dark" asp-controller="Suit" asp-action="Index">Custom Suit</a></li>
+                        <li><a class="nav-link py-2 text-dark" asp-controller="Tuxedo" asp-action="Index">Custom Tuxedo</a></li>
+                        <li><a class="nav-link py-2 text-dark" asp-controller="Blazer" asp-action="Index">Custom Blazer</a></li>
+                        <li><a class="nav-link py-2 text-dark" asp-controller="Coat" asp-action="Index"> Custom OverCoat</a></li>
+                        <li><a class="nav-link py-2 text-dark" asp-controller="Trousers" asp-action="Index">Custom Trousers</a></li>
+                        <li><a class="nav-link py-2 text-dark" asp-controller="Shirt" asp-action="Index">Custom Shirt</a></li>
                         <li><a class="nav-link py-2 text-dark" asp-controller="Fabrics" asp-action="Index">Fabrics</a></li>
                     </ul>
                 </li>

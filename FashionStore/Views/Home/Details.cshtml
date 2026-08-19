@@ -31,33 +31,32 @@
             </div>
             <div class="col-lg-5 product-info d-flex flex-column">
                 <div class="detail-product-catalog">
-                    <h1 class="text-uppercase fs-6">@Model.ProductName</h1>
-                    <span class="text-secondary">
-                        <strong>Product catalog: @Model.Category?.CategoryName</strong>
+                    <h1 class="fs-4 mt-3">@Model.ProductName</h1>
+                    <span class="text-white">
+                        <span class="fs-6">Product catalog: @Model.Category?.CategoryName</span>
                     </span><br>
                 </div>
-                <div class="container my-4">
+                <div class="infomation-contact">
                     <div class="text-dark">
-                        <div class="fs-6 text-white">
-                            Booking: <strong class="fw-bold">0989 473 579</strong> <span class="text-secondary">(9:00 - 21:00)</span>
+                        <div class="text-white">
+                            Booking: <strong class="fw-bold">0989 473 579</strong>
                         </div>
-                        <hr class="border-secondary border-1 opacity-50 my-3">
-                        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-auto justify-content-lg-between g-3 pt-2 align-items-center">
-                            <div class="col d-flex align-items-center gap-2">
-                                <i class="fa-solid fa-truck-fast text-danger"></i>
-                                <span class="service-text-sure text-white text-nowrap">Delivery everywhere</span>
-                            </div>
-
-                            <div class="col d-flex align-items-center gap-2">
-                                <i class="fa-solid fa-scissors text-danger"></i>
-                                <span class="service-text-sure text-white text-nowrap">Free warranty</span>
-                            </div>
-
-                            <div class="col d-flex align-items-center gap-2">
-                                <i class="fa-solid fa-user-tie text-danger"></i>
-                                <span class="service-text-sure text-white text-lg-nowrap">Tailoring at client's home for bill from 1.000.000 VND</span>
-                            </div>
-                          
+                        <div class="d-flex align-items-center gap-4">
+                            <a href="https://www.facebook.com/MAYDOSUITCAOCAP" class="text-white text-decoration-none fs-1">
+                                <i class="ri-facebook-fill"></i>
+                            </a>
+                            <a href="https://wa.me/84989473579" class="text-white text-decoration-none fs-1">
+                                <i class="ri-whatsapp-line"></i>
+                            </a>
+                            <a href="https://www.instagram.com/unlim.tailor/" class="text-white text-decoration-none fs-1 mt-1">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://www.tripadvisor.com/Attraction_Review-g293924-d33295118-Reviews-Unlim_Tailor-Hanoi.html" class="mb-1 tripadvisor-infomation text-decoration-none fs-1">
+                                <img src="/image/brand/tripad.png" alt="tripadvisor.com" />
+                            </a>
+                            <a href="https://zalo.me/0989473579" class="zalo-infomation text-white text-decoration-none">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo">
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -66,18 +65,58 @@
                         Book an Appointment <span class="arrow"></span>
                     </a>
                 </div>
+                <div class="col-md-7 mt-5">
+                    <h5 class="text-white mb-2">Our Products</h5>
+                    <div class="list-group list-group-flush shadow-sm">
+                        <a asp-controller="Suit" asp-action="Index" class="list-group-item list-group-item-action list-group-item-nav border-bottom border-white">
+                            Custom Suit
+                        </a>
+                        <a asp-controller="Tuxedo" asp-action="Index" class="list-group-item list-group-item-action list-group-item-nav border-bottom border-white">
+                            Custom Tuxedo
+                        </a>
+                        <a asp-controller="Blazer" asp-action="Index" class="list-group-item list-group-item-action list-group-item-nav border-bottom border-white">
+                            Custom Jackets
+                        </a>
+                        <a asp-controller="Coat" asp-action="Index" class="list-group-item list-group-item-action list-group-item-nav border-bottom border-white">
+                            Custom Overcoats
+                        </a>
+                        <a asp-controller="Trousers" asp-action="Index" class="list-group-item list-group-item-action list-group-item-nav border-bottom border-white">
+                            Custom Trousers
+                        </a>
+                        <a asp-controller="Shirt" asp-action="Index" class="list-group-item list-group-item-action list-group-item-nav border-bottom border-white">
+                            Custom Shirt
+                        </a>
+                        <a asp-controller="Gallery" asp-action="Index" class="list-group-item list-group-item-action list-group-item-nav border-bottom border-white">
+                            Customer Gallery
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-7 mt-5">
+                    <div class="col-md-7">
+                        <img src="/image/UNLIM-fabric-acorn.jpg" alt="UNLIM fabric collection" class="fabric-acorn" />
+                        <a asp-controller="Fabrics" asp-action="Index" class="text-nowrap list-group-item-action list-group-item-nav border-bottom border-white fs-6 py-2 px-5">
+                            Fabrics Collections
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="d-flex justify-content-between align-items-center mt-5">
-            <span class="text-secondary">
+            <span class="text-secondary small">
                 @Html.Raw(Model.Description)
             </span>
         </div>
-        <div class="text-center mt-auto pt-4">
+        <div class="mt-auto small">
             Please contact the following phone number for more details:
-            <a href="tel:0989473579" class="text-danger">098 947 3579</a>
+            <a href="tel:0989473579" class="text-danger">098 947 3579</a> or  <a href="tel:02466868107" class="text-danger">02466868107</a> <span class="text-secondary">(Open 9:00 am - 9:00 pm)</span>
         </div>
-        <div class="related-products-section mt-5 pt-5 border-top border-secondary">
+        <div class="related-products-section mt-2 pt-5 border-top border-secondary">
+            <div class="live-search-box mt-3 mb-3">
+                <input type="text" id="liveSearchInput" class="live-search-input" placeholder="Search..." autocomplete="off">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <div id="searchResults" class="search-results-dropdown shadow">
+                </div>
+            </div>
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3 class="fs-4 text-uppercase text-white tracking-wide mb-0">Related Products</h3>
                 <div class="carousel-controls d-flex gap-2">
@@ -89,7 +128,6 @@
                     </button>
                 </div>
             </div>
-
             <div id="relatedProductsCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     @{
@@ -108,7 +146,7 @@
                                         <div class="col">
                                             <div class="card h-100 bg-black border-secondary product-card hover-lift">
                                                 <a asp-controller="Home" asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none">
-                                                    <div class="ratio ratio-1x1 overflow-hidden">
+                                                    <div class="overflow-hidden">
                                                         <img src="@item.ImageUrl" class="card-img-top object-fit-cover product-img" alt="@item.ProductName" loading="lazy">
                                                     </div>
                                                     <div class="card-body text-center p-3">
@@ -126,6 +164,15 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div class="bg-content">
+    <img src="/image/suit-poket-square.jpg" alt="UNLIM Tailor Pocket Square">
+    <div class="bg-content-text">
+        <h2 class="bg-content-text-title">Unique handmade<br /> accessories</h2>
+        <a asp-controller="Fabrics" asp-action="Index" class="px-4 py-2 bg-black text-white text-decoration-none">
+            View More
+        </a>
     </div>
 </div>
 <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">

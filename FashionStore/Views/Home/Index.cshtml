@@ -12,10 +12,12 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="3000">
-            <picture>
-                <source media="(max-width: 767px)" srcset="/image/carousel-light-kt212.png">
-                <img src="~/image/hero-bnxhid1.jpg" class="d-block w-100 carousel-img h-100" alt="unlimtailor bespoke in hanoi">
-            </picture>
+            <a asp-controller="Suit" asp-action="Index" class="d-block">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="/image/carousel-light-kt212.png">
+                    <img src="~/image/coat-shirt-red-in-hanoi-unlim.jpg" class="d-block w-100 carousel-img h-100" alt="unlimtailor bespoke in hanoi">
+                </picture>
+            </a>
             <div class="carousel-caption text-center unlim-caption">
                 <h1>UNLIM TAILOR</h1>
                 <a asp-controller="Appointment" asp-action="Index" class="booking-btn">
@@ -24,10 +26,12 @@
             </div>
         </div>
         <div class="carousel-item" data-bs-interval="3000">
-            <picture>
-                <source media="(max-width: 767px)" srcset="/image/carousel-light-kt213.jpg">
-                <img src="~/image/banner_home.png" class="d-block w-100 carousel-img h-100" alt="tailor near me old the quarter in hanoi">
-            </picture>
+            <a asp-controller="Suit" asp-action="Index" class="d-block">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="/image/responsive-slide.jpg">
+                    <img src="~/image/fullcanvast-bussiness.jpg" class="d-block w-100 carousel-img h-100" alt="tailor near me old the quarter in hanoi">
+                </picture>
+            </a>
             <div class="carousel-caption text-center unlim-caption">
                 <a asp-controller="Appointment" asp-action="Index" class="booking-btn">
                     BOOK AN APPOINTMENT
@@ -42,6 +46,118 @@
         <span class="carousel-control-next-icon"></span>
     </button>
 </div>
+<section class="container craft-showcase unlim-journey-section py-5">
+    <div class="showcase-header mb-5">
+        <h2>Unlim Tailor's Process</h2>
+    </div>
+    <div id="journeyCarousel" class="carousel slide" data-bs-ride="false">
+
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <div class="row g-2">
+                    <div class="col-12 col-md-4">
+                        <div class="craft-card">
+                            <div class="card-image-wrap">
+                                <img src="/image/B1 (2).png"
+                                     alt="Consultation at UNLIM Tailor">
+                            </div>
+                            <div class="card-body text-center">
+                                <h4>Consultation</h4>
+                                <p>
+                                    Design consultation: the first chapter in shaping personal identity and elegant style.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="craft-card">
+                            <div class="card-image-wrap">
+                                <img src="/image/B2 (2).png"
+                                     alt="Measurements at UNLIM Tailor">
+                            </div>
+                            <div class="card-body text-center">
+                                <h4>Measurements</h4>
+                                <p>
+                                    Meticulous stitching and precise measurements: the foundation for a perfect suit.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="craft-card">
+                            <div class="card-image-wrap">
+                                <img src="/image/B3.jpg"
+                                     alt="Fabric selection at UNLIM Tailor">
+                            </div>
+                            <div class="card-body text-center">
+                                <h4>Fabric Selection</h4>
+                                <p>
+                                    We select only the finest fabrics from thousands of renowned fabric samples worldwide.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row g-4">
+                    <div class="col-12 col-md-4">
+                        <div class="craft-card">
+                            <div class="card-image-wrap">
+                                <img src="/image/B4.jpg"
+                                     alt="Fitting and editing at UNLIM Tailor">
+                            </div>
+                            <div class="card-body text-center">
+                                <h4>Fitting &amp; Editing</h4>
+                                <p>
+                                    The perfect outfits are created by the most skilled and excellent tailors we have.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="craft-card">
+                            <div class="card-image-wrap">
+                                <img src="/image/B5.png"
+                                     alt="Completion at UNLIM Tailor">
+                            </div>
+                            <div class="card-body text-center">
+                                <h4>Completion</h4>
+                                <p>
+                                    A moment of pride, where the art of craftsmanship meets timeless values.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="craft-card">
+                            <div class="card-image-wrap">
+                                <img src="/image/care-and-maintenance.jpg"
+                                     alt="Care and maintenance at UNLIM Tailor">
+                            </div>
+                            <div class="card-body text-center">
+                                <h4>Care &amp; Maintenance</h4>
+                                <p>
+                                    Preserving the elegance and longevity of your bespoke garments.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#journeyCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#journeyCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
 @* <section class="collection-section">
     <div class="container relative mt-5">
         <div class="text-center mb-3">
@@ -164,7 +280,7 @@
                         <article class="blog-card h-100">
 
                             <div class="blog-image-wrapper">
-                                <a asp-controller="Blog"  asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none">
+                                <a asp-controller="Blog" asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none">
                                     <img src="@item.ImageUrl" alt="@item.Title" class="img-fluid w-100" loading="lazy">
                                 </a>
                             </div>
@@ -173,7 +289,7 @@
                                     @(item.CreatedAt?.ToString("dd/MM/yyyy") ?? "")
                                 </div>
                                 <h6 class="title-blog-journal text-truncate fw-semibold">
-                                    <a asp-controller="Blog"  asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none text-dark">
+                                    <a asp-controller="Blog" asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none text-dark">
                                         @item.Title
                                     </a>
                                 </h6>
@@ -280,49 +396,49 @@
 </section>
 <section class="mt-5">
     <section class="container local-home pb-4">
-    <div class="local-home-inf">
-        <div class="row">
-            <div class="col-md-6">
-                <h4 class="fw-bold mb-3 text-center text-md-start text-dark mt-4">
-                    Welcome To Our Showroom
-                </h4>
-                <ul class="list-unstyled mb-4">
-                    <li class="d-flex align-items-start gap-3 mb-3 text-dark">
-                        <i class="ri-map-2-line"></i>
-                        <span><strong>Address:</strong> 105-107 Kim Ma Street, Ba Dinh Ward, Hanoi</span>
-                    </li>
-                    <li class="d-flex align-items-start gap-3 mb-3 text-dark">
-                        <i class="ri-phone-line"></i>
-                        <span>
-                            <strong>Hotline:</strong>
-                            <a href="tel:02466868107" class="text-dark text-decoration-none">
-                                0246 6868 107
-                            </a> or
-                            <a href="tel:0989473579" class="text-dark text-decoration-none">
-                                098 947 3579
-                            </a>
-                        </span>
-                    </li>
-                    <li class="d-flex align-items-start gap-3 mb-3 text-dark">
-                        <i class="ri-mail-send-line"></i>
-                        <span><strong>Email:</strong> unlimkimma@gmail.com</span>
-                    </li>
+        <div class="local-home-inf">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="fw-bold mb-3 text-center text-md-start text-dark mt-4">
+                        Welcome To Our Showroom
+                    </h4>
+                    <ul class="list-unstyled mb-4">
+                        <li class="d-flex align-items-start gap-3 mb-3 text-dark">
+                            <i class="ri-map-2-line"></i>
+                            <span><strong>Address:</strong> 105-107 Kim Ma Street, Ba Dinh Ward, Hanoi</span>
+                        </li>
+                        <li class="d-flex align-items-start gap-3 mb-3 text-dark">
+                            <i class="ri-phone-line"></i>
+                            <span>
+                                <strong>Hotline:</strong>
+                                <a href="tel:02466868107" class="text-dark text-decoration-none">
+                                    0246 6868 107
+                                </a> or
+                                <a href="tel:0989473579" class="text-dark text-decoration-none">
+                                    098 947 3579
+                                </a>
+                            </span>
+                        </li>
+                        <li class="d-flex align-items-start gap-3 mb-3 text-dark">
+                            <i class="ri-mail-send-line"></i>
+                            <span><strong>Email:</strong> unlimkimma@gmail.com</span>
+                        </li>
 
-                    <li class="d-flex align-items-start gap-3 text-dark">
-                        <i class="ri-time-line"></i>
-                        <span><strong>Working hours :</strong> Monday - Sunday : 9 am – 9 pm</span>
-                    </li>
+                        <li class="d-flex align-items-start gap-3 text-dark">
+                            <i class="ri-time-line"></i>
+                            <span><strong>Working hours :</strong> Monday - Sunday : 9 am – 9 pm</span>
+                        </li>
 
-                </ul>
-            </div>
-            <div class="col-md-6">
-                <div class="ratio ratio-16x9 overflow-hidden ">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7448.05183271988!2d105.82533600000001!3d21.031649!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab13c6cba743%3A0x4f96a3971ba92e1f!2sUNLIM%20Tailor%20-%20Bespoke%20suit%20H%C3%A0%20N%E1%BB%99i!5e0!3m2!1svi!2sus!4v1774840677856!5m2!1svi!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <div class="ratio ratio-16x9 overflow-hidden ">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7448.05183271988!2d105.82533600000001!3d21.031649!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab13c6cba743%3A0x4f96a3971ba92e1f!2sUNLIM%20Tailor%20-%20Bespoke%20suit%20H%C3%A0%20N%E1%BB%99i!5e0!3m2!1svi!2sus!4v1774840677856!5m2!1svi!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 </section>
 <div class="container text-dark mb-5 mt-5">
     <div class="row">
