@@ -75,7 +75,7 @@
 
                         <a asp-controller="Home" asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none">
                             <div class="ratio ratio-3x4 product-img">
-                                <img src="@item.ImageUrl" alt="@item.ProductName" class="w-100 h-100 product-image"  loading="lazy">
+                                <img src="@item.ImageUrl" alt="@item.ProductName" class="w-100 h-100 product-image" loading="lazy">
                             </div>
                             <div class="product-info text-center p-2">
                                 <p class="m-0">
@@ -103,16 +103,17 @@
 {
     <nav class="mt-4">
         <ul class="pagination custom-pagination justify-content-center">
-
-            <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
-                <a class="page-link"
-                   asp-action="Index"
-                   asp-route-page="@(ViewBag.CurrentPage - 1)"
-                   asp-route-sort="@ViewBag.CurrentSort">
-                    &lsaquo;
-                </a>
-            </li>
-
+            @if (ViewBag.CurrentPage > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link"
+                       asp-action="Index"
+                       asp-route-page="@(ViewBag.CurrentPage - 1)"
+                       asp-route-sort="@ViewBag.CurrentSort">
+                        &lsaquo;
+                    </a>
+                </li>
+            }
             @for (int i = 1; i <= ViewBag.TotalPages; i++)
             {
                 <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
@@ -124,15 +125,17 @@
                     </a>
                 </li>
             }
-
-            <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
-                <a class="page-link"
-                   asp-action="Index"
-                   asp-route-page="@(ViewBag.CurrentPage + 1)"
-                   asp-route-sort="@ViewBag.CurrentSort">
-                    &rsaquo;
-                </a>
-            </li>
+            @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link"
+                       asp-action="Index"
+                       asp-route-page="@(ViewBag.CurrentPage + 1)"
+                       asp-route-sort="@ViewBag.CurrentSort">
+                        &rsaquo;
+                    </a>
+                </li>
+            }
 
         </ul>
     </nav>
