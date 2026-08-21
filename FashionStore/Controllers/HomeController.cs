@@ -86,11 +86,24 @@ namespace FashionStore.Controllers
             {
                 query = query.OrderByDescending(p => p.CreatedAt ?? DateTime.MinValue);
             }
-
             int totalItems = await query.CountAsync();
 
+            int totalPages = (int)Math.Ceiling(
+                (double)totalItems / pageSize
+            );
+
+            if (page < 1)
+            {
+                return NotFound();
+            }
+
+            if (totalPages > 0 && page > totalPages)
+            {
+                return NotFound();
+            }
+
             var products = await query
-                .Skip((page - 1) * pageSize)
+                            .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
 

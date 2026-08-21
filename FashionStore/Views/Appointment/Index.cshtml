@@ -40,14 +40,16 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-4">
-                                                        <input asp-for="FullName" class="form-control bg-light" placeholder="Name">
+                                                        <input asp-for="FullName" class="form-control bg-light" placeholder="Name" required>
                                                         <label asp-for="FullName">Name *</label>
+                                                        <span asp-validation-for="FullName" class="text-danger small"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-4">
-                                                        <input asp-for="PhoneNumber" class="form-control bg-light" placeholder="Number">
+                                                        <input asp-for="PhoneNumber" class="form-control bg-light" placeholder="Number" required>
                                                         <label asp-for="PhoneNumber">Phone number*</label>
+                                                        <span asp-validation-for="PhoneNumber" class="text-danger small"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">

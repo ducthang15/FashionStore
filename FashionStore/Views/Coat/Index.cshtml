@@ -10,7 +10,7 @@
 	<div class="mobile-poster"></div>
 </div>
 <div class="banner-wrapper bg-image">
-	<img src="~/image/accesory.png" alt="accessories" />
+	<img src="~/image/blog_unlimvest.jpg" alt="accessories" />
 	<div class="position-absolute top-50 start-50 translate-middle text-center">
 		<h1 class="title-customer-signature fw-bold d-md-block d-none">CUSTOM TAILORED COAT</h1>
 		<p class="fs-4 d-md-block d-none">Explore the unlim tailor coat collection where personal style is expressed through each subtle seam.</p>
@@ -90,34 +90,41 @@
 <a href="https://zalo.me/0989473579" target="_blank" class="zalo-circle d-md-none">
 	<img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo" />
 </a>
-<nav class="mt-4">
-	<ul class="pagination custom-pagination justify-content-center">
-		<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
-			<a class="page-link"
-			   asp-action="Index"
-			   asp-route-page="@(ViewBag.CurrentPage - 1)"
-			   asp-route-sort="@ViewBag.CurrentSort">
-				&lsaquo;
-			</a>
-		</li>
-		@for (int i = 1; i <= ViewBag.TotalPages; i++)
-		{
-			<li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+@if (ViewBag.TotalPages > 1)
+{
+	<nav class="mt-4">
+		<ul class="pagination custom-pagination justify-content-center">
+
+			<li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
 				<a class="page-link"
 				   asp-action="Index"
-				   asp-route-page="@i"
+				   asp-route-page="@(ViewBag.CurrentPage - 1)"
 				   asp-route-sort="@ViewBag.CurrentSort">
-					@i
+					&lsaquo;
 				</a>
 			</li>
-		}
-		<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
-			<a class="page-link"
-			   asp-action="Index"
-			   asp-route-page="@(ViewBag.CurrentPage + 1)"
-			   asp-route-sort="@ViewBag.CurrentSort">
-				&rsaquo;
-			</a>
-		</li>
-	</ul>
-</nav>
+
+			@for (int i = 1; i <= ViewBag.TotalPages; i++)
+			{
+				<li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+					<a class="page-link"
+					   asp-action="Index"
+					   asp-route-page="@i"
+					   asp-route-sort="@ViewBag.CurrentSort">
+						@i
+					</a>
+				</li>
+			}
+
+			<li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+				<a class="page-link"
+				   asp-action="Index"
+				   asp-route-page="@(ViewBag.CurrentPage + 1)"
+				   asp-route-sort="@ViewBag.CurrentSort">
+					&rsaquo;
+				</a>
+			</li>
+
+		</ul>
+	</nav>
+}

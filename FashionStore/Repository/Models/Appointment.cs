@@ -12,10 +12,12 @@ public partial class Appointment
     public int AppointmentId { get; set; }
 
     [StringLength(100)]
+    [Required(ErrorMessage = "Please enter your name.")]
     public string FullName { get; set; } = null!;
 
     [StringLength(20)]
     [Unicode(false)]
+    [Required(ErrorMessage = "Please enter your phone number.")]
     public string PhoneNumber { get; set; } = null!;
 
     [StringLength(255)]

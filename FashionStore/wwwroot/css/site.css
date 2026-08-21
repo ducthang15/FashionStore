@@ -441,7 +441,7 @@ body {
 
         .unlim-journey-section .showcase-header h2 {
             font-size: 40px;
-            color: #222;
+            color: white;
         }
 
     .unlim-journey-section .craft-scroll {
@@ -742,7 +742,7 @@ a.dropdown-item {
 .contact-tab {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    background: #6f4215;
+    background: #bc7a37;
     color: white;
     padding: 18px 10px;
     letter-spacing: 4px;
@@ -1131,9 +1131,31 @@ img.zalo {
     font-size: 13px;
     text-align: center;
     line-height: 1.7;
-    color: white;
+    color: black;
+}
+.craft-showunlim-bg {
+    position: relative;
+    background-image: url('/image/blog_unlimvest.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
 }
 
+    .craft-showunlim-bg::before {
+        content: "";
+        position: absolute;
+        inset: -10px;
+        background-image: url('/image/blog_unlimvest.jpg');
+        background-size: cover;
+        background-position: center;
+        filter: blur(3px) brightness(0.7);
+        z-index: 0;
+    }
+
+    .craft-showunlim-bg > * {
+        position: relative;
+        z-index: 1;
+    }
 .send-btn {
     letter-spacing: 2px;
     background-color: #3a1d0f;

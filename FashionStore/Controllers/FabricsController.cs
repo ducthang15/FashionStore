@@ -14,23 +14,40 @@ namespace FashionStore.Controllers
         {
             if (page < 1)
             {
-                return RedirectToAction("Index", new { page = 1, sort });
+                return NotFound();
             }
+
             int pageSize = 8;
 
             var query = _context.Products
                 .Include(p => p.Category)
                 .Where(p => p.CategoryId == 7);
+
             if (sort == "name")
             {
                 query = query.OrderBy(p => p.ProductName);
             }
             else
             {
-                query = query.OrderByDescending(p => p.CreatedAt ?? DateTime.MinValue);
+                query = query.OrderByDescending(
+                    p => p.CreatedAt ?? DateTime.MinValue
+                );
             }
 
             int totalItems = await query.CountAsync();
+
+            int totalPages = (int)Math.Ceiling(
+                (double)totalItems / pageSize
+            );
+            if (totalPages == 0 && page > 1)
+            {
+                return NotFound();
+            }
+
+            if (totalPages > 0 && page > totalPages)
+            {
+                return NotFound();
+            }
 
             var products = await query
                 .Skip((page - 1) * pageSize)
@@ -38,7 +55,7 @@ namespace FashionStore.Controllers
                 .ToListAsync();
 
             ViewBag.CurrentPage = page;
-            ViewBag.TotalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+            ViewBag.TotalPages = totalPages;
             ViewBag.CurrentSort = sort;
             ViewBag.CurrentCategoryId = 7;
 

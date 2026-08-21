@@ -1,0 +1,134 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Page Not Found | UNLIM Tailor";
+}
+
+<section class="unlim-error-page">
+    <div class="container">
+        <div class="unlim-error-content text-center">
+
+            <div class="unlim-error-number">
+                404
+            </div>
+
+            <div class="unlim-error-line"></div>
+
+            <h1>Page Not Found</h1>
+
+            <p>
+                The page you are looking for may have been moved,
+                removed, or is no longer available.
+            </p>
+
+            <div class="unlim-error-actions">
+
+                <a asp-controller="Home"
+                   asp-action="Index"
+                   class="unlim-error-btn unlim-error-btn-dark">
+                    Back to Home
+                </a>
+
+                <a href="/all-product"
+                   class="unlim-error-btn unlim-error-btn-outline">
+                    Explore Collection
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    .unlim-error-page {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 100px 20px;
+        background: #fff;
+    }
+
+    .unlim-error-content {
+        width: 100%;
+        max-width: 760px;
+        margin: auto;
+    }
+
+    .unlim-error-number {
+        font-size: clamp(100px, 18vw, 190px);
+        line-height: 0.9;
+        font-weight: 300;
+        letter-spacing: 12px;
+        color: #222;
+        margin-bottom: 30px;
+    }
+
+    .unlim-error-line {
+        width: 60px;
+        height: 1px;
+        background: #222;
+        margin: 0 auto 30px;
+    }
+
+    .unlim-error-content h1 {
+        font-size: 34px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        color: #222;
+    }
+
+    .unlim-error-content p {
+        max-width: 570px;
+        margin: 0 auto 40px;
+        color: #666;
+        font-size: 15px;
+        line-height: 1.9;
+    }
+
+    .unlim-error-actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .unlim-error-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 180px;
+        min-height: 48px;
+        padding: 12px 25px;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 12px;
+        transition: all 0.3s ease;
+    }
+
+    .unlim-error-btn-dark {
+        color: #fff;
+        background: #222;
+        border: 1px solid #222;
+    }
+
+        .unlim-error-btn-dark:hover {
+            color: #222;
+            background: #fff;
+        }
+
+    .unlim-error-btn-outline {
+        color: #222;
+        background: transparent;
+        border: 1px solid #222;
+    }
+
+        .unlim-error-btn-outline:hover {
+            color: #fff;
+            background: #222;
+        }
+
+</style>

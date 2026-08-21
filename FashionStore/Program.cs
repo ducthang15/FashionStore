@@ -66,6 +66,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseMiddleware<UrlRedirectMiddleware>();
 app.UseRouting();
+app.UseStatusCodePagesWithReExecute("/Error/404");
 app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();

@@ -10,17 +10,19 @@ namespace FashionStore.Controllers
         {
         }
 
-         public async Task<IActionResult> Index(string? sort, int page = 1)
+        public async Task<IActionResult> Index(string? sort, int page = 1)
         {
             if (page < 1)
             {
-                return RedirectToAction("Index", new { page = 1, sort });
+                return NotFound();
             }
+
             int pageSize = 8;
 
             var query = _context.Products
                 .Include(p => p.Category)
                 .Where(p => p.CategoryId == 9);
+
             if (sort == "name")
             {
                 query = query.OrderBy(p => p.ProductName);
@@ -32,13 +34,24 @@ namespace FashionStore.Controllers
 
             int totalItems = await query.CountAsync();
 
+            int totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+
+            if (totalPages == 0 && page > 1)
+            {
+                return NotFound();
+            }
+
+            if (totalPages > 0 && page > totalPages)
+            {
+                return NotFound();
+            }
             var products = await query
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
 
             ViewBag.CurrentPage = page;
-            ViewBag.TotalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+            ViewBag.TotalPages = totalPages;
             ViewBag.CurrentSort = sort;
             ViewBag.CurrentCategoryId = 9;
 
