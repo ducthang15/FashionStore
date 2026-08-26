@@ -86,7 +86,7 @@
                     </div>
                 }
                 <nav class="mt-4">
-                    <ul class="pagination custom-pagination justify-content-center">
+                    <ul class="pagination custom-pagination justify-content-center mb-3">
                         <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
                             <a class="page-link" asp-action="Index" asp-route-page="@(ViewBag.CurrentPage - 1)" asp-route-id="@ViewBag.CurrentCategoryId">
                                 &lsaquo;
@@ -141,6 +141,15 @@
             </div>
 
         </div>
+    </div>
+</div>
+<div class="bg-content">
+    <img src="/image/suit-poket-square.jpg" alt="UNLIM Tailor Pocket Square">
+    <div class="bg-content-text">
+        <h2 class="bg-content-text-title">Unique handmade Suit </h2>
+        <a asp-controller="Suit" asp-action="Index" class="px-4 py-2 bg-black text-white text-decoration-none border border-white">
+            See More Suit Now
+        </a>
     </div>
 </div>
 <a href="https://www.facebook.com/MAYDOSUITCAOCAP" target="_blank" class="messenger-circle d-md-none">

@@ -18,37 +18,96 @@
     <h4 class="position-absolute top-50 start-50 translate-middle text-center px-4 d-block d-md-none">Customer Gallery</h4>
 </div>
 <div class="gallery-customer">
-    <div class="container py-3">
-        @for (int i = 0; i < Model.Count(); i++)
-        {
-            var item = Model.ElementAt(i);
-            var isReverse = i % 2 == 1;
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="container py-3">
+                    @for (int i = 0; i < Model.Count(); i++)
+                    {
+                        var item = Model.ElementAt(i);
+                        var isReverse = i % 2 == 1;
 
-            <article class="editorial-item mb-4 bg-secondary-subtle p-2 @(isReverse ? "reverse" : "")">
-                @if (item.FeedbackImages != null && item.FeedbackImages.Any())
-                {
-                    <div class="editorial-media">
-                        <img src="@item.FeedbackImages.First().ImageUrl" alt="Feedback image" loading="lazy" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="150" />
-                    </div>
-                }
-                <div class="editorial-content bg-secondary-subtle p-2">
-                    @if (!string.IsNullOrWhiteSpace(item.CustomerName))
-                    {
-                        <h2 class="editorial-title">
-                            @item.CustomerName
-                        </h2>
-                    }
-                    @if (!string.IsNullOrWhiteSpace(item.Content))
-                    {
-                        <p class="editorial-text">
-                            @item.Content
-                        </p>
+                        <article class="editorial-item mb-4 bg-secondary-subtle p-2 @(isReverse ? "reverse" : "")">
+                            @if (item.FeedbackImages != null && item.FeedbackImages.Any())
+                            {
+                                <div class="editorial-media">
+                                    <a asp-controller="Appointment" asp-action="Index" class="editorial-media editorial-booking-link">
+                                        <img src="@item.FeedbackImages.First().ImageUrl" alt="Feedback image" loading="lazy" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="150" />
+                                        <span class="booking-overlay">
+                                            BOOK AN APPOINTMENT
+                                        </span>
+
+                                    </a>
+                                </div>
+                            }
+                            <div class="editorial-content bg-secondary-subtle p-2">
+                                @if (!string.IsNullOrWhiteSpace(item.CustomerName))
+                                {
+                                    <h2 class="editorial-title">
+                                        @item.CustomerName
+                                    </h2>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(item.Content))
+                                {
+                                    <p class="editorial-text">
+                                        @item.Content
+                                    </p>
+                                }
+                            </div>
+
+                        </article>
                     }
                 </div>
-
-            </article>
-        }
+            </div>
+            <div class="col-md-3">
+                <h4 class="text-white mb-2 mt-3 text-center">Our Products</h4>
+                <div class="list-group list-group-flush shadow-sm">
+                    <a asp-controller="Suit" asp-action="Index" class="list-group-item list-group-item-action list-group-item-nav border-bottom border-white">
+                        Custom Suit
+                    </a>
+                    <a asp-controller="Tuxedo" asp-action="Index" class="list-group-item list-group-item-action list-group-item-nav border-bottom border-white">
+                        Custom Tuxedo
+                    </a>
+                    <a asp-controller="Blazer" asp-action="Index" class="list-group-item list-group-item-action list-group-item-nav border-bottom border-white">
+                        Custom Jackets
+                    </a>
+                    <a asp-controller="Coat" asp-action="Index" class="list-group-item list-group-item-action list-group-item-nav border-bottom border-white">
+                        Custom Overcoats
+                    </a>
+                    <a asp-controller="Trousers" asp-action="Index" class="list-group-item list-group-item-action list-group-item-nav border-bottom border-white">
+                        Custom Trousers
+                    </a>
+                    <a asp-controller="Shirt" asp-action="Index" class="list-group-item list-group-item-action list-group-item-nav border-bottom border-white">
+                        Custom Shirt
+                    </a>
+                    <a asp-controller="Gallery" asp-action="Index" class="list-group-item list-group-item-action list-group-item-nav border-bottom border-white">
+                        Customer Gallery
+                    </a>
+                </div>
+                <div class="fabric-list mt-5">
+                    <h4 class="text-white mb-2 mt-3 text-center">Discover Fabrics</h4>
+                    <img src="/image/UNLIM-fabric-acorn.jpg" alt="UNLIM fabric collection" class="fabric-acort-shirt w-100" />
+                    <a asp-controller="Fabrics" asp-action="Index" class="text-nowrap list-group-item-action list-group-item-nav border-bottom border-white py-2 px-3">
+                        Fabrics Collections
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+<div class="bg-content">
+    <img src="/image/suit-poket-square.jpg" alt="UNLIM Tailor Pocket Square">
+    <div class="bg-content-text">
+        <h2 class="bg-content-text-title">Unique handmade<br /> accessories</h2>
+        <a asp-controller="Fabrics" asp-action="Index" class="px-4 py-2 bg-black text-white text-decoration-none">
+            View More
+        </a>
+    </div>
+</div>
+<div class="float-btn-group">
+    <a href="https://wa.me/84989473579" class="float-btn bg-whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://m.me/unlimtailor" class="float-btn bg-messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+    <a href="tel:0989473579" class="float-btn bg-phone "><i class="fa-solid fa-phone text-white"></i></a>
 </div>
 <script>
     AOS.init();

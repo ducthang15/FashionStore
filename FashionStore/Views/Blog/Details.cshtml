@@ -92,7 +92,7 @@
             </div>
         </div>
         <div class="col-md-8">
-            <h4 class="fw-bold mb-3 text-dark">SUIT PRODUCTS</h4>
+            <h4 class="fw-bold mb-3 text-dark">Suit Products</h4>
             <div class="suit-slider">
                 @if (ViewBag.SuitProducts != null)
                 {
@@ -101,11 +101,11 @@
                         <div class="px-2">
                             <a asp-controller="Home" asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none text-dark d-block">
                                 <div class="card border-0 shadow-sm h-100">
-                                    <div class="ratio ratio-1x1">
-                                        <img src="@item.ImageUrl" class="card-img-top rounded-top" style="object-fit:cover;" />
+                                    <div class="image-suit-products-relate">
+                                        <img src="@item.ImageUrl" class="w-100" style="object-fit:cover;" />
                                     </div>
                                     <div class="card-body p-2 text-center">
-                                        <p class="small mb-0 fw-semibold text-truncate-2">
+                                        <p class="small text-truncate">
                                             @item.ProductName
                                         </p>
                                     </div>

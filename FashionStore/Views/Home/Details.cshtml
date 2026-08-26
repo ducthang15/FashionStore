@@ -31,15 +31,15 @@
             </div>
             <div class="col-lg-5 product-info d-flex flex-column">
                 <div class="detail-product-catalog">
-                    <h1 class="fs-4 mt-3">@Model.ProductName</h1>
+                    <h1 class="fs-3 mt-3">@Model.ProductName</h1>
                     <span class="text-white">
-                        <span class="fs-6">Product catalog: @Model.Category?.CategoryName</span>
+                        <span class="fs-5">Product catalog: @Model.Category?.CategoryName</span>
                     </span><br>
                 </div>
                 <div class="infomation-contact">
                     <div class="text-dark">
-                        <div class="text-white">
-                            Booking: <strong class="fw-bold">0989 473 579</strong>
+                        <div class="fs-6 text-white">
+                            To make a reservation, please contact us via the following channels or the form on our website:
                         </div>
                         <div class="d-flex align-items-center gap-4">
                             <a href="https://www.facebook.com/MAYDOSUITCAOCAP" class="text-white text-decoration-none fs-1">
@@ -92,6 +92,7 @@
                     </div>
                 </div>
                 <div class="col-md-7 mt-5">
+                    <h5 class="text-white mb-2">Discover Fabrics</h5>
                     <div class="col-md-7">
                         <img src="/image/UNLIM-fabric-acorn.jpg" alt="UNLIM fabric collection" class="fabric-acorn" />
                         <a asp-controller="Fabrics" asp-action="Index" class="text-nowrap list-group-item-action list-group-item-nav border-bottom border-white fs-6 py-2 px-5">
@@ -144,14 +145,14 @@
                                     @foreach (var item in chunk)
                                     {
                                         <div class="col">
-                                            <div class="card h-100 bg-black border-secondary product-card hover-lift">
+                                            <div class="card h-100 bg-white border-secondary product-card hover-lift">
                                                 <a asp-controller="Home" asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none">
                                                     <div class="overflow-hidden">
                                                         <img src="@item.ImageUrl" class="card-img-top object-fit-cover product-img" alt="@item.ProductName" loading="lazy">
                                                     </div>
                                                     <div class="card-body text-center p-3">
-                                                        <h6 class="card-title text-white text-truncate mb-1">@item.ProductName</h6>
-                                                        <small class="text-secondary text-uppercase fs-7">@item.Category?.CategoryName</small>
+                                                        <h6 class="card-title text-dark mb-1">@item.ProductName</h6>
+                                                        <small class="text-secondary fs-7">@item.Category?.CategoryName</small>
                                                     </div>
                                                 </a>
                                             </div>

@@ -319,36 +319,51 @@ body {
     font-size: 16px;
     color: #e0e0e0;
 }
-.float-contact {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 999;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.mobile-cta {
+    background: rgba(15, 17, 16, 0.98);
+    border-top: 1px solid rgba(197, 160, 89, 0.2);
+    backdrop-filter: blur(10px);
 }
 
-.float-icon {
-    width: 45px;
-    height: 45px;
-    background: #ffffff;
-    border: 1px solid #b87333;
+.float-btn-group {
+    position: fixed;
+    bottom: 85px;
+    right: 16px;
+    z-index: 1000;
+}
+
+.float-btn {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #b87333;
+    font-size: 1.5rem;
+    margin-top: 15px;
+    transition: transform 0.3s;
     text-decoration: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
 
-    .float-icon:hover {
-        background: #b87333;
-        color: #fff;
-        transform: translateY(-3px);
+    .float-btn:hover {
+        transform: scale(1.1);
     }
+
+.bg-whatsapp {
+    background-color: #25D366;
+    color: white;
+}
+
+.bg-messenger {
+    background-color: #0084FF;
+    color: white;
+}
+
+.bg-phone {
+    background-color: #7b0b0b;
+    color: black;
+}
 
 .journey-contact {
     font-family: 'Montserrat', sans-serif;
