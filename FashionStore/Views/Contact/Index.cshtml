@@ -5,7 +5,7 @@
 }
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="application/ld+json">
-        {
+    {
       "@@context": "https://schema.org",
       "@@type": "ClothingStore",
       "name": "UNLIM TAILOR",
@@ -45,7 +45,6 @@
                 <p class="text-muted fw-light">Please leave your contact information so we can serve you as quickly as possible. Just fill in a few details and we will contact you within 15 minutes.</p>
                 <div style="width: 50px; height: 1px; background-color: #b87333; margin: 0 auto;"></div>
             </div>
-
             <div class="row text-center g-0">
                 <div class="col-md-4 process-step">
                     <h4 class="step-title text-uppercase fs-6 mt-3">The Showroom</h4>
@@ -83,6 +82,8 @@
                 <div class="col-lg-7">
                     <form asp-action="Send" method="post" class="elegant-form p-2">
                         @Html.AntiForgeryToken()
+                        <!-- Hiển thị thông báo nếu bị chặn bot -->
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-2 small"></div>
                         <div class="row">
                             <h4 class="step-title serif-title">Fill in the information</h4>
                             <div class="col-md-6 mb-2">
@@ -100,7 +101,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-floating mb-2">
                             <input asp-for="Email" class="form-control" placeholder="Email" />
                             <label asp-for="Email">Email Address</label>
@@ -112,9 +112,12 @@
                             <label asp-for="Message">How can we assist you, sir?</label>
                             <span asp-validation-for="Message" class="text-danger small"></span>
                         </div>
-
+                        <!-- Ô xác thực Cloudflare Turnstile -->
+                        <div class="mb-3">
+                            <div class="cf-turnstile" data-sitekey="0x4AAAAAAElum74ZhGmCjaHS"></div>
+                        </div>
                         <button type="submit" class="btn btn-copper w-100 fw-medium">
-                           Send
+                            Send
                         </button>
                     </form>
                 </div>
@@ -122,7 +125,7 @@
         </div>
     </section>
     <section class="container mt-3">
-        <div class="">
+        <div>
             <div style="height: 370px; width: 100%;">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7448.05183271988!2d105.82533600000001!3d21.031649!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab13c6cba743%3A0x4f96a3971ba92e1f!2sUNLIM%20Tailor%20-%20Bespoke%20suit%20H%C3%A0%20N%E1%BB%99i!5e0!3m2!1svi!2sus!4v1774840677856!5m2!1svi!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>

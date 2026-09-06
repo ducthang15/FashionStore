@@ -18,36 +18,37 @@
         <div id="sidebar-wrapper">
             <div class="sidebar-heading text-center text-uppercase">unlimtailor</div>
             <div class="list-group list-group-flush mt-3">
-                <div class="text-secondary small fw-bold px-4 mb-2 mt-2">Controll Panel</div>
-
+                <div class="text-secondary small fw-bold px-4 mb-2 mt-2">Product</div>
                 <a asp-area="Admin" asp-controller="ProductAdmin" asp-action="Index"
                    class="list-group-item list-group-item-action @(ViewContext.RouteData.Values["Controller"]?.ToString() == "ProductAdmin" ? "active" : "")">
-                    <i class="fa-solid fa-box-open"></i> Sản Phẩm
+                    <i class="fa-solid fa-barcode"></i> Sản Phẩm
                 </a>
                 <a asp-area="Admin" asp-controller="OrderAdmin" asp-action="Index"
                    class="list-group-item list-group-item-action @(ViewContext.RouteData.Values["Controller"]?.ToString() == "OrderAdmin" ? "active" : "")">
-                    Đơn Hàng
+                    <i class="fa-brands fa-codepen"></i>  Đơn Hàng
                 </a>
+                <div class="text-secondary small fw-bold px-4 mb-2 mt-2">Customer</div>
                 <a asp-area="Admin" asp-controller="AppointmentAdmin" asp-action="Index"
                    class="list-group-item list-group-item-action @(ViewContext.RouteData.Values["Controller"]?.ToString() == "AppointmentAdmin" ? "active" : "")">
-                    Lịch Hẹn
-                </a>
-                <a asp-area="Admin" asp-controller="NewsAdmin" asp-action="Index" class="list-group-item ...">
-                    Quản lý Blog
+                    <i class="fa-solid fa-suitcase"></i>  Lịch Hẹn
                 </a>
                 <a asp-area="Admin" asp-controller="ContactAdmin" asp-action="Index" class="list-group-item ...">
-                    Phản hồi khách hàng
+                    <i class="fa-brands fa-font-awesome"></i> Phản hồi khách hàng
                 </a>
+                <div class="text-secondary small fw-bold px-4 mb-2 mt-2">Website</div>
                 <a asp-area="Admin" asp-controller="CustomerFeedbackAdmin" asp-action="index" class="list-group-item ...">
-                    Lookbook
+                    <i class="fa-brands fa-windows"></i> Lookbook
                 </a>
-                <a asp-area="Admin" asp-controller="Redirects" asp-action="Index" class="list-group-item list-group-item-action @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Redirects" ? "active" : "")">
-                   Cấu hình Redirect
+                <a asp-area="Admin" asp-controller="NewsAdmin" asp-action="Index" class="list-group-item ...">
+                    <i class="fa-solid fa-layer-group"></i> Quản lý Blog
                 </a>
                 <a asp-area="Admin" asp-controller="CustomerReview" asp-action="index" class="list-group-item ...">
-                     Add review
+                    <i class="fa-solid fa-plus"></i>  Add review
                 </a>
-                <div class="text-secondary small fw-bold px-4 mb-2 mt-4">HỆ THỐNG</div>
+                <div class="text-secondary small fw-bold px-4 mb-2 mt-4">Setting</div>
+                <a asp-area="Admin" asp-controller="Redirects" asp-action="Index" class="list-group-item list-group-item-action @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Redirects" ? "active" : "")">
+                    <i class="fa-solid fa-gears"></i>  Cấu hình Redirect
+                </a>
                 <a asp-area="" asp-controller="Home" asp-action="Index" target="_blank" class="list-group-item list-group-item-action">
                     <i class="fa-solid fa-earth-americas"></i> Xem Website
                 </a>

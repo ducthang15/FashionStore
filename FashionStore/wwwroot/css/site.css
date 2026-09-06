@@ -172,6 +172,23 @@ body {
 }
 
 
+.language-select {
+    font-size: 13px;
+}
+
+.lang-dropdown-custom {
+    right: 0;
+    left: auto;
+    transform: none;
+    min-width: 135px;
+    max-width: 160px;
+    background-color: #6d381e;
+}
+
+    .lang-dropdown-custom .dropdown-item {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
 
 .mobile-cta {
     background: rgba(15, 17, 16, 0.98);
@@ -261,7 +278,7 @@ body {
     position: absolute;
     top: 120%;
     right: 0;
-    width: 320px;
+    width: 300px;
     background: rgba(28, 28, 30, 0.95);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -381,6 +398,7 @@ body {
 
 .breadcrumb-title {
     font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
 }
 
 .breadcrumb-style {
@@ -428,6 +446,7 @@ body {
 .fabric-acorn {
     width: 320px;
 }
+
 .editorial-booking-link {
     position: relative;
     display: block;
@@ -463,12 +482,14 @@ body {
 .editorial-booking-link:hover .booking-overlay {
     opacity: 1;
 }
+
 .image-suit-products-relate {
     width: 100%;
     aspect-ratio: 3 / 4;
     overflow: hidden;
     background: #fff;
 }
+
 .tripadvisor-infomation img {
     width: 35px;
     border-radius: 20px;
@@ -625,7 +646,7 @@ body {
     border: none;
     border-radius: 10px;
     padding: 10px 0;
-    min-width: 200px;
+    min-width: 170px;
 }
 
 .dropdown-item:hover {
@@ -1222,6 +1243,7 @@ img.zalo {
     line-height: 1.7;
     color: black;
 }
+
 .craft-showunlim-bg {
     position: relative;
     background-image: url('/image/blog_unlimvest.jpg');
@@ -1245,6 +1267,7 @@ img.zalo {
         position: relative;
         z-index: 1;
     }
+
 .send-btn {
     letter-spacing: 2px;
     background-color: #3a1d0f;
@@ -1515,7 +1538,7 @@ img.zalo {
     }
 
 .footer-block-details-content {
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .auth-footer {
@@ -1574,7 +1597,7 @@ img.zalo {
 .footer-bg {
     font-family: 'Montserrat', sans-serif;
     /* background-image: url("https://theme.hstatic.net/200000759169/1001361744/14/bkg_full.png?v=1027");*/
-    background-color: black;
+    background-color: #3f200e;
     padding-bottom: 5rem;
     padding-top: 5rem;
     display: block;

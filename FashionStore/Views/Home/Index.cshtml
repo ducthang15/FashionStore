@@ -7,15 +7,16 @@
 <link href="/css/site.css" rel="stylesheet" />
 <div id="heroCarousel" class="carousel slide shadow overflow-hidden" data-bs-ride="carousel">
     <div class="carousel-indicators">
-        <button type="button" aria-label="Slide 1" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
-        <button type="button" aria-label="Slide 2" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        <button type="button" aria-label="Slide 0" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" aria-label="Slide 1" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        <button type="button" aria-label="Slide 2" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="3000">
             <a asp-controller="Suit" asp-action="Index" class="d-block">
                 <picture>
-                    <source media="(max-width: 767px)" srcset="/image/carousel-light-kt212.png">
-                    <img src="~/image/coat-shirt-red-in-hanoi-unlim.jpg" class="d-block w-100 carousel-img h-100" alt="unlimtailor bespoke in hanoi">
+                    <source media="(max-width: 767px)" srcset="/image/utl-br-index-3-mobile.jpg">
+                    <img src="~/image/utl-br-index-1.jpg" class="d-block w-100 carousel-img h-100" alt="unlimtailor bespoke in hanoi">
                 </picture>
             </a>
             <div class="carousel-caption text-center unlim-caption">
@@ -28,8 +29,21 @@
         <div class="carousel-item" data-bs-interval="3000">
             <a asp-controller="Suit" asp-action="Index" class="d-block">
                 <picture>
-                    <source media="(max-width: 767px)" srcset="/image/responsive-slide.jpg">
-                    <img src="~/image/unlimtailor_1suit.jpg" class="d-block w-100 carousel-img h-100" alt="tailor near me old the quarter in hanoi">
+                    <source media="(max-width: 767px)" srcset="/image/utl-br-index-1-mobile.jpg">
+                    <img src="~/image/utl-br-index-2.jpg" class="d-block w-100 carousel-img h-100" alt="unlimtailor bespoke in hanoi">
+                </picture>
+            </a>
+            <div class="carousel-caption text-center unlim-caption">
+                <a asp-controller="Appointment" asp-action="Index" class="booking-btn">
+                    BOOK AN APPOINTMENT
+                </a>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+            <a asp-controller="Suit" asp-action="Index" class="d-block">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="/image/utl-br-index-2-mobile.jpg">
+                    <img src="~/image/utl-br-index3.jpg" class="d-block w-100 carousel-img h-100" alt="tailor near me old the quarter in hanoi">
                 </picture>
             </a>
             <div class="carousel-caption text-center unlim-caption">
@@ -325,14 +339,13 @@
                 @foreach (var item in ViewBag.LatestNews)
                 {
                     <div class="col-lg-4 col-md-6">
-                        <article class="blog-card h-100">
-
+                        <article class="blog-card h-100 bg-white shadow border">
                             <div class="blog-image-wrapper">
                                 <a asp-controller="Blog" asp-action="Details" asp-route-slug="@item.Slug" class="text-decoration-none">
                                     <img src="@item.ImageUrl" alt="@item.Title" class="img-fluid w-100" loading="lazy">
                                 </a>
                             </div>
-                            <div class="pt-3">
+                            <div class="pt-3 p-3">
                                 <div class="small text-muted mb-2">
                                     @(item.CreatedAt?.ToString("dd/MM/yyyy") ?? "")
                                 </div>

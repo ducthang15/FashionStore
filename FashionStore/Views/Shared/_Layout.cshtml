@@ -56,6 +56,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <link rel="icon" type="image/png" href="~/favicon.png" />
     <link rel="stylesheet" href="~/css/site.css" />
@@ -67,12 +68,11 @@
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJM3DC5R"
-                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJM3DC5R" height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top luxury-nav">
         <div class="container position-relative">
-            <button class="navbar-toggler d-xl-none border-0 text-white navbar-toggler-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="open-menu">
+            <button class="navbar-toggler d-lg-none border-0 text-white navbar-toggler-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="open-menu">
             </button>
             <ul class="navbar-nav d-none d-lg-flex flex-grow-1">
                 <li class="nav-item">
@@ -117,7 +117,7 @@
             </ul>
             <a class="navbar-brand position-absolute top-50 start-50 translate-middle ms-1"
                asp-controller="Home" asp-action="Index">
-                <img src="~/image/brand/ul-logo.png" alt="UNLIM TAILOR Logo Suit Vest Bespoke" style="height:35px;" class="logo-unlim">
+                <img src="~/image/brand/ul-logo.png" alt="UNLIM TAILOR Logo Suit Vest Bespoke" style="height:32px;" class="logo-unlim mb-1">
             </a>
             <ul class="navbar-nav d-none d-lg-flex align-items-center flex-grow-1 justify-content-end">
                 <li class="nav-item">
@@ -132,15 +132,67 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" asp-controller="Contact" asp-action="Index">Contact</a>
                 </li>
-                <li class="nav-item ms-3 position-relative">
-                    <div class="live-search-box">
-                        <input type="text" id="liveSearchInput" class="live-search-input" placeholder="Search..." autocomplete="off">
-                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                        <div id="searchResults" class="search-results-dropdown shadow">
-                        </div>
-                    </div>
-                </li>
             </ul>
+            <div class="nav-item ms-3 language-outside">
+                <div class="dropdown">
+                    <button class="btn btn-sm text-white border-0 d-flex align-items-center gap-1 px-2" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+                        <i class="ri-global-line"></i>
+                        <span id="currentLanguage" class="language-select">EN</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow lang-dropdown-custom p-1" aria-labelledby="languageDropdown">
+                        <li>
+                            <button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="en">
+                                🇬🇧 English
+                            </button>
+                        </li>
+                        <li>
+                            <button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="ko">
+                                🇰🇷 한국어
+                            </button>
+                        </li>
+                        <li>
+                            <button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="zh-CN">
+                                🇨🇳 中文
+                            </button>
+                        </li>
+                        <li>
+                            <button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="ja">
+                                🇯🇵 日本語
+                            </button>
+                        </li>
+
+                        <li>
+                            <button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="fr">
+                                🇫🇷 Français
+                            </button>
+                        </li>
+                        <li>
+                            <button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="de">
+                                🇩🇪 Deutsch
+                            </button>
+                        </li>
+
+                        <li>
+                            <button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="ru">
+                                🇷🇺 Русский
+                            </button>
+                        </li>
+
+                        <li>
+                            <button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="th">
+                                🇹🇭 ไทย
+                            </button>
+                        </li>
+
+                        <li>
+                            <button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="vi">
+                                🇻🇳 Tiếng Việt
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </nav>
     <div class="contact-slide">
@@ -183,15 +235,24 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 mb-3">
-                    <h5 class="text-uppercase mb-3">UNLIM TAILOR</h5>
+                    <h5 class="mb-3">UNLIM TAILOR</h5>
                     <div class="footer-block-details-content list-unstyled">
+                        <p class="nav-item ms-3 position-relative">
+                            <div class="live-search-box bg-gradient rounded-2 p-1">
+                                <input type="text" id="liveSearchInput" class="live-search-input" placeholder="Search..." autocomplete="off">
+                                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                                <div id="searchResults" class="search-results-dropdown shadow">
+                                </div>
+                            </div>
+                        </p>
                         <p><i class="fa-solid fa-location-dot me-2"></i> 105-107 Kim Ma Street, Ba Dinh Ward, HaNoi</p>
+                        <p><i class="fa-solid fa-envelope me-2"></i>unlimkimma@gmail.com</p>
                         <p><i class="fa-solid fa-phone me-2"></i>098 947 3579</p>
                         <p><i class="fa-solid fa-phone me-2"></i>0246 6868 107</p>
                     </div>
                 </div>
                 <div class="col-md-3 mb-3">
-                    <h5 class="text-uppercase mb-3">How May We Help You?</h5>
+                    <h5 class="mb-3">How May We Help You?</h5>
                     <ul class="footer-block-details-content list-unstyled">
                         <li><a asp-controller="Home" asp-action="Care" class="text-white text-decoration-none d-block mb-2 d-block">Care & Maintenance</a></li>
                         <li><a asp-controller="Home" asp-action="ReturnPolicy" class="text-white text-decoration-none mb-2 d-block">Return Policy</a></li>
@@ -201,7 +262,17 @@
                     </ul>
                 </div>
                 <div class="col-md-3 mb-3">
-                    <h5 class="text-uppercase mb-3">Follow Us</h5>
+                    <h5 class="mb-3">Services We Provide</h5>
+                    <ul class="footer-block-details-content list-unstyled">
+                        <li><a href="/Coat" class="text-white text-decoration-none d-block mb-2">Custom OverCoat</a></li>
+                        <li><a href="/suit" class="text-white text-decoration-none d-block mb-2">Custom Suit</a></li>
+                        <li><a href="/shirt" class="text-white text-decoration-none d-block mb-2">Custom Shirt</a></li>
+                        <li><a href="/fabric" class="text-white text-decoration-none mb-2 d-block">Fabrics</a></li>
+                        <li><a href="/blog" class="text-white text-decoration-none d-block mb-2">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h5 class="mb-3">Follow Us</h5>
                     <div class="d-flex gap-2">
                         <a href="https://www.facebook.com/MAYDOSUITCAOCAP"
                            class="social-btn">
@@ -219,21 +290,18 @@
                            class="social-btn">
                             <img src="~/image/tripadvisor.png" class="icon-img" alt="Discover Unlimtailor on tripadvisor" />
                         </a>
-                        <a href="https://zalo.me/0989473579"
-                           class="social-btn">
-                            <img src="~/image/icons8-zalo-50.png" class="icon-img" alt="Call for custom tailoring, schedule an appointment via Zalo" />
+                        <a href="/" class="social-btn">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="/" class="social-btn">
+                            <i class="fa-brands fa-youtube"></i>
                         </a>
                     </div>
                     <div class="bg-transparent mt-3">
                         <div class="card-body">
-                            <p class="mb-0">
+                            <p class="footer-block-details-content mb-0">
                                 Book Your Tailoring Experience
                             </p>
-
-                            <p class="small text-light mb-3">
-                                Premium bespoke suits crafted in Hanoi.
-                            </p>
-
                             <a href="/appointment"
                                class="btn btn-light btn-sm w-100 fw-semibold">
                                 Book an Appointment
@@ -241,16 +309,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-3">
-                    <h5 class="text-uppercase mb-3">Find us on</h5>
-                    <div class="footer-block-details-content list-unstyled">
-                        <div class="ratio ratio-4x3">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.0256714478323!2d105.82535290000001!3d21.0316588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab13c6cba743%3A0x4f96a3971ba92e1f!2sUNLIM%20Tailor%20-%20Bespoke%20suit%20H%C3%A0%20N%E1%BB%99i!5e0!3m2!1svi!2sus!4v1778310607645!5m2!1svi!2sus" width="250" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </div>
-                </div>
             </div>
-           @*  <div class="footer_content-bottom-wrapper page-width">
+            <div class="footer_content-bottom-wrapper page-width">
                 <div class="footer_column footer_column-info">
                     <div class="footer_payment">
                         <span class="visually-hidden">Payment methods</span>
@@ -268,15 +328,15 @@
                         </ul>
                     </div>
                 </div>
-            </div> *@
+            </div>
             <hr class="border-secondary">
             <div class="text-center small text-white">
                 &copy; 2020 UnlimTailor. All rights reserved. Designed by unlimtailor
             </div>
             <div class="footer-inf-about">
-                CÔNG TY TNHH MAY MẶC UNLIM VIỆT NAM | GPKD số 0109496957
-                Cấp ngày 15/01/2021 tại Sở kế hoạch và đầu tư Thành phố Hà Nội |
-                Địa chỉ: Tầng 1, Số 107 Kim Mã, Phường Giảng Võ, Quận Ba Đình, Thành Phố Hà Nội
+                UNLIM VIETNAM GARMENT CO., LTD. | Business Registration Number 0109496957
+                Issued by the Hanoi Department of Planning and Investment on January 15, 2021 |
+                Address: 1st Floor, No. 107 Kim Ma, Giang Vo Ward, Ba Dinh District, Hanoi City
             </div>
         </div>
     </footer>
@@ -293,27 +353,16 @@
             </div>
         </div>
         <div class="offcanvas-body">
-            <ul class="nav flex-column text-uppercase">
+            <ul class="nav flex-column lh-1">
                 <li class="nav-item">
                     <a class="nav-link py-3 text-dark" asp-controller="AboutUs" asp-action="Index">About us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link py-3 text-dark" asp-controller="Blog" asp-action="Index">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link py-3 text-dark" asp-controller="Contact" asp-action="Index">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link py-3 text-dark" asp-controller="Gallery" asp-action="Index">Customer</a>
-                </li>
-                <li class="nav-item">
-
                     <div class="d-flex justify-content-between align-items-center">
-
-                        <a class="nav-link py-3 text-dark"  asp-controller="Home"  asp-action="Allproduct">
+                        <a class="nav-link py-3 text-dark" asp-controller="Home" asp-action="Allproduct">
                             Product
                         </a>
-                        <a class="px-3 text-dark" data-bs-toggle="collapse"  href="#productMenu" role="button" aria-expanded="false">
+                        <a class="px-3 text-dark" data-bs-toggle="collapse" href="#productMenu" role="button" aria-expanded="false">
                             <i class="ri-arrow-down-wide-line"></i>
                         </a>
                     </div>
@@ -362,7 +411,16 @@
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link py-3 text-dark" asp-controller="Blog" asp-action="Index">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link py-3 text-dark" asp-controller="Gallery" asp-action="Index">Customer</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link py-3 text-dark" asp-controller="Appointment" asp-action="Index">Book an appointment</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link py-3 text-dark" asp-controller="Contact" asp-action="Index">Contact</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link py-3 text-dark" asp-controller="Home" asp-action="FAQs">FAQs</a>
@@ -388,6 +446,352 @@
             <span>Map</span>
         </a>
     </div>
+    <div id="google_translate_element" class="d-none"></div>
+    <script>
+        let googleTranslatePromise = null;
+        const GOOGLE_LANGUAGE_KEY = 'unlim_selected_language';
+        function getSavedLanguage() {
+            return localStorage.getItem(GOOGLE_LANGUAGE_KEY) || 'en';
+        }
+
+        function saveLanguage(language) {
+            localStorage.setItem(
+                GOOGLE_LANGUAGE_KEY,
+                language
+            );
+        }
+        function updateLanguageDisplay(language) {
+            const languageCodes = {
+                'vi': 'VI',
+                'en': 'EN',
+                'ko': 'KO',
+                'zh-CN': 'CN',
+                'ja': 'JA',
+                'fr': 'FR',
+                'de': 'DE',
+                'ru': 'RU',
+                'th': 'TH'
+            };
+
+            const code = languageCodes[language] || 'EN';
+
+            // Desktop
+            const currentLanguage = document.getElementById(
+                    'currentLanguage'
+                );
+
+            // Mobile
+            const mobileCurrentLanguage = document.getElementById(
+                    'mobileCurrentLanguage'
+                );
+
+
+            if (currentLanguage) {
+                currentLanguage.textContent = code;
+            }
+
+
+            if (mobileCurrentLanguage) {
+                mobileCurrentLanguage.textContent = code;
+            }
+        }
+        function loadGoogleTranslate() {
+
+            if (googleTranslatePromise) {
+                return googleTranslatePromise;
+            }
+            googleTranslatePromise = new Promise((resolve, reject) => {
+                    window.googleTranslateElementInit =
+                        function () {
+
+                            if (
+                                window.google &&
+                                window.google.translate &&
+                                window.google.translate.TranslateElement
+                            ) {
+
+                                new google.translate.TranslateElement({
+
+                                    pageLanguage: 'en',
+
+                                    includedLanguages:
+                                        'vi,ko,zh-CN,ja,fr,de,ru,th',
+
+                                    autoDisplay: false
+
+                                }, 'google_translate_element');
+
+
+                                resolve();
+
+                            } else {
+
+                                reject(
+                                    new Error('Google Translate API unavailable' )
+                                );
+                            }
+                        };
+                    const script = document.createElement('script');
+                    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+                    script.async = true;
+                    script.onerror = function () {
+                            reject(  new Error('Google Translate script failed to load')
+                            );
+                        };
+                        document.body.appendChild(script);
+                });
+            return googleTranslatePromise;
+        }
+
+        async function changeGoogleLanguage(language) {
+               if (language === 'en') {
+
+                   // 1. Xóa ngôn ngữ đã lưu
+                   localStorage.removeItem('unlim_selected_language');
+
+                   // 2. Xóa cookie Google Translate
+                   document.cookie =
+                       'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+
+                   document.cookie =
+                       'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' +
+                       window.location.hostname + ';';
+
+                   document.cookie =
+                       'googtrans=; Max-Age=0; path=/;';
+
+                   document.cookie =
+                       'googtrans=; Max-Age=0; path=/; domain=.unlimtailor.com;';
+                   updateLanguageDisplay('en');
+                   window.location.reload();
+                   return;
+               }
+
+               try {
+
+                   // Lưu ngôn ngữ người dùng chọn
+                   localStorage.setItem(
+                       'unlim_selected_language',
+                       language
+                   );
+
+                   // Cập nhật chữ EN / VI / KO...
+                   updateLanguageDisplay(language);
+
+                   // Lazy load Google Translate
+                   await loadGoogleTranslate();
+
+                   let attempts = 0;
+                   const maxAttempts = 30;
+
+                   const findTranslateSelect = setInterval(function () {
+
+                       const select =
+                           document.querySelector('.goog-te-combo');
+
+                       if (select) {
+
+                           clearInterval(findTranslateSelect);
+
+                           select.value = language;
+
+                           select.dispatchEvent(
+                               new Event('change', {
+                                   bubbles: true
+                               })
+                           );
+                       }
+
+                       attempts++;
+
+                       if (attempts >= maxAttempts) {
+                           clearInterval(findTranslateSelect);
+                       }
+
+                   }, 200);
+
+               }
+               catch (error) {
+
+                   console.error(
+                       'Google Translate failed to load.',
+                       error
+                   );
+               }
+           }
+
+        // =====restore language move
+            async function restoreSavedLanguage() {
+            const savedLanguage =
+                localStorage.getItem('unlim_selected_language');
+            // Không có ngôn ngữ đã lưu
+            // → giữ nguyên tiếng Anh gốc
+            if (!savedLanguage || savedLanguage === 'en') {
+
+                updateLanguageDisplay('en');
+
+                return;
+            }
+
+            try {
+
+                updateLanguageDisplay(savedLanguage);
+
+                await loadGoogleTranslate();
+
+                let attempts = 0;
+                const maxAttempts = 30;
+
+                const restoreInterval = setInterval(function () {
+
+                    const select =
+                        document.querySelector('.goog-te-combo');
+
+                    if (select) {
+
+                        clearInterval(restoreInterval);
+
+                        select.value = savedLanguage;
+
+                        select.dispatchEvent(
+                            new Event('change', {
+                                bubbles: true
+                            })
+                        );
+                    }
+
+                    attempts++;
+
+                    if (attempts >= maxAttempts) {
+
+                        clearInterval(restoreInterval);
+                    }
+
+                }, 200);
+
+            }
+            catch (error) {
+
+                console.error(
+                    'Google Translate restore failed.',
+                    error
+                );
+
+            }
+        }
+        // ================================
+        document.addEventListener(
+            'DOMContentLoaded',
+            function () {
+
+                // Lấy ngôn ngữ đã lưu
+                const savedLanguage =
+                    getSavedLanguage();
+
+                // Hiển thị ngôn ngữ hiện tại
+                updateLanguageDisplay(
+                    savedLanguage
+                );
+                const languageOptions =    document.querySelectorAll(
+                        '.language-option'
+                    );
+
+                languageOptions.forEach(
+                    function (button) {
+                        button.addEventListener(
+                            'click',
+                            function () {
+                                const language =
+                                    this.getAttribute(
+                                        'data-lang'
+                                    );
+
+                                if (!language) {
+                                    return;
+                                }
+                                changeGoogleLanguage(
+                                    language
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+        // Khôi phục ngôn ngữ đã chọn
+                restoreSavedLanguage();
+        // THEO DÕI TRẠNG THÁI GOOGLE TRANSLATE
+        let lastGoogleTranslateCookie =
+            document.cookie.match(
+                /(?:^|;\s*)googtrans=([^;]*)/
+            )?.[1] || null;
+
+        function getGoogleTranslateCookie() {
+
+            const match = document.cookie.match(
+                /(?:^|;\s*)googtrans=([^;]*)/
+            );
+
+            return match
+                ? decodeURIComponent(match[1])
+                : null;
+        }
+        function checkGoogleTranslateOriginal() {
+
+            const currentCookie =
+                getGoogleTranslateCookie();
+
+
+            // ==========================================
+            // COOKIE delete
+            // ==========================================
+
+            if (
+                lastGoogleTranslateCookie &&
+                !currentCookie
+            ) {
+
+                localStorage.removeItem(
+                    'unlim_selected_language'
+                );
+
+                updateLanguageDisplay('en');
+            }
+
+
+            // ==========================================
+            // GOOGLE TRANSLATE VỀ /en/en
+            // ==========================================
+
+            if (
+                currentCookie &&
+                (
+                    currentCookie === '/en/en' ||
+                    currentCookie.endsWith('/en/en')
+                )
+            ) {
+
+                localStorage.removeItem(
+                    'unlim_selected_language'
+                );
+
+                updateLanguageDisplay('en');
+            }
+
+
+            lastGoogleTranslateCookie =
+                currentCookie;
+        }
+
+
+        setInterval(
+            checkGoogleTranslateOriginal,
+            500
+        );
+            }
+        );
+    </script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="~/js/site.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
