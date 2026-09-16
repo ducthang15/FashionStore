@@ -54,6 +54,12 @@
                     <div id="previewContainer" class="d-flex flex-wrap mt-3 gap-2"></div>
                 </div>
                 <div class="mb-3">
+                    <label asp-for="MetaDescription" class="form-label fw-bold">
+                        Meta Description (SEO)
+                    </label>
+                    <textarea asp-for="MetaDescription" class="form-control" rows="3" maxlength="160" placeholder="max 160 ký tự"></textarea>
+                </div>
+                <div class="mb-3">
                     <label asp-for="Description" class="form-label fw-bold">Mô tả</label>
                     <textarea id="Description" asp-for="Description" class="form-control"></textarea>
                 </div>

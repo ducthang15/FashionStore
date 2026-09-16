@@ -43,6 +43,7 @@ public partial class fashionDbContext : DbContext
     public virtual DbSet<Redirect> Redirects { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Appointment>(entity =>

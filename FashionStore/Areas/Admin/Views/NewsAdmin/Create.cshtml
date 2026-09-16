@@ -24,7 +24,15 @@
             <label class="fw-bold">Tóm tắt (Hiện ngoài trang chủ)</label>
             <textarea asp-for="Summary" class="form-control" rows="3"></textarea>
         </div>
-
+        <div class="mb-3">
+            <label asp-for="MetaDescription" class="fw-bold">
+                Meta Description (SEO)
+            </label>
+            <textarea asp-for="MetaDescription" class="form-control" rows="3" maxlength="160" placeholder="max 160 ký tự"></textarea>
+            <small class="text-muted">
+                Khuyến nghị khoảng 140–160 ký tự.
+            </small>
+        </div>
         <div class="mb-3">
             <label class="fw-bold">Nội dung chi tiết</label>
             <textarea asp-for="Content" class="form-control" rows="10"></textarea>

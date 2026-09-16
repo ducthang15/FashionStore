@@ -88,27 +88,27 @@
                             <h4 class="step-title serif-title">Fill in the information</h4>
                             <div class="col-md-6 mb-2">
                                 <div class="form-floating">
-                                    <input asp-for="FullName" class="form-control" placeholder="Name" />
+                                    <input asp-for="FullName" class="form-control text-white" placeholder="Name" />
                                     <label asp-for="FullName">First & Last Name *</label>
                                     <span asp-validation-for="FullName" class="text-danger small"></span>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-2">
                                 <div class="form-floating">
-                                    <input asp-for="Phone" class="form-control" placeholder="Phone" />
+                                    <input asp-for="Phone" class="form-control text-white" placeholder="Phone" />
                                     <label asp-for="Phone">Phone Number *</label>
                                     <span asp-validation-for="Phone" class="text-danger small"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-floating mb-2">
-                            <input asp-for="Email" class="form-control" placeholder="Email" />
+                            <input asp-for="Email" class="form-control text-white" placeholder="Email" />
                             <label asp-for="Email">Email Address</label>
                             <span asp-validation-for="Email" class="text-danger small"></span>
                         </div>
 
                         <div class="form-floating mb-5">
-                            <textarea asp-for="Message" class="form-control" placeholder="Message" style="height: 120px;"></textarea>
+                            <textarea asp-for="Message" class="form-control text-white" placeholder="Message" style="height: 120px;"></textarea>
                             <label asp-for="Message">How can we assist you, sir?</label>
                             <span asp-validation-for="Message" class="text-danger small"></span>
                         </div>

@@ -104,6 +104,7 @@ namespace FashionStore.Areas.Admin.Controllers
                 existing.Slug = news.Slug;
                 existing.NewsCategoryId = news.NewsCategoryId;
                 existing.IsPublished = news.IsPublished;
+                existing.MetaDescription = news.MetaDescription;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

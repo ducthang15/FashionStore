@@ -153,6 +153,7 @@ namespace FashionStore.Areas.Admin.Controllers
                 existingProduct.StockQuantity = product.StockQuantity;
                 existingProduct.CategoryId = product.CategoryId;
                 existingProduct.Description = product.Description;
+                existingProduct.MetaDescription = product.MetaDescription;
                 existingProduct.Slug = SlugHelper.GenerateSlug(product.ProductName);
 
                 if (files != null && files.Count > 0)

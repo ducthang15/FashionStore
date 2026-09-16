@@ -34,6 +34,9 @@ public partial class News
 
     public int ViewCount { get; set; }
 
+    [StringLength(160)]
+    public string? MetaDescription { get; set; }
+
     [ForeignKey("NewsCategoryId")]
     [InverseProperty("News")]
     public virtual NewsCategory? NewsCategory { get; set; }
