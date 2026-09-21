@@ -6,15 +6,15 @@
 <div class="container-fluid product-dark py-4">
     <div class="container">
         <nav class="breadcrumb-title mb-4 small">
-            <a asp-controller="Home" asp-action="Index" class="text-decoration-none text-light text-uppercase">
+            <a asp-controller="Home" asp-action="Index" class="text-decoration-none text-light">
                 Home
             </a>
             <span class="mx-2">/</span>
-            <a asp-controller="@Model.Category.CategoryName" asp-action="Index" class="text-decoration-none text-secondary text-uppercase fw-bold">
+            <a asp-controller="@Model.Category.CategoryName" asp-action="Index" class="text-decoration-none text-secondary fw-bold">
                 @Model.Category.CategoryName
             </a>
             <span class="mx-2">/</span>
-            <span class="text-white fw-semibold text-uppercase">
+            <span class="text-white fw-semibold">
                 @Model.ProductName
             </span>
         </nav>
@@ -39,24 +39,28 @@
                 </div>
                 <div class="infomation-contact">
                     <div class="text-dark">
-                        <div class="fs-6 text-white">
+                        <div class="text-white">
                             To make a reservation, please contact us via the following channels or the form on our website:
                         </div>
-                        <div class="d-flex align-items-center gap-4">
-                            <a href="https://www.facebook.com/MAYDOSUITCAOCAP" class="text-white text-decoration-none fs-1">
-                                <i class="ri-facebook-fill"></i>
+                        <div class="d-flex align-items-center gap-2 mb-3 mt-4">
+                            <a href="https://www.facebook.com/MAYDOSUITCAOCAP"
+                               class="social-btn">
+                                <i class="fa-brands fa-facebook-f"></i>
                             </a>
-                            <a href="https://wa.me/84989473579" class="text-white text-decoration-none fs-1">
-                                <i class="ri-whatsapp-line"></i>
-                            </a>
-                            <a href="https://www.instagram.com/unlim.tailor/" class="text-white text-decoration-none fs-1 mt-1">
+                            <a href="https://www.instagram.com/unlim.tailor/"
+                               class="social-btn">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
-                            <a href="https://www.tripadvisor.com/Attraction_Review-g293924-d33295118-Reviews-Unlim_Tailor-Hanoi.html" class="mb-1 tripadvisor-infomation text-decoration-none fs-1">
-                                <img src="/image/brand/tripad.png" alt="tripadvisor.com" />
+                            <a href="https://wa.me/84989473579"
+                               class="social-btn">
+                                <i class="fa-brands fa-whatsapp"></i>
                             </a>
-                            <a href="https://zalo.me/0989473579" class="zalo-infomation text-white text-decoration-none">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo">
+                            <a href="https://www.tripadvisor.com/Attraction_Review-g293924-d33295118-Reviews-Unlim_Tailor-Hanoi.html"
+                               class="social-btn">
+                                <img src="~/image/tripadvisor.png" class="icon-img" alt="Discover Unlimtailor on tripadvisor" />
+                            </a>
+                            <a href="/" class="social-btn">
+                                <i class="fab fa-tiktok"></i>
                             </a>
                         </div>
                     </div>
@@ -152,7 +156,7 @@
                                                         <img src="@item.ImageUrl" class="card-img-top object-fit-cover product-img" alt="@item.ProductName" loading="lazy">
                                                     </div>
                                                     <div class="card-body text-center p-3">
-                                                        <h6 class="card-title text-dark mb-1">@item.ProductName</h6>
+                                                        <h6 class="card-title text-dark mb-1 text-truncate">@item.ProductName</h6>
                                                         <small class="text-secondary fs-7">@item.Category?.CategoryName</small>
                                                     </div>
                                                 </a>

@@ -20,7 +20,6 @@
                 </picture>
             </a>
             <div class="carousel-caption text-center unlim-caption">
-                <h1>UNLIM TAILOR</h1>
                 <a asp-controller="Appointment" asp-action="Index" class="booking-btn">
                     BOOK AN APPOINTMENT
                 </a>
@@ -60,54 +59,111 @@
         <span class="carousel-control-next-icon"></span>
     </button>
 </div>
-<section class="services-section">
+<section id="story" class="mt-2 mb-3">
     <div class="container">
-        <h2 class="services-title text-center mt-5 text-dark">How it works</h2>
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="service-card">
-                    <img src="~/image/process/fabric-selection.jpg" alt="Bespoke Tailoring" class="object-fit-contain">
-                    <h5 class="service-title">Fabic & Bespoke Tailoring</h5>
-                    <p class="service-text">
-                        By taking 30 measurements, multiple fitting sessions, and offering customizable details from pocket to lining,
-                        we provide suits tailored perfectly to your body and personality.
-                    </p>
+        <div class="row g-4 align-items-center">
+            <div class="col-12 col-lg-6">
+                <div class="ratio ratio-1x1">
+                    <img src="/image/utl-unlim-index-home.jpg" alt="Bespoke Suit Detail" class="img-fluid object-fit-cover">
                 </div>
             </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="service-card">
-                    <img src="~/image/process/reach-a-consensus.jpg" alt="Alteration and Care" class="object-fit-contain">
-                    <h5 class="service-title">Consensus & Care</h5>
-                    <p class="service-text">
-                        We provide attentive consultation and dedicated aftercare, ensuring every bespoke garment maintains its elegance, comfort, and long-lasting quality.
+            <div class="col-12 col-lg-6">
+                <div class="px-lg-5">
+                    <span class="text-uppercase small fw-semibold class=" text-dark"">Our Heritage</span>
+                    <h2 class="title-utl-bespoke text-dark">UNLIM TAILOR</h2>
+                    <p class="sumary-utl text-dark">
+                        Since establishing the UNLIM Tailor brand, we have been committed
+                        to more than simply tailoring a suit; we aspire to create a refined
+                        presence for individuals who carry great responsibility.
                     </p>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="service-card">
-                    <img src="~/image/process/fitting&fix.jpg" alt="Hand-made Accessories" class="object-fit-contain">
-                    <h5 class="service-title">Fitting & Alterations</h5>
-                    <p class="service-text">
-                        Through precise fittings and alterations, each garment is refined to complement your posture, movement, and personal style with a flawless bespoke finish.
+                    <p class="sumary-utl text-dark">
+                        Our clients include politicians and business leaders — individuals
+                        who represent not only themselves but entire organizations and nations.
+                        Every appearance must embody composure, dignity, and distinction.
                     </p>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <div class="service-card">
-                    <img src="~/image/process/complete-suit-unlim.jpg" alt="Flexible Schedule" class="object-fit-contain">
-                    <h5 class="service-title">Completion & Delivery</h5>
-                    <p class="service-text">
-                        We adapt to your schedule with flexible timelines. Simply tell us your availability and we’ll arrange meetings
-                        accordingly for your convenience.
+                    <div class="border-start border-2 ps-3 my-2">
+                        <em class="text-dark">
+                            "Each garment is a dialogue between tradition and the individual."
+                        </em>
+                    </div>
+                    <p class="sumary-utl text-dark">
+                        Each suit is meticulously handcrafted and fully personalized.
+                        We operate in a private, discreet environment — because elegance
+                        and confidentiality are essential to the elite. Fabrics are sourced
+                        from prestigious suppliers in Italy and England.
                     </p>
                 </div>
             </div>
         </div>
-        <div class="text-center mb-2">
-            <a asp-controller="AboutUs" asp-action="Index" class="btn btn-outline-dark mb-3 mt-3 text-center">Learn more</a>
+    </div>
+</section>
+<section class="services-section py-4">
+    <div class="container">
+        <h2 class="services-title text-center mb-4 text-dark">How it works</h2>
+        <div class="row g-3">
+            <!-- Item 1 -->
+            <div class="col-md-6">
+                <div class="service-card border shadow-sm bg-white d-flex align-items-center h-100">
+                    <div class="flex-shrink-0 me-3">
+                        <img src="~/image/process/fabric-selection.jpg" alt="Bespoke Tailoring" class="img-fluid object-fit-contain">
+                    </div>
+                    <div class="flex-grow-1">
+                        <h5 class="service-title fs-6 fw-bold">Bespoke Tailoring</h5>
+                        <p class="service-text text-muted ">
+                            By taking 30 measurements, multiple fitting sessions, and offering customizable details from pocket to lining, we provide suits tailored perfectly to your body and personality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="col-md-6">
+                <div class="service-card border shadow-sm bg-white d-flex align-items-center h-100">
+                    <div class="flex-shrink-0 me-3">
+                        <img src="~/image/process/reach-a-consensus.jpg" alt="Alteration and Care" class="img-fluid object-fit-contain">
+                    </div>
+                    <div class="flex-grow-1">
+                        <h5 class="service-title fs-6 fw-bold">Consensus & Care</h5>
+                        <p class="service-text text-muted">
+                            We provide attentive consultation and dedicated aftercare, ensuring every bespoke garment maintains its elegance, comfort, and long-lasting quality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="col-md-6">
+                <div class="service-card border shadow-sm bg-white d-flex align-items-center h-100">
+                    <div class="flex-shrink-0 me-3">
+                        <img src="~/image/process/fitting&fix.jpg" alt="Hand-made Accessories" class="img-fluid object-fit-contain">
+                    </div>
+                    <div class="flex-grow-1">
+                        <h5 class="service-title fs-6 fw-bold">Fitting & Alterations</h5>
+                        <p class="service-text text-muted">
+                            Through precise fittings and alterations, each garment is refined to complement your posture, movement, and personal style with a flawless bespoke finish.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="col-md-6">
+                <div class="service-card border shadow-sm bg-white d-flex align-items-center h-100">
+                    <div class="flex-shrink-0 me-3">
+                        <img src="~/image/process/complete-suit-unlim.jpg" alt="Flexible Schedule" class="img-fluid object-fit-contain">
+                    </div>
+                    <div class="flex-grow-1">
+                        <h5 class="service-title fs-6 fw-bold">Completion & Delivery</h5>
+                        <p class="service-text text-muted">
+                            We adapt to your schedule with flexible timelines. Simply tell us your availability and we’ll arrange meetings accordingly for your convenience.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a asp-controller="AboutUs" asp-action="Index" class="btn btn-outline-dark">Learn more Process</a>
         </div>
     </div>
 </section>

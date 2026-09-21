@@ -21,6 +21,7 @@ namespace FashionStore.Controllers
             var products = await _context.Products
             .Include(p => p.Category)
             .Where(p => p.Category.CategoryName == "Suit")
+            .Take(10)
             .ToListAsync();
             //review customer
             ViewBag.Reviews = await _context.CustomerReviews

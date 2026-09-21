@@ -1086,7 +1086,6 @@ img.zalo {
     background-color: var(--gold);
     color: #000;
 }
-
 .divider {
     width: 120px;
     height: 2px;
@@ -1109,22 +1108,26 @@ img.zalo {
 
 .service-card img {
     width: 100%;
-    height: 260px;
+    height: 190px;
     object-fit: cover;
     margin-bottom: 25px;
 }
-
+.sumary-utl{
+    font-size: 14px;
+}
+.title-utl-bespoke{
+    font-family:Montserrat;
+}
 .service-title {
-    font-size: 1.35rem;
-    font-weight: 700;
     color: #494848;
-    text-align: center;
-    line-height: 1.4;
-    min-height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+}
+
+.service-text {
+    font-size: 13px;
+    padding: 15px;
 }
 
 .blog-card {
@@ -1236,13 +1239,6 @@ img.zalo {
     object-fit: cover;
 }
 
-.service-text {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 13px;
-    text-align: center;
-    line-height: 1.7;
-    color: black;
-}
 
 .craft-showunlim-bg {
     position: relative;
@@ -1634,24 +1630,12 @@ img.zalo {
 .blog-page {
     position: relative;
     min-height: 100vh;
+    background-color: black;
     overflow: hidden;
 }
 
 .bg-main {
     background-color: black;
-}
-
-.blog-page::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url(/image/backgroud-custom-blog.jpg) no-repeat center center;
-    background-size: cover;
-    background-attachment: fixed;
-    z-index: -1;
 }
 
 .arrow {
@@ -2013,13 +1997,26 @@ img.zalo {
     column-count: 1;
 }
 
-.service-text-sure {
-    font-size: 14px;
-}
 
 @media (max-width: 991px) {
     .unlim-masonry-grid {
         column-count: 3;
+    }
+    .story-spread .spread-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .story-spread .spread-image-side .main-image {
+        width: 100%;
+    }
+
+    .story-spread .spread-text-side {
+        padding: 1rem 0rem;
+    }
+    .service-text {
+        font-size: 13px;
+        padding: 5px;
     }
 
     .thumb-vertical {
@@ -2048,6 +2045,10 @@ img.zalo {
         column-count: 2;
     }
 
+    .service-text {
+        font-size: 13px;
+        padding: 5px;
+    }
     /* Đảm bảo khung slider phụ thuộc hoàn toàn vào nội dung */
     .collection-section .carousel-inner {
         height: auto;
@@ -2116,6 +2117,11 @@ img.zalo {
 
     .hero-section {
         padding: 0;
+    }
+
+    .service-text {
+        font-size: 12px;
+        padding: 5px;
     }
 
     .title-hover {

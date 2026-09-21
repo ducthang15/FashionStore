@@ -7,20 +7,14 @@
     @ViewBag.CategoryName
 </h1>
 <picture>
-    <source media="(min-width: 992px)"
-            srcset="/image/banner-main-project-2-(2).png">
-    <source media="(min-width: 576px)"
-            srcset="/image/banner-main-project-2-(2).png">
-    <img src="/image/banner-main-project-2-(2).png"
-         class="img-fluid w-100"
-         alt="Bespoke Tailoring">
+    <source media="(min-width: 992px)" srcset="/image/bespoke-tailoring-service.jpg">
+    <source media="(min-width: 576px)" srcset="/image/bespoke-tailoring-service.jpg">
+    <img src="/image/bespoke-tailoring-service.jpg" class="img-fluid w-100" alt="Bespoke Tailoring">
 </picture>
 <div class="container mt-3">
-
     @{
         var index = 0;
     }
-
     @foreach (var item in Model)
     {
         var isEven = index % 2 == 0;

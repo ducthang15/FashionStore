@@ -1,5 +1,4 @@
-﻿
-:root {
+﻿:root {
     --primary-bg: #0f1110;
     --secondary-bg: #171918;
     --gold: #C5A059;
@@ -411,10 +410,6 @@ h1, h2, h3, h4, .font-serif {
 
 /* responsive */
 @media(max-width:900px) {
-    .carousel-item {
-        min-height: 650px;
-    }
-
     .testimonial-bg {
         position: absolute;
         inset: -100px;
@@ -444,5 +439,9 @@ h1, h2, h3, h4, .font-serif {
 
     .wu-img {
         height: 220px;
+    }
+
+    .carousel-item {
+        min-height: 650px;
     }
 }

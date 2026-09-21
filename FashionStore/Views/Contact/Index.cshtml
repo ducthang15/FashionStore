@@ -82,7 +82,6 @@
                 <div class="col-lg-7">
                     <form asp-action="Send" method="post" class="elegant-form p-2">
                         @Html.AntiForgeryToken()
-                        <!-- Hiển thị thông báo nếu bị chặn bot -->
                         <div asp-validation-summary="ModelOnly" class="text-danger mb-2 small"></div>
                         <div class="row">
                             <h4 class="step-title serif-title">Fill in the information</h4>
@@ -112,7 +111,6 @@
                             <label asp-for="Message">How can we assist you, sir?</label>
                             <span asp-validation-for="Message" class="text-danger small"></span>
                         </div>
-                        <!-- Ô xác thực Cloudflare Turnstile -->
                         <div class="mb-3">
                             <div class="cf-turnstile" data-sitekey="0x4AAAAAAElum74ZhGmCjaHS"></div>
                         </div>
