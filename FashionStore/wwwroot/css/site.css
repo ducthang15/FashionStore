@@ -13,6 +13,30 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     color: #fffbf7;
+    overflow-x: hidden;
+}
+
+.main-fashion {
+    animation: pageFadeIn 0.5s ease-out;
+    will-change: opacity, transform;
+}
+
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .main-fashion {
+        animation: none;
+    }
 }
 
 .main-bg-brown {
@@ -656,6 +680,7 @@ body {
 }
 
 a.dropdown-item {
+    font-size: 13px;
     color: white;
     font-weight: 300;
 }
@@ -690,20 +715,57 @@ a.dropdown-item {
     position: sticky;
 }
 
+/* Ensure consistent navbar height and prevent content from expanding */
+.luxury-nav {
+    min-height: 94px;
+    height: 94px;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+    /* Make container fill the nav's height and center children */
+    .luxury-nav .container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    /* Constrain brand/logo height */
+    .luxury-nav .navbar-brand,
+    .luxury-nav .navbar-brand img,
+    .luxury-nav .logo-unlim {
+        height: 46px;
+        max-height: 46px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Normalize nav links so they don't push the nav taller */
+    .luxury-nav .navbar-nav .nav-link {
+        font-size:13px;
+        padding-top: 0;
+        padding-bottom: 0;
+        line-height: 46px;
+        height: 46px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    /* Keep language dropdown compact */
+    .luxury-nav .nav-item.ms-3,
+    .luxury-nav .nav-item.ms-3 .dropdown {
+        display: flex;
+        align-items: center;
+        height: 46px;
+    }
+
+    /* Keep scrolled state same height */
     .luxury-nav.scrolled {
-        background: rgb(0 0 0 / 36%);
-        backdrop-filter: blur(6px);
-        padding: 28px 0;
-    }
-
-    .luxury-nav .nav-link {
-        font-weight: 400;
-        letter-spacing: 1px;
-        font-size: 13px;
-    }
-
-    .luxury-nav .navbar-brand {
-        letter-spacing: 1px;
+        height: 94px;
     }
 
 .latest-blog .blog-image-wrapper {
@@ -1086,6 +1148,7 @@ img.zalo {
     background-color: var(--gold);
     color: #000;
 }
+
 .divider {
     width: 120px;
     height: 2px;
@@ -1112,12 +1175,15 @@ img.zalo {
     object-fit: cover;
     margin-bottom: 25px;
 }
-.sumary-utl{
+
+.sumary-utl {
     font-size: 14px;
 }
-.title-utl-bespoke{
-    font-family:Montserrat;
+
+.title-utl-bespoke {
+    font-family: Montserrat;
 }
+
 .service-title {
     color: #494848;
     display: flex;
@@ -2002,6 +2068,7 @@ img.zalo {
     .unlim-masonry-grid {
         column-count: 3;
     }
+
     .story-spread .spread-container {
         grid-template-columns: 1fr;
         gap: 3rem;
@@ -2014,6 +2081,7 @@ img.zalo {
     .story-spread .spread-text-side {
         padding: 1rem 0rem;
     }
+
     .service-text {
         font-size: 13px;
         padding: 5px;
@@ -2038,6 +2106,19 @@ img.zalo {
         width: 32px;
         border-radius: 20px;
     }
+
+    .luxury-nav,
+    .luxury-nav.scrolled {
+        height: 76px;
+        min-height: 76px;
+    }
+
+        .luxury-nav .navbar-brand img,
+        .luxury-nav .navbar-nav .nav-link {
+            font-size: 13px;
+            height: 36px;
+            line-height: 36px;
+        }
 }
 
 @media (max-width: 767px) {
