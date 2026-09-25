@@ -1,7 +1,6 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
 @font-face {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
@@ -18,7 +17,6 @@ body {
 
 .main-fashion {
     animation: pageFadeIn 0.5s ease-out;
-    will-change: opacity, transform;
 }
 
 @keyframes pageFadeIn {
@@ -201,6 +199,9 @@ body {
 }
 
 .lang-dropdown-custom {
+    top: 100%; 
+    bottom: auto ;
+    margin-top: 0.5rem;
     right: 0;
     left: auto;
     transform: none;
