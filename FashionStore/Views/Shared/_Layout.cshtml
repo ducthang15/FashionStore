@@ -107,7 +107,7 @@
                         <li><a class="dropdown-item" asp-controller="Coat" asp-action="Index">Custom OverCoat</a></li>
                         <li><a class="dropdown-item" asp-controller="Trousers" asp-action="Index">Custom Trousers</a></li>
                         <li><a class="dropdown-item" asp-controller="Shirt" asp-action="Index">Custom Shirt</a></li>
-                        <li><a class="dropdown-item" asp-controller="Fabrics" asp-action="Index">Fabrics</a></li>
+                            <li><a class="dropdown-item" asp-controller="Fabrics" asp-action="Index">Fabric Collection</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -243,10 +243,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 mb-3">
-                    <h5 class="mb-3">UNLIM TAILOR</h5>
+                        <h5 class="mb-3 text-dark">UNLIM TAILOR</h5>
                     <div class="footer-block-details-content list-unstyled">
                         <p class="nav-item ms-3 position-relative">
-                            <div class="live-search-box bg-gradient rounded-2 p-1">
+                            <div class="live-search-box bg-gradient rounded-2 p-1 bg-dark">
                                 <input type="text" id="liveSearchInput" class="live-search-input" placeholder="Search..." autocomplete="off">
                                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
                                 <div id="searchResults" class="search-results-dropdown shadow">
@@ -260,63 +260,73 @@
                     </div>
                 </div>
                 <div class="col-md-3 mb-3">
-                    <h5 class="mb-3">How May We Help You?</h5>
+                    <h5 class="mb-3 text-dark">How May We Help You?</h5>
                     <ul class="footer-block-details-content list-unstyled">
-                        <li><a asp-controller="Home" asp-action="Care" class="text-white text-decoration-none d-block mb-2 d-block">Care & Maintenance</a></li>
-                        <li><a asp-controller="Home" asp-action="ReturnPolicy" class="text-white text-decoration-none mb-2 d-block">Return Policy</a></li>
-                        <li><a href="/aboutus" class="text-white text-decoration-none mb-2 d-block">About Us</a></li>
-                        <li><a href="/contact" class="text-white text-decoration-none d-block mb-2">Contact</a></li>
-                        <li><a asp-controller="Home" asp-action="FAQs" class="text-white text-decoration-none mb-2 d-block">FAQs</a></li>
+                        <li><a asp-controller="Home" asp-action="Care" class="text-dark text-decoration-none d-block mb-2 d-block">Care & Maintenance</a></li>
+                        <li><a asp-controller="Home" asp-action="ReturnPolicy" class="text-dark text-decoration-none mb-2 d-block">Return Policy</a></li>
+                        <li><a href="/aboutus" class="text-dark text-decoration-none mb-2 d-block">About Us</a></li>
+                        <li><a href="/contact" class="text-dark text-decoration-none d-block mb-2">Contact</a></li>
+                        <li><a asp-controller="Home" asp-action="FAQs" class="text-dark text-decoration-none mb-2 d-block">FAQs</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 mb-3">
-                    <h5 class="mb-3">Services We Provide</h5>
+                        <h5 class="mb-3 text-dark">Services We Provide</h5>
                     <ul class="footer-block-details-content list-unstyled">
-                        <li><a href="/Coat" class="text-white text-decoration-none d-block mb-2">Custom OverCoat</a></li>
-                        <li><a href="/suit" class="text-white text-decoration-none d-block mb-2">Custom Suit</a></li>
-                        <li><a href="/shirt" class="text-white text-decoration-none d-block mb-2">Custom Shirt</a></li>
-                        <li><a href="/fabric" class="text-white text-decoration-none mb-2 d-block">Fabrics</a></li>
-                        <li><a href="/blog" class="text-white text-decoration-none d-block mb-2">Blog</a></li>
+                        <li><a href="/Coat" class="text-dark text-decoration-none d-block mb-2">Custom OverCoat</a></li>
+                            <li><a href="/suit" class="text-dark text-decoration-none d-block mb-2">Custom Suit</a></li>
+                            <li><a href="/shirt" class="text-dark text-decoration-none d-block mb-2">Custom Shirt</a></li>
+                            <li><a href="/fabric" class="text-dark text-decoration-none mb-2 d-block">Fabrics</a></li>
+                            <li><a href="/blog" class="text-dark text-decoration-none d-block mb-2">Blog</a></li>
                     </ul>
                 </div>
-                <div class="col-md-3 mb-3">
-                    <h5 class="mb-3">Follow Us</h5>
-                    <div class="d-flex gap-2">
-                        <a href="https://www.facebook.com/MAYDOSUITCAOCAP"
-                           class="social-btn">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-                        <a href="https://www.instagram.com/unlim.tailor/"
-                           class="social-btn">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                        <a href="https://wa.me/84989473579"
-                           class="social-btn">
-                            <i class="fa-brands fa-whatsapp"></i>
-                        </a>
-                        <a href="https://www.tripadvisor.com/Attraction_Review-g293924-d33295118-Reviews-Unlim_Tailor-Hanoi.html"
-                           class="social-btn">
-                            <img src="~/image/tripadvisor.png" class="icon-img" alt="Discover Unlimtailor on tripadvisor" />
-                        </a>
-                        <a href="/" class="social-btn">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
-                        <a href="/" class="social-btn">
-                            <i class="fa-brands fa-youtube"></i>
-                        </a>
-                    </div>
-                    <div class="bg-transparent mt-3">
-                        <div class="card-body">
-                            <p class="footer-block-details-content mb-0">
-                                Book Your Tailoring Experience
-                            </p>
-                            <a href="/appointment"
-                               class="btn btn-light btn-sm w-100 fw-semibold">
-                                Book an Appointment
+                    <div class="col-md-3 mb-3">
+                        <h5 class="mb-3 text-dark">Follow Us</h5>
+
+                        <div class="d-flex gap-2">
+                            <a href="https://www.facebook.com/MAYDOSUITCAOCAP"
+                               class="social-btn bg-dark text-white border border-dark">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+
+                            <a href="https://www.instagram.com/unlim.tailor/"
+                               class="social-btn bg-dark text-white border border-dark">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+
+                            <a href="https://wa.me/84989473579"
+                               class="social-btn bg-dark text-white border border-dark">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </a>
+
+                            <a href="https://www.tripadvisor.com/Attraction_Review-g293924-d33295118-Reviews-Unlim_Tailor-Hanoi.html"
+                               class="social-btn bg-dark border border-dark">
+                                <img src="~/image/tripadvisor.png"
+                                     class="icon-img"
+                                     alt="Discover Unlimtailor on Tripadvisor" />
+                            </a>
+
+                            <a href="/" class="social-btn bg-dark text-white border border-dark">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+
+                            <a href="/" class="social-btn bg-dark text-white border border-dark">
+                                <i class="fa-brands fa-youtube"></i>
                             </a>
                         </div>
+
+                        <div class="bg-dark mt-3 rounded-3">
+                            <div class="card-body p-3">
+                                <p class="footer-block-details-content mb-3 text-white">
+                                    Book Your Tailoring Experience
+                                </p>
+
+                                <a href="/appointment"
+                                   class="btn btn-light btn-sm w-100 fw-semibold">
+                                    Book an Appointment
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
             </div>
             <div class="footer_content-bottom-wrapper page-width">
                 <div class="footer_column footer_column-info">
@@ -338,7 +348,7 @@
                 </div>
             </div>
             <hr class="border-secondary">
-            <div class="text-center small text-white">
+            <div class="text-center small text-dark">
                 &copy; 2020 UnlimTailor. All rights reserved. Designed by unlimtailor
             </div>
             <div class="footer-inf-about">

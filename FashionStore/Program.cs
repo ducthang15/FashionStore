@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Rewrite;
 using FashionStore.Middlewares;
 using FashionStore.Repository;
 using FashionStore.Utilities;
+using FashionStore.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<fashionDbContext>(options =>
@@ -24,6 +25,7 @@ builder.Services.AddAuthentication("CustomerScheme")
         options.AccessDeniedPath = "/Admin/Account/Login";
         options.Cookie.Name = "AdminCookie";
     });
+builder.Services.AddScoped<IStorageService, CloudinaryStorageService>();
 builder.Services.Configure<FormOptions>(options =>
 {
     options.MultipartBodyLengthLimit = 52428800; 

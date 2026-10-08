@@ -1602,6 +1602,7 @@ img.zalo {
 
 .footer-block-details-content {
     font-size: 13px;
+    color: black;
 }
 
 .auth-footer {
@@ -1660,7 +1661,7 @@ img.zalo {
 .footer-bg {
     font-family: 'Montserrat', sans-serif;
     /* background-image: url("https://theme.hstatic.net/200000759169/1001361744/14/bkg_full.png?v=1027");*/
-    background-color: #3f200e;
+    background-color: #ffffff;
     padding-bottom: 5rem;
     padding-top: 5rem;
     display: block;

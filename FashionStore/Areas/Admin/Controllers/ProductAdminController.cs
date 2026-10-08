@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using FashionStore.Repository.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
+using FashionStore.Services;
 
 namespace FashionStore.Areas.Admin.Controllers
 {
@@ -12,11 +13,11 @@ namespace FashionStore.Areas.Admin.Controllers
     public class ProductAdminController : BaseAdminController
     {
         private readonly fashionDbContext _context;
-        private readonly IWebHostEnvironment _webHostEnvironment;
-        public ProductAdminController(fashionDbContext context, IWebHostEnvironment webHostEnvironment)
+        private readonly IStorageService _storageService;
+        public ProductAdminController(fashionDbContext context, IStorageService storageService)
         {
             _context = context;
-            _webHostEnvironment = webHostEnvironment;
+            _storageService = storageService;
         }
         public async Task<IActionResult> Index(int? categoryId, string keyword)
         {
@@ -89,22 +90,7 @@ namespace FashionStore.Areas.Admin.Controllers
         }
         private async Task<string?> UploadFile(IFormFile file)
         {
-            string fileName = null;
-            if (file != null)
-            {
-                string uploadDir = Path.Combine(_webHostEnvironment.WebRootPath, "images", "products");
-                fileName = Guid.NewGuid().ToString() + "-" + file.FileName;
-                string filePath = Path.Combine(uploadDir, fileName);
-
-                if (!Directory.Exists(uploadDir)) Directory.CreateDirectory(uploadDir);
-
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await file.CopyToAsync(fileStream);
-                }
-                return "/images/products/" + fileName;
-            }
-            return null;
+            return await _storageService.UploadFileAsync(file, "images/products");
         }
         public async Task<IActionResult> Edit(int? id)
         {

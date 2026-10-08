@@ -4,17 +4,19 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using FashionStore.Repository;
 using FashionStore.Utilities;
+using FashionStore.Services;
 
 namespace FashionStore.Areas.Admin.Controllers
 {
     public class NewsAdminController : BaseAdminController
     {
         private readonly fashionDbContext _context;
-        private readonly IWebHostEnvironment _webHostEnvironment;
-        public NewsAdminController(fashionDbContext context, IWebHostEnvironment webHostEnvironment)
+        private readonly IStorageService _storageService;
+
+        public NewsAdminController(fashionDbContext context, IStorageService storageService)
         {
             _context = context;
-            _webHostEnvironment = webHostEnvironment;
+            _storageService = storageService;
         }
         public async Task<IActionResult> Index()
         {
@@ -121,19 +123,9 @@ namespace FashionStore.Areas.Admin.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-        private async Task<string> UploadFile(IFormFile file)
+        private async Task<string?> UploadFile(IFormFile file)
         {
-            string fileName = Guid.NewGuid().ToString() + "-" + file.FileName;
-            string uploadDir = Path.Combine(_webHostEnvironment.WebRootPath, "images", "news");
-            string filePath = Path.Combine(uploadDir, fileName);
-
-            if (!Directory.Exists(uploadDir)) Directory.CreateDirectory(uploadDir);
-
-            using (var fileStream = new FileStream(filePath, FileMode.Create))
-            {
-                await file.CopyToAsync(fileStream);
-            }
-            return "/images/news/" + fileName;
+            return await _storageService.UploadFileAsync(file, "images/news");
         }
         [HttpPost]
         public async Task<IActionResult> UploadImage(IFormFile file)
@@ -141,23 +133,8 @@ namespace FashionStore.Areas.Admin.Controllers
             if (file == null || file.Length == 0)
                 return Json(new { error = "No file uploaded" });
 
-            var uploads = Path.Combine(_webHostEnvironment.WebRootPath, "images", "news");
-
-            if (!Directory.Exists(uploads))
-                Directory.CreateDirectory(uploads);
-
-            var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
-            var filePath = Path.Combine(uploads, fileName);
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await file.CopyToAsync(stream);
-            }
-
-            return Json(new
-            {
-                location = "/images/news/" + fileName
-            });
+            var url = await _storageService.UploadFileAsync(file, "images/news");
+            return Json(new { location = url });
         }
 
     }
