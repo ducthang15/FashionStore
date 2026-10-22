@@ -11,18 +11,16 @@
 <div class="position-relative overflow-hidden">
     <picture>
         <source media="(min-width: 992px)"
-                srcset="/image/shoe.jpg">
+                srcset="/image/contact-unlim-tailor.webp">
         <source media="(max-width: 991px)"
-                srcset="/image/shoe.jpg">
-        <img src="/image/shoe.jpg"
+                srcset="/image/contact-unlim-tailor.webp">
+        <img src="/image/contact-unlim-tailor.webp"
              class="img-fluid w-100"
-             alt="Custom Tailored Fabrics">
+             alt="Custom Tailored Shirt">
     </picture>
-    <div class="position-absolute top-50 start-50 translate-middle text-center text-white d-none d-md-block">
-        <h1 class="title-customer-signature fw-bold d-md-block d-none">HANDCRAFTED SHOES</h1>
-        <p class="fs-4 d-md-block d-none">Every pair tells a story of craftsmanship and refinement.</p>
+    <div class="position-absolute top-50 start-50 translate-middle text-white d-none d-md-block">
+        <h1 class="title-customer-signature fw-bold d-md-block d-none fs-3">Contact Us</h1>
     </div>
-    <h3 class="position-absolute top-50 start-50 translate-middle text-center px-4 d-block d-md-none">Handcrafted Shoe</h3>
 </div>
 @{
     var controller = ViewContext.RouteData.Values["controller"]?.ToString();
@@ -94,7 +92,7 @@
 <a href="tel:0989473579" class="call-circle d-md-none">
     <i class="fa-solid fa-phone"></i>
 </a>
-<a href="https://zalo.me/0989473579" target="_blank" class="zalo-circle">
+<a href="https://zalo.me/0989473579" target="_blank" class="zalo-circle d-md-none">
     <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo" />
 </a>
 @if (ViewBag.TotalPages > 1)

@@ -8,22 +8,43 @@
 		<h2>Quản lý Sản Phẩm</h2>
 		<a asp-action="Create" class="bg-dark text-white p-2 text-decoration-none">+ Thêm sản phẩm</a>
 	</div>
-	<form method="get" class="row mb-3">
-		<div class="text-dark fw-medium mb-2">Bộ lọc: </div>
+
+	<form method="get" asp-area="Admin" asp-controller="ProductAdmin"
+		  asp-action="Index" class="row mb-3 g-2">
+
+		<div class="text-dark fw-medium mb-2">Bộ lọc:</div>
+
 		<div class="col-md-4">
 			<select name="categoryId" class="form-select">
-				<option value="">Danh mục</option>
+				<option value="">Tất cả danh mục</option>
 				@foreach (var c in ViewBag.CategoryId)
 				{
-					<option value="@c.Value">@c.Text</option>
+					<option value="@c.Value"
+							selected="@c.Selected">
+						@c.Text
+					</option>
 				}
 			</select>
 		</div>
+
 		<div class="col-md-4">
-			<input type="text" name="keyword" class="form-control" placeholder="Tên sản phẩm..." />
+			<input type="text"
+				   name="keyword"
+				   class="form-control"
+				   placeholder="Tên sản phẩm..."
+				   value="@ViewBag.Keyword" />
 		</div>
+
 		<div class="col-md-4">
-			<button class="btn btn-primary w-25">Lọc</button>
+			<button type="submit" class="btn btn-primary">
+				Lọc
+			</button>
+			<a asp-area="Admin"
+			   asp-controller="ProductAdmin"
+			   asp-action="Index"
+			   class="btn btn-outline-secondary">
+				Xóa lọc
+			</a>
 		</div>
 	</form>
 	<form asp-action="DeleteMultiple" method="post">
@@ -77,5 +98,73 @@
 				}
 			</tbody>
 		</table>
+
+		<div class="d-flex flex-wrap justify-content-between
+			align-items-center gap-3 mt-4 mb-5">
+
+			<div class="text-muted">
+				Tổng: <strong>@ViewBag.TotalProducts</strong> sản phẩm
+				@if ((int)ViewBag.TotalPages > 0)
+				{
+					<span>
+						— Trang @ViewBag.CurrentPage /
+						@ViewBag.TotalPages
+					</span>
+				}
+			</div>
+
+			@if ((int)ViewBag.TotalPages > 1)
+			{
+				<nav aria-label="Phân trang sản phẩm">
+					<ul class="pagination mb-0">
+
+						<li class="page-item
+							@(ViewBag.CurrentPage <= 1 ? "disabled" : "")">
+							<a class="page-link"
+							   asp-area="Admin"
+							   asp-controller="ProductAdmin"
+							   asp-action="Index"
+							   asp-route-page="@(ViewBag.CurrentPage - 1)"
+							   asp-route-categoryId="@ViewBag.CategoryFilter"
+							   asp-route-keyword="@ViewBag.Keyword">
+								Trước
+							</a>
+						</li>
+
+						@for (int i = 1; i <= (int)ViewBag.TotalPages; i++)
+						{
+							<li class="page-item
+								@(i == (int)ViewBag.CurrentPage ? "active" : "")">
+								<a class="page-link"
+								   asp-area="Admin"
+								   asp-controller="ProductAdmin"
+								   asp-action="Index"
+								   asp-route-page="@i"
+								   asp-route-categoryId="@ViewBag.CategoryFilter"
+								   asp-route-keyword="@ViewBag.Keyword">
+									@i
+								</a>
+							</li>
+						}
+
+						<li class="page-item
+							@(ViewBag.CurrentPage >= ViewBag.TotalPages
+								? "disabled" : "")">
+							<a class="page-link"
+							   asp-area="Admin"
+							   asp-controller="ProductAdmin"
+							   asp-action="Index"
+							   asp-route-page="@(ViewBag.CurrentPage + 1)"
+							   asp-route-categoryId="@ViewBag.CategoryFilter"
+							   asp-route-keyword="@ViewBag.Keyword">
+								Sau
+							</a>
+						</li>
+
+					</ul>
+				</nav>
+			}
+		</div>
+
 	</form>
 </div>

@@ -19,23 +19,47 @@ namespace FashionStore.Areas.Admin.Controllers
             _context = context;
             _storageService = storageService;
         }
-        public async Task<IActionResult> Index(int? categoryId, string keyword)
+        public async Task<IActionResult> Index(int? categoryId, string keyword, int page = 1)
         {
+            const int pageSize = 20;
             var query = _context.Products
-        .Include(p => p.Category)
-        .AsQueryable();
+                .AsNoTracking()
+                .Include(p => p.Category)
+                .AsQueryable();
             if (categoryId.HasValue)
             {
-                query = query.Where(p => p.CategoryId == categoryId);
+                query = query.Where(p => p.CategoryId == categoryId.Value);
             }
-            if (!string.IsNullOrEmpty(keyword))
+            if (!string.IsNullOrWhiteSpace(keyword))
             {
+                keyword = keyword.Trim();
                 query = query.Where(p => p.ProductName.Contains(keyword));
             }
+            var totalProducts = await query.CountAsync();
+            var totalPages = (int)Math.Ceiling(totalProducts / (double)pageSize);
+            page = Math.Max(1, page);
 
-            var products = await query.ToListAsync();
+            if (totalPages > 0)
+            {
+                page = Math.Min(page, totalPages);
+            }
+            var products = await query
+                .OrderByDescending(p => p.ProductId)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
 
-            ViewBag.CategoryId = new SelectList(_context.Categories, "CategoryId", "CategoryName");
+            ViewBag.CategoryId = new SelectList(
+                await _context.Categories.AsNoTracking().ToListAsync(),
+                "CategoryId",
+                "CategoryName",
+                categoryId);
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = totalPages;
+            ViewBag.TotalProducts = totalProducts;
+            ViewBag.CategoryFilter = categoryId;
+            ViewBag.Keyword = keyword;
 
             return View(products);
         }

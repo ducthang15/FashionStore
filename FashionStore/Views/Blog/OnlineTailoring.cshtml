@@ -5,14 +5,14 @@
 
     var index = 0;
 }
+<picture>
+    <source media="(min-width: 992px)" srcset="/image/online tailoring.webp">
+    <source media="(min-width: 576px)" srcset="/image/online tailoring.webpg">
+    <img src="/image/online tailoring.webp" class="img-fluid w-100" alt="Bespoke Tailoring">
+</picture>
 <h1 class="container text-dark text-uppercase fs-2 text-center mt-2">
     @ViewBag.CategoryName
 </h1>
-<picture>
-    <source media="(min-width: 992px)" srcset="/image/bespoke-tailoring-service.jpg">
-    <source media="(min-width: 576px)" srcset="/image/bespoke-tailoring-service.jpg">
-    <img src="/image/bespoke-tailoring-service.jpg" class="img-fluid w-100" alt="Bespoke Tailoring">
-</picture>
 <div class="container mt-3">
 
     @foreach (var item in Model)

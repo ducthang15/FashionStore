@@ -3,18 +3,18 @@
     ViewData["Title"] = Model.ProductName;
     ViewData["MetaDescription"] = Model.MetaDescription;
 }
-<div class="container-fluid product-dark py-4">
+<div class="container-fluid product-dark">
     <div class="container">
         <nav class="breadcrumb-title mb-4 small">
             <a asp-controller="Home" asp-action="Index" class="text-decoration-none text-light">
                 Home
             </a>
             <span class="mx-2">/</span>
-            <a asp-controller="@Model.Category.CategoryName" asp-action="Index" class="text-decoration-none text-secondary fw-bold">
+            <a asp-controller="@Model.Category.CategoryName" asp-action="Index" class="text-decoration-none text-secondary">
                 @Model.Category.CategoryName
             </a>
             <span class="mx-2">/</span>
-            <span class="text-white fw-semibold">
+            <span class="text-white">
                 @Model.ProductName
             </span>
         </nav>
@@ -32,9 +32,9 @@
             </div>
             <div class="col-lg-5 product-info d-flex flex-column">
                 <div class="detail-product-catalog">
-                    <h1 class="fs-3 mt-3">@Model.ProductName</h1>
+                    <h1 class="fs-5 mt-3">@Model.ProductName</h1>
                     <span class="text-white">
-                        <span class="fs-5">Product catalog: @Model.Category?.CategoryName</span>
+                        <span class="fs-6">Product catalog: @Model.Category?.CategoryName</span>
                     </span><br>
                 </div>
                 <div class="infomation-contact">
@@ -114,15 +114,10 @@
         </div>
         <div class="mt-auto small">
             Please contact the following phone number for more details:
-            <a href="tel:0989473579" class="text-danger">098 947 3579</a> or  <a href="tel:02466868107" class="text-danger">02466868107</a> <span class="text-secondary">(Open 9:00 am - 9:00 pm)</span>
+            <a href="tel:0989473579" class="text-danger">098 947 3579</a> or  <a href="tel:02466868107" class="text-danger">02466868107</a>
+            <span>(Open 9:00 am - 9:00 pm)</span>
         </div>
-        <div class="related-products-section mt-2 pt-5 border-top border-secondary">
-            <div class="live-search-box mt-3 mb-3">
-                <input type="text" id="liveSearchInput" class="live-search-input" placeholder="Search..." autocomplete="off">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <div id="searchResults" class="search-results-dropdown shadow">
-                </div>
-            </div>
+        <div class="related-products-section mt-2 pt-5 border-top border-secondary py-3">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3 class="fs-4 text-uppercase text-white tracking-wide mb-0">Related Products</h3>
                 <div class="carousel-controls d-flex gap-2">

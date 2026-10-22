@@ -145,6 +145,7 @@ body {
         }
 
 .hero-pattern .hero-copy {
+    background-image: url(https://theme.hstatic.net/200000759169/1001361744/14/bkg_full.png?v=1027);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -175,9 +176,9 @@ body {
     }
 
 .hero-copy h1 {
+    background:url('https://theme.hstatic.net/200000759169/1001361744/14/bkg_full.png?v=1027);');
     font-family: var(--font-editorial);
     font-size: clamp(3.5rem, 6vw, 5.5rem);
-    font-weight: 600;
     line-height: 1.05;
     color: var(--text-primary);
     margin-bottom: 1.5rem;

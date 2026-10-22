@@ -3,14 +3,14 @@
     ViewData["Title"] = ViewBag.CategoryName;
     ViewData["MetaDescription"] = "Experience our completely free in-home bespoke tailoring service from UNLIM Tailor. Our team of experts will provide consultation and take measurements at your home, guaranteeing top-quality Bespoke tailoring and a lifetime warranty.";
 }
+<picture>
+    <source media="(min-width: 992px)" srcset="/image/tailor-at-home.webp">
+    <source media="(min-width: 576px)" srcset="/image/tailor-at-home.webp">
+    <img src="/image/tailor-at-home.webp" class="img-fluid w-100" alt="Bespoke Tailoring">
+</picture>
 <h1 class="container text-dark text-uppercase fs-2 text-center mt-2">
     @ViewBag.CategoryName
 </h1>
-<picture>
-    <source media="(min-width: 992px)" srcset="/image/bespoke-tailoring-service.jpg">
-    <source media="(min-width: 576px)" srcset="/image/bespoke-tailoring-service.jpg">
-    <img src="/image/bespoke-tailoring-service.jpg" class="img-fluid w-100" alt="Bespoke Tailoring">
-</picture>
 <div class="container mt-3">
     @{
         var index = 0;

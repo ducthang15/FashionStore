@@ -1,6 +1,7 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 @font-face {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
@@ -199,8 +200,8 @@ body {
 }
 
 .lang-dropdown-custom {
-    top: 100%; 
-    bottom: auto ;
+    top: 100%;
+    bottom: auto;
     margin-top: 0.5rem;
     right: 0;
     left: auto;
@@ -710,24 +711,21 @@ a.dropdown-item {
 
 .luxury-nav {
     font-family: 'Montserrat', sans-serif;
-    background-color: #3f200e;
-    padding: 28px 0;
-    transition: all 0.35s ease;
-    position: sticky;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+    background-color: transparent;
+    background-image: none;
 }
 
-/* Ensure consistent navbar height and prevent content from expanding */
 .luxury-nav {
-    min-height: 94px;
     height: 94px;
-    padding-top: 0;
-    padding-bottom: 0;
     display: flex;
     align-items: center;
     box-sizing: border-box;
 }
 
-    /* Make container fill the nav's height and center children */
     .luxury-nav .container {
         height: 100%;
         display: flex;
@@ -747,7 +745,7 @@ a.dropdown-item {
 
     /* Normalize nav links so they don't push the nav taller */
     .luxury-nav .navbar-nav .nav-link {
-        font-size:13px;
+        font-size: 13px;
         padding-top: 0;
         padding-bottom: 0;
         line-height: 46px;
@@ -1659,11 +1657,11 @@ img.zalo {
 }
 
 .footer-bg {
+    border-top: 1px solid #000;
     font-family: 'Montserrat', sans-serif;
-    /* background-image: url("https://theme.hstatic.net/200000759169/1001361744/14/bkg_full.png?v=1027");*/
     background-color: #ffffff;
-    padding-bottom: 5rem;
-    padding-top: 5rem;
+    padding-bottom: 4rem;
+    padding-top: 2rem;
     display: block;
 }
 
@@ -1715,6 +1713,7 @@ img.zalo {
 }
 
 .product-dark {
+    padding-top: 100px;
     font-family: 'Montserrat', sans-serif;
     background: #111;
     color: #fff;

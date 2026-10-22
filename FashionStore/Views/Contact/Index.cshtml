@@ -38,32 +38,21 @@
 @section Styles {
     <link rel="stylesheet" href="~/css/contact.css" asp-append-version="true" />
 }
+<div class="position-relative overflow-hidden">
+    <picture>
+        <source media="(min-width: 992px)"
+                srcset="/image/conatcus.webp">
+        <source media="(max-width: 991px)"
+                srcset="/image/conatcus.webp">
+        <img src="/image/conatcus.webp"
+             class="img-fluid w-100"
+             alt="Custom Tailored Shirt">
+    </picture>
+    <div class="position-absolute top-50 start-50 translate-middle text-white">
+        <h1 class="title-customer-signature fw-bold fs-3">Contact Us</h1>
+    </div>
+</div>
 <div class="journey-contact">
-    <section class="py-3 bg-light-cream">
-        <div class="container">
-            <div class="text-center mb-2">
-                <p class="text-muted fw-light">Please leave your contact information so we can serve you as quickly as possible. Just fill in a few details and we will contact you within 15 minutes.</p>
-                <div style="width: 50px; height: 1px; background-color: #b87333; margin: 0 auto;"></div>
-            </div>
-            <div class="row text-center g-0">
-                <div class="col-md-4 process-step">
-                    <h4 class="step-title text-uppercase fs-6 mt-3">The Showroom</h4>
-                    <p class="text-muted small fw-light mt-3 px-3">
-                    <p class="fw-light mb-1 mt-2">105 - 107 Kim Ma Street</p>
-                    <p class="fw-light mb-0">Ba Dinh Ward, HaNoi</p>
-                </div>
-                <div class="col-md-4 process-step">
-                    <h4 class="step-title text-uppercase fs-6 mt-3">Contact</h4>
-                    <p class="fw-light mb-1 mt-2"><a href="tel:02466868107" class="text-decoration-none text-dark">Hot line: 0246 6868 107</a></p>
-                    <p class="fw-light mb-0"><a href="mailto:unlimkimma@gmail.com" class="text-decoration-none text-dark">unlimkimma@gmail.com</a></p>
-                </div>
-                <div class="col-md-4 process-step">
-                    <h4 class="step-title text-uppercase fs-6 mt-3">Opening Hours</h4>
-                    <p class="fw-light mb-0 mt-2">Monday – Sunday<br>9:00 AM – 9:00 PM</p>
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="py-2">
         <div class="container">
             @if (TempData["SuccessMessage"] != null)
@@ -122,6 +111,28 @@
             </div>
         </div>
     </section>
+    <section class="py-3 bg-light-cream">
+        <div class="container">
+            <div class="row text-center g-0 mt-3">
+                <div class="col-md-4 process-step">
+                    <h4 class="step-title text-uppercase fs-6 mt-3 text-white">The Showroom</h4>
+                    <p class=" small fw-light mt-3 px-3">
+                        <p class="fw-light mb-1 mt-2 text-white">105 - 107 Kim Ma Street</p>
+                        <p class="fw-light mb-0 text-white">Ba Dinh Ward, HaNoi</p>
+                    </div>
+                    <div class="col-md-4 process-step">
+                        <h4 class="step-title text-uppercase fs-6 mt-3 text-white">Contact</h4>
+                        <p class="fw-light mb-1 mt-2 text-white"><a href="tel:02466868107" class="text-decoration-none text-white">Hot line: 0246 6868 107</a></p>
+                        <p class="fw-light mb-0 text-white"><a href="mailto:unlimkimma@gmail.com" class="text-white ">unlimkimma@gmail.com</a></p>
+                    </div>
+                    <div class="col-md-4 process-step">
+                        <h4 class="step-title text-uppercase fs-6 mt-3 text-white">Opening Hours</h4>
+                        <p class="fw-light mb-0 mt-2 text-white">Monday – Sunday<br class="text-white">9:00 AM – 9:00 PM</p>
+                    </div>
+                    <p class="text-white fw-light">Please leave your contact information so we can serve you as quickly as possible. Just fill in a few details and we will contact you within 15 minutes.</p>
+                </div>
+            </div>
+        </section>
     <section class="container mt-3">
         <div>
             <div style="height: 370px; width: 100%;">

@@ -60,7 +60,7 @@
     }
     <link rel="canonical" href="@canonicalUrl" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
@@ -78,131 +78,88 @@
     <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJM3DC5R" height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top luxury-nav">
-        <div class="container position-relative">
-            <button class="navbar-toggler d-lg-none border-0 text-white navbar-toggler-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="open-menu">
-            </button>
-            <ul class="navbar-nav d-none d-lg-flex flex-grow-1">
-                <li class="nav-item">
-                    <a class="nav-link text-white" asp-controller="AboutUs" asp-action="Index">About us</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" asp-controller="Home" asp-action="Allproduct" id="accessoryDropdown" role="button" aria-expanded="false">
-                        Accessories <i class="ri-arrow-drop-down-fill"></i>
-                    </a>
-                    <ul class="dropdown-menu rounded-0 lh-lg" aria-labelledby="accessoryDropdown">
-                        <li><a class="dropdown-item" asp-controller="Caravat" asp-action="Index">Caravat</a></li>
-                        <li><a class="dropdown-item" asp-controller="Cufflink" asp-action="Index">Cufflinks</a></li>
-                        <li><a class="dropdown-item" asp-controller="Shoe" asp-action="Index">Shoe</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" asp-controller="Home" asp-action="Allproduct" id="productDropdown" role="button" aria-expanded="false">
-                        Product <i class="ri-arrow-drop-down-fill"></i>
-                    </a>
-                    <ul class="dropdown-menu rounded-0 lh-lg" aria-labelledby="productDropdown">
-                        <li><a class="dropdown-item" asp-controller="Suit" asp-action="Index">Custom Suit</a></li>
-                        <li><a class="dropdown-item" asp-controller="Tuxedo" asp-action="Index">Custom Tuxedo</a></li>
-                        <li><a class="dropdown-item" asp-controller="Blazer" asp-action="Index">Custom Blazer</a></li>
-                        <li><a class="dropdown-item" asp-controller="Coat" asp-action="Index">Custom OverCoat</a></li>
-                        <li><a class="dropdown-item" asp-controller="Trousers" asp-action="Index">Custom Trousers</a></li>
-                        <li><a class="dropdown-item" asp-controller="Shirt" asp-action="Index">Custom Shirt</a></li>
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top luxury-nav">
+            <div class="container d-flex align-items-center">
+                <a class="navbar-brand me-auto" asp-controller="Home" asp-action="Index">
+                    <img src="~/image/brand/ul-logo.png" alt="UNLIM TAILOR Logo Suit Vest Bespoke" style="height:45px;" class="logo-unlim mb-1">
+                </a>
+                <ul class="navbar-nav d-none d-lg-flex align-items-center ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-controller="AboutUs" asp-action="Index">About us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" asp-controller="Home" asp-action="Allproduct" id="accessoryDropdown" role="button" aria-expanded="false">
+                            Accessories <i class="ri-arrow-drop-down-fill"></i>
+                        </a>
+                        <ul class="dropdown-menu rounded-0 lh-lg" aria-labelledby="accessoryDropdown">
+                            <li><a class="dropdown-item" asp-controller="Caravat" asp-action="Index">Caravat</a></li>
+                            <li><a class="dropdown-item" asp-controller="Cufflink" asp-action="Index">Cufflinks</a></li>
+                            <li><a class="dropdown-item" asp-controller="Shoe" asp-action="Index">Shoe</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" asp-controller="Home" asp-action="Allproduct" id="productDropdown" role="button" aria-expanded="false">
+                            Product <i class="ri-arrow-drop-down-fill"></i>
+                        </a>
+                        <ul class="dropdown-menu rounded-0 lh-lg" aria-labelledby="productDropdown">
+                            <li><a class="dropdown-item" asp-controller="Suit" asp-action="Index">Custom Suit</a></li>
+                            <li><a class="dropdown-item" asp-controller="Tuxedo" asp-action="Index">Custom Tuxedo</a></li>
+                            <li><a class="dropdown-item" asp-controller="Blazer" asp-action="Index">Custom Blazer</a></li>
+                            <li><a class="dropdown-item" asp-controller="Coat" asp-action="Index">Custom OverCoat</a></li>
+                            <li><a class="dropdown-item" asp-controller="Trousers" asp-action="Index">Custom Trousers</a></li>
+                            <li><a class="dropdown-item" asp-controller="Shirt" asp-action="Index">Custom Shirt</a></li>
                             <li><a class="dropdown-item" asp-controller="Fabrics" asp-action="Index">Fabric Collection</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" asp-controller="Blog" asp-action="TailoringProcess" id="processDropdown" role="button" aria-expanded="false">
-                        Our Process <i class="ri-arrow-drop-down-fill"></i>
-                    </a>
-                    <ul class="dropdown-menu rounded-0 lh-lg" aria-labelledby="processDropdown">
-                        <li><a class="dropdown-item" asp-controller="Blog" asp-action="TailoringProcess">Tailoring process</a></li>
-                        <li><a class="dropdown-item" asp-controller="Blog" asp-action="TailoringAtHome">Tailoring at home</a></li>
-                        <li><a class="dropdown-item" asp-controller="Blog" asp-action="OnlineTailoring">Online tailoring</a></li>
-                        <li><a class="dropdown-item" asp-controller="Blog" asp-action="TailoringUniforms">Tailoring uniforms</a></li>
-                        <li><a class="dropdown-item" asp-controller="Blog" asp-action="ShuttleService">Shuttle service</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <a class="navbar-brand position-absolute top-50 start-50 translate-middle ms-1"
-               asp-controller="Home" asp-action="Index">
-                <img src="~/image/brand/ul-logo.png" alt="UNLIM TAILOR Logo Suit Vest Bespoke" style="height:32px;" class="logo-unlim mb-1">
-            </a>
-            <ul class="navbar-nav d-none d-lg-flex align-items-center flex-grow-1 justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link text-white" asp-controller="Gallery" asp-action="Index">Customer</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" asp-controller="Blog" asp-action="Index">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" asp-controller="Appointment" asp-action="Index">Booking</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" asp-controller="Contact" asp-action="Index">Contact</a>
-                </li>
-            </ul>
-            <div class="nav-item ms-3 language-outside">
-                <div class="dropdown">
-                    <button class="btn btn-sm text-white border-0 d-flex align-items-center gap-1 px-2" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
-                        <i class="ri-global-line"></i>
-                        <span id="currentLanguage" class="language-select">EN</span>
-                        <i class="ri-arrow-down-s-line"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end shadow lang-dropdown-custom p-1" aria-labelledby="languageDropdown">
-                        <li>
-                            <button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="en">
-                                🇬🇧 English
-                            </button>
-                        </li>
-                        <li>
-                            <button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="ko">
-                                🇰🇷 한국어
-                            </button>
-                        </li>
-                        <li>
-                            <button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="zh-CN">
-                                🇨🇳 中文
-                            </button>
-                        </li>
-                        <li>
-                            <button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="ja">
-                                🇯🇵 日本語
-                            </button>
-                        </li>
-
-                        <li>
-                            <button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="fr">
-                                🇫🇷 Français
-                            </button>
-                        </li>
-                        <li>
-                            <button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="de">
-                                🇩🇪 Deutsch
-                            </button>
-                        </li>
-
-                        <li>
-                            <button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="ru">
-                                🇷🇺 Русский
-                            </button>
-                        </li>
-
-                        <li>
-                            <button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="th">
-                                🇹🇭 ไทย
-                            </button>
-                        </li>
-
-                        <li>
-                            <button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="vi">
-                                🇻🇳 Tiếng Việt
-                            </button>
-                        </li>
-                    </ul>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" asp-controller="Blog" asp-action="TailoringProcess" id="processDropdown" role="button" aria-expanded="false">
+                            Our Process <i class="ri-arrow-drop-down-fill"></i>
+                        </a>
+                        <ul class="dropdown-menu rounded-0 lh-lg" aria-labelledby="processDropdown">
+                            <li><a class="dropdown-item" asp-controller="Blog" asp-action="TailoringProcess">Tailoring process</a></li>
+                            <li><a class="dropdown-item" asp-controller="Blog" asp-action="TailoringAtHome">Tailoring at home</a></li>
+                            <li><a class="dropdown-item" asp-controller="Blog" asp-action="OnlineTailoring">Online tailoring</a></li>
+                            <li><a class="dropdown-item" asp-controller="Blog" asp-action="TailoringUniforms">Tailoring uniforms</a></li>
+                            <li><a class="dropdown-item" asp-controller="Blog" asp-action="ShuttleService">Shuttle service</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-controller="Gallery" asp-action="Index">Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-controller="Blog" asp-action="Index">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-controller="Appointment" asp-action="Index">Booking</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-controller="Contact" asp-action="Index">Contact</a>
+                    </li>
+                </ul>
+                <div class="nav-item ms-3 language-outside">
+                    <div class="dropdown">
+                        <button class="btn btn-sm text-white border-0 d-flex align-items-center gap-1 px-2" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+                            <i class="ri-global-line"></i>
+                            <span id="currentLanguage" class="language-select">EN</span>
+                            <i class="ri-arrow-down-s-line"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow lang-dropdown-custom p-1" aria-labelledby="languageDropdown">
+                            <li><button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="en">🇬🇧 English</button></li>
+                            <li><button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="ko">🇰🇷 한국어</button></li>
+                            <li><button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="zh-CN">🇨🇳 中文</button></li>
+                            <li><button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="ja">🇯🇵 日本語</button></li>
+                            <li><button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="fr">🇫🇷 Français</button></li>
+                            <li><button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="de">🇩🇪 Deutsch</button></li>
+                            <li><button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="ru">🇷🇺 Русский</button></li>
+                            <li><button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="th">🇹🇭 ไทย</button></li>
+                            <li><button class="dropdown-item rounded-2 language-option text-white" type="button" data-lang="vi">🇻🇳 Tiếng Việt</button></li>
+                        </ul>
+                    </div>
                 </div>
+                <button class="navbar-toggler d-lg-none border-0 text-white navbar-toggler-icon ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="open-menu">
+                </button>
             </div>
-        </div>
-    </nav>
+        </nav>
     <div class="contact-slide">
         <div class="contact-tab text-center d-md-block d-none">
             CONTACT US
