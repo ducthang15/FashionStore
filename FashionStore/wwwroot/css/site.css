@@ -1806,7 +1806,7 @@ img.zalo {
 .hero-section {
     background-color: #1F0B02;
     color: #c5a059;
-    padding: 75px 0;
+    padding: 90px 0;
 }
 
 .policy-card {
@@ -2197,9 +2197,6 @@ img.zalo {
         column-count: 2;
     }
 
-    .hero-section {
-        padding: 0;
-    }
 
     .service-text {
         font-size: 12px;

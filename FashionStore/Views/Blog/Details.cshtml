@@ -19,6 +19,7 @@
         _ => "/blog"
     };
 }
+<img src="@Model.ImageUrl" class="img-fluid w-100">
 <nav class="container breadcrumb-title mb-3 small mt-2">
     <a asp-controller="Home" asp-action="Index" class="text-decoration-none text-dark ">
         <i class="ri-home-2-line"></i>
@@ -35,7 +36,6 @@
 <div class="container mt-2">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <img src="@Model.ImageUrl" class="img-fluid w-100 rounded mb-4" style="max-height: 400px; object-fit: cover;">
             <h1 class="text-dark fs-3">@Model.Title</h1>
             <p class="text-dark">@Model.Summary</p>
             <div class="d-flex align-items-center gap-3">
