@@ -1,0 +1,116 @@
+﻿@model IEnumerable<FashionStore.Repository.Models.Product>
+
+@{
+    ViewData["Title"] = "Sắp xếp sản phẩm";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+        <div>
+            <h3>Arrange products</h3>
+            <p class="text-muted">@ViewBag.CategoryName</p>
+        </div>
+        <a asp-action="Index" asp-route-categoryId="@ViewBag.CategoryId" class="btn btn-outline-secondary">Quay lại</a>
+            <button type="button" id="saveOrder" class="btn btn-dark">
+        Save 
+    </button>
+    </div>
+
+    <form id="orderForm">
+        @Html.AntiForgeryToken()
+    </form>
+
+    <div id="productList" class="list-group mb-3">
+        @foreach (var item in Model)
+        {
+            <div class="list-group-item d-flex align-items-center gap-3"
+                 data-id="@item.ProductId">
+                <span class="drag-handle fs-4"
+                      style="cursor:grab">☰</span>
+
+                <img src="@(item.ImageUrl ?? "/images/no-image.png")"
+                     alt="@item.ProductName"
+                     style="width:65px;height:80px;object-fit:cover"
+                     loading="lazy" />
+
+                <div class="flex-grow-1">
+                    <div class="fw-semibold">@item.ProductName</div>
+                    <small class="text-muted">ID: @item.ProductId</small>
+                </div>
+
+                <span class="position-number text-muted"></span>
+            </div>
+        }
+    </div>
+    <span id="saveMessage" class="ms-3" role="status"></span>
+</div>
+
+<style>
+    #productList .sortable-ghost {
+        opacity: .35;
+        background: #eee;
+    }
+
+    #productList .sortable-chosen {
+        background: #faf7f0;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
+
+<script>
+    const list = document.getElementById('productList');
+    const saveButton = document.getElementById('saveOrder');
+    const message = document.getElementById('saveMessage');
+
+    const categoryId = @ViewBag.CategoryId;
+    const token = document.querySelector(
+        'input[name="__RequestVerificationToken"]').value;
+
+    new Sortable(list, {
+        animation: 180,
+        handle: '.drag-handle',
+        ghostClass: 'sortable-ghost',
+        chosenClass: 'sortable-chosen',
+        onEnd: updateNumbers
+    });
+
+    function updateNumbers() {
+        list.querySelectorAll('[data-id]').forEach((item, index) => {
+            item.querySelector('.position-number').textContent = index + 1;
+        });
+    }
+
+    updateNumbers();
+
+    saveButton.addEventListener('click', async function() {
+        const ids = [...list.querySelectorAll('[data-id]')]
+            .map(item => Number(item.dataset.id));
+
+        saveButton.disabled = true;
+        message.textContent = 'Đang lưu...';
+
+        try {
+            const response = await fetch(
+                '@Url.Action("SaveOrder", "ProductAdmin", new { area = "Admin" })?categoryId=' + categoryId,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': token
+                    },
+                    body: JSON.stringify(ids)
+                });
+
+            if (!response.ok) {
+                throw new Error('Lưu thất bại. Vui lòng thử lại.');
+            }
+
+            message.textContent = 'Đã lưu thứ tự thành công.';
+        } catch (error) {
+            message.textContent = error.message;
+        } finally {
+            saveButton.disabled = false;
+        }
+    });
+</script>

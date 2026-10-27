@@ -82,6 +82,14 @@ namespace FashionStore.Areas.Admin.Controllers
                 return View(product ?? new Product());
             }
             product.Slug = SlugHelper.GenerateSlug(product.ProductName);
+            var maxOrder = await _context.Products
+             .Where(p => p.CategoryId == product.CategoryId)
+             .MaxAsync(p => (int?)p.DisplayOrder);
+
+            if (maxOrder.HasValue)
+            {
+                product.DisplayOrder = maxOrder.Value + 1;
+            }
             if (_context.Products.Any(p => p.Slug == product.Slug))
             {
                 product.Slug += "-" + DateTime.Now.Ticks;
@@ -224,6 +232,54 @@ namespace FashionStore.Areas.Admin.Controllers
         {
             return _context.Products.Any(e => e.ProductId == id);
         }
+        [HttpGet]
+        public async Task<IActionResult> Sort(int categoryId)
+        {
+            var category = await _context.Categories
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c => c.CategoryId == categoryId);
 
+            if (category == null)
+                return NotFound();
+
+            var products = await _context.Products
+                .AsNoTracking()
+                .Where(p => p.CategoryId == categoryId)
+                .OrderBy(p => p.DisplayOrder == null ? 1 : 0)
+                .ThenBy(p => p.DisplayOrder)
+                .ThenByDescending(p => p.CreatedAt)
+                .ThenByDescending(p => p.ProductId)
+                .ToListAsync();
+
+            ViewBag.CategoryId = categoryId;
+            ViewBag.CategoryName = category.CategoryName;
+
+            return View(products);
+        }
+        [HttpPost]
+        public async Task<IActionResult> SaveOrder(
+            int categoryId, [FromBody] List<int>? ids)
+        {
+            if (ids == null || ids.Count == 0 ||
+                ids.Distinct().Count() != ids.Count)
+                return BadRequest("Danh sách ID không hợp lệ.");
+
+            var products = await _context.Products
+                .Where(p => p.CategoryId == categoryId)
+                .ToListAsync();
+
+            if (products.Count != ids.Count ||
+                products.Any(p => !ids.Contains(p.ProductId)))
+                return BadRequest("Danh sách sản phẩm không hợp lệ.");
+
+            var lookup = products.ToDictionary(p => p.ProductId);
+
+            for (int i = 0; i < ids.Count; i++)
+                lookup[ids[i]].DisplayOrder = i + 1;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new { success = true });
+        }
     }
 }

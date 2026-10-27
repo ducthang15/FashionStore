@@ -25,13 +25,17 @@ namespace FashionStore.Controllers
 
             if (sort == "name")
             {
-                query = query.OrderBy(p => p.ProductName);
+                query = query
+                    .OrderBy(p => p.ProductName)
+                    .ThenBy(p => p.ProductId);
             }
             else
             {
-                query = query.OrderByDescending(
-                    p => p.CreatedAt ?? DateTime.MinValue
-                );
+                query = query
+                    .OrderBy(p => p.DisplayOrder == null ? 1 : 0)
+                    .ThenBy(p => p.DisplayOrder)
+                    .ThenByDescending(p => p.CreatedAt)
+                    .ThenByDescending(p => p.ProductId);
             }
 
             int totalItems = await query.CountAsync();
@@ -39,9 +43,6 @@ namespace FashionStore.Controllers
             int totalPages = (int)Math.Ceiling(
                 (double)totalItems / pageSize
             );
-
-            // Nếu có sản phẩm nhưng page vượt quá số trang thì 404.
-            // Nếu chưa có sản phẩm thì vẫn cho phép mở trang Coat.
             if (totalPages == 0 && page > 1)
             {
                 return NotFound();

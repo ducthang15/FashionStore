@@ -35,6 +35,8 @@ public partial class Product
     [StringLength(160)]
     public string? MetaDescription { get; set; }
 
+    public int? DisplayOrder { get; set; }
+
     [ForeignKey("CategoryId")]
     [InverseProperty("Products")]
     public virtual Category Category { get; set; } = null!;
