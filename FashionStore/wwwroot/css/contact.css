@@ -367,74 +367,21 @@ body {
 }
 
 .serif-title {
-    font-family: 'Lora', serif;
+    font-family: 'Montserrat', sans-serif;
     color: #ffffff;
 }
 
 .text-copper {
     color: #b87333;
 }
-
-.bg-light-cream {
-    background: transparent;
+.text-contact{
+    font-size: 14px;
+    font-style:italic;
 }
-
-.contact-hero {
-    position: relative;
-    min-height: 400px;
-    background-image: url('/image/107-KimMa-BaDinh-Hanoi.jpg');
-    background-size: cover;
-    background-position: center 30%;
-}
-
-    .contact-hero::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(26, 37, 47, 0.4);
-    }
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-}
-
-.process-step {
-    padding: 20px 10px;
-    border-right: 1px solid #eaeaea;
-    transition: transform 0.3s ease;
-}
-
-    .process-step:last-child {
-        border-right: none;
-    }
-
-.step-number {
-    font-family: 'Lora', serif;
-    font-size: 3rem;
-    color: #f1e9e3;
-    margin-bottom: -20px;
-    position: relative;
-    z-index: 1;
-}
-
-.step-title {
-    position: relative;
-    z-index: 2;
-    font-weight: 500;
-    letter-spacing: 1px;
-}
-
 /* Form liên hệ thanh thoát */
 .elegant-form .form-control {
-    border: none;
-    border-bottom: 1px solid #d1d1d1;
     border-radius: 0;
-    padding: 12px 0;
-    background: transparent;
+    background: #00000075;
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     transition: all 0.4s;
@@ -446,10 +393,8 @@ body {
     }
 
 .elegant-form label {
-    padding-left: 0;
     color: #7f8c8d;
-    font-family: 'Lora', serif;
-    font-style: italic;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Nút bấm tối giản */

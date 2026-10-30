@@ -19,21 +19,28 @@ namespace FashionStore.Controllers
         {
             // product show
             var products = await _context.Products
-            .Include(p => p.Category)
-            .Where(p => p.Category.CategoryName == "Suit")
-            .Take(10)
-            .ToListAsync();
+                .Include(p => p.Category)
+                      .Where(p => p.Category.CategoryName == "Suit")
+                         .Take(10)
+                            .ToListAsync();
             //review customer
             ViewBag.Reviews = await _context.CustomerReviews
-            .Where(x => x.IsPublished)
-            .OrderBy(x => x.DisplayOrder)
-            .ToListAsync();
+                .Where(x => x.IsPublished)
+                     .OrderBy(x => x.DisplayOrder)
+                         .ToListAsync();
+            //news-view
             ViewBag.LatestNews = await _context.News
-           .Where(n => n.IsPublished)
-           .OrderByDescending(n => n.CreatedAt)
-           .Take(3)
-           .ToListAsync();
-
+                   .Where(n => n.IsPublished)
+                        .OrderByDescending(n => n.CreatedAt)
+                            .Take(3)
+                                .ToListAsync();
+            // Customer Gallery
+            ViewBag.CustomerGallery = await _context.CustomerFeedbacks
+                        .Include(f => f.FeedbackImages)
+                            .Where(f => f.IsPublished == true)
+                                .OrderByDescending(f => f.CreatedAt)
+                                    .Take(6)
+                                        .ToListAsync();
             return View(products);
         }
         [Route("product/{slug}")]
