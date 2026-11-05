@@ -81,21 +81,14 @@
         <nav class="navbar navbar-expand-lg navbar-dark sticky-top luxury-nav">
             <div class="container d-flex align-items-center">
                 <a class="navbar-brand me-auto" asp-controller="Home" asp-action="Index">
-                    <img src="~/image/brand/ul-logo.png" alt="UNLIM TAILOR Logo Suit Vest Bespoke" style="height:45px;" class="logo-unlim mb-1">
+                    <img src="~/image/brand/ul-logo.png" alt="UNLIM TAILOR Logo Suit Vest Bespoke" style="height:40px;" class="logo-unlim mb-1">
                 </a>
                 <ul class="navbar-nav d-none d-lg-flex align-items-center ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-white" asp-controller="AboutUs" asp-action="Index">About us</a>
+                        <a class="nav-link text-white" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" asp-controller="Home" asp-action="Allproduct" id="accessoryDropdown" role="button" aria-expanded="false">
-                            Accessories <i class="ri-arrow-drop-down-fill"></i>
-                        </a>
-                        <ul class="dropdown-menu rounded-0 lh-lg" aria-labelledby="accessoryDropdown">
-                            <li><a class="dropdown-item" asp-controller="Caravat" asp-action="Index">Caravat</a></li>
-                            <li><a class="dropdown-item" asp-controller="Cufflink" asp-action="Index">Cufflinks</a></li>
-                            <li><a class="dropdown-item" asp-controller="Shoe" asp-action="Index">Shoe</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-controller="AboutUs" asp-action="Index">About us</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" asp-controller="Home" asp-action="Allproduct" id="productDropdown" role="button" aria-expanded="false">
@@ -109,6 +102,16 @@
                             <li><a class="dropdown-item" asp-controller="Trousers" asp-action="Index">Custom Trousers</a></li>
                             <li><a class="dropdown-item" asp-controller="Shirt" asp-action="Index">Custom Shirt</a></li>
                             <li><a class="dropdown-item" asp-controller="Fabrics" asp-action="Index">Fabric Collection</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" asp-controller="Home" asp-action="Allproduct" id="accessoryDropdown" role="button" aria-expanded="false">
+                            Accessories <i class="ri-arrow-drop-down-fill"></i>
+                        </a>
+                        <ul class="dropdown-menu rounded-0 lh-lg" aria-labelledby="accessoryDropdown">
+                            <li><a class="dropdown-item" asp-controller="Caravat" asp-action="Index">Caravat</a></li>
+                            <li><a class="dropdown-item" asp-controller="Cufflink" asp-action="Index">Cufflinks</a></li>
+                            <li><a class="dropdown-item" asp-controller="Shoe" asp-action="Index">Shoe</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -274,13 +277,12 @@
                         <div class="bg-dark mt-3 rounded-3">
                             <div class="card-body p-3">
                                 <p class="footer-block-details-content mb-3 text-white">
-                                    Book Your Tailoring Experience
+                                    Book a tailor
                                 </p>
-
-                                <a href="/appointment"
-                                   class="btn btn-light btn-sm w-100 fw-semibold">
+                                <a href="/appointment" class="btn btn-light btn-sm w-100 fw-semibold">
                                     Book an Appointment
                                 </a>
+                                 </div>
                             </div>
                         </div>
                     </div>
@@ -315,8 +317,8 @@
             </div>
         </div>
     </footer>
-    <div class="offcanvas offcanvas-start luxury-offcanvass" tabindex="-1" id="mobileMenu">
-        <div class="offcanvas-header border-bottom">
+    <div class="offcanvas offcanvas-start luxury-offcanvass bg-black" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header border-bottom py-5">
             <img src="~/image/brand/ul-logo.png" alt="UNLIM TAILOR Logo Suit Vest Bespoke" style="height:40px;" class="logo-unlim">
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
@@ -327,81 +329,83 @@
                 <div class="search-results-dropdown shadow"></div>
             </div>
         </div>
-        <div class="offcanvas-body">
-            <ul class="nav flex-column lh-1">
-                <li class="nav-item">
-                    <a class="nav-link py-3 text-dark" asp-controller="AboutUs" asp-action="Index">About us</a>
-                </li>
-                <li class="nav-item">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <a class="nav-link py-3 text-dark" asp-controller="Home" asp-action="Allproduct">
-                            Product
-                        </a>
-                        <a class="px-3 text-dark" data-bs-toggle="collapse" href="#productMenu" role="button" aria-expanded="false">
-                            <i class="ri-arrow-down-wide-line"></i>
-                        </a>
-                    </div>
-                    <ul class="collapse list-unstyled ps-3" id="productMenu">
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Suit" asp-action="Index">Custom Suit</a></li>
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Tuxedo" asp-action="Index">Custom Tuxedo</a></li>
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Blazer" asp-action="Index">Custom Blazer</a></li>
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Coat" asp-action="Index"> Custom OverCoat</a></li>
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Trousers" asp-action="Index">Custom Trousers</a></li>
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Shirt" asp-action="Index">Custom Shirt</a></li>
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Fabrics" asp-action="Index">Fabrics Collection</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <a class="nav-link py-3 text-dark" asp-controller="Home" asp-action="Allproduct">
-                            Accessories
-                        </a>
-                        <a class="px-3 text-dark" data-bs-toggle="collapse" href="#accessoriesMenu" role="button" aria-expanded="false">
-                            <i class="ri-arrow-down-wide-line"></i>
-                        </a>
-                    </div>
-                    <ul class="collapse list-unstyled ps-3" id="accessoriesMenu">
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Caravat" asp-action="Index">Caravat</a></li>
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Cufflink" asp-action="Index">Cufflinks</a></li>
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Shoe" asp-action="Index">Shoe</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
+            <div class="offcanvas-body">
+                <ul class="nav flex-column lh-1">
 
-                    <div class="d-flex justify-content-between align-items-center">
+                    <li class="nav-item border-bottom border-secondary">
+                        <a class="nav-link text-white fs-5 py-3" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
 
-                        <a class="nav-link py-3 text-dark" asp-controller="Blog" asp-action="TailoringProcess">
-                            Our Process
-                        </a>
-                        <a class="px-3 text-dark" data-bs-toggle="collapse" href="#processMenu" role="button" aria-expanded="false">
-                            <i class="ri-arrow-down-wide-line"></i>
-                        </a>
-                    </div>
-                    <ul class="collapse list-unstyled ps-3" id="processMenu">
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Blog" asp-action="TailoringProcess">Tailoring process</a></li>
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Blog" asp-action="TailoringAtHome">Tailoring at home</a></li>
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Blog" asp-action="OnlineTailoring">Online tailoring</a></li>
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Blog" asp-action="TailoringUniforms">Tailoring uniforms</a></li>
-                        <li><a class="nav-link py-2 text-dark" asp-controller="Blog" asp-action="ShuttleService">Shuttle service</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link py-3 text-dark" asp-controller="Blog" asp-action="Index">Blog Unlim</a>
-                </li>
-                <li class="nav-item">
-                        <a class="nav-link py-3 text-dark" asp-controller="Gallery" asp-action="Index">Gallery</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link py-3 text-dark" asp-controller="Appointment" asp-action="Index">Book an appointment</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link py-3 text-dark" asp-controller="Contact" asp-action="Index">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link py-3 text-dark" asp-controller="Home" asp-action="FAQs">FAQs</a>
-                </li>
-            </ul>
-        </div>
+                    <li class="nav-item border-bottom border-secondary">
+                        <a class="nav-link text-white fs-5 py-3" asp-controller="AboutUs" asp-action="Index">About us</a>
+                    </li>
+
+                    <li class="nav-item border-bottom border-secondary">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a class="nav-link text-white fs-5 py-3" asp-controller="Home" asp-action="Allproduct">Product</a>
+                            <a class="px-3 text-white" data-bs-toggle="collapse" href="#productMenu" role="button" aria-expanded="false">
+                                <i class="ri-arrow-down-wide-line"></i>
+                            </a>
+                        </div>
+                        <ul class="collapse list-unstyled ps-3" id="productMenu">
+                            <li><a class="nav-link py-2 text-white" asp-controller="Suit" asp-action="Index">Custom Suit</a></li>
+                            <li><a class="nav-link py-2 text-white" asp-controller="Tuxedo" asp-action="Index">Custom Tuxedo</a></li>
+                            <li><a class="nav-link py-2 text-white" asp-controller="Blazer" asp-action="Index">Custom Blazer</a></li>
+                            <li><a class="nav-link py-2 text-white" asp-controller="Coat" asp-action="Index">Custom OverCoat</a></li>
+                            <li><a class="nav-link py-2 text-white" asp-controller="Trousers" asp-action="Index">Custom Trousers</a></li>
+                            <li><a class="nav-link py-2 text-white" asp-controller="Shirt" asp-action="Index">Custom Shirt</a></li>
+                            <li><a class="nav-link py-2 text-white" asp-controller="Fabrics" asp-action="Index">Fabrics Collection</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item border-bottom border-secondary">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a class="nav-link text-white fs-5 py-3" asp-controller="Home" asp-action="Allproduct">Accessories</a>
+                            <a class="px-3 text-white" data-bs-toggle="collapse" href="#accessoriesMenu" role="button" aria-expanded="false">
+                                <i class="ri-arrow-down-wide-line"></i>
+                            </a>
+                        </div>
+                        <ul class="collapse list-unstyled ps-3" id="accessoriesMenu">
+                            <li><a class="nav-link py-2 text-white" asp-controller="Caravat" asp-action="Index">Caravat</a></li>
+                            <li><a class="nav-link py-2 text-white" asp-controller="Cufflink" asp-action="Index">Cufflinks</a></li>
+                            <li><a class="nav-link py-2 text-white" asp-controller="Shoe" asp-action="Index">Shoe</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item border-bottom border-secondary">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a class="nav-link text-white fs-5 py-3" asp-controller="Blog" asp-action="TailoringProcess">Our Process</a>
+                            <a class="px-3 text-white" data-bs-toggle="collapse" href="#processMenu" role="button" aria-expanded="false">
+                                <i class="ri-arrow-down-wide-line"></i>
+                            </a>
+                        </div>
+                        <ul class="collapse list-unstyled ps-3" id="processMenu">
+                            <li><a class="nav-link py-2 text-white" asp-controller="Blog" asp-action="TailoringProcess">Tailoring process</a></li>
+                            <li><a class="nav-link py-2 text-white" asp-controller="Blog" asp-action="TailoringAtHome">Tailoring at home</a></li>
+                            <li><a class="nav-link py-2 text-white" asp-controller="Blog" asp-action="OnlineTailoring">Online tailoring</a></li>
+                            <li><a class="nav-link py-2 text-white" asp-controller="Blog" asp-action="TailoringUniforms">Tailoring uniforms</a></li>
+                            <li><a class="nav-link py-2 text-white" asp-controller="Blog" asp-action="ShuttleService">Shuttle service</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item border-bottom border-secondary">
+                        <a class="nav-link text-white fs-5 py-3" asp-controller="Gallery" asp-action="Index">Gallery</a>
+                    </li>
+
+                    <li class="nav-item border-bottom border-secondary">
+                        <a class="nav-link text-white fs-5 py-3" asp-controller="Blog" asp-action="Index">Blog</a>
+                    </li>
+
+                    <li class="nav-item border-bottom border-secondary">
+                        <a class="nav-link text-white fs-5 py-3" asp-controller="Contact" asp-action="Index">Contact</a>
+                    </li>
+
+                    <li class="nav-item mt-3">
+                        <a class="nav-link text-white bg-success text-center rounded-3 fw-bold py-3" asp-controller="Appointment" asp-action="Index">BOOKING</a>
+                    </li>
+
+                </ul>
+            </div>
     </div>
     <div class="ios-bottom-nav d-md-none">
         <a asp-controller="Home" asp-action="Index" class="ios-nav-item">

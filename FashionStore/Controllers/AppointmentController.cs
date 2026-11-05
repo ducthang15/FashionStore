@@ -4,6 +4,7 @@ using FashionStore.Repository.Models;
 using FashionStore.Repository;
 using Microsoft.AspNetCore.Mvc;
 using MailKit.Net.Smtp;
+using PhoneNumbers;
 using MimeKit;
 
 namespace FashionStore.Controllers
@@ -25,8 +26,8 @@ namespace FashionStore.Controllers
             .Where(x => x.IsPublished)
             .OrderBy(x => x.DisplayOrder)
             .ToListAsync();
-                var model = new Appointment();
-                     return View(model);
+            var model = new Appointment();
+            return View(model);
         }
 
         [HttpPost]
@@ -41,7 +42,39 @@ namespace FashionStore.Controllers
                     "Please select an appointment date."
                 );
             }
+            // Validate international phone number
+            try
+            {
+                var phoneUtil = PhoneNumberUtil.GetInstance();
 
+                var phone = phoneUtil.Parse(
+                    appointment.PhoneNumber,
+                    null
+                );
+
+                if (!appointment.PhoneNumber.StartsWith("+") ||
+                    !phoneUtil.IsValidNumber(phone))
+                {
+                    ModelState.AddModelError(
+                        "PhoneNumber",
+                        "Please enter a valid international phone number with country code."
+                    );
+                }
+                else
+                {
+                    appointment.PhoneNumber = phoneUtil.Format(
+                        phone,
+                        PhoneNumberFormat.E164
+                    );
+                }
+            }
+            catch (NumberParseException)
+            {
+                ModelState.AddModelError(
+                    "PhoneNumber",
+                    "Invalid phone number. Please include the country code."
+                );
+            }
             if (ModelState.IsValid)
             {
                 appointment.CreatedAt = DateTime.Now;

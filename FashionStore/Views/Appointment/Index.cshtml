@@ -12,11 +12,12 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 @section Styles {
     <link rel="stylesheet" href="~/css/landbook.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/css/intlTelInput.css" />
 }
 <!-- 1. HERO SECTION -->
 <section class="hero-fullscreen">
     <div class="container text-center">
-        <h1 class="font-serif">Book An Appointment</h1>
+        <h1 class="font-serif mt-5">Book An Appointment</h1>
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <p class="lead-text text-light d-none d-md-block">
@@ -43,8 +44,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-4">
-                                                        <input asp-for="PhoneNumber" class="form-control bg-light" placeholder="Number" required>
-                                                        <label asp-for="PhoneNumber">Phone number*</label>
+                                                        <input asp-for="PhoneNumber" type="tel" id="phone" class="form-control bg-light" placeholder="Phone number" autocomplete="tel" required />
                                                         <span asp-validation-for="PhoneNumber" class="text-danger small"></span>
                                                     </div>
                                                 </div>
@@ -57,7 +57,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-4">
                                                         <input asp-for="AppointmentDate" id="appointmentDate" type="text" class="form-control bg-light" placeholder="Date and time" required />
-                                                        <label asp-for="PhoneNumber">Date and time appointment *</label>
+                                                        <label asp-for="AppointmentDate" class="z-0">Date and time appointment *</label>
                                                         <span asp-validation-for="AppointmentDate" class="text-danger small"></span>
                                                     </div>
                                                 </div>
@@ -77,7 +77,7 @@
                             </div>
                         </div>
                     </div>
-                </div>               
+                </div>
             </div>
         </div>
     </div>
@@ -98,7 +98,7 @@
                 <p class="mb-3 lead-text ">
                     Using the traditional Full Canvas construction method—crafted entirely by hand with a horsehair canvas foundation—thousands of meticulous hand stitches are placed to sculpt and shape the chest. Over time, the jacket gradually adapts to your posture and natural movements, creating a fit that becomes increasingly personal, comfortable, and remarkably refined with every wear.
                 </p>
-@*                 <a href="tel:0989473579" class="text-gold text-decoration-none tracking-wide text-uppercase font-serif border-bottom border-gold">
+                @*                 <a href="tel:0989473579" class="text-gold text-decoration-none tracking-wide text-uppercase font-serif border-bottom border-gold">
                     Call Now <i class="fa-solid fa-arrow-right ms-2"></i>
                 </a> *@
             </div>
@@ -166,7 +166,6 @@
         </div>
     </div>
 </section>
-<!-- 3. FABRIC COLLECTIONS - CHẤT LIỆU THƯỢNG HẠNG -->
 <section class="fabric-collection py-3">
     <div class="container">
         <div class="text-center pb-4">
@@ -203,6 +202,59 @@
         </div>
         <div class="text-center mt-5">
             <a href="/suit" class="btn-gold-solid">Experience the Fabrics Firsthand</a>
+        </div>
+    </div>
+</section>
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center font-serif mb-5 text-dark">Made-To-Measure Prices</h2>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8 col-xl-7">
+
+                <ul class="list-unstyled mb-5">
+                    <li class="d-flex justify-content-between align-items-center py-3 px-3 px-md-5 fw-light text-dark">
+                        <span>2 Piece Suit</span>
+                        <span>from <span class="ms-2">$310</span></span>
+                    </li>
+
+                    <li class="d-flex justify-content-between align-items-center py-3 px-3 px-md-5 fw-light bg-white text-dark">
+                        <span>3 Piece Suit</span>
+                        <span>from <span class="ms-2">$565</span></span>
+                    </li>
+
+                    <li class="d-flex justify-content-between align-items-center py-3 px-3 px-md-5 fw-light text-dark">
+                        <span>Dinner Suits</span>
+                        <span>from <span class="ms-2">$550</span></span>
+                    </li>
+
+                    <li class="d-flex justify-content-between align-items-center py-3 px-3 px-md-5 fw-light bg-white text-dark">
+                        <span>Morning Suit</span>
+                        <span>from <span class="ms-2">$600</span></span>
+                    </li>
+
+                    <li class="d-flex justify-content-between align-items-center py-3 px-3 px-md-5 fw-light text-dark">
+                        <span>Jacket &amp; Blazers</span>
+                        <span>from <span class="ms-2">$350</span></span>
+                    </li>
+
+                    <li class="d-flex justify-content-between align-items-center py-3 px-3 px-md-5 fw-light bg-white text-dark">
+                        <span>Trousers &amp; Chinos</span>
+                        <span>from <span class="ms-2">$110</span></span>
+                    </li>
+
+                    <li class="d-flex justify-content-between align-items-center py-3 px-3 px-md-5 fw-light text-dark">
+                        <span>Shirts</span>
+                        <span>from <span class="ms-2">$130</span></span>
+                    </li>
+                </ul>
+
+                <div class="text-center">
+                    <a asp-controller="Appointment" asp-action="Index"
+                       class="btn btn-dark rounded-0 px-5 py-2">Book a Tailor</a>
+                </div>
+
+            </div>
         </div>
     </div>
 </section>
@@ -267,7 +319,7 @@
         </div>
         <div class="text-center text-nowrap mt-4">
             <a href="https://m.me/unlimtailor" class="btn-gold-outline">
-                A Conversation with Our Master Tailor
+                Chat with us now!
             </a>
         </div>
     </div>
@@ -309,17 +361,17 @@
         </div>
     </div>
 </section>
-<section>
+<section class="bg-light">
     <div class="container text-center py-5">
-        <h3 class="display-5 font-serif">Let Us Serve You.</h3>
-        <p class="testament col-lg-8 mb-3 mx-auto">
+        <h3 class="display-5 font-serif text-dark">Let Us Serve You.</h3>
+        <p class="testament col-lg-8 mb-3 mx-auto  text-dark">
             A testament to the confidence of a successful man. Book an appointment today to receive the most attentive consultation from bespoke tailoring experts at UNLIM TAILOR.
         </p>
         <div class="d-flex flex-column flex-sm-row justify-content-center gap-4">
             <a href="/appointment" class="btn-gold-solid py-3">
                 <i class="fa-solid fa-calendar-check me-2"></i>Confirm Your Tailoring Appointment
             </a>
-            <a href="tel:0989473579" class="btn-gold-outline px-5 py-3 text-white border-white hover-gold">
+            <a href="tel:0989473579" class="btn-gold-outline px-5 py-3 hover-gold">
                 <i class="fa-solid fa-phone me-2"></i>Hotline: 098 947 3579
             </a>
         </div>
@@ -329,6 +381,25 @@
                 </iframe>
             </div>
         </div> *@
+        <div class="py-5">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-12 col-lg-6">
+                        <img src="~/image/contact-inside.webp" alt="unlim tailor 107 kim ma" class="img-fluid w-100 object-fit-cover" style="aspect-ratio: 16 / 9;">
+                    </div>
+                    <div class="col-12 col-lg-6 text-center">
+                        <h4 class="fs-1 mb-4 text-dark">Find Us</h4>
+                        <p class="text-secondary fw-light small mb-4 mx-auto" style="max-width: 420px;">
+                            Our store is designed with the customer at heart. There is no stuffiness or deference. All are welcome.
+                        </p>
+                        <p class="fw-semibold mb-4 text-dark"> 105-107 Kim Ma Street, Ba Dinh Ward, HaNoi</p>
+                        <a href="https://maps.app.goo.gl/XekE1b2ZafFx99877"  target="_blank"  rel="noopener noreferrer" class="btn btn-dark rounded-0 px-4">
+                            Get Directions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <div id="loadingOverlay" class="loading-overlay d-none">
@@ -352,5 +423,67 @@
         dateFormat: "Y-m-d H:i",
         time_24hr: true,
         minDate: "today"
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/intlTelInput.min.js"></script>
+
+<script>
+    $(function() {
+        const bookingForm = document.querySelector("#bookingForm");
+        const phoneInput = document.querySelector("#phone");
+        if (!bookingForm || !phoneInput ||
+            typeof window.intlTelInput !== "function") return;
+
+        const iti = window.intlTelInput(phoneInput, {
+            initialCountry: "vn",
+            separateDialCode: true,
+            nationalMode: true,
+            preferredCountries: ["vn", "us", "gb", "kr", "jp", "fr", "de"],
+            loadUtils: () => import(
+                "https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.5/build/js/utils.js"
+            )
+        });
+
+        const phoneWrapper = phoneInput.closest(".iti");
+
+        if (phoneWrapper) {
+            phoneWrapper.style.width = "100%";
+            phoneWrapper.style.display = "block";
+        }
+
+        let isSubmitting = false;
+
+        bookingForm.addEventListener("submit", async function(e) {
+
+            if (isSubmitting) return;
+
+            e.preventDefault();
+
+            if (!bookingForm.checkValidity()) {
+                bookingForm.reportValidity();
+                return;
+            }
+
+            await iti.promise;
+
+            if (!iti.isValidNumber()) {
+                phoneInput.setCustomValidity(
+                    "Please enter a valid international phone number."
+                );
+                phoneInput.reportValidity();
+                phoneInput.focus();
+                return;
+            }
+
+            phoneInput.setCustomValidity("");
+            phoneInput.value = iti.getNumber();
+
+            isSubmitting = true;
+            HTMLFormElement.prototype.submit.call(bookingForm);
+        });
+
+        phoneInput.addEventListener("input", function() {
+            phoneInput.setCustomValidity("");
+        });
     });
 </script>

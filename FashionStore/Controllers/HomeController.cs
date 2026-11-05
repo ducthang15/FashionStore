@@ -39,7 +39,7 @@ namespace FashionStore.Controllers
                         .Include(f => f.FeedbackImages)
                             .Where(f => f.IsPublished == true)
                                 .OrderByDescending(f => f.CreatedAt)
-                                    .Take(6)
+                                    .Take(9)
                                         .ToListAsync();
             return View(products);
         }

@@ -733,7 +733,6 @@ a.dropdown-item {
         position: relative;
     }
 
-    /* Constrain brand/logo height */
     .luxury-nav .navbar-brand,
     .luxury-nav .navbar-brand img,
     .luxury-nav .logo-unlim {
@@ -743,7 +742,6 @@ a.dropdown-item {
         align-items: center;
     }
 
-    /* Normalize nav links so they don't push the nav taller */
     .luxury-nav .navbar-nav .nav-link {
         font-size: 13px;
         padding-top: 0;
@@ -754,7 +752,6 @@ a.dropdown-item {
         align-items: center;
     }
 
-    /* Keep language dropdown compact */
     .luxury-nav .nav-item.ms-3,
     .luxury-nav .nav-item.ms-3 .dropdown {
         display: flex;
@@ -762,7 +759,6 @@ a.dropdown-item {
         height: 46px;
     }
 
-    /* Keep scrolled state same height */
     .luxury-nav.scrolled {
         height: 94px;
     }
@@ -943,6 +939,35 @@ a.dropdown-item {
     background: rgba(255,255,255,0.25);
 }
 
+#bookingForm #phone {
+    min-height: 58px;
+    height: 58px;
+    padding-top: 26px;
+    padding-bottom: 10px;
+    line-height: 20px;
+}
+
+#bookingForm #phone {
+    padding-bottom: 20px;
+}
+
+#bookingForm .iti {
+    width: 100%;
+}
+
+.look-img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+}
+
+.look-img--tall {
+    aspect-ratio: 5 / 6;
+}
+/*.font-serif-measure {
+    font-family: 'Cormorant Garamond', serif;
+}*/
 .subscribe-title {
     padding: 15px 20px 5px;
     font-size: 13px;
@@ -2012,6 +2037,7 @@ img.zalo {
         display: block;
         transition: all .6s ease;
     }
+
 .unlim-overlay {
     position: absolute;
     inset: 0;
@@ -2046,9 +2072,6 @@ img.zalo {
     opacity: 1;
 }
 
-
-/* MOBILE */
-
 .masonry-grid {
     column-count: 3;
     column-gap: 1.5rem;
@@ -2063,6 +2086,21 @@ img.zalo {
     column-count: 1;
 }
 
+@media (min-width: 768px) {
+    .look-img,
+    .look-img--tall {
+        aspect-ratio: 2 / 3;
+    }
+}
+
+@media (min-width: 992px) {
+    .look-img,
+    .look-img--tall {
+        aspect-ratio: auto;
+        height: 100vh;
+        min-height: 600px;
+    }
+}
 
 @media (max-width: 991px) {
     .unlim-masonry-grid {
@@ -2119,6 +2157,14 @@ img.zalo {
             height: 36px;
             line-height: 36px;
         }
+}
+
+@media (min-width: 991px) { /* PC: ba cột full chiều cao màn hình */
+    .look-img,
+    .look-img--tall {
+        height: 100vh;
+        min-height: 600px;
+    }
 }
 
 @media (max-width: 767px) {

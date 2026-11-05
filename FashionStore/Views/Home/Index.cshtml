@@ -169,7 +169,7 @@
         </div>
     </div>
 </section>
-<section class="craft-showunlim-bg">
+@* <section class="craft-showunlim-bg">
     <div class="container craft-showcase unlim-journey-section py-4">
         <div class="showcase-header mb-5">
             <h2>Unlim Tailor's Process</h2>
@@ -186,7 +186,7 @@
                                 <div class="card-body text-center">
                                     <h4>Consultation</h4>
                                     <p>
-                                        Design consultation: the first chapter in shaping personal identity and elegant style.
+                                        Design consultation: the first perfect chapter in shaping personal identity and elegant style.
                                     </p>
                                 </div>
 
@@ -277,7 +277,7 @@
     <div class="text-center mb-2">
         <a asp-controller="contact" asp-action="Index" class="btn btn-outline-light mb-3 mt-3 text-center">Request Consultation</a>
     </div>
-</section>
+</section> *@
 @* <section class="collection-section">
     <div class="container relative mt-5">
         <div class="text-center mb-3">
@@ -386,6 +386,158 @@
         </div>
     </div>
 </section> *@
+<section class="look-gallery pt-5">
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <div class="col-6 col-lg-4">
+                <img src="~/image/fomr1.webp" alt="Quần tây kiểu cổ điển" class="look-img">
+            </div>
+
+            <div class="col-6 col-lg-4">
+                <img src="~/image/mutafasa-fdeb.webp" alt="Bộ vest sọc" class="look-img">
+            </div>
+
+            <div class="col-12 col-lg-4">
+                <img src="~/image/form2.webp" alt="Cà vạt và áo vest" class="look-img look-img--tall">
+            </div>
+
+        </div>
+    </div>
+    <div class="process-section py-5">
+        <div class="container">
+            <h2 class="text-center font-serif-measure mb-5 text-dark">The Made-to-Measure Process</h2>
+            <div class="row g-4 g-lg-5">
+                <div class="col-12 col-lg-6">
+                    <div class="process-card position-relative bg-light p-4 p-md-5">
+                        <span class="display-1 fst-italic fw-light lh-1 text-dark opacity-25 position-absolute top-0 translate-middle">1</span>
+                        <h3 class="h6 text-center font-serif-measure mb-4 text-dark">Book an Appointment</h3>
+                        <p class="small lh-lg mb-0 text-muted">
+                            You can choose to book a tailoring consultation via online or over the telephone. Booking an appointment ensures you have one-to-one time with a dedicated tailoring consultant in a private, relaxed space. Whether you are preparing for business, a wedding, or a special occasion, we tailor the process around you.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 mt-lg-5">
+                    <div class="process-card position-relative bg-light p-4 p-md-5">
+                        <span class="display-1 fst-italic fw-light lh-1 text-dark opacity-25 position-absolute top-0 translate-middle">2</span>
+                        <h3 class="h6 text-center font-serif-measure mb-4 text-dark">Fabric &amp; Style Selection</h3>
+                        <p class="small lh-lg mb-0 text-muted">
+                            The fabric is the foundation of any great garment. From classic wool and luxurious cashmere to lighter fabrics for summer suiting. At UNLIM Bespoke we have thousands of swatches to suit every need. Details such as lapels, lining, buttons, pockets and monogramming are customisable, ensuring your garment is truly personalised to you. Once everything has been agreed during the initial consultation, <strong>the process will begin, and your outfit will be ready in about 3–5 days</strong>.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="process-card position-relative bg-light p-4 p-md-5">
+                        <span class="display-1 fst-italic fw-light lh-1 text-dark opacity-25 position-absolute top-0 translate-middle">3</span>
+                        <h3 class="h6 text-center font-serif-measure mb-4 text-dark">Measurements &amp; First Fitting</h3>
+                        <p class="small lh-lg mb-0 text-muted">
+                            Our tailoring consultants take over 30 precise body measurements to ensure an impeccable fit. The garment is then crafted using a <strong>modern British construction with a medium-weight chest canvas</strong> for structure and longevity, or a softer Italian-inspired shoulder for those who prefer a more relaxed silhouette. This blend of craftsmanship and modern precision ensures comfort without sacrificing elegance.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 mt-lg-5">
+                    <div class="process-card position-relative bg-light p-4 p-md-5">
+                        <span class="display-1 fst-italic fw-light lh-1 text-dark opacity-25 position-absolute top-0 translate-middle">4</span>
+                        <h3 class="h6 text-center font-serif-measure mb-4 text-dark">Final Fitting & Collection</h3>
+                        <p class="small lh-lg mb-0 text-muted">
+                            When your garment arrives, we invite you back for the fitting at our store. At this stage, your tailor carefully checks every detail, from the drape of the jacket to the break of the trousers. If refinements are needed, they are made swiftly to ensure a flawless finish.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 mt-lg-5">
+                    <div class="process-card position-relative bg-light p-4 p-md-5">
+                        <span class="display-1 fst-italic fw-light lh-1 text-dark opacity-25 position-absolute top-0 translate-middle">5</span>
+                        <h3 class="h6 text-center font-serif-measure mb-4 text-dark">Alterations if Needed</h3>
+                        <p class="small lh-lg mb-0 text-muted">
+                            The final fitting is where your Made-to-Measure garment comes to life. Perfectly adjusted, pressed, and presented, your piece is ready to wear. What you receive is not just a garment, but a piece that feels like it was created exclusively for you, because it was.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+}
+@{
+    var galleryItems = ViewBag.CustomerGallery
+        as IEnumerable<FashionStore.Repository.Models.CustomerFeedback>;
+}
+
+@if (galleryItems != null && galleryItems.Any())
+{
+    <section class="container py-3">
+        <div class="justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="title-journal text-dark text-center">Customer Feedback</h2>
+            </div>
+        </div>
+        <div class="swiper customer-swiper position-relative">
+            <div class="swiper-wrapper">
+                @foreach (var item in galleryItems)
+                {
+                    var image = item.FeedbackImages?.FirstOrDefault();
+
+                    if (image != null && !string.IsNullOrWhiteSpace(image.ImageUrl))
+                    {
+                        <div class="swiper-slide">
+                            <a asp-controller="Gallery" asp-action="Index" class="text-decoration-none">
+                                <img src="@image.ImageUrl" alt="@(item.CustomerName ?? "UNLIM TAILOR customer")" class="img-fluid w-100" loading="lazy" decoding="async">
+                            </a>
+
+                            <div class="pt-3">
+                                @if (!string.IsNullOrWhiteSpace(item.CustomerName))
+                                {
+                                    <h4 class="text-center text-dark">@item.CustomerName</h4>
+                                }
+
+                                @if (!string.IsNullOrWhiteSpace(item.Content))
+                                {
+                                    <p class="text-muted">@item.Content</p>
+                                }
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            <button type="button" class="swiper-prev btn btn-dark position-absolute top-50 start-0 translate-middle-y z-3 ms-2" aria-label="Previous">
+                <i class="ri-arrow-left-s-line"></i>
+            </button>
+
+            <button type="button" class="swiper-next btn btn-dark position-absolute top-50 end-0 translate-middle-y z-3 me-2" aria-label="Next">
+                <i class="ri-arrow-right-s-line"></i>
+            </button>
+        </div>
+        <div class="text-center mt-4">
+            <a asp-controller="Appointment" asp-action="Index" class="btn btn-outline-dark px-4">
+                BOOK AN APPOINTMENT
+            </a>
+        </div>
+    </section>
+}
+<section class="main-bg-brown">
+    <section class="partner-section container">
+        <h2 class="partner-title"> Our Partners </h2>
+        <div class="partner-slider">
+            <div class="partner-track">
+                <div class="partner-item"><img src="/image/brand/brand_1.jpg" alt="brand fabric drago"></div>
+                <div class="partner-item"><img src="/image/brand/brand_2.jpg" alt="brand fabric medici"></div>
+                <div class="partner-item"><img src="/image/brand/brand_3.jpg" alt="brand fabric drgoinfle"></div>
+                <div class="partner-item"><img src="/image/brand/brand_4.jpg" alt="brand fabric canet"></div>
+                <div class="partner-item"><img src="/image/brand/scabal.jpg" alt="brand fabric zogze"></div>
+                <div class="partner-item"><img src="/image/brand/brand_6.jpg" alt="brand fabric zions"></div>
+                <div class="partner-item"><img src="/image/brand/Zegna.png" alt="brand fabric ,eissigg"></div>
+                <div class="partner-item"><img src="/image/brand/lanificio-cerruti.jpg" alt="brand fabric lanfigo"></div>
+                <div class="partner-item"><img src="/image/brand/brand_1.jpg" alt="brand fabric z-danhe"></div>
+                <div class="partner-item"><img src="/image/brand/brand_2.jpg" alt="brand fabric dargo2"></div>
+                <div class="partner-item"><img src="/image/brand/brand_3.jpg" alt="brand fabric drgo324"></div>
+                <div class="partner-item"><img src="/image/brand/brand_4.jpg" alt="brand fabric zians"></div>
+                <div class="partner-item"><img src="/image/brand/scabal.jpg" alt="brand fabric gogius"></div>
+                <div class="partner-item"><img src="/image/brand/brand_6.jpg" alt="brand fabric zidiupos"></div>
+                <div class="partner-item"><img src="/image/brand/Zegna.png" alt="brand fabric italian"></div>
+                <div class="partner-item"><img src="/image/brand/lanificio-cerruti.jpg" alt="brand fabric japan"></div>
+            </div>
+        </div>
+    </section>
+</section>
 @if (ViewBag.LatestNews != null)
 {
     <section class="latest-blog py-5">
@@ -432,106 +584,15 @@
         </div>
     </section>
 }
-@{
-    var galleryItems = ViewBag.CustomerGallery
-        as IEnumerable<FashionStore.Repository.Models.CustomerFeedback>;
-}
-
-@if (galleryItems != null && galleryItems.Any())
-{
-    <section class="container py-5">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <div>
-                <h2 class="title-journal text-dark text-center">Customer Feedback</h2>
-            </div>
-        </div>
-        <div class="swiper customer-swiper position-relative">
-            <div class="swiper-wrapper">
-                @foreach (var item in galleryItems)
-                {
-                    var image = item.FeedbackImages?.FirstOrDefault();
-
-                    if (image != null && !string.IsNullOrWhiteSpace(image.ImageUrl))
-                    {
-                        <div class="swiper-slide">
-                            <a asp-controller="Gallery" asp-action="Index" class="text-decoration-none">
-                                <img src="@image.ImageUrl"
-                                     alt="@(item.CustomerName ?? "UNLIM TAILOR customer")"
-                                     class="img-fluid w-100"
-                                     loading="lazy"
-                                     decoding="async">
-                            </a>
-
-                            <div class="pt-3">
-                                @if (!string.IsNullOrWhiteSpace(item.CustomerName))
-                                {
-                                    <h4 class="text-center text-dark">@item.CustomerName</h4>
-                                }
-
-                                @if (!string.IsNullOrWhiteSpace(item.Content))
-                                {
-                                    <p class="text-muted">@item.Content</p>
-                                }
-                            </div>
-                        </div>
-                    }
-                }
-            </div>
-
-            <button type="button" class="swiper-prev btn btn-dark position-absolute top-50 start-0 translate-middle-y z-3 ms-2" aria-label="Previous">
-                <i class="ri-arrow-left-s-line"></i>
-            </button>
-
-            <button type="button" class="swiper-next btn btn-dark position-absolute top-50 end-0 translate-middle-y z-3 me-2" aria-label="Next">
-                <i class="ri-arrow-right-s-line"></i>
-            </button>
-        </div>
-        <div class="text-center mt-4">
-            <a asp-controller="Gallery" asp-action="Index" class="btn btn-outline-dark px-4">
-                View All Customer Stories
-            </a>
-        </div>
-    </section>
-
-}
-<section class="main-bg-brown">
-    <section class="partner-section container">
-        <h2 class="partner-title"> Our Partners </h2>
-        <div class="partner-slider">
-            <div class="partner-track">
-                <div class="partner-item"><img src="/image/brand/brand_1.jpg" alt="brand fabric drago"></div>
-                <div class="partner-item"><img src="/image/brand/brand_2.jpg" alt="brand fabric medici"></div>
-                <div class="partner-item"><img src="/image/brand/brand_3.jpg" alt="brand fabric drgoinfle"></div>
-                <div class="partner-item"><img src="/image/brand/brand_4.jpg" alt="brand fabric canet"></div>
-                <div class="partner-item"><img src="/image/brand/scabal.jpg" alt="brand fabric zogze"></div>
-                <div class="partner-item"><img src="/image/brand/brand_6.jpg" alt="brand fabric zions"></div>
-                <div class="partner-item"><img src="/image/brand/Zegna.png" alt="brand fabric ,eissigg"></div>
-                <div class="partner-item"><img src="/image/brand/lanificio-cerruti.jpg" alt="brand fabric lanfigo"></div>
-                <div class="partner-item"><img src="/image/brand/brand_1.jpg" alt="brand fabric z-danhe"></div>
-                <div class="partner-item"><img src="/image/brand/brand_2.jpg" alt="brand fabric dargo2"></div>
-                <div class="partner-item"><img src="/image/brand/brand_3.jpg" alt="brand fabric drgo324"></div>
-                <div class="partner-item"><img src="/image/brand/brand_4.jpg" alt="brand fabric zians"></div>
-                <div class="partner-item"><img src="/image/brand/scabal.jpg" alt="brand fabric gogius"></div>
-                <div class="partner-item"><img src="/image/brand/brand_6.jpg" alt="brand fabric zidiupos"></div>
-                <div class="partner-item"><img src="/image/brand/Zegna.png" alt="brand fabric italian"></div>
-                <div class="partner-item"><img src="/image/brand/lanificio-cerruti.jpg" alt="brand fabric japan"></div>
-            </div>
-        </div>
-    </section>
-    <div class="text-center mt-5">
-        <a asp-controller="Appointment" asp-action="Index" class="btn-gold-solid">
-            BOOK AN APPOINTMENT
-        </a>
-    </div>
-</section>
 <section class="mt-5">
     <section class="container local-home pb-4">
+        <h2 class="fw-bold mb-3 text-center text-center text-dark">
+            We’re waiting for you here!
+        </h2>
+        <p class="text-dark text-center ">Whatever you need, just give us a call, send a message, or book an appointment with us right here!</p>
         <div class="local-home-inf">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="fw-bold mb-3 text-center text-md-start text-dark mt-4">
-                        Welcome To Our Showroom
-                    </h4>
                     <ul class="list-unstyled mb-4">
                         <li class="d-flex align-items-start gap-3 mb-3 text-dark">
                             <i class="ri-map-2-line"></i>
@@ -559,8 +620,11 @@
                             <span><strong>Working hours :</strong> Monday - Sunday : 9 am – 9 pm</span>
                         </li>
                     </ul>
-                    <div class="tripadvisor-review mb-2"><div id="TA_cdsscrollingravenarrow482" class="TA_cdsscrollingravenarrow"><ul id="REb8AJpQ" class="TA_links B5cS2lC"><li id="LknLphX" class="gEsMCFOkhi"><a target="_blank" href="https://www.tripadvisor.com/Attraction_Review-g293924-d33295118-Reviews-Unlim_Tailor-Hanoi.html"><img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_lockup_vertical.svg" alt="TripAdvisor" class="widEXCIMG" id="CDSWIDEXCLOGO" /></a></li></ul></div><script async src="https://www.jscache.com/wejs?wtype=cdsscrollingravenarrow&amp;uniq=482&amp;locationId=33295118&amp;lang=en_US&amp;border=true&amp;shadow=true&amp;backgroundColor=white&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script></div>
-
+                    <div class="mt-5 d-flex justify-content-center mb-3">
+                        <a asp-controller="Appointment" asp-action="Index" class="btn btn-dark rounded-0">
+                            BOOK AN APPOINTMENT
+                        </a>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="ratio ratio-16x9 overflow-hidden ">
@@ -571,18 +635,17 @@
         </div>
     </section>
 </section>
-<div class="luxury-banner">
+@* <div class="luxury-banner">
     <img src="/image/bespoke-tailoring-service.jpg" alt="poster" class="w-100">
     <div class="banner-content">
         <p class="quote fs-5 d-md-block d-none">
-            We don’t wish to have too many customers,
-            but we try our best to have customers for life
+            We’re waiting for you here! Whatever you need, just give us a call, send a message, or book an appointment with us right here!
         </p>
         <a asp-controller="Appointment" asp-action="Index" class="booking-btn">
             BOOK AN APPOINTMENT
         </a>
     </div>
-</div>
+</div> *@
 <div class="container text-dark mb-5 mt-5">
     <div class="row">
         <div class="col-lg-12">
