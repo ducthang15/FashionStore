@@ -164,5 +164,18 @@ namespace FashionStore.Controllers
             ViewBag.CategoryName = category?.CategoryName;
             return View("TailoringUniforms", posts);
         }
+        [Route("blog/women-tailoring")]
+        public async Task<IActionResult>WomenTailoring()
+        {
+            int serviceCategoryId =7;
+
+            var posts = await _context.News
+                .Where(n => n.NewsCategoryId == serviceCategoryId && n.IsPublished)
+                .OrderByDescending(n => n.CreatedAt)
+                .ToListAsync();
+            var category = await _context.NewsCategories.FindAsync(serviceCategoryId);
+            ViewBag.CategoryName = category?.CategoryName;
+            return View("WomenTailoring", posts);
+        }
     }
 }

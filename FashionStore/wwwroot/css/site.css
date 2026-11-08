@@ -1201,7 +1201,7 @@ img.zalo {
 }
 
 .sumary-utl {
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .title-utl-bespoke {
@@ -1792,8 +1792,8 @@ img.zalo {
     }
 
 .product-box {
-    border: 2px solid #c57f4a;
-    background-color: #2b1405;
+    border: 1px solid #ebc5b2;
+    background-color: #1f0b02;
     transition: 0.3s ease;
     height: 100%;
 }
