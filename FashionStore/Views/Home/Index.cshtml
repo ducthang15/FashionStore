@@ -479,12 +479,12 @@
                             <div class="pt-3">
                                 @if (!string.IsNullOrWhiteSpace(item.CustomerName))
                                 {
-                                    <h4 class="text-center text-dark">@item.CustomerName</h4>
+                                    <h4 class="fs-5 text-center text-dark">@item.CustomerName</h4>
                                 }
 
                                 @if (!string.IsNullOrWhiteSpace(item.Content))
                                 {
-                                    <p class="text-muted">@item.Content</p>
+                                    <p class="text-muted text-clamp-2 text-center">@item.Content</p>
                                 }
                             </div>
                         </div>
@@ -557,7 +557,7 @@
                                         @item.Title
                                     </a>
                                 </h6>
-                                <p class="summary-title-blog text-muted text-clamp-3">
+                                <p class="summary-title-blog text-muted text-clamp-2">
                                     @item.Summary
                                 </p>
                                 <a asp-controller="Blog" asp-action="Details" asp-route-slug="@item.Slug" class="text-warning text-decoration-none">
@@ -577,8 +577,8 @@
         </div>
     </section>
 }
-<section class="mt-5">
-    <section class="container local-home pb-4">
+<section class="map-utl-1705">
+    <div class="container local-home pb-4">
         <h2 class="fw-bold mb-3 text-center text-center text-dark">
             We’re waiting for you here!
         </h2>
@@ -589,7 +589,7 @@
                     <ul class="list-unstyled mb-4">
                         <li class="d-flex align-items-start gap-3 mb-3 text-dark">
                             <i class="ri-map-2-line"></i>
-                            <span><strong>Address:</strong> 105-107 Kim Ma Street, Ba Dinh Ward, Hanoi</span>
+                            <span><strong>Address:</strong> 107 Kim Mã Street, Giảng Võ Ward, Hanoi</span>
                         </li>
                         <li class="d-flex align-items-start gap-3 mb-3 text-dark">
                             <i class="ri-phone-line"></i>
@@ -626,7 +626,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </section>
 @* <div class="luxury-banner">
     <img src="/image/bespoke-tailoring-service.jpg" alt="poster" class="w-100">
