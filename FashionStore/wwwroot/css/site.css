@@ -537,6 +537,18 @@ body {
         height: auto;
     }
 
+.bg-content-product {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+    .bg-content-product img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
 .bg-content-text {
     font-family: Courier New, Courier, monospace;
     position: absolute;
